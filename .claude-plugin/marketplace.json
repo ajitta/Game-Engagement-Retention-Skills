@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "game-engagement-retention-skills",
+  "description": "Local marketplace exposing the game engagement + retention skill set as an installable Claude Code plugin.",
+  "owner": {
+    "name": "chosh1179"
+  },
+  "plugins": [
+    {
+      "name": "game-engagement-retention-skills",
+      "description": "Reward-moment design + lifecycle retention skills for games and interactive apps (3 routed skills).",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
