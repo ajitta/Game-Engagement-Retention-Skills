@@ -187,15 +187,15 @@ Example: In chapter 4, a character returns the exact phrase the player chose in 
 
 ## Mini Output Example
 
-Input: "탑다운 로그라이크. 플레이어는 검과 번개 마법을 쓰고, 방을 클리어하면 3개 보상 중 하나를 고른다."
+Input: "Top-down roguelike. The player uses a sword and lightning magic, and after clearing a room chooses one of three rewards."
 
-Output shape (abbreviated — full skill output uses the 9-column schema from SKILL.md: # | 순간 | 장면 트리거 | 사용자 행동 | 작동 원리 | 피드백/연출 | 다음 행동 | 검증 지표 | 리스크/가드레일):
+Output shape (abbreviated — full skill output uses the 9-column schema from SKILL.md: # | Moment | Scene trigger | User action | Why it works | Feedback/staging | Next action | Validation metric | Risk/guardrail):
 
-| # | 순간 | 장면 트리거 | 사용자 행동 | 작동 원리 | 피드백/연출 | 다음 행동 | 검증 지표 | 리스크/가드레일 |
+| # | Moment | Scene trigger | User action | Why it works | Feedback/staging | Next action | Validation metric | Risk/guardrail |
 |---|---|---|---|---|---|---|---|---|
-| 1 | 완벽 회피 반격 | 보스의 붉은 베기 직전 | 0.25초 창 안에 회피 입력 | 위험-완화-반격으로 competence 강화 | 0.8초 슬로우 + 전용 사운드, 다음 검격 치명타 | 반격 기회를 노린 재교전 | 회피 재시도율, 성공 후 공격 입력률 | 창 표시를 명확히, 실패 원인 표시 |
-| 2 | 번개 세트 완성 | 번개 보상 3개째 선택 | 세트 완성 보상을 직접 선택 | 빌드 시너지 snap | UI에서 번개 아이콘 3개 연결, 공격이 연쇄 번개로 변함 | 새 빌드 시험 욕구 | 해당 선택률, "강해졌다" 응답 | 한 속성만 정답이 되지 않게 대체 세트 제공 |
-| 3 | 엘리트 방 위험 선택 | 다음 방 선택 화면 | 엘리트/상점/일반 중 위험 감수 선택 | autonomy + bounded surprise | 엘리트는 위험도와 확정 보상 사전 표시 | 위험 선택의 소유감으로 긴장 상승 | 엘리트 선택률, 사망 후 불공정 코멘트 | 보상 확정과 위험을 사전에 공개 |
+| 1 | Perfect-dodge counter | Just before the boss's red slash | Dodge input within a 0.25s window | Risk-relief-counter reinforces competence | 0.8s slow-mo + dedicated sound, next sword strike crits | Re-engage hunting for the counter opening | Dodge retry rate, attack-input rate after success | Show the window clearly; surface the cause of failure |
+| 2 | Lightning set completion | Picking the 3rd lightning reward | Directly choose the set-completing reward | Build-synergy snap | Three lightning icons link in the UI; attacks turn into chain lightning | Urge to test the new build | Selection rate for it, "I got stronger" responses | Offer alternate sets so no single element is the only right answer |
+| 3 | Elite-room risk choice | Next-room selection screen | Choose to take the risk among elite/shop/normal | Autonomy + bounded surprise | Elite shows risk level and guaranteed reward upfront | Ownership of the risky choice raises tension | Elite selection rate, unfairness comments after death | Disclose the guaranteed reward and the risk in advance |
 
 ## Common Failure Modes
 
