@@ -1,23 +1,24 @@
 ---
 name: engagement-retention-advisor
-description: "Produce integrated proposals that jointly improve moment-level engagement AND lifecycle retention for games, interactive apps, AI companions, fortune/reading apps, visual novels, learning apps, communities. Use ONLY when the request contains TWO deliverables — (a) in-session reward/moment design AND (b) lifecycle/return strategy (e.g. 'both the reward moments and retention', 'analyze the dopamine points AND make people keep using it', 'satisfying moments plus D1/D7/D30') — OR when the question itself is the moment-to-retention link (e.g. 'what in-session moment do I need to raise retention?'). A retention metric cited only as motivation or success criterion is NOT a second ask: 'D7 is low and I want to fix the reward staging' or 'satisfying enough that they come back the next day' → interaction-reward-moments. Retention-only → retention-strategy-designer. Outputs 3-5 integrated proposals pairing a reward moment with a retention mechanism, plus metrics, experiments, domain ethics."
+description: "Produce integrated proposals that jointly improve moment-level engagement AND lifecycle retention for games, interactive apps, AI companions, fortune/reading apps, visual novels, learning apps, communities. Use when the request contains TWO deliverables — (a) in-session reward/moment design AND (b) lifecycle/return strategy — OR the moment-to-retention link is the question ('what in-session moment raises retention?'), including a moment complaint paired with a churn/return problem with no explicit deliverable ('combat feels flat and players churn') — OR the user asks to compare or prioritize a moment-level vs lifecycle-level investment ('better combat feel or a re-engagement push first?'). A retention metric cited only as motivation or success criterion is NOT a second ask ('D7 is low, fix the reward staging' → interaction-reward-moments). Retention-only → retention-strategy-designer. Outputs 3-5 integrated proposals pairing reward moments with retention mechanisms, plus metrics, experiments, domain ethics."
 user-invocable: true
 argument-hint: "<product description — combined reward-moment + retention request>"
-allowed-tools: Read, Glob
 ---
 
 # Engagement Retention Advisor
 
-Use only when the user explicitly requests **both** moment-level reward design **and** a retention strategy as one proposal set. The value of integration is not concatenating two lists — it is connecting **how a satisfying in-session moment becomes value for the next visit**.
+Use when the user requests **both** moment-level reward design **and** a retention strategy as one proposal set, when the moment-to-return link itself is the question, or when the user asks to **compare or prioritize** a moment-level vs a lifecycle-level investment. The value of integration is not concatenating two lists — it is connecting **how a satisfying in-session moment becomes value for the next visit**.
 
 See `references/domain-ethics.md` for detailed per-domain ethical guardrails.
 
 ## Routing
 
-- User asks for **both deliverables** (moment design + retention/return strategy), or **the moment-to-return link itself is the question** → this skill.
+- User asks for **both deliverables** (moment design + retention/return strategy), or **the moment-to-return link itself is the question** → this skill. A moment complaint **paired with a churn/return problem** with no explicit deliverable ("combat feels flat and players churn") counts as the link question.
+- User asks to **compare, sequence, or prioritize** a moment-level investment vs a lifecycle-level investment ("better combat feel or a re-engagement campaign first?") → this skill, in comparison mode (see Output).
 - Retention mentioned **only as a goal / metric / modifier** ("D7 is low, I want to fix the staging", "satisfying enough that they return") → stay single-skill. If it is moment design → `interaction-reward-moments`.
 - User asks for **retention only** → `retention-strategy-designer`.
 - Ambiguous and the choice materially changes the output → ask one clarifying question.
+- When routing away, invoke the target skill; if the Skill tool is unavailable, Read `../interaction-reward-moments/SKILL.md` or `../retention-strategy-designer/SKILL.md` and follow its workflow.
 
 ## Workflow
 
@@ -25,7 +26,7 @@ See `references/domain-ethics.md` for detailed per-domain ethical guardrails.
    - User intent, core value, core interaction, current loop, return event, natural usage cycle.
 
 2. Split the problem into two layers:
-   - **Moment layer**: what is satisfying within a single session? (Use the `interaction-reward-moments` lenses: anticipation / competence / autonomy / reveal / recognition / transformation / progress. If you need patterns, read `../interaction-reward-moments/references/pattern-library.md`.)
+   - **Moment layer**: what is satisfying within a single session? (Use the ten lenses defined in `../interaction-reward-moments/SKILL.md` step 2 — read that file rather than working from memory. If you need patterns, read `../interaction-reward-moments/references/pattern-library.md`.)
    - **Lifecycle layer**: why return tomorrow, next week, next month? (Use the `retention-strategy-designer` diagnosis: return event, usage cycle, lifecycle stage, leak points. If you need benchmarks / experiment design, read `../retention-strategy-designer/references/retention-playbook.md`.)
 
 3. Recombine only where the two layers reinforce each other:
@@ -39,9 +40,14 @@ See `references/domain-ethics.md` for detailed per-domain ethical guardrails.
    - AI companion / journaling: no dependency, no over-notification, no crisis-counselor role confusion, no misuse of sensitive data.
    - Visual novel: no manipulative cliffhangers, no paywalling core endings.
    - Learning apps: no guilt streaks; recovery-friendly progress.
+   - Games: no hidden odds or undisclosed loot-box probabilities on real-money rewards, no pay-to-avoid-frustration, no life-punishing FOMO events, no variable rewards chained to escalating ad consumption.
    - Overall: optimize for user value, not opens or session length.
 
 ## Output
+
+Answer in the user's language (Korean input → Korean output); keep the section/table structure below — headings may stay in English or be translated.
+
+**Comparison mode**: when the request is a which-first / prioritization question rather than a two-deliverable ask, skip the 3-5 integrated-proposal table. Output instead: a brief diagnosis of both layers, a sequencing recommendation with rationale (impact, dependency, measurement order), and at most one integrated proposal if the layers genuinely reinforce each other.
 
 ```markdown
 ## Input interpretation

@@ -46,25 +46,24 @@ Interventions must name the stage. A streak mechanic aimed at dormant users is n
 - **D8-D30**: shallow content pipeline, no personalization deepening, no identity/social investment.
 - **D30+**: novelty exhausted, no compounding asset, no community, trust erosion (ads/paywall creep).
 
-## Benchmark Context (sourced 2024-2026; verify before quoting exact decimals)
+## Benchmark Context (sourced 2025-2026; verify before quoting exact decimals)
 
 Use only to calibrate expectations, never as goals:
 
 | Segment | D1 | D7 | D30 | Source (year) |
 |---|---|---|---|---|
 | Mobile games, top quartile | ~26.5-27.7% | — | — | GameAnalytics benchmarks report 2025 |
-| Mobile games, global median | ~22% (declining) | low single-digit | low | GameAnalytics 2025/2026 |
+| Mobile games, global median | ~22% (declining) | low single-digit | low | GameAnalytics 2025 |
 | Consumer apps, cross-industry median | ~25-26% | ~11-13% | ~5-7% | Adjust Mobile App Trends 2026 |
 | Consumer apps, platform average | Android 21.1% / iOS 23.9% | — | Android ~2.1% | BusinessOfApps 2026 |
-| Education/learning apps | ~14-15% | — | ~2% | Passion.io benchmark roundup 2025 |
 | Median app, all verticals | — | — | ~4% | Appcues 2026 |
 
 Notes:
-- Confidence tiers: GameAnalytics / Adjust / BusinessOfApps rows trace to primary data vendors (higher confidence). Passion.io and CORE-MBA rows are secondary aggregators — low confidence, use only as order-of-magnitude context and prefer the primary reports before quoting.
+- Confidence: every row relays vendor data, partly via aggregator/newsletter URLs (see Sources) — verify against the vendor's own primary report before quoting exact figures. All rows are order-of-magnitude context, not targets.
 - >90% of users abandon the average app before D30. iOS retains above Android; genre and region swing ranges sharply. Benchmarks are survivorship-biased — treat as directional.
 - "~7% retention rule": a D30 curve flattening above ~7% is a common product-market-fit signal for consumer apps.
 - Learning apps skew low on D30 (motivation decay); winners use recovery-friendly cadence, not streak pressure.
-- Strongest primary sources: GameAnalytics (games), Adjust/AppsFlyer (apps). If citing numbers to a user, state vertical, source, and year.
+- Strongest primary sources: GameAnalytics (games), Adjust (apps). If citing numbers to a user, state vertical, source, and year.
 
 ## Experiment Design
 
@@ -82,6 +81,7 @@ Dark pattern families relevant to retention (see also `../../engagement-retentio
 - **Emotional**: guilt streaks, shame language, fear-of-loss notifications, manufactured loneliness (companion apps).
 - **Economic**: pain-then-relief monetization, hidden odds, sunk-cost amplification.
 - **Attention**: notification spam, variable-reward notification timing, infinite-scroll traps.
+- **Social**: reciprocity-debt loops (friend gifts that obligate return), team-punishment mechanics (group loses bonus when one member skips), guild attendance pressure, manufactured social obligation as a return driver.
 
 Regulatory direction (EU Digital Fairness work, FTC dark-pattern enforcement, loot-box disclosure rules in multiple jurisdictions) is tightening: transparent odds, easy cancellation, and non-manipulative defaults are becoming compliance issues, not just ethics.
 

@@ -1,23 +1,23 @@
 ---
 name: retention-strategy-designer
-description: "Analyze an app, game, SaaS, content product, interactive narrative, community, or AI product and propose lifecycle retention improvements. Use when the user asks to increase D1, D7, D30, weekly/monthly retention, cohort curves, activation, habit formation, churn reduction, resurrection, onboarding, notification strategy, or return behavior. Do NOT trigger when the requested change is a specific in-session scene, reward reveal, or staging fix — even if D1/D7/onboarding is cited as the motivating metric — use interaction-reward-moments and keep the metric as the validation target. Outputs retention diagnosis, segments, lifecycle loops, experiments, metrics, and anti-dark-pattern guardrails."
+description: "Analyze an app, game, SaaS, content product, interactive narrative, community, or AI product and propose lifecycle retention improvements. Use when the user asks to increase D1, D7, D30, weekly/monthly retention, cohort curves, activation, habit formation, churn, resurrection, onboarding, notification strategy, or return behavior — or when the named deliverable is a multi-day cadence mechanic (battle pass, login rewards, streaks, daily quests). Do NOT trigger when the requested change is a specific in-session scene, reward reveal, staging fix, or a session-length/quit-mid-session problem — even if D1/D7/onboarding is cited as the motivating metric — use interaction-reward-moments and keep the metric as the validation target. Do NOT trigger when moment design is a second deliverable, a moment complaint is paired with churn, or the ask is which moment drives retention — use engagement-retention-advisor. Outputs retention diagnosis, segments, lifecycle loops, experiments, and anti-dark-pattern guardrails."
 user-invocable: true
 argument-hint: "<product description + retention problem>"
-allowed-tools: Read, Glob
 ---
 
 # Retention Strategy Designer
 
 Retention is not "getting users addicted." Retention is users returning repeatedly because the product keeps delivering value on a cadence that matches their intent.
 
-See `references/retention-playbook.md` for frameworks, benchmarks, and experiment design.
+See `references/retention-playbook.md` for frameworks, benchmarks, and experiment design. For per-domain ethical guardrails (fortune/saju, AI companion, narrative, learning, games), read `../engagement-retention-advisor/references/domain-ethics.md` (if installed).
 
 ## Routing
 
-- User asks for **retention only** (churn, D1/D7/D30, lifecycle, habit, return, cohort, notifications, onboarding) → this skill.
-- User asks only for **moment-level** satisfaction, reward points, dopamine points, or scene design → `interaction-reward-moments`. Same even if D7/onboarding is cited **only as motivation**, as long as the deliverable is a scene fix.
-- User asks for **both deliverables** (moment design + retention strategy), or the moment-to-return link itself is the question → `engagement-retention-advisor`.
+- User asks for **retention only** (churn, D1/D7/D30, lifecycle, habit, return, cohort, notifications, onboarding), or the named deliverable is a **multi-day cadence mechanic** (battle pass, daily login rewards, streaks, daily quests) → this skill.
+- User asks only for **moment-level** satisfaction, reward points, dopamine points, scene design, or a session-length / quit-mid-session problem → `interaction-reward-moments`. Same even if D7/onboarding is cited **only as motivation**, as long as the deliverable is a scene fix.
+- User asks for **both deliverables** (moment design + retention strategy), the moment-to-return link itself is the question, or a moment complaint is **paired with a churn/return problem** ("combat feels flat and players churn") → `engagement-retention-advisor`.
 - Ambiguous and the choice materially changes the output → ask one clarifying question.
+- When routing away, invoke the target skill; if the Skill tool is unavailable, Read `../interaction-reward-moments/SKILL.md` or `../engagement-retention-advisor/SKILL.md` and follow its workflow.
 
 ## Workflow
 
@@ -43,6 +43,8 @@ See `references/retention-playbook.md` for frameworks, benchmarks, and experimen
    - Track guardrail metrics in parallel: notification opt-out rate, uninstalls, complaints, session quality.
 
 ## Output
+
+Answer in the user's language (Korean input → Korean output); keep the section/table structure below — headings may stay in English or be translated.
 
 ```markdown
 ## Input interpretation
@@ -73,7 +75,8 @@ Apply guardrails as design constraints **before** generating proposals — not a
 - Do not optimize opens, session length, or notification clicks alone. Optimize a meaningful return event.
 - Do not recommend spam push, fear, guilt, **FOMO**, fake scarcity, punishing the daily schedule with expiring rewards, hidden friction, or pain-relief monetization.
 - Treat staging that periodically reminds users of loss — even truthfully (decaying meters, repeated "before you forget" warnings) — as a fear mechanism.
-- Notifications must state a frequency cap (default: recommend ≤1/day). No repeated deadline pressure under the guise of "useful info."
-- No guilt streaks — replace with recovery-friendly progress (streak freeze, recovery credit, flexible goals).
+- Notifications must state a frequency cap (default: recommend ≤1/day) AND be content-gated — the cap is a ceiling, not an entitlement. For fortune/tarot/horoscope, AI companion, and journaling products, recommend only notifications carrying user-derived content (saved-reading follow-up, weekly summary); before proposing notifications in these domains, read `../engagement-retention-advisor/references/domain-ethics.md`. No repeated deadline pressure under the guise of "useful info."
+- No guilt streaks — replace with recovery-friendly progress (streak freeze and recovery credit that are free or earned through use, never sold; flexible goals). Never sell relief from streak loss.
 - Separate retention from monetization pressure. Flag when return-driving degrades into spend-driving.
 - Manipulative loops retain users but destroy trust. When retention numbers conflict with user value, state it and prioritize user value.
+- **When a prohibited pattern is the request itself**: state the refusal rationale explicitly in the answer body (not a quiet table-cell note), then redesign an ethical alternative that meets the same business goal. No quiet partial compliance.

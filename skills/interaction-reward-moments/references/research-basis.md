@@ -41,7 +41,7 @@ Design translation:
 - Use fixed progress for core advancement.
 - Use bounded random bonuses for spice, not for required progression.
 - Reveal odds or guarantee pity/caps when chance matters.
-- Keep real-money purchases away from variable reward pressure.
+- Keep real-money purchases and escalating ad-view loops away from variable reward pressure.
 
 Sources:
 - OpenStax Psychology 2e, "Operant Conditioning": https://openstax.org/books/psychology-2e/pages/6-3-operant-conditioning

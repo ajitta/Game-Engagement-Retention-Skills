@@ -3,7 +3,7 @@
   "name": "game-engagement-retention-skills",
   "description": "Local marketplace exposing the game engagement + retention skill set as an installable Claude Code plugin.",
   "owner": {
-    "name": "chosh1179"
+    "name": "ajitta"
   },
   "plugins": [
     {

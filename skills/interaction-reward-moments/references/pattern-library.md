@@ -104,7 +104,7 @@ Use when the game has co-op, PvP, leaderboards, spectators, guilds, raids, or sh
 - Feedback: feed entry, teammate ping, MVP card, replay highlight.
 - Reward: visible contribution, status, trust, team gratitude.
 - Validation: commendations, requeue with same party, social shares, toxicity reports.
-- Guardrail: recognize support and setup actions, not only final hits.
+- Guardrail: recognize support and setup actions, not only final hits; never convert team membership into attendance obligation (no group penalties for an absent member, no reciprocity-debt gifting).
 
 Example: A healer cleanses the raid-wide debuff within 0.5 seconds. The end screen marks "fight-saving cleanse" alongside damage stats.
 

@@ -1,9 +1,8 @@
 ---
 name: interaction-reward-moments
-description: "Analyze and design high-engagement reward moments ('dopamine points') for games and interactive apps. Use when the input describes a game scene, combat loop, puzzle loop, progression system, interactive narrative, fortune-telling app, AI companion, learning app, or any product where reveal, choice, feedback, anticipation, or satisfying micro-moments matter — and the user asks to find, create, improve, or validate reward moments, engagement hooks, game feel, or player motivation. Retention words used as a goal or success criterion ('D7 is low', 'satisfying enough to bring them back') do NOT disqualify this skill — route away only when lifecycle strategy is itself a requested deliverable (then retention-strategy-designer or engagement-retention-advisor). For a bare 'it's not fun / players get bored' complaint with no named scene or loop, ask one clarifying question first. Outputs 3-5 concrete moments with triggers, actions, feedback, validation metrics, and ethical guardrails."
+description: "Analyze and design high-engagement reward moments ('dopamine points') for games and interactive apps. Use when the input describes a game scene, combat loop, puzzle loop, progression system, interactive narrative, fortune/reading app, AI companion, or learning app and the user wants to find, create, or improve reward moments, engagement hooks, game feel, or player motivation — including short-session / quit-mid-session complaints (session length = diagnostic, not a target). Retention metrics cited only as goal/success criterion ('D7 is low') do NOT disqualify this skill. Route away: lifecycle strategy as deliverable or multi-day cadence mechanics (battle pass, login rewards, streaks, daily quests) → retention-strategy-designer; the moment-to-retention link question or a moment complaint paired with a churn problem → engagement-retention-advisor. Bare 'not fun / players bored' with no named scene: ask one clarifying question first. Outputs 3-5 concrete moments with triggers, feedback, metrics, guardrails."
 user-invocable: true
 argument-hint: "<game scene or app interaction description>"
-allowed-tools: Read, Glob
 ---
 
 # Interaction Reward Moments
@@ -14,10 +13,11 @@ For research grounding, see `references/research-basis.md`; for pattern selectio
 
 ## Routing
 
-- User asks only for **moment-level** satisfaction, feedback, reveal, choice, scene loop, reward points, or dopamine points → this skill. Stays here even if retention metrics are mentioned **only as motivation / success criteria** (absorb the metric as a validation target).
-- User asks for **retention only** (churn, D1/D7/D30, lifecycle, habit, return, cohort) → `retention-strategy-designer`.
-- User asks for **both deliverables** (moment design + retention strategy), or the moment-to-return link itself is the question → `engagement-retention-advisor`.
+- User asks only for **moment-level** satisfaction, feedback, reveal, choice, scene loop, reward points, or dopamine points → this skill. Stays here even if retention metrics are mentioned **only as motivation / success criteria** (absorb the metric as a validation target). Session-length / quit-mid-session complaints also stay here — treat session length as a diagnostic of loop satisfaction, never a target to inflate.
+- User asks for **retention only** (churn, D1/D7/D30, lifecycle, habit, return, cohort), or the named deliverable is a **multi-day cadence mechanic** (battle pass, daily login rewards, streaks, daily quests — lifecycle systems even though they look like progression systems) → `retention-strategy-designer`.
+- User asks for **both deliverables** (moment design + retention strategy), the moment-to-return link itself is the question, or a moment complaint is **paired with a churn/return problem** as a second problem ("combat feels flat and players churn") → `engagement-retention-advisor`.
 - Ambiguous and the choice materially changes the output → ask one clarifying question.
+- When routing away, invoke the target skill; if the Skill tool is unavailable, Read `../retention-strategy-designer/SKILL.md` or `../engagement-retention-advisor/SKILL.md` and follow its workflow.
 
 ## Workflow
 
@@ -52,12 +52,14 @@ For research grounding, see `references/research-basis.md`; for pattern selectio
    - Add a pre-outcome cue → add user agency during the cue window → add uncertainty within fair bounds → add feedback that makes the outcome readable → add a next-step hook.
 
 5. Run the ethics filter (apply it as a constraint from candidate exploration in step 2 — not as a post-hoc filter):
-   - Hidden odds, deceptive scarcity, spending pressure, frustration-relief monetization, cash-linked variable rewards → do not recommend.
+   - Hidden odds, deceptive scarcity, spending pressure, frustration-relief monetization, cash-linked or ad-chained variable rewards → do not recommend.
    - Compulsion, FOMO, sunk cost, odds concealment, grind-inflation-dependent loops → flag.
    - Convert risky designs into transparent / skill-linked / opt-in / cosmetic alternatives.
    - If the user directly requests manipulative design: state the refusal rationale in the body and offer an ethical redesign for the same goal. No quiet partial compliance.
 
 ## Output
+
+Answer in the user's language (Korean input → Korean output); keep the section/table structure below — headings may stay in English or be translated.
 
 ```markdown
 ## Input interpretation

@@ -34,6 +34,8 @@ The key insight, learned during validation: route on the **deliverable**, not on
 
 A keyword-based rule ("contains D7 → retention skill") misfires on every request where retention is cited as a goal. The deliverable-based rule is what makes routing correct.
 
+Three edge rules hardened after a later blind-spot pass: a moment complaint **paired with a churn complaint** ("combat feels flat and players churn") and **cross-layer prioritization questions** ("combat feel or a re-engagement push first?") route to `engagement-retention-advisor`; **multi-day cadence mechanics named as the deliverable** (battle pass, daily login rewards, streaks) route to `retention-strategy-designer` even though they look like progression systems; **session-length complaints** route to `interaction-reward-moments`, treated as a diagnostic of loop satisfaction rather than a metric to inflate.
+
 ---
 
 ## Research foundations
@@ -53,13 +55,13 @@ Every skill treats these as **design constraints applied before generation**, no
 
 ## How they were built and validated
 
-The skill set went through three generations, each preserved in the source vault as a record of *why* the current design is what it is:
+The skill set went through three generations, preserved in the author's private notes (not in this repo) as a record of *why* the current design is what it is:
 
 1. **Gen 1** — a single game-only skill (`game-dopamine-points`), no retention layer.
 2. **Gen 2** — three drafts with a "blind-ish" self-test, but never installed and with recommended fixes unapplied.
 3. **Gen 3 (current)** — installed, then hardened by a validation pass.
 
-Validation used a **test triad**, because a smoke test alone cannot tell a well-crafted artifact from a *valuable* one:
+Validation used a **test triad**, because a smoke test alone cannot tell a well-crafted artifact from a *valuable* one. Note: the triad was run against the Gen-3 pre-i18n (Korean-language) skill texts; the later English-first conversion (commit `7f2b3fc`) and the 2026-07 blind-spot hardening pass preserved the routing and guardrail semantics but did not re-run the full triad:
 
 | Check | Method | Result |
 |-------|--------|--------|
@@ -82,7 +84,7 @@ This is a **local / private** plugin. Adding your own repo as a marketplace sour
 /plugin install game-engagement-retention-skills@game-engagement-retention-skills
 ```
 
-Restart or open a new Claude Code session for the skills to load. The install path above has been verified end-to-end (`claude plugin validate` → `marketplace add` → `install` → 3 skills registered).
+Restart or open a new Claude Code session for the skills to load. The install path above was verified end-to-end against the pre-i18n build (`claude plugin validate` → `marketplace add` → `install` → 3 skills registered); `claude plugin validate` was re-run against the current files on 2026-07-17.
 
 ### Verify
 
@@ -113,7 +115,7 @@ Auto-trigger examples (no slash command needed):
 - "Our D7 is bad, help us reduce churn" → `retention-strategy-designer`
 - "Design satisfying reveal moments **and** a plan to bring people back next week" → `engagement-retention-advisor`
 
-All three answer in the user's language (Korean input → Korean output).
+All three answer in the user's language (Korean input → Korean prose); the output templates are English-first, so section headings and table columns may stay in English or be translated.
 
 ---
 
@@ -137,7 +139,7 @@ Output: 3-5 **integrated** proposals, each pairing an in-session reward moment w
 Guardrails are applied as **design constraints before generation**, in three layers:
 
 1. **Declared as pre-constraints** — the skill filters candidates for manipulation while generating them, not after.
-2. **A forbidden list** — hidden odds, forced/guilt streaks, FOMO, fake scarcity, fear framing, pay-to-skip-pain, variable-ratio rewards tied to real money, over-notification.
+2. **A forbidden list** — hidden odds, forced/guilt streaks, FOMO, fake scarcity, fear framing, pay-to-skip-pain, variable-ratio rewards tied to real money or escalating ad consumption, engineered energy/refill cadence, social-obligation loops, over-notification.
 3. **Behavior when the request itself is a forbidden pattern** — state the refusal rationale explicitly in the answer body (not a quiet table-cell note), then redesign toward the same business goal with a transparent mechanism. Silent partial compliance is not acceptable.
 
 Domain-specific rules (fortune/saju/tarot, AI companion/journaling, visual novel, learning, games) plus five universal checks (value, absence, pressure, transparency, metric) live in `skills/engagement-retention-advisor/references/domain-ethics.md`.
@@ -173,7 +175,7 @@ Game-Engagement-Retention-Skills/
 
 ## Token cost
 
-Measured via `claude plugin details`:
+Measured via `claude plugin details` against the pre-i18n build — treat as approximate; the 2026-07 hardening pass grew each component slightly:
 
 | Component | Always-on | On-invoke |
 |-----------|-----------|-----------|

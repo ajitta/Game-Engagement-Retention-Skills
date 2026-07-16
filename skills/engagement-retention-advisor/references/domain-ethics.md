@@ -51,7 +51,7 @@ Apply the general rule first: optimize for user value, not opens, session length
 - Vanity metrics (XP inflation) that dissociate from actual learning.
 
 **Preferred:**
-- Recovery-friendly progression: streak freezes, comeback credits, flexible weekly goals ("4 of 7 days" > "every day or reset").
+- Recovery-friendly progression: streak freezes and comeback credits (free or earned through use — never sold; a paid freeze converts streak-loss anxiety into revenue and fails the pressure test), flexible weekly goals ("4 of 7 days" > "every day or reset").
 - Progress framed on competence gained (what you can now do), not raw usage time.
 - Return prompts tied to learning value ("your review deck is ready") not loss aversion ("your streak dies in 2 hours!").
 
@@ -60,20 +60,23 @@ Apply the general rule first: optimize for user value, not opens, session length
 **Forbidden:**
 - Hidden odds on meaningful rewards; loot-box mechanics tied to real money without disclosed probabilities and caps.
 - Pay-to-avoid-frustration loops: engineering pain, then selling relief.
-- FOMO event design that punishes normal life schedules (one-shot windows, irretrievable core content).
-- Variable-ratio reward schedules attached to real-money purchases.
+- FOMO event design that punishes normal life schedules (one-shot windows, irretrievable core content, login/streak chains whose accrued reward value resets on a missed day regardless of tone, pass tracks whose daily/weekly quest expiry demands daily play).
+- Variable-ratio reward schedules attached to real-money purchases or to escalating ad consumption (repeat-spin prompts, ad-chaining, near-miss re-offer after an ad view).
+- Metered-access (energy/stamina) systems whose refill timing is tuned to dictate return cadence, or that sell or ad-gate refills — engineered depletion is pay-to-avoid-frustration, and refill-on-return is not a reward.
+- Social-obligation retention: mechanics where a player's absence penalizes teammates, or where gift/reciprocity loops manufacture social debt to force daily return.
 
 **Preferred:**
 - Transparent odds, pity timers, earned guarantees.
 - Randomness for spice on top of deterministic core progression.
-- Time-limited content that returns on a cycle or converts to earnable later.
+- Time-limited content that returns on a cycle or converts to earnable later — cycling does not excuse expiring intra-season quest pressure; pair passes with recovery-friendly catch-up (see Learning Apps).
+- Social play rewards presence: group bonuses for showing up, never penalties on the group for one member's absence.
 - Session-end grace: natural stopping points respected, not sabotaged.
 
 ## Universal Checks (run on every integrated proposal)
 
 1. **Value test**: If the user perfectly understood how this mechanism works, would they still welcome it?
-2. **Absence test**: Does the design punish the user for leaving, or reward them for returning? Only the latter is acceptable.
-3. **Pressure test**: Does any part of the loop convert anxiety, guilt, fear, or artificial scarcity into engagement or revenue?
+2. **Absence test**: Does the design punish the user for leaving, or reward them for returning? Only the latter is acceptable — and a returning-user reward does not count if its value exists only because access was withheld while the user was away (energy refills, decayed meters).
+3. **Pressure test**: Does any part of the loop convert anxiety, guilt, fear, or artificial scarcity into engagement or revenue? Attention is a price: escalating ad views count as a cost alongside money.
 4. **Transparency test**: Are odds, costs, and consequences visible before commitment?
 5. **Metric test**: Is success measured by a meaningful return event, or by raw opens/session length that can be inflated by compulsion?
 
