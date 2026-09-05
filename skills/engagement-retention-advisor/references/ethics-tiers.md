@@ -1,6 +1,6 @@
 # Ethics Tiers — the canonical protocol
 
-Read before generating any mechanic-bearing proposal, moment, spec sheet or calendar beat — mandatory for all three skills. Tiers and procedure live here; per-mechanic rows live in `${CLAUDE_SKILL_DIR}/references/domain-ethics.md`; every dated legal claim lives in `${CLAUDE_SKILL_DIR}/references/jurisdictions.md`.
+Read before generating any mechanic-bearing proposal, moment, spec sheet or calendar beat — mandatory for all three skills. Tiers and procedure live here; per-mechanic rows live in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`; every dated legal claim lives in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`.
 
 ## The four tiers
 
@@ -23,8 +23,8 @@ The T2a/T2b split is the load-bearing correction. A flat "refuse on T1 and T2" r
 Run these on each proposal **as it is drafted**, never as a filter pass afterwards; a check at step 5 tells the model at step 5 that it should have acted at step 2.
 
 1. **Minors first.** If the audience includes minors — declared, likely, or store-signalled — apply the overlay below *before* the row lookup. It can raise a T4 to T2b, and in Brazil it turns paid random items into a flat prohibition.
-2. **Name the mechanic family, look up its row** in `${CLAUDE_SKILL_DIR}/references/domain-ethics.md`. Not a row → **not a refusal case**: proceed and say so in one clause. Silence is not clearance, and a missing row is not a licence to invent one.
-3. **Compare the configuration to the compliant spec, bullet by bullet.** All bullets met → the card's Ethics line reads `T<n> <family> ✓` and *nothing else is emitted*; no path exists by which a compliant mechanic produces a paragraph. A bullet unmet → T1/T2a refuse that bullet only; T2b price it; T3/T4 deliver with a named residual risk.
+2. **Name the mechanic family, look up its row** in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`. Not a row → **not a refusal case**: proceed and emit nothing about it — the five universal checks below still run. Silence is not clearance, and a missing row is not a licence to invent one.
+3. **Compare the configuration to the compliant spec, bullet by bullet.** All bullets met → **nothing is emitted at all**: no Ethics bullet, no row, no line saying there was nothing to report. No path exists by which a compliant mechanic produces prose. A bullet unmet → T1/T2a refuse that bullet only; T2b price it; T3/T4 deliver with a named residual risk.
 
 ## Minors overlay — the switch, applied before the row lookup
 
@@ -43,13 +43,13 @@ Triggered by "directed at or likely accessed by", not by a declared target audie
 `## 재설계한 요청`, after the cards, four lines per item, no preamble and no lecture. The rest of the answer continues normally. Omitted entirely when empty. Bullet-scoped: only the failing spec bullet is declined.
 
 1. **요청 / Request** — the configuration in the user's own words.
-2. **근거 (T\<n\>) / Ground** — instrument, article, effective date; or the study with its population. One tier tag.
+2. **근거 / Ground** — instrument, article, effective date; or the study with its population. Never the tier code.
 3. **준수 버전 / Compliant version** — the numeric or observable spec that ships instead.
 4. **대가 / Cost** — what that costs in revenue, engagement or scope. Never omitted: an ethical option sold as a free lunch is not believed.
 
 ```
 **요청** — 뽑기 확률을 표기하지 않고 "확률 UP" 배너만 노출
-**근거 (T1)** — 게임산업법 제33조 제2항(2024-03-22 시행): 개별 아이템 확률을 게임 내·홈페이지·광고에 표기.
+**근거** — 게임산업법 제33조 제2항(2024-03-22 시행): 개별 아이템 확률을 게임 내·홈페이지·광고에 표기.
   제33조의2(2025-08-01 시행)로 입증책임 전환
 **준수 버전** — 픽업 개별 확률 + 천장(0%-until-N 구조 명시) + 비독립 시행 여부를 배너·상점·광고 3곳에 동일 수치로,
   변경 시 사전 공지 + 버전 로그
@@ -79,14 +79,14 @@ A T3 row whose spec cannot be checked against a build is a ban wearing a spec's 
 
 ## Compliant-spec index
 
-Sections are in `${CLAUDE_SKILL_DIR}/references/domain-ethics.md`; the dated legal stamps behind every T1/T2 row are in `${CLAUDE_SKILL_DIR}/references/jurisdictions.md`; the 기다리면 무료 mechanics table is in `${CLAUDE_SKILL_DIR}/references/korea-market.md`. **Slug** is the shared family vocabulary — the card's Ethics bullet prints it verbatim as `T<n> <slug> ✓` and nothing else.
+Sections are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`; the dated legal stamps behind every T1/T2 row are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`; the 기다리면 무료 mechanics table is in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/korea-market.md`. **Slug** is the shared family vocabulary for keying these modules to each other. It is internal: never print a slug or a tier code in an answer. When a bound, a price or a residual risk must be stated, say it in plain language.
 
 | Mechanic family | Slug | Tier | Section · jurisdictions to check |
 |---|---|---|---|
 | Hidden / false odds on paid random items | `odds` | T1 | Games · KR, JP, US; Brazil bans outright where minors |
 | Ad-chained variable rewards | `ad-chaining` | T1 / T2a | Games · KR 전자상거래법 반복간섭 |
 | One-shot window on core content | `one-shot` | T2a | Games — no compliant version |
-| Ending paywalls (sold product, or final episodes pay-only) | `one-shot` | T2a | Interactive narrative — no compliant version |
+| Ending paywalls (sold product, or final episodes pay-only) | `ending-paywall` | T2a | Interactive narrative — no compliant version |
 | Expiring login chains | `login-chain` | T2b | Games, Learning · PEGI, EU DSA Art. 28 |
 | Pass / quest expiry | `pass-expiry` | T2b | Games · PEGI |
 | FOMO / time- and quantity-limited windows | `fomo-window` | T2b | Games · PEGI, EU CPC, UK CMA |
@@ -109,7 +109,7 @@ Sections are in `${CLAUDE_SKILL_DIR}/references/domain-ethics.md`; the dated leg
 | Wait-or-pay / 기다리면 무료 | `wait-or-pay` | T4 | Interactive narrative · korea-market mechanics table |
 | Minors in the audience (run before the lookup) | `minors-overlay` | raises the row's tier; flat T1 in Brazil | Domain-ethics universal check 6 · the overlay section above |
 
-This index is complete against `${CLAUDE_SKILL_DIR}/references/domain-ethics.md`; a family absent from BOTH is genuinely not a row. A `—` slug marks a domain-scope block rather than a named family: consult it for the spec, but emit the card's Ethics bullet only for a slugged family.
+This index is complete against `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`; a family absent from BOTH is genuinely not a row. A `—` slug marks a domain-scope block rather than a named family: consult it for the spec. Slugs and tier codes are internal keying between these modules and never appear in an answer.
 
 ## Contested — carry both sides, never resolve silently
 
@@ -122,4 +122,4 @@ This index is complete against `${CLAUDE_SKILL_DIR}/references/domain-ethics.md`
 - **The wellbeing and spending effects of paid streak repair have never been measured** [unknown]. Require instrumentation and a holdout; do not substitute the +0.38% DAU figure, which measures a different thing.
 - **No head-to-head RCT of a gamified vs non-gamified version of the same mental-health app exists** [unknown].
 - **No effect size quantifies the harm of social-obligation loops.** The evidence is a classification of the strategy in a systematic analysis of the top 40 Korean mobile games (Lee, Imteyaz & Savage, 2025).
-- **"17.2 vs 11.6 streak days" is vendor platform self-data — do not quote it.** The do-not-quote list for legal instruments lives in `${CLAUDE_SKILL_DIR}/references/jurisdictions.md` `## Do not quote`; for benchmark and vendor figures, in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/benchmarks.md` `## Do not quote`.
+- **"17.2 vs 11.6 streak days" is vendor platform self-data — do not quote it.** The do-not-quote list for legal instruments lives in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` `## Do not quote`; for benchmark and vendor figures, in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/benchmarks.md` `## Do not quote`.

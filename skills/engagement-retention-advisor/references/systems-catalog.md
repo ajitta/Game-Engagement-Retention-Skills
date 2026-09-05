@@ -4,7 +4,7 @@ Read in ADV `system` mode when the deliverable is one named system whose value s
 
 ## The who-sets-the-appointment test
 
-Run it before the ethics row lookup, on any system that creates a return event (02e §6 Q5).
+Run it before the ethics row lookup, on any system that creates a return event.
 
 - **Player-set** — the clock started when the player chose to spend it (an energy refill, a queue they queued, a 기다리면 무료 ticket they used). Missing it costs only their own accrual. Forgiving → reviewed as `T3 metered-access`.
 - **Server-set** — the clock runs whether or not they engaged (alliance duel, guild war, weekly reset, banner close). Missing it costs standing, and often costs *other people* rewards. Coercive → reviewed as `T3 social-obligation`, and needs a grace window or opt-out.
@@ -49,11 +49,11 @@ Run it before the ethics row lookup, on any system that creates a return event (
 
 What the spend loop does *to* the return loop. Pricing, eCPM and pity tuning are out of scope.
 
-- **Loop** — an offer surface placed on a game state (resource-out pinch, pre-boss, streak break, rotation) → spend-derived power and collection, which is also meta-progression, which is why a monetization tune is a retention change → returns on the banner or offer window. **Server-set by construction**, so it fails the appointment test by default and needs a published return schedule (`T2b fomo-window`; a one-shot window on core content is `T2b→T2a one-shot` — no compliant version).
+- **Loop** — an offer surface placed on a game state (resource-out pinch, pre-boss, streak break, rotation) → spend-derived power and collection, which is also meta-progression, which is why a monetization tune is a retention change → returns on the banner or offer window. **Server-set by construction**, so it fails the appointment test by default and needs a published return schedule (`T2b fomo-window`; a one-shot window on core content is `one-shot` at its escalated tier — no compliant version).
 - **Fails when** the pinch point is assumed necessary: easing difficulty for high-churn-risk users raised retention *and* premium spend in a randomized rollout [Ascarza, Netzer & Runge, IJRM 42(4):975–995 | 2025 | ~330,000 users, F2P mobile puzzle | 12-week randomized rollout vs holdout]. Effect sizes, and why the per-round read misleads: `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/experiments.md`.
 - **Fails when** a tune reads as betrayal — Infinity Nikki v1.5 (2025-04-29): more pieces per set, less generous pity → review-bomb, apologies, compensation. In a cozy product a tightening is a brand-risk event, not an economy tune.
 - **Fails when** retention is treated as the revenue predictor: Last War had the weakest retention among top 4X titles and was still the #1 4X title by 2024 revenue at ~$1.1B [Sensor Tower / Naavik | 2024–25 | US iOS panel estimates].
-- **Ethics** — `T1 odds` on any 확률형 아이템 shipping to Korea. A **dynamic or personalized** drop rate is exposed under 게임산업진흥에 관한 법률 §33-2 (burden shift, in force 2025-08-01, no adjudicated case as of 2026-09); fixed disclosed rates plus an audit log are the safe configuration. The statutory detail is `${CLAUDE_SKILL_DIR}/references/jurisdictions.md`'s.
+- **Ethics** — `T1 odds` on any 확률형 아이템 shipping to Korea. A **dynamic or personalized** drop rate is exposed under 게임산업진흥에 관한 법률 §33-2 (burden shift, in force 2025-08-01, no adjudicated case as of 2026-09); fixed disclosed rates plus an audit log are the safe configuration. The statutory detail is `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`'s.
 - **Instrument** — payer-count vs ARPPU decomposition, refund rate, top-decile spend concentration, opt-out and uninstall, and 강제 / 부담 / 매일 keyword frequency in store reviews.
 
 ## Numbers that do not exist

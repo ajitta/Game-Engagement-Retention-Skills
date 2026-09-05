@@ -1,0 +1,1 @@
+Three-week licensed collab. The licensed skins genuinely can't come back once the deal ends, but every stat, every core progression item and a same-power non-licensed skin stay permanently earnable. How do we build the event so it retains without burning people?

@@ -33,5 +33,16 @@ for block in ROUTING CARD LANGUAGE; do
   done
 done
 
-[ $status -eq 0 ] && echo "OK: ROUTING, CARD and LANGUAGE blocks identical across $(ls skills/*/SKILL.md | wc -l | tr -d ' ') skills"
+# A reference module cannot assume which skill is reading it: ${CLAUDE_SKILL_DIR}
+# resolves to the FIRING skill's directory, so an own-directory pointer inside a
+# module breaks the moment a sibling skill reads it. Modules must always name the
+# owning skill (`${CLAUDE_SKILL_DIR}/../<skill>/references/<file>.md`), which
+# resolves correctly for a same-skill read too. SKILL.md bodies are exempt —
+# there the own-directory form is the correct one.
+if grep -rn '\${CLAUDE_SKILL_DIR}/references/' skills/*/references/*.md; then
+  echo "FAIL: reference modules must not use own-directory paths — a module cannot assume which skill is reading it" >&2
+  status=1
+fi
+
+[ $status -eq 0 ] && echo "OK: ROUTING, CARD and LANGUAGE blocks identical across $(ls skills/*/SKILL.md | wc -l | tr -d ' ') skills; no own-directory pointers in reference modules"
 exit $status

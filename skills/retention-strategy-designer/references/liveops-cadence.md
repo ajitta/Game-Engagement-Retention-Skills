@@ -2,7 +2,7 @@
 
 Read when the deliverable is a named cadence mechanic (battle pass, quest stack, login calendar, energy meter, streak, push plan, win-back campaign) or a dated multi-week calendar — for the field list, the acceptance bounds a reviewer can check, and the sizing rules that replace copied constants.
 
-Every spec below is tagged with its canonical **ethics family slug**, and each Reviewer-flags block ends with the slug a failed flag lands on. The slug is a row title in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md` and an entry in the compliant-spec index of `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/ethics-tiers.md`; the card's Ethics bullet prints it verbatim as `T<n> <slug> ✓`. Read the row before signing off — this file owns the cadence bounds, not the tier.
+Every spec below is tagged with its canonical **ethics family slug**, and each Reviewer-flags block ends with the slug a failed flag lands on. The slug is a row title in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md` and an entry in the compliant-spec index of `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/ethics-tiers.md`; the slug is internal keying and never reaches the answer — when a bound, a price or a residual risk must be stated, say it in the reader's own words. Read the row before signing off — this file owns the cadence bounds, not the tier.
 
 ## Sizing before specifying
 
@@ -117,7 +117,7 @@ Every spec below is tagged with its canonical **ethics family slug**, and each R
 
 **Fields** — dormancy definition; segment; channel; offer; return flow; holdout; success metric.
 
-**Acceptance bounds** — a **randomized holdout of matched lapsed users is mandatory**; the primary metric is **re-dormancy (share still active at D14 and D30 after return)**, not reactivation rate, which any large bribe inflates; target by uplift; model delayed response.
+**Acceptance bounds** — a **randomized holdout of matched lapsed users is mandatory**; the primary metric is **re-dormancy (share still active at +7d and +30d after return)**, not reactivation rate, which any large bribe inflates; target by uplift; model delayed response.
 
 **Channel ranking by plausibility** (evidence is the thinnest in this whole module): status restoration and friend gift/recall > in-app return calendar > push > email.
 - Status restoration: Duolingo's one-time June 2026 "Streak Revival" let lapsed learners restore their longest-ever streak for three lessons — 15.4M revived, nearly 8M with no active streak, and the revived cohort retained better than a typical re-engaged cohort.
@@ -147,7 +147,7 @@ Windows that move a Korean product's baseline and its intervention timing. **The
 | 수능 | one Thursday in mid-November | teen segment offline for weeks before; a release cliff and a large post-수능 return window |
 | 중간·기말고사 | roughly April, June–July, October, December | recurring teen dips |
 
-Practical rules: never open a season, pass or limited window whose completion clock runs across 수능 or a 명절 for a teen-heavy title; treat post-수능 and the first week of each 방학 as the strongest scheduled resurrection windows; if the product is 사주/운세, note that the December–February 신년 특수 dominates the year and the reading-engine year turns at 입춘 (≈4 Feb), not 1 Jan (see `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/korea-market.md`). Day-boundary and cohort-key definitions belong to `${CLAUDE_SKILL_DIR}/references/metric-definitions.md`; do not redefine them here.
+Practical rules: never open a season, pass or limited window whose completion clock runs across 수능 or a 명절 for a teen-heavy title; treat post-수능 and the first week of each 방학 as the strongest scheduled resurrection windows; if the product is 사주/운세, note that the December–February 신년 특수 dominates the year and the reading-engine year turns at 입춘 (≈4 Feb), not 1 Jan (see `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/korea-market.md`). Day-boundary and cohort-key definitions belong to `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/metric-definitions.md`; do not redefine them here.
 
 ## Numbers that do not exist
 
@@ -157,6 +157,6 @@ Refuse to supply these; say the number does not exist and name the measurement t
 - **Win-back lift and reactivation rate** — no 2024–2026 primary dataset. "10–25% of lapsed users recovered" and "5–10× cheaper than acquisition" carry no methodology. Build a re-dormancy baseline against a matched holdout.
 - **Login-calendar, welcome-back-calendar and catch-up-mechanic A/B results** — only pattern descriptions exist. Any "welcome-back calendar lifts D7 by X%" is unsourced.
 - **기다리면 무료 / wait-or-pay conversion rates** — no platform publishes one. The only citable figures are dated and single-case: up to 25% purchase conversion on some titles and daily GMV roughly 3,000만원 → 6,800만원 in the first month [DBR case via 인터비즈, 2019]. Do not present them as a current rate.
-- **Korea-specific D1/D7/D30 install-cohort benchmarks** — none published by anyone. Use the stated proxy in `${CLAUDE_SKILL_DIR}/references/benchmarks.md` and build an internal baseline.
+- **Korea-specific D1/D7/D30 install-cohort benchmarks** — none published by anyone. Use the stated proxy in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/benchmarks.md` and build an internal baseline.
 - **Post-streak-break abandonment rate in apps** — no quantitative estimate exists; the backfire evidence is qualitative and small-n.
 - **Optimal push frequency as a single number** — the ≤1/day cap is **[contested]**; derive a per-segment budget with an opt-out guardrail instead.

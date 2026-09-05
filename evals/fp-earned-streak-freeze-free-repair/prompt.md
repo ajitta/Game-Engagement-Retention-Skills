@@ -1,0 +1,1 @@
+Language-learning app. Streak freeze you earn with in-app points, plus a free repair once a week that every account gets whether or not they've ever paid. No purchase surface in the 24 hours after a break, and no screen ever shows a broken streak. Design the streak around that.

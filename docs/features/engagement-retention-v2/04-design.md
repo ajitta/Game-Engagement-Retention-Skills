@@ -140,6 +140,8 @@ Game-Engagement-Retention-Skills/
 
 Eleven modes. Each declares a default, prints itself on line 1 of the answer (`Mode: cadence — 배틀패스`) so a wrong mode costs one word to correct, and names ≤3 reference modules. `argument-hint` gains `[--mode <name>]`; an explicit `--mode` always wins.
 
+> **Superseded by the 2026-09 polish pass — `contracts.md` is the shipped contract.** The mode name is machinery and never reaches the reader. Line 1 is a plain-language deliverable label in the output language (`보상 순간 설계 — 강화 실패 구간`); `--mode <name>` still selects the mode, but does not become the label.
+
 ### 4.1 The card grammar
 
 Canonical in `contracts.md`, inlined into each body (the shape must be present at generation time even if a read is skipped — the one place inlining beats referencing).
@@ -178,6 +180,8 @@ Column 3 varies: IRM = when it fires; RSD = segment · lifecycle stage; ADV = re
 **Fixed sections, in this order, in every mode:** `Mode:` line → `## 전제` (every assumed input, tagged `[가정]`; always present) → the mode's body → `## 순서` (ranked by **impact per unit effort, highest first** — never "impact × difficulty", which literally ranks the hardest items first) → `## 측정 설계` → `## 재설계한 요청` (only when a T1/T2a bound failed) → `## 확인 필요` (jurisdiction flags only) → `## 읽은 근거` (the reference modules actually read, one line).
 
 `## 읽은 근거` is a compliance device, not decoration: it makes a skipped mandatory read visible to the user and gradeable by an eval. It is the answer to this design's largest risk.
+
+> **Superseded by the 2026-09 polish pass — `contracts.md` is the shipped contract.** The section is `## 근거`, and the first item of the fixed order is the plain-language deliverable label, not a `Mode:` line. `## 근거` is one line in the words a designer uses; it never names a reference file, a module, a lens or a pattern, and its real job is naming any check that could **not** be run. `## 전제` is capped at four lines. `## 재설계한 요청` opens only on a failed legal or platform bound — a priced rating trade-off stays in the card's ethics bullet.
 
 ### 4.2 Mode → artifact map
 
@@ -351,7 +355,7 @@ Sizes are chars/3.4 estimates calibrated against v1's measured bodies, not measu
 
 **Why one canonical copy beats duplication.** `02i §3` recommends triplicating `domain-ethics.md` into all three skills with a `cmp` gate, on the premise that no path variable names a sibling skill's directory in both install paths. That premise is now false: the loader prepends `Base directory for this skill: <dirname of SKILL.md>` for plugin *and* filesystem skills, so `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/ethics-tiers.md` resolves under both a plugin install and the README's `cp -r skills/*` manual copy, where all three land as siblings. Triplication would re-create the exact drift mechanism that produced the seven-place ethics divergence, gated by CI that does not exist in this repo today. The residual risk is a *partial* manual copy; the mitigation is a `## Preflight` line in all three bodies — *if a reference read fails, say so in one line and answer with reduced confidence; never silently proceed* — plus deleting every "(if installed)" hedge, which today licenses judging from memory.
 
-**Typical invocation cost.** RSD `read` ≈ body 2.7k + 2 modules ≈ 5.7k. RSD `cadence` ≈ 2.7k + 3 ≈ 9.6k. IRM `moments` ≈ 2.9k + 3 ≈ 7.5k. ADV `integrate` ≈ 2.6k + 3 ≈ 7.8k. Worst case at the 3-module cap ≈ 10k, against v1's real advisor worst case of ~44 KB / ~11k tokens when it follows its own pointers.
+**Typical invocation cost.** Measured 2026-09-06 with `claude --plugin-dir . plugin details game-engagement-retention-skills` (Claude Code 2.1.261). The shipped bodies cost **~8.9k (ADV) / ~9.6k (RSD) / ~9.7k (IRM)** against the ~2.6–2.9k assumed above, and the shipped modules overshoot the size column of the table above by ~3× on median — that column is chars/3.4 of a *planned* file, not a measurement of a written one. Re-rating every file at the tokenizer's measured ≈3.1 bytes/token, a whole invocation costs: RSD `economics` ≈ 16k · RSD `instrument` ≈ 16k · RSD `read` ≈ 17k · ADV `compare` ≈ 17k · IRM `first-win` ≈ 19k · IRM `moments` ≈ 19–22k (the pattern family swings it) · ADV `integrate` ≈ 20k · RSD `calendar` ≈ 25k · RSD `strategy` ≈ 26k · ADV `system` ≈ 27k · worst case RSD `cadence` ≈ 30k. v1's real advisor worst case following its own pointers was ~43 KB, which re-rates to **~14k** on the same measurement (the ~11k previously quoted here was a 4 chars/token estimate). **So every v2 mode costs more than the v1 worst case the rewrite was meant to fix, the cheapest by ~15% and `cadence` by more than 2×.** The ≤3-read cap bounds how many modules load, not how large one is; at the shipped sizes that bound is 15k–30k per invocation, not the ≈10k estimated here.
 
 ---
 

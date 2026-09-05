@@ -1,0 +1,1 @@
+Mobile puzzle RPG, KR and global, F2P. Stamina is 30 cap, 1 per 5 minutes, and the refill clock and exact regen rate are printed on the stamina bar and on the out-of-stamina screen before any store link appears. Everything you already own stays readable and collectable with zero stamina. I want to retune the cap and the regen for a longer mid-game. Give me proposals.

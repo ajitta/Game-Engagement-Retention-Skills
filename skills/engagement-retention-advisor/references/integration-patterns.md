@@ -30,7 +30,7 @@ The pre-outcome window carries the arousal: skin-conductance slopes were greater
 
 ## 5. Catch-up entry → resurrection
 
-**Beat** the 복귀 유저's first session back lands in current content, not at the back of a queue · **Carrier** non-resetting buckets, season entry without prior chapters, restored status · **Return** re-entry, then the +14d/+30d re-dormancy check · **→ engagement-only** if the catch-up is a bribe (reactivation spikes, re-dormancy flat) · **→ retention-only** if the offer arrives with no recap, so a returning player is handled as one who never left.
+**Beat** the 복귀 유저's first session back lands in current content, not at the back of a queue · **Carrier** non-resetting buckets, season entry without prior chapters, restored status · **Return** re-entry, then the +7d/+30d re-dormancy check · **→ engagement-only** if the catch-up is a bribe (reactivation spikes, re-dormancy flat) · **→ retention-only** if the offer arrives with no recap, so a returning player is handled as one who never left.
 
 Two worked forms: a 30-day non-resetting bonus track of 50 missions in a 35-day window, so players who "miss a couple of days… still have the opportunity to earn everything" [Second Dinner | Marvel Snap patch notes, 16 Sep 2025]; and status restoration — one-time revival of the longest-ever streak for three lessons, 15.4M revived, nearly 8M with no active streak [Duolingo Q2 2026 shareholder letter | June 2026 | Duolingo lapsed learners | vendor, no holdout disclosed]. Anchor the flow on the **Pivot Point**, a moment restoring the player as their expert self, since games "do not recognize that the player is returning to rather than continuing" [Hammad et al. | CHI 2021 | small-n].
 

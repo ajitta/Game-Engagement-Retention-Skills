@@ -1,0 +1,1 @@
+Journaling companion app. During onboarding the user picks whether they want a check-in daily, weekly, or never, and can change it any time. Copy is neutral — "ready when you are". Design the return loop around that check-in.

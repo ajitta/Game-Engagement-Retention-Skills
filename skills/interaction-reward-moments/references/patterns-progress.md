@@ -2,7 +2,7 @@
 
 Read this when the beat under design is a bar, a set, a milestone, an unlock, or a proof that the player got better — IRM `moments` on a progression scene, `first-win` for the two-sided difficulty window below.
 
-Per-pattern schema: **Fires when · Player does · Why it works · Feedback · Measure · Guardrail.** Random-outcome reveals are `patterns-reveal.md`; pass, quest and login expiry specs are `domain-ethics.md`.
+Per-pattern schema: **Fires when · Player does · Why it works · Feedback · Measure · Guardrail.** Random-outcome reveals are `${CLAUDE_SKILL_DIR}/../interaction-reward-moments/references/patterns-reveal.md`; pass, quest and login expiry specs are `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`.
 
 ## 1. Near-completion pull
 
@@ -29,7 +29,7 @@ Per-pattern schema: **Fires when · Player does · Why it works · Feedback · M
 - **Why it works** — the payoff is a **new behaviour** the set enables, so completion carries competence information rather than a larger number.
 - **Feedback** — the UI links the pieces, the ability visibly mutates, and the changed behaviour is demonstrable in the same session.
 - **Measure** — set diversity across players; selection rate of the completing piece relative to its raw power.
-- **Guardrail** — no single dominant set. If the last piece is obtainable only from a paid random draw, the set *is* a paid-random mechanic: read the T1 odds-disclosure row in `domain-ethics.md` before speccing it.
+- **Guardrail** — no single dominant set. If the last piece is obtainable only from a paid random draw, the set *is* a paid-random mechanic: read the T1 odds-disclosure row in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md` before speccing it.
 
 ## 4. Unlock reveal (earned, non-random)
 

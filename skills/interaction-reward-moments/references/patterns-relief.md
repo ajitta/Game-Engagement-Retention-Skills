@@ -21,7 +21,7 @@ Lowering difficulty for at-risk players raises day-N return at a measured cost t
 ## 3. Failure-state readability
 
 Every loss, before any retry offer: one line naming a cause the player could have acted on, plus the gradation (how close, on what axis) instead of a binary fail. Legible success gradations, exposed learning progress and expectations set *before* the attempt replace difficulty tuning as the lever ["Leveling up fun", Scientific Reports 2025 | game datasets + 2 experiments] **[unverified — full text not opened]**.
-- **Bound** — never manufacture a near-miss on a loss that was not near: the effect is **[contested]** and what it reliably produces is a faster, larger next attempt rather than durable retention — evidence, populations and the Palmer-vs-Pisklak disagreement in `${CLAUDE_SKILL_DIR}/references/research-basis.md`.
+- **Bound** — never manufacture a near-miss on a loss that was not near: the effect is **[contested]** and what it reliably produces is a faster, larger next attempt rather than durable retention — evidence, populations and the Palmer-vs-Pisklak disagreement in `${CLAUDE_SKILL_DIR}/../interaction-reward-moments/references/research-basis.md`.
 
 ## 4. Forgiveness mechanics
 

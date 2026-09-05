@@ -14,7 +14,7 @@ This module answers what monetization does **to** retention. It does not design 
 2. **Truncated and outlier-dominated.** State H (D7 → D90) with any pLTV figure; direct-distribution pLTV models have "limited success due to their vulnerability to outliers" [TapTap, 2025, arXiv 2510.08281 | whale-skewed spend]. Prefer two-part (propensity × amount) models.
 3. **An accounting identity, not a causal model.** Levers move both terms, usually in opposite directions — decide on a measured Δ for both, from one kept holdout, never on a re-forecast.
 
-R(d) needs one return rule, one day boundary and one denominator throughout (`metric-definitions.md`): the same raw data yields D1 43% or 32% depending on the rule.
+R(d) needs one return rule, one day boundary and one denominator throughout (`${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/metric-definitions.md`): the same raw data yields D1 43% or 32% depending on the rule.
 
 ## Worked break-even: one more ad per hour
 
@@ -54,7 +54,7 @@ Compliance floor precedes optimisation: interstitials at level start, before the
 
 ## Gacha and banner cadence
 
-The gacha clock is a **42-day version split into two 21-day banner phases** [Genshin v7.0, 2026-08-12 → 09-22], and spend tracks that clock, not the week: one v2.0 update day lifted daily spend +740% to $8.5M and held above pre-update levels for 10 days [AppMagic estimates via PocketGamer.biz, 2025 | Zenless Zone Zero | estimated store revenue]. So **D30/D42 and version-cycle spend are the health metrics, not D7** — D7 lands mid-phase, and a revenue trough inside a phase is cadence, not churn. Never prescribe cadence compression as the fix for a decaying D7 (`liveops-cadence.md`, `genre-profiles.md`).
+The gacha clock is a **42-day version split into two 21-day banner phases** [Genshin v7.0, 2026-08-12 → 09-22], and spend tracks that clock, not the week: one v2.0 update day lifted daily spend +740% to $8.5M and held above pre-update levels for 10 days [AppMagic estimates via PocketGamer.biz, 2025 | Zenless Zone Zero | estimated store revenue]. So **D30/D42 and version-cycle spend are the health metrics, not D7** — D7 lands mid-phase, and a revenue trough inside a phase is cadence, not churn. Never prescribe cadence compression as the fix for a decaying D7 (`${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/liveops-cadence.md`, `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/genre-profiles.md`).
 
 ## First purchase, paywall, subscription month-1
 
@@ -62,7 +62,7 @@ The gacha clock is a **42-day version split into two 21-day banner phases** [Gen
 - **PC/console has a commercial deadline, not a paywall:** a Steam purchase is refundable within 14 days if played under 2 hours, Early Access playtime included — the first two hours are the D0 gate.
 - **Paywall model buys conversion, not durability:** hard paywalls convert 10.7% trial-to-paid by day 35 vs 2.1% freemium (~5×) and earn $3.09 vs $0.38 per install by day 60, yet one-year retention is at parity, 27% vs 28% [RevenueCat, 2026-03-19 | 115,000+ apps, >$16B revenue | subscription apps].
 - **Month 1 is the subscription intervention window:** it carries **35% of all annual-plan cancellations**; mid-year monthly cancellation runs 3–10% [same source]. Define subscription retention as M1/M12 paid survival.
-- Purchase-surface legality is in `jurisdictions.md` (Korea 전자상거래법 six dark-pattern types); ending paywalls and free-path integrity are in `domain-ethics.md`.
+- Purchase-surface legality is in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` (Korea 전자상거래법 six dark-pattern types); ending paywalls and free-path integrity are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`.
 
 ## Guardrails for any monetization-touching change
 

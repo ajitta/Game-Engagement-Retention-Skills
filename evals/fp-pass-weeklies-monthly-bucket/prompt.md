@@ -1,0 +1,1 @@
+Season pass, 8 weeks. Dailies feed weeklies, weeklies feed a monthly bucket that never resets, and anything you already unlocked stays yours after the season ends. Completable at 3 play days a week, with a catch-up entry path. Help me tune the tier curve and the reward pacing.

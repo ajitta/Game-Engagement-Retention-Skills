@@ -26,7 +26,7 @@ A global "no session in 7 days" rule flags a healthy weekend player and misses a
 - **At-risk** = current gap > k × that player's own median. k is a capacity dial — set it so the flagged volume matches what the intervention can actually serve — not a discovered constant.
 - **Dormant** = current gap > the longest gap this player has ever returned from. Anything shorter may just be a slow returner.
 - Re-fit after every content or cadence change; a season launch moves everyone's gap.
-- Do not carry a day-N threshold onto PC/console, which report DAU/MAU and playtime instead (`genre-profiles.md`).
+- Do not carry a day-N threshold onto PC/console, which report DAU/MAU and playtime instead (`${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/genre-profiles.md`).
 
 No published value for k or for the median window exists. Both are product-local and must be fitted, then stated as fitted.
 
@@ -43,7 +43,7 @@ A churn score alone does not deploy: publishers "are usually unable to apply hig
 
 Ranking by churn probability sends the heaviest pressure to the people most likely to opt out. Target **persuadables** by estimated uplift and model **delayed** response — multi-treatment multi-task uplift networks are deployed for gaming bonuses with "whether to play" as the outcome [Wei et al., 2024, https://arxiv.org/abs/2408.12803], and push-frequency uplift must model delay because "inappropriate push frequencies often trigger users to close notification switches, directly harming long-term user retention" [Zheng et al., AAAI 2026 | validated on a 14-day A/B test, >1 billion users].
 
-Hard gate: any **personalized or dynamic drop rate** in a Korean-market event is exposed under 게임산업진흥에 관한 법률 제33조의2 — see `../../engagement-retention-advisor/references/jurisdictions.md` before proposing one. Personalize difficulty and content, not odds or price.
+Hard gate: any **personalized or dynamic drop rate** in a Korean-market event is exposed under 게임산업진흥에 관한 법률 제33조의2 — see `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` before proposing one. Personalize difficulty and content, not odds or price.
 
 ## Split the churn before choosing a tactic
 
@@ -78,16 +78,17 @@ Games generally do not recognise that a player is *returning* rather than contin
 5. **Make missed time catchable, not lost.** Marvel Snap's Sept 2025 patch added a 30-day non-resetting Bonus Challenge (50 missions fed by the same daily missions) inside a 35-day window explicitly so players who "miss a couple of days… still have the opportunity to earn everything" [Second Dinner, https://marvelsnap.com/patch-notes-september-16-2025/].
 6. Save the exact interaction state, not the level index.
 
-Ethics: a returning-player offer is a mechanic-bearing proposal. Read `ethics-tiers.md`. Absence-penalty framing and loss-copy in win-back messaging are T2b/T3 families, and push frequency to lapsed users carries an opt-out guardrail.
+Ethics: a returning-player offer is a mechanic-bearing proposal. Read `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/ethics-tiers.md`. Absence-penalty framing and loss-copy in win-back messaging are T2b/T3 families, and push frequency to lapsed users carries an opt-out guardrail.
 
 ## Measurement
 
 - **Define dormancy per player** (above), and record the dormancy length at reactivation — a 5-day and a 90-day returner belong in different cells.
 - **Randomized holdout of equally lapsed users, matched on dormancy length and lapse cause.** Not pre/post: a smile in the curve is the arithmetic of resurrection plus survivorship and is produced by anything that brings lapsed users back, including a marketing burst.
 - **Primary metric = re-dormancy**, i.e. the share of reactivated users still active at **+7d and +30d after return**, against the holdout — not the comeback click, because reactivation rate is trivially inflatable by a large enough bribe. **A resurrected user who bounces in one session is a failed resurrection.**
+<!-- Maintainer note: the +7d/+30d horizon is deliberate and is the one horizon every module states. The research base (02d-research-liveops-and-lifecycle.md §7) says D14/D30; the design doc tightened the near check to +7d so the one-session bounce above is testable. liveops-cadence.md, experiments.md, integration-patterns.md and both SKILL.md bodies restate +7d/+30d on purpose — do not "correct" them back to D14. -->
 - Guardrails: notification opt-out rate, uninstall, support complaints, refund rate, and re-lapse *speed* (median gap after return vs before).
 - Report the resurrected cohort separately in every curve. Never merge them into new or current.
-- Novelty guard: observe at least two full weekly cycles and re-measure at week 3–4 (`experiments.md`).
+- Novelty guard: observe at least two full weekly cycles and re-measure at week 3–4 (`${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/experiments.md`).
 
 ## Numbers that do not exist
 

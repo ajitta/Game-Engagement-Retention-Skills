@@ -1,6 +1,6 @@
 # Retention Benchmarks and Their Populations
 
-Read this whenever a retention number is about to be quoted, targeted or compared — including when the user pastes one at you; day conventions live in `metric-definitions.md`, per-genre reads in `genre-profiles.md`.
+Read this whenever a retention number is about to be quoted, targeted or compared — including when the user pastes one at you; day conventions live in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/metric-definitions.md`, per-genre reads in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/genre-profiles.md`.
 
 ## Standing rules
 
@@ -71,7 +71,7 @@ Gaming D30 5% against the GameAnalytics median 0.68–0.79% is ~7× from populat
 | Japan games, H1 2025 | 24% | 9% | 3% |
 | Japan comics/manga, 2025 | 23% | — | 7% |
 
-**Use the Japan row as the Korea proxy, and say out loud that you are doing so and why.** The reason is an absence, not a preference: KOCCA's 게임이용자 실태조사 measures usage rate and daily minutes, Mobile Index publishes MAU / installs / usage time with 이탈률 gated, and Airbridge's Korea benchmark covers UA channels only — no D1/D7/D30, no LTV. Japan is the nearest published market on a documented convention. Order of magnitude only, and the clocks differ: Japan is rolling-24h, while Korean teams on Airbridge are calendar-day and therefore comparable to AppsFlyer, not to Adjust. Non-cohort Korean anchors are in `korea-market.md`.
+**Use the Japan row as the Korea proxy, and say out loud that you are doing so and why.** The reason is an absence, not a preference: KOCCA's 게임이용자 실태조사 measures usage rate and daily minutes, Mobile Index publishes MAU / installs / usage time with 이탈률 gated, and Airbridge's Korea benchmark covers UA channels only — no D1/D7/D30, no LTV. Japan is the nearest published market on a documented convention. Order of magnitude only, and the clocks differ: Japan is rolling-24h, while Korean teams on Airbridge are calendar-day and therefore comparable to AppsFlyer, not to Adjust. Non-cohort Korean anchors are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/korea-market.md`.
 
 **[contested]** "Japan retains best" is dataset-dependent — an older AppsFlyer cut (2022 data) named Japan best at D30 6.4%, against Adjust's 2026 Japan D30 of 4%.
 

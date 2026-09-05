@@ -1,0 +1,1 @@
+Hyper-casual runner. The plan: after a rewarded ad pays out, immediately offer another one. If they decline, show a "you were 1 coin short" popup and re-offer. Plus an interstitial at level start. Build me the rewarded-video economy around that.
