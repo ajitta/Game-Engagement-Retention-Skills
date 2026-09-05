@@ -1,117 +1,104 @@
-# Research Basis
+# Research Basis — Reward Moments
 
-Use this file to ground analysis. Keep the final answer practical; cite sources only when the user asks for research detail or when making a contested claim.
+Read this when a moment proposal needs its mechanism named, a number defended to a stakeholder, or a claim checked before it enters a design doc.
 
-## Core Model
+## Vocabulary that does not survive
 
-Treat a "dopamine point" as an engagement peak created by:
+| Drop | Use instead |
+|---|---|
+| dopamine point / dopamine hit | reward moment, outcome beat |
+| triggers dopamine | resolves an expectation |
+| variable ratio = engagement | uncertainty raises *wanting* |
+| this feels rewarding | rated competence X / curiosity Y (PXI) |
+| tune into the flow channel | make success gradations legible; set the difficulty expectation |
 
-```text
-cue -> expectation -> player action/choice -> uncertainty/tension -> outcome -> immediate feedback -> next goal
-```
+**"Dopamine point" is deleted as a term**, not softened: striatal dopamine is unmeasurable at the product layer, so the term replaces an argument with an appeal to authority; it asserts *liking* while the mechanism it names delivers *wanting* (Robinson & Berridge, *Annu. Rev. Psychol.* 76, 2025, 30-year review); and "we engineered a dopamine hit" reads to a regulator as an admission of intentional compulsion design.
 
-The design target is not chemical certainty. The useful design target is a moment where the player feels "I caused that", "I almost lost", "that was better than expected", "my build is coming online", or "one more try will be different".
+## RPE — one contested lens, not the mechanism
 
-## Evidence-Informed Levers
+Three clauses only: (a) a legible baseline expectation is the precondition for an outcome that can exceed it; (b) fully predicted rewards stop producing a prediction signal, so fixed unvarying rewards decay in salience; (c) product-level dopamine claims are unmeasurable and never appear in a design document.
 
-### Reward Prediction Error
+Still "likely one of the most replicated findings in all of neuroscience" (Dudhabhate & Costa, *Front. Comput. Neurosci.*, 2026, review) — but its own field downgraded the original form as "probably too simple," dopamine also tracking salience, novelty, vigor and learning rate (Gershman et al., *Nature Neuroscience* 27:1645–1655, 2024, synthesis review). **[contested]** One 2025 study finds force and licking "fully account for DA dynamics traditionally attributed to RPE" (Bakhurin et al., *Nature Communications* 16, 2025; head-fixed mice, Pavlovian task, n=4 DAT-cre + 6 WT in the inhibition arm) — one lab, one paradigm, small n: *contested*, never *refuted*.
 
-Dopamine research often describes reward prediction error: the gap between expected and received reward. In game design terms, a strong moment often needs a clear baseline expectation and a bounded way for the outcome to exceed it.
+What survives at product level is a **measurement split**: track urge-to-continue separately from enjoyment, and flag any design whose urge metric rises while enjoyment stays flat.
 
-Design translation:
-- Show a cue before the result: elite glow, chest tier, boss stagger bar, combo meter.
-- Let the player influence the outcome through timing, aim, routing, build, risk, or resource spend.
-- Occasionally exceed expectation, but keep the range legible and fair.
-- Avoid making every outcome surprising; constant surprise destroys competence and trust.
+## Anticipation — the pre-outcome window is the designed unit
 
-Sources:
-- Schultz, "Dopamine reward prediction-error signalling: a two-component response", Nature Reviews Neuroscience 17(3):183-195, 2016. DOI 10.1038/nrn.2015.26: https://pubmed.ncbi.nlm.nih.gov/26865020/
-- Schultz, "Dopamine reward prediction error coding", Dialogues in Clinical Neuroscience, 2016: https://pmc.ncbi.nlm.nih.gov/articles/PMC4826767/
-- Hollerman and Schultz, temporal reward prediction during learning, Nature Neuroscience, 1998 PDF: https://www.hms.harvard.edu/bss/neuro/bornlab/nb204/papers/Hollerman_Schultz_NatNeuro_1998.pdf
+Skin-conductance slopes were significantly greater during the 2-second anticipatory box-shake than at baseline (t(39)=−3.88, p≤.001); post-reveal, rarity graded SCR, mouse-press force, post-reinforcement pause and urge to open more (legendary M=55.63 > epic M=40.00 > rare M=32.84 on a 0–100 urge scale, all p≤.001) — Larche et al., *J. Gambl. Stud.*, 2019; 40 participants, 49 real Overwatch openings (2 s shake, coin ~2 s, reveal at 5 s). The arousal sits in the 1–2 s *before* the outcome; consummation only confirms it. This is the honest form of the RPE intuition, and it transfers to a stagger bar, a charge attack, a chest-tier glow or a card flip with no money attached.
 
-### Reinforcement Schedules
+## Contingency and dose — the conditions on juice
 
-Schedules affect how players anticipate rewards:
-- Fixed ratio: reward after N actions. Good for mastery counters, combo thresholds, crafting progress.
-- Variable ratio: reward after unpredictable action counts. Powerful but high-risk when tied to spending or compulsion.
-- Fixed interval: reward after fixed time. Good for pacing, but can create waiting behavior.
-- Variable interval: unpredictable time-based reward. Use carefully and transparently.
+Swink's *Game Feel* real-time-control framing stands as the base. Four conditions added since:
 
-Design translation:
-- Use fixed progress for core advancement.
-- Use bounded random bonuses for spice, not for required progression.
-- Reveal odds or guarantee pity/caps when chance matters.
-- Keep real-money purchases and escalating ad-view loops away from variable reward pressure.
+- **Contingency.** Success-**dependent** amplified feedback raised competence, curiosity, effectance and enjoyment; amplification *not* dependent on success **lowered** effectance (−.19) and competence (−.43). Voluntary playtime 6.17 min (standard) → 10.18 min (amplified + success-dependent + varied). Kao et al., CHI 2024, pre-registered, n=1,699 Prolific, purpose-built action RPG. Over-amplification "occludes causal action-feedback links or flattens success gradations."
+- **Dose is an inverted U.** "None" and "Extreme" juiciness both reduced playtime, player experience, intrinsic motivation and performance versus Medium/High (Kao, *Entertainment Computing*, 2020, N=3,018).
+- **Err low, scale by weight, allow tuning.** Random settings judged "excessive 45% of the time"; charge attacks needed 1.7× stronger presentation than normal ones (within-prototype ratio, not a transferable multiplier); preference spans a 6-fold range across three types (Seki & Ishikawa, CHI EA '26 poster; adjustment N=16, validation N=116, one 2D action prototype).
+- **Three make-or-break features:** "hit stop, sound coherence, and camera control may strongly influence players' impact feel" (Lin et al., IEEE GEM 2022; 281,720 Chinese-language Steam comments, 96 fighting games, 5,000 hand-annotated, 44 ranked). Chinese-only corpus, camera finding rests on five beat-'em-ups — keep the "may."
 
-Sources:
-- OpenStax Psychology 2e, "Operant Conditioning": https://openstax.org/books/psychology-2e/pages/6-3-operant-conditioning
-- Lumen Learning, "Reinforcement Schedules": https://courses.lumenlearning.com/waymaker-psychology/chapter/reading-reinforcement-schedules/
+Latency is a precondition, not polish: agency tracks *absolute* action–outcome delay, not its subjective discriminability (Erdogan & Balcı, *QJEP*, 2024), so it degrades whether or not the player notices. With **identical** delays, 57.36% of comparisons favoured the sequence merely labelled "optimized" (*MTI* 9(5):47, 2025, 60 participants) — real, but a manipulation, not a lever.
 
-### Flow and Challenge-Skill Balance
+## Curiosity, not enjoyment, predicts continued play
 
-Flow-oriented design keeps challenge close to player skill. Too easy becomes dull; too hard becomes anxiety or frustration. In games, "near success" can be strong only when failure feels understandable and recoverable.
+Same CHI 2024 experiment (n=1,699): "curiosity emerged as the strongest enjoyment and only playtime predictor… Contrary to theoretical predictions, enjoyment did not predict playtime." Curiosity–enjoyment .75–.76; curiosity–voluntary engagement .86; enjoyment–playtime not significant. Mechanism: motivation comes from reducing uncertainty over *action success*, which requires legible, differentiated feedback. Converging from the other side, need satisfaction showed "weak or null associations with short-term gaming behavior, including subsequent play, session length, and return latency" (Ballou et al., PsyArXiv preprint, 2026; pre-registered Study 1 = 11k daily observations, 555 U.S. players, 30 days of trace data; **not peer-reviewed as of 2026-09**).
 
-Design translation:
-- Give players readable failure causes.
-- Create "almost got it" states: boss at 7%, timer at 3 seconds, puzzle one move away.
-- Tune difficulty around observed skill, not average skill alone.
-- Validate dynamic difficulty per game; do not assume it always improves retention.
+A satisfying moment is therefore not the one rated most pleasant at the outcome; it is the one leaving a **resolvable open question about the player's own success** that the next attempt answers. If the only open question is "what will I get," the design leans on chance, not curiosity.
 
-Sources:
-- "The relationship between the skill-challenge balance, game expertise, flow and the urge to keep playing complex mobile games": https://pmc.ncbi.nlm.nih.gov/articles/PMC8943660/
-- Fisher and Kulshreshth, "Exploring Dynamic Difficulty Adjustment Methods for Video Games", Virtual Worlds, 2024: https://www.mdpi.com/2813-2084/3/2/12
+## SDT — name the need and the facet, never the checklist
 
-### Self-Determination Theory
+- Ryan, Rigby & Przybylski (*Motivation and Emotion*, 2006) stays as the classic, with the 2024 caveat that HCI games research applies SDT "perfunctorily" as an "oft-unquestioned paradigm" (Tyack & Mekler, *ACM TOCHI* 31(3), 2024; audit of N=259 SDT-based games papers). The named failure mode is the three-item checklist with no mechanism and no falsifiable prediction.
+- **Need frustration is a separate axis:** "need satisfaction fosters wellbeing… while need frustration causes illbeing" (Ballou & Deterding, BANG model, *Interacting with Computers* 38(3), 2024). The paper does **not** identify which design elements cause frustration — it is a review question, not a lookup table. Operationally: coercion (autonomy); competence *undermining* — rank loss, retroactive nerfs, punished absence, not merely absent support; exclusion or obligation — alliance duty, guild guilt.
+- **Competence is three facets with opposite difficulty predictions:** "competence… as task performance is logically maximised under minimal challenge, while competence as capacity growth is maximised under high challenge" (Deterding et al., *Motivation and Emotion*, 2025). Effectance / task performance / capacity growth — say which one a moment targets. A **mastery moment is a capacity-growth signal** (first clear, personal best, before/after comparison, newly unlocked technique), not generic success feedback.
+- **Rewards are informational or controlling.** Free-choice intrinsic-motivation base rates: engagement-contingent tangible rewards **d=−0.40**, completion-contingent **−0.36**, performance-contingent **−0.28**, positive feedback **+0.33** (Deci, Koestner & Ryan, 1999 meta-analysis). A reward carries competence information — what improved, why it was earned — or it costs motivation.
+- Need-satisfaction scores are **not** a leading indicator of D1/D7/D30. Never sell SDT as a retention forecast.
 
-Self-determination theory maps well to game motivation:
-- Competence: "I am getting better."
-- Autonomy: "My choice mattered."
-- Relatedness: "Other players or characters recognize my contribution."
+## Difficulty and DDA — churn-risk relief with a monetization cost
 
-Design translation:
-- Pair reward moments with skill proof, not only loot.
-- Offer 2-3 meaningful choices at reward moments.
-- In social games, surface contribution clearly: save, assist, clutch, support, build role.
+The v1 citation was misread. PMC8943660 is **Larche & Dixon, *J. Behav. Addict.* 9(3), 2020, n=60, Candy Crush**: easy levels produced the least flow, and flow added **21.8% of variance in "urge to keep playing" beyond arousal** — which the authors read as a risk marker ("high flow may in part account for why problem players report playing for longer than intended"). It belongs to the ethics review, never to the objectives list.
 
-Sources:
-- Ryan, Rigby, Przybylski, "The Motivational Pull of Video Games", Motivation and Emotion, 2006: https://link.springer.com/article/10.1007/s11031-006-9051-8
-- Author PDF: https://selfdeterminationtheory.org/SDT/documents/2006_RyanRigbyPrzybylski_MandE.pdf
+Fisher & Kulshreshth (*Virtual Worlds*, 2024) is a methods survey and carries no retention claim. The retention evidence is a field RCT: easing difficulty for **at-risk** players raised Retention-1/7/14 by **+2.7 / +2.5 / +2.0 pp** (p<0.001), net **+$0.07 per average user**, while "significantly decreas[ing] purchases in the specific round played" (Ascarza, Netzer & Runge, *IJRM* 42(4):975–995, 2025; ~330,000 users, 12-week randomized rollout, free-to-play mobile puzzle). Pulling the other way, early *skill* signals — fewer moves, more stars — were inversely related to retention (Drachen et al., AIIDE 2016): "too easy for skilled players" is a separate failure mode.
 
-### Game Feel and Feedback
+## Uncertainty — what replicates, what does not
 
-Reward moments become memorable when feedback is immediate and readable. Feedback should communicate cause and effect, not just decorate the screen.
+- **Variable-ratio scheduling is not an engagement lever.** Players "initially opened loot boxes more on highly variable schedules, but the effect was short-lived," variable reward *magnitude* had no effect, and human operant work "often fails to replicate the results of animal learning studies" (Young et al., *Perspectives on Behavior Science*, 2026; modified open-source loot-box simulator). Whether loot boxes even *are* VR is itself contested. Delete the schedule taxonomy.
+- **Uncertainty raises wanting.** "An uncertain cue that predicts a reward on 50% of occasions becomes more attractive… than a cue that predicts a reward 100% of the time"; dopamine mediates wanting "but not their hedonic impact (liking)" (Robinson & Berridge, 2025).
+- **Odds opacity raises willingness to pay.** Censoring exact top-prize odds ~**+45%**; a curated sample of best outcomes ~**+45%**; both together **+100%**; unbiased distribution information changed WTP not at all (Cordes, Dertwinkel-Kalt & Werner, *JEBO*, 2024; incentivized between-subject experiment, three-prize monetary lotteries). The authors call it a lower bound.
+- **Repeat opening is sustained by the affordance, not the reward.** 93.1% of openings sat inside multi-opening streaks, median 14.5 s apart, explicit stopping statements in 3.7% of coded verbal moments; initiation tracked visible monetization cues, continuation was **not** explained by rarity, affect or near-misses (Borja-Block et al., *Frontiers in Public Health*, 2026; observational, 490 livestreamed openings across 13 streams). Removing near-miss animations is not sufficient mitigation; removing one-tap "open again" is closer to the mechanism.
 
-Design translation:
-- Stack small feedback layers: animation snap, sound, hit stop, camera impulse, particle, UI meter, haptic.
-- Match feedback magnitude to gameplay significance.
-- Avoid obscuring important state with effects.
-- Make failure feedback as readable as success feedback.
+**The line is coupling, not randomness.** Uncertainty on skill outcomes and non-paid rewards is ordinary design; uncertainty coupled to money or to a one-tap repeat loop is the harm surface.
 
-Useful reference:
-- Steve Swink, *Game Feel: A Game Designer's Guide to Virtual Sensation*.
-- Game Programming Patterns, "State", for reward moment state-machine thinking: https://gameprogrammingpatterns.com/state.html
+## Measurement — PXI is the default instrument
 
-### Ethical Guardrails
+| Instrument | Status | Use for |
+|---|---|---|
+| PXI (10 factors) | independently validated, n=1,518, CHI 2024 | default playtest survey |
+| miniPXI (11 items) | reliabilities .51–.83, mean .68 | fast A/B iteration only |
+| PENS | proprietary (Immersyve) **[unverified]** | licensed studio work only |
+| BANGS (18 items) | 5 studies, n=1,246; CSDT withdrew it | experience, not behaviour |
+| One behavioural pair | required alongside any scale | replay, return within 24h |
 
-High-engagement design becomes manipulative when it undermines autonomy, hides probabilities, pressures spending, or stretches frustration to sell relief.
+PXI's original 10-factor model fit best (AIC 120417, lowest of the compared models), and two published caveats travel with it: the immersion factor is weak, and there is "weak evidence of a general player experience score" — **never collapse results into one fun score**. Its factors double as moment vocabulary: ease of control, challenge, progress feedback, goals and rules, audiovisual appeal (functional); meaning, mastery, curiosity, immersion, autonomy (psychosocial). Because experience scores and behaviour dissociate, every scale ships paired with one behavioural measure.
 
-Design translation:
-- Flag designs based on FOMO, hidden odds, forced streaks, time gates that punish real life, or pay-to-skip pain.
-- Prefer transparent odds, cosmetic-only randomness, earned guarantees, and player-controlled session boundaries.
-- When monetization is present, separate engagement analysis from purchase pressure analysis.
+## Wellbeing — need frustration and exit quality, not playtime
 
-Sources:
-- Internet Policy Review, "Gaming the mind: Unmasking dark patterns in video games": https://policyreview.info/articles/news/unmasking-dark-patterns-video-games/1739
-- Veiga et al., "Dark Patterns in Games: An Empirical Study of Their Harmfulness", ICEIS 2025: https://www.scitepress.org/Papers/2025/133658/133658.pdf
+Playtime is the wrong ethics axis in both directions. A registered report found no wellbeing effect of playtime larger than the pre-registered smallest effect of interest (0.06 scale points per extra daily hour), with >95% power to declare equivalence (Ballou et al., *Technology, Mind, and Behavior* 5(1), 2024; n=414 Xbox players, 12 weeks, ~100,000 logged hours); a 2025 replication (*R. Soc. Open Sci.* 12:241174; n=703 U.S. adults, >140,000 hours across 150 Switch games) found the same null at every timescale, while **"gaming life fit" — the perceived value of one's own gaming — did predict wellbeing**. Against that, lottery-allocated console access during Japan's 2020–2022 shortages cut psychological distress 0.60 SD (Switch) and each extra daily hour improved mental health 0.20 SD, diminishing beyond ~3 h/day (Egami, Hoshino et al., *Nature Human Behaviour*, 2024; n=97,602 respondents, 8,192 in console lotteries; pandemic-setting caveat by the authors). The two are compatible — access effects versus marginal hours among established players — and neither licenses "more play is good" or "more play is bad."
 
-## Validation Methods
+Four instrumented checks replace the time axis: **need frustration** (coercion, competence undermining, manufactured obligation), **life fit** (regret, play past an intended stop), **spend relative to means**, **exit quality**.
 
-Use at least one behavioral, one qualitative, and one safety check:
+Exit quality is designable: "disengagement from games should be constructively designed, allowing players to exit play sessions in a self-determined way" (Alexandrovsky et al., CHI PLAY 2024; 16 interviews + 111-person survey); a 2025 companion study (13 children aged 4–9, 12 parents) found children struggle to exit before reaching closure. Practical form: a natural stopping point, a closure beat, no autoplay "one more" chaining, a visible end-point matching the player's planned duration.
 
-- Behavioral telemetry: retry rate, voluntary replay, time-to-next-action, combo attempts, build-choice diversity, abandonment point, return rate.
-- Moment telemetry: cue shown, action taken, outcome, reward tier, failure reason, next action within 10-30 seconds.
-- Playtest observation: facial/body response, verbal "again" moments, frustration comments, confusion points.
-- Survey: perceived agency, fairness, clarity, excitement, mastery, desire to replay.
-- Safety: spending pressure complaints, hidden odds confusion, FOMO stress, grind fatigue.
+## Numbers that do not exist
 
-Do not optimize only for retention. A manipulative loop can retain players while damaging trust.
+- No direct replication of Larche & Dixon 2020; generalization beyond Candy Crush is untested.
+- No 2023–2026 near-miss experiment in a *non-gambling* game; the latest game-specific evidence is Larche et al. 2017 (Candy Crush near-misses raised frustration and urge).
+- No pre-registered digital replication of endowed progress; the canonical 34%-vs-19% completion figures remain Nunes & Drèze's 2006 car-wash field study.
+- No evidence linking visible choice consequences to D7/D30 return; replay decisions track "the likelihood of seeing something new… versus the effort required to replay" (Wang, Ang & Mitchell, PACM HCI 2021, n=12).
+- No Korean-language validation of PXI, miniPXI or any need-satisfaction instrument — pilot with back-translation and report item-level reliability rather than assume the published factor structure holds.
+- No head-to-head RCT of gamified vs non-gamified versions of the same mental-health app.
+- No quantitative estimate of post-break streak abandonment in apps.
+
+## Contested — carry, do not resolve
+
+- **Flow / challenge–skill balance.** *Null:* objective difficulty–skill ratio moved neither enjoyment (F=1.29, p=.277) nor engagement (p=.183) despite a working manipulation — win rates 100% / 12.8% / 5.9% (Cutting et al., *R. Soc. Open Sci.* 10:220274, 2023, pre-registered, n=311). *For:* flow theory concerns *perceived* not objective balance, the study ran two matches with no no-DDA control, and difficulty does move behaviour for at-risk cohorts (Ascarza 2025).
+- **Near-miss.** *For:* near-misses raised urge to continue, sped the next spin and increased bet size, and were rated *more positively* than full misses (Palmer, Ferrari & Clark, *Psych. Addict. Behav.* 38(6), 2024; four pre-registered online slot studies, n=169/148/170/172). *Against:* resistance-to-extinction designs in pigeons and humans "failed to provide evidence that near misses have a conditionally reinforcing function," any effect "limited or idiosyncratic" (Pisklak, Yong & Spetch, *J. Gambl. Stud.* 36, 2020). Net: faster and larger spending, not durable retention.
+- **Streaks.** *For:* highlighting an *intact* streak raised re-engagement while highlighting a *broken* one lowered it — 66.23% vs 57.86% continued the same exercise on identical underlying behaviour, the drop reduced when repair is offered (Silverman & Barasch, *J. Consumer Research* 49(6), 2023; 7 studies, >4,000 participants incl. language-app field data). *Against:* backfire evidence is qualitative, small-n and exercise-domain only — sadness, anger, running through injury (Dombrowski group, medRxiv preprint, 2024, n=17 streakers at 100–5,000+ days); all-or-nothing thinkers choose complete inaction over a reduced version (Segar, *BMC Public Health* 26:298, 2025, n=27).
+- **Gamification in mental-health apps.** *Against:* across 79 RCTs of depression and anxiety apps, attrition was lower in trials offering reminders, human contact and **no gamification features** (Liu, Torous, Linardon et al., *JAMA Psychiatry* 83(1):43–50, 2026; 92 app conditions, search through May 2025). *For:* a trial-level moderator, not a head-to-head randomization; prediction intervals are enormous (post-test attrition PI 2.4–68.3); gamified apps modestly helped physical activity (*eClinicalMedicine* 2024, 36 RCTs, n=10,079) and smoking cessation (RR 1.91 within 6 months decaying to 1.37; *Tobacco Induced Diseases* 2025, 15 RCTs, n=5,075). Scope the claim to mental-health trials.

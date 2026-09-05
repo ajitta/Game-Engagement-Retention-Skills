@@ -1,5 +1,5 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
   "name": "game-engagement-retention-skills",
   "description": "Local marketplace exposing the game engagement + retention skill set as an installable Claude Code plugin.",
   "owner": {

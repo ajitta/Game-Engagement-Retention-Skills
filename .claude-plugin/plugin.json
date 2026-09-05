@@ -1,7 +1,8 @@
 {
   "name": "game-engagement-retention-skills",
+  "displayName": "Game Engagement & Retention",
   "description": "Three routed skills for designing in-session reward moments ('dopamine points') and lifecycle retention for games and interactive apps.",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "author": {
     "name": "ajitta",
     "url": "https://github.com/ajitta"
@@ -9,10 +10,15 @@
   "homepage": "https://github.com/ajitta/Game-Engagement-Retention-Skills",
   "repository": "https://github.com/ajitta/Game-Engagement-Retention-Skills",
   "license": "MIT",
-  "keywords": ["game-design", "engagement", "retention", "reward-moments", "dopamine", "lifecycle"],
-  "skills": [
-    "./skills/interaction-reward-moments",
-    "./skills/retention-strategy-designer",
-    "./skills/engagement-retention-advisor"
-  ]
+  "keywords": [
+    "game-design",
+    "engagement",
+    "retention",
+    "reward-moments",
+    "dopamine",
+    "lifecycle"
+  ],
+  "experimental": {
+    "evals": "evals"
+  }
 }

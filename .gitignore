@@ -2,5 +2,11 @@
 Thumbs.db
 desktop.ini
 .in_use
-.claude/loop_guard_state.json
+
+# Local Claude Code state and personal project instructions.
+# CLAUDE.local.md is untracked, so it never reaches installers; `claude plugin
+# validate .claude-plugin/plugin.json --strict` still warns about it in a local
+# checkout, because this repository is both a plugin root and a project root.
+.claude/
+CLAUDE.local.md
 .serena/
