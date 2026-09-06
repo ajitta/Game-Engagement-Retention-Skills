@@ -33,7 +33,7 @@ Run it before the ethics row lookup, on any system that creates a return event.
 - Position/collection holds hardest because a returner cannot re-derive it, which is why puzzle D28 outlasts genres with far higher D1. Knowledge-only designs have no visible return event: give mastery an **artifact** (logbook, discovered-recipe list, map annotation).
 - **Fails when** the accumulation stops looking like it goes somewhere: Pokémon TCG Pocket carried power, knowledge *and* collection and still fell 51M → 39M → 30M → 28M average MAU across 2025 quarters; DeNA named login frequency and existing-user retention, and answered with the collection experience rather than more pack-opening [DeNA Q3 FY3/2026 via gamebiz | 2026 | first-party disclosure].
 - **Fails when** validated on the wrong timescale: Squad Busters' beta reached D7 29→38% on 140,000+ testers and launch retention still missed — the one-month soft launch "only validated D7" [Supercell | 2026 | first-party postmortem]. Also when a nerf reads as confiscation; the remedy is expectation-setting, not restraint from balancing.
-- **Ethics** — not a row by default; proceed and say so. It becomes one when meta progress **expires** (`T2b pass-expiry`) or when catch-up entry is sold rather than granted.
+- **Ethics** — not a row by default; proceed and emit nothing about it. It becomes one when meta progress **expires** (`T2b pass-expiry`) or when catch-up entry is sold rather than granted.
 - **Instrument** — name what is stored between sessions first; then run-to-run continuation, the unlock being pursued at churn, and a holdout running longer than the FTUE test.
 
 ## 4. In-game economy

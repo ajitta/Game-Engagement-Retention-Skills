@@ -126,7 +126,7 @@ Three ordered questions run **during** generation, not as a filter afterwards: d
 
 Every previously forbidden mechanic is re-graded with a spec instead of a ban. Energy and stamina, paid streak freeze, learning streaks, social-obligation loops and 기다리면 무료 all ship with numeric bounds — `scripts/check-ethics-rows.sh` fails the build if a T3 row lacks a numeric or observable compliant spec, which makes "energy is forbidden" literally unwritable. Hidden odds on paid random items stay T1 against named, dated instruments; guilt-framed AI-companion farewells keep their ban because no compliant configuration exists. Legal claims are isolated in `jurisdictions.md` with a `last-verified` header and a `## Do not quote` list of the plausible-sounding laws that do not exist.
 
-Five false-positive guards hold the other direction, four of them structural: the fall-through is *deliver*; T3 and T4 can never emit refusal language (a hard branch, not a tone instruction); refusal is bullet-scoped; escalation above T3 requires naming a currently-rated, currently-listed product in your market that ships the mechanic; and six false-positive eval cases must pass 6/6 or the ethics change does not ship.
+Five false-positive guards hold the other direction, four of them structural: the fall-through is *deliver*; T3 and T4 can never emit refusal language (a hard branch, not a tone instruction); refusal is bullet-scoped; escalation above T3 requires naming a currently-rated, currently-listed product in your market that ships the mechanic; and six false-positive eval cases must pass 6/6 or the ethics change does not ship. **That gate is declared, not yet met: as of 2.2.0 the suite has never been executed.**
 
 ---
 
@@ -230,9 +230,9 @@ The caveats cut both ways and are worth stating plainly: one prompt per matchup,
 
 ### The reproducible replacement
 
-`evals/` holds **38 cases across ten families** — routing positives, the six hardened routing edges, six previously homeless asks, Korean routing, mode selection, refusal true positives, **six refusal false positives that are a release gate at 6/6**, output shape with a fabrication penalty, intake, and evidence hygiene.
+`evals/` holds **38 cases across ten families** — routing positives, the six hardened routing edges, six previously homeless asks, Korean routing, mode selection, refusal true positives, **six refusal false positives that are a declared release gate at 6/6 — declared, not yet met, since the suite has never been executed**, output shape with a fabrication penalty, intake, and evidence hygiene.
 
-`claude plugin eval` exists on 2.1.261 but is in early access on this account and currently scaffolds nothing, so the grader frontmatter schema is **unverified** and the suite is authored and run **manually**: `claude -p "$(cat evals/<case>/prompt.md)" --plugin-dir .` for the with arm, the same prompt with no `--plugin-dir` for the baseline, three runs each, graded by a separate judge invocation against the same `criteria.md`. The with-without ablation cannot score the routing families — a baseline Claude cannot route to skills it does not have — so those are marked with-only and read as a fired/not-fired indicator. The earn-its-cost argument lives in the scored families, where a plugin-free Claude gives a plausible answer and the graded question is whether it is as *rigorous*.
+`claude plugin eval` exists on 2.1.261 but is in early access on this account and currently scaffolds nothing, so the grader frontmatter schema is **unverified** and the suite is authored and **documented to run manually**: `claude -p "$(cat evals/<case>/prompt.md)" --plugin-dir .` for the with arm, the same prompt with no `--plugin-dir` for the baseline, three runs each, graded by a separate judge invocation against that case's grader file under `evals/<case>/graders/` — `criteria.md` for the refusal, intake, hygiene and shape families, `skill-fired.md`, `mode-line.md` or `korean-output.md` for the routing and mode families. The with-without ablation cannot score the routing families — a baseline Claude cannot route to skills it does not have — so those are marked with-only and read as a fired/not-fired indicator. The earn-its-cost argument lives in the scored families, where a plugin-free Claude gives a plausible answer and the graded question is whether it is as *rigorous*.
 
 ### Checks that run on every change
 
@@ -242,7 +242,7 @@ claude plugin validate ./skills --strict
 scripts/check-shared-blocks.sh && scripts/check-no-facts-in-skills.sh && scripts/check-ethics-rows.sh
 ```
 
-Both validators and all three scripts pass. `claude plugin validate .claude-plugin/plugin.json --strict` exits 1 in a local checkout, on a warning about the untracked personal `CLAUDE.local.md` at the repository root; that file is gitignored and never reaches an installer. `claude plugin validate ./skills --strict` is the load-bearing one: a broken `SKILL.md` frontmatter loads at runtime with empty metadata — a skill with no description and therefore no routing, the worst failure this plugin has. The marketplace manifest is validated in the catalog repository, not here. The `plugin.json` validator warns only about the untracked local `CLAUDE.local.md`, which never reaches installers.
+The skills validator and all three scripts pass. `claude plugin validate .claude-plugin/plugin.json --strict` exits 1 in a local checkout, on a warning about the untracked personal `CLAUDE.local.md` at the repository root; that file is gitignored and never reaches an installer. `claude plugin validate ./skills --strict` is the load-bearing one: a broken `SKILL.md` frontmatter loads at runtime with empty metadata — a skill with no description and therefore no routing, the worst failure this plugin has. The marketplace manifest is validated in the catalog repository, not here.
 
 ### Research basis
 

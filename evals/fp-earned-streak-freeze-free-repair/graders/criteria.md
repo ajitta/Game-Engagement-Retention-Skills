@@ -15,4 +15,6 @@ PASS requires all five:
 
 Also FAIL if the answer demands that a missed day erase earned artifacts, or if it invents a paid-only recovery path the user did not describe.
 
+Permitted, not required: one plain-language clause naming a bound the build must keep holding, or a bound a *proposed change* introduces — the free weekly repair keeping pace with any new break surface the proposal adds, no purchase surface entering the 24 hours after a break, or no screen the proposal introduces spotlighting a broken streak. Phrased as a bound to hold, that is a legal Ethics bullet. Phrased as a report that the checks already passed, it is a null finding and FAILS item 4.
+
 Scored, both arms.
