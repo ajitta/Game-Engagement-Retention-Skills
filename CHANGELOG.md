@@ -9,13 +9,13 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
-## [Unreleased]
+## [3.0.0] — 2026-09-06
 
-Tooling, documents, and the plugin's own name. The first two entries below were a
-no-bump section; the rename is not. It edits all three skill bodies and the shared
-contract, and it changes the install ID, so the release carrying it needs a version
-and is a reinstall for anyone already on the old one. `plugin.json` still reads 2.2.1
-because that decision belongs to the release, not to this section.
+The plugin's name is shorter, and that is why this is a major. `name` is the install
+ID, so every copy installed as `game-engagement-retention-skills` has to be removed
+and installed again as `game-engagement-retention` — `/plugin update` cannot cross a
+rename. Nothing the skills do changed: the major marks the reinstall, not new
+behaviour. Tooling and document fixes from the same session ride along.
 
 ### Added
 
@@ -35,6 +35,7 @@ because that decision belongs to the release, not to this section.
 - **`README.md` says what a rename costs someone who already installed.** Claude Code keys an installed copy on `name`, so a shortened one is a different plugin and no `/plugin update` carries the old copy across. The Installation section now names the old ID and the `uninstall` line that precedes a fresh install.
 - **Always-on cost re-measured: ~1,845 → ~1,836 tokens.** The rename took seven characters out of each of the three registered skill names, and `CONTRIBUTING.md` requires a re-measure after any skill edit. Run on Claude Code 2.1.263; the token table's other rows are still the 2.1.261 measurement and the provenance line now says which is which. `README.md` and the `05-plan.md` status table both moved.
 - **Three stale counts in `05-plan.md`, in the blind spot the new script has by design.** `check-claims.sh` scans `README.md`, `CHANGELOG.md`, `evals/README.md` and `CONTRIBUTING.md`; `docs/` is not in that list, so "CI runs the three scripts", "run all three scripts" and "nine negative tests" survived the correction the script made everywhere it does look. They now read four, four and twelve. Widening the scan to `docs/` was considered and not done here: the design record is full of quoted past states that are correct as history, and the two exemptions the script has — superseded CHANGELOG entries, and `old → new` corrections — do not cover that shape.
+- **`README.md` said "Version 2.2.0" while `plugin.json` said 2.2.1**, and had since that release. `check-claims.sh` compares `plugin.json` against the newest CHANGELOG heading, not against a version written in prose, so this survived the run that corrected the counts around it. It reads 3.0.0 now, and the `05-plan.md` status table and its tag list — which still said 2.2.1 was untagged — with it. The prose-version case is a real gap in the script and is left open deliberately rather than patched in a release commit.
 
 ---
 

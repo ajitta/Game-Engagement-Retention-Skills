@@ -4,7 +4,7 @@ A Claude Code plugin of **three routed skills** for designing what makes a sessi
 
 It keeps apart the two problems that generic advice collapses into one — the **moment** (a single interaction inside a single session) and the **lifecycle** (a cohort returning over days and weeks) — routes each request to the skill that owns the *deliverable*, and answers in a fixed card format where every proposal carries a concrete trigger, a pre-registered metric with its baseline, guardrails including at least one user-harm metric, an effort band, and — only where there is a bound to hold or a price to name — one plain-language ethics line.
 
-Version 2.2.0. Games are the deep case; five consumer interactive domains ride alongside them; SaaS is explicitly out. See [Scope](#scope).
+Version 3.0.0. Games are the deep case; five consumer interactive domains ride alongside them; SaaS is explicitly out. See [Scope](#scope).
 
 **Install** — from the [ajitta/claude-plugins](https://github.com/ajitta/claude-plugins) catalog, then start a new session:
 
