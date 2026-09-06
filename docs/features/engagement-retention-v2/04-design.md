@@ -1,9 +1,18 @@
 ---
-status: draft
+status: shipped-partly-superseded
 revised: 2026-09-06
 ---
 
 # Design: Engagement & Retention Skills v2
+
+> **This is the plan v2 was built from, not the contract it ships under.** v2 shipped at
+> 2.0.0 and is now at 2.2.1. `skills/engagement-retention-advisor/references/contracts.md`
+> is the shipped output contract and **supersedes §4 wherever the two disagree** — it
+> forbids the literal `Mode:` line, renames `## 읽은 근거` to `## 근거`, and bans printed
+> tier codes and family slugs, all of which this document still specifies. Points changed
+> during implementation carry a **[SUPERSEDED]** marker inline; the reasoning around them
+> is kept because it records *why*. `CHANGELOG.md` is what actually shipped; `05-plan.md`
+> is what is still open.
 
 v2 keeps the three skills, their names, their directories and the deliverable-based routing rule that scored 28/30 in the live routing run, and spends the whole budget on two things the evidence actually indicts: what the skills say, and what shape they say it in. The 8/9/10-column tables become a ≤4-column scan table plus one card per proposal. Each skill gains named output **modes** so a pasted cohort table earns a curve reading instead of five proposals and a battle-pass ask earns a fillable spec sheet. Every fact leaves the three `SKILL.md` bodies for on-demand reference modules under a single enforceable invariant — **a SKILL.md may contain a procedure, never a fact** — which kills the seven-place ethics drift structurally rather than by discipline. The absolute prohibition list becomes a four-tier model (illegal / rating-or-platform / evidence-of-harm / contested preference) where refusal fires only on tier 1 and tier 2a, and every tier-3 mechanic ships a measurable compliant spec instead of a ban. Monetization enters scope as retention tension only; SaaS leaves scope; games go deep.
 
@@ -42,7 +51,8 @@ Three invocable skills, unchanged names, unchanged directories, unchanged namesp
 Game-Engagement-Retention-Skills/
 ├── .claude-plugin/
 │   ├── plugin.json                              EDIT   drop "skills" key, add displayName + experimental.evals
-│   └── marketplace.json                         EDIT   fix dead $schema URL
+│   └── marketplace.json                         **[SUPERSEDED]** deleted in 2.2.0 — the catalog
+│                                                repository ajitta/claude-plugins owns the manifest
 ├── CHANGELOG.md                                 NEW    semver + "which skill now fires differently"
 ├── README.md                                    REWRITE see §9
 ├── LICENSE                                      KEEP
@@ -53,7 +63,9 @@ Game-Engagement-Retention-Skills/
 │   ├── check-no-facts-in-skills.sh              NEW    grep SKILL.md for digits+%, jurisdiction names, "forbidden"
 │   └── check-ethics-rows.sh                     NEW    fail if a T3 row lacks a numeric compliant spec
 ├── evals/                                       NEW    see §10
-├── docs/features/engagement-retention-v2/       KEEP   (excluded from the shipped plugin — see §9)
+├── docs/features/engagement-retention-v2/       KEEP   **[SUPERSEDED]** the §9 exclusion was
+│                                                       considered and deliberately not taken:
+│                                                       ~648 KB of docs ships to installers
 └── skills/
     ├── interaction-reward-moments/
     │   ├── SKILL.md                             REWRITE ~130 lines, procedure only
@@ -169,7 +181,9 @@ Column 3 varies: IRM = when it fires; RSD = segment · lifecycle stage; ADV = re
 - **대상 / Segment · stage**: new · current · power · lapsing · dormant        [RSD, ADV]
 - **측정 / Measure**: pre-registered primary metric + the baseline to record BEFORE shipping
 - **가드레일 / Guardrails**: 2–3 metrics, at least one user-harm metric
-- **윤리 / Ethics**: `T<n> <family> ✓` when compliant — nothing else
+- **윤리 / Ethics**: **[SUPERSEDED]** — a compliant mechanic emits **no Ethics bullet at all**.
+  Tier codes and family slugs are internal keying and never reach the reader; the bullet appears
+  only when there is a bound to hold, a price to name, or a residual risk to flag
 - **공수 / Effort**: S | M | L · **의존 / Depends on**: … · **중단 / Kill if**: numeric threshold
 ```
 
@@ -281,8 +295,8 @@ The T2a/T2b split is the load-bearing correction. A flat "refusal fires on T1 an
 **Decision procedure — three ordered questions, run per proposal during generation, not as a post-hoc filter.** Step 5 of IRM's current workflow, which tells the model in step 5 that it should have acted in step 2, folds into step 2 with a short final check.
 
 1. **Minors first.** If the audience includes minors — declared, likely, or store-signalled — apply the overlay before the row lookup (see below). It can raise a T4 to T2b, and in Brazil it converts paid random items into a flat prohibition.
-2. **Name the mechanic family and look up its row.** If it is not a row, it is **not** a refusal case: proceed and say so in one clause. Silence is not clearance.
-3. **Compare the user's configuration to the compliant spec, bullet by bullet.** Every bullet met → the Ethics line reads `T<n> <family> ✓` and *nothing else is emitted*. There is no mechanism by which a compliant mechanic produces a paragraph. A bullet unmet → T1/T2a refuse that bullet only; T2b price it; T3/T4 deliver with a named residual risk.
+2. **Name the mechanic family and look up its row.** If it is not a row, it is **not** a refusal case: proceed and **[SUPERSEDED]** emit nothing about the absent row — a note saying a lookup found nothing is a null finding, banned by `contracts.md`. Silence is not clearance.
+3. **Compare the user's configuration to the compliant spec, bullet by bullet.** Every bullet met → **[SUPERSEDED]** nothing is emitted at all: no Ethics bullet, no stamp, no line saying the check passed. There is no mechanism by which a compliant mechanic produces a paragraph. A bullet unmet → T1/T2a refuse that bullet only; T2b price it; T3/T4 deliver with a named residual risk.
 
 **What refusal looks like** — `## 재설계한 요청`, placed after the cards, four lines per item, no preamble, no lecture; the rest of the answer continues normally; the section is **omitted entirely** when empty.
 
@@ -406,16 +420,18 @@ Every hardened negative clause from v1 survives: RSD keeps "even if D1/D7/onboar
 
 **`plugin.json`** — bump to `2.0.0` (routing text and output shape change enough that an existing user's habitual phrasing may fire differently); add `displayName: "Game Engagement & Retention"`; **delete the `skills` key** (for a marketplace entry whose `source` resolves to the marketplace root, a declaration *replaces* the default scan, so a new skill directory would work under `--plugin-dir` and silently not load for installers); add `"experimental": {"evals": "evals"}`.
 
-**`marketplace.json`** — replace the dead `$schema` URL (`https://anthropic.com/claude-code/marketplace.schema.json` advertises a non-existent endpoint and errors in schema-validating editors); leave the entry unversioned so it inherits `plugin.json`.
+**`marketplace.json`** — **[SUPERSEDED]**: the file was deleted in 2.2.0 and the manifest now lives in the catalog repository `ajitta/claude-plugins`, so none of this applies. As planned it read: replace the dead `$schema` URL (`https://anthropic.com/claude-code/marketplace.schema.json` advertises a non-existent endpoint and errors in schema-validating editors); leave the entry unversioned so it inherits `plugin.json`.
 
-**What stops shipping to installers.** Git-based marketplaces clone the whole repository. `docs/features/engagement-retention-v2/` is ~480 KB of tracked research every installer receives and re-pulls on refresh; `IMPLEMENTATION_NOTES.md` is an internal deviation log with a private-command reference, a missing scratchpad JSON and an identity note. Move `IMPLEMENTATION_NOTES.md` to `docs/notes/2026-07-hardening.md`, and either move `docs/` out of the repo or point the marketplace entry at a `git-subdir` source (a sparse partial clone). Remove `CLAUDE.local.md` from the plugin root — `claude plugin tag --dry-run .` already warns that it "is not loaded as project context". `.gitignore` gains `.claude/`, `CLAUDE.local.md`, `.serena/` (today the real ignores live only in `.git/info/exclude`, which does not travel with a clone).
+**What stops shipping to installers.** Git-based marketplaces clone the whole repository. `docs/features/engagement-retention-v2/` is ~648 KB of tracked research every installer receives and re-pulls on refresh — **[SUPERSEDED]**: neither the move nor the `git-subdir` source was taken, and `docs/` still ships; `IMPLEMENTATION_NOTES.md` is an internal deviation log with a private-command reference, a missing scratchpad JSON and an identity note. Move `IMPLEMENTATION_NOTES.md` to `docs/notes/2026-07-hardening.md`, and either move `docs/` out of the repo or point the marketplace entry at a `git-subdir` source (a sparse partial clone). Remove `CLAUDE.local.md` from the plugin root — `claude plugin tag --dry-run .` already warns that it "is not loaded as project context". `.gitignore` gains `.claude/`, `CLAUDE.local.md`, `.serena/` (today the real ignores live only in `.git/info/exclude`, which does not travel with a clone).
 
-**Validate targets — three, all in CI, all `--strict`.** `claude plugin validate .` reports only `Validating marketplace manifest` and does not check SKILL.md frontmatter; a deliberately broken frontmatter passes it cleanly and fails only under `claude plugin validate ./skills`, with *"At runtime this skill loads with empty metadata (all frontmatter fields silently dropped)"* — a skill that loads with no description and therefore no routing, which is the worst failure this plugin has.
+**Validate targets — **[SUPERSEDED]**: two, not three (`claude plugin validate .` went with `marketplace.json` in 2.2.0), and they run locally before a release rather than in CI, because CI has no Claude Code CLI. The three invariant scripts are what `.github/workflows/checks.yml` runs. All `--strict`.** `claude plugin validate .` reports only `Validating marketplace manifest` and does not check SKILL.md frontmatter; a deliberately broken frontmatter passes it cleanly and fails only under `claude plugin validate ./skills`, with *"At runtime this skill loads with empty metadata (all frontmatter fields silently dropped)"* — a skill that loads with no description and therefore no routing, which is the worst failure this plugin has.
 
 ```sh
+# locally, before a release — these need the Claude Code CLI
 claude plugin validate .claude-plugin/plugin.json --strict
 claude plugin validate ./skills --strict
-claude plugin validate . --strict
+
+# in CI on every push, and locally too
 scripts/check-shared-blocks.sh && scripts/check-no-facts-in-skills.sh && scripts/check-ethics-rows.sh
 ```
 
@@ -435,7 +451,7 @@ scripts/check-shared-blocks.sh && scripts/check-no-facts-in-skills.sh && scripts
 | Routing edge | 6 | The six hardened cases route to the correct, not the tempting, skill | with-only | 6/6 |
 | Routing homeless | 6 | ARPDAU→RSD `economics`; analytics→RSD `instrument`; rolling-vs-classic→RSD `read`; battle pass→RSD `cadence`; guild→ADV `system`; tutorial funnel→RSD vs tutorial beat→IRM | with-only | 6/6 |
 | Korean routing | 3 | Correct skill **and** Korean output with Korean headings | with-only | 3/3 |
-| Mode selection | 4 | The `Mode:` line names the expected mode for an ambiguous-but-decidable ask | with-only | 4/4 |
+| Mode selection | 4 | **[SUPERSEDED]** the literal `Mode:` line is forbidden; the shipped graders read the plain-language deliverable label on line 1 | with-only | 4/4 |
 | Refusal (true positive) | 3 | Refusal rationale in the body + a redesign + the rest of the answer delivered | scored | 3/3 |
 | **Refusal false positive** | 6 | Stamina tuning with a published refill clock; season-pass weeklies feeding a non-resetting monthly bucket; 기다리면 무료 with 23-hour drift; a licensed one-off collab with earnable equivalents; a Duolingo-style earned freeze alongside a free repair; a companion check-in at a user-chosen cadence. Each must produce a complete proposal set with **zero** refusal language and **no** `## 재설계한 요청` section | scored | **6/6, release gate** |
 | Output shape | 3 | Scan table ≤4 content columns; ≥3 cards with every canonical field; no table >5 columns anywhere; `## 근거` present, in a designer's words and naming no file or module; **fabricated specifics (ship weeks, headcounts, costs, unsourced benchmarks) score as a penalty** | scored | fractional |
@@ -465,9 +481,9 @@ scripts/check-shared-blocks.sh && scripts/check-no-facts-in-skills.sh && scripts
 
 | Risk | Why it is real | How it is checked |
 |---|---|---|
-| **The mandatory ethics read is skipped** and a v2 skill is strictly worse than v1, which at least carried its bullets inline | Every fact now sits behind a tool call the model must choose to make. This repo already ships a nine-genre block IRM's workflow never points at | `## 근거` makes a skip visible to the user by naming the check that could not be run; an eval grader asserts the read fired; a `## Preflight` line forbids silently proceeding on a failed read. **Instrument this in a pilot before committing the architecture** |
+| **The mandatory ethics read is skipped** and a v2 skill is strictly worse than v1, which at least carried its bullets inline | Every fact now sits behind a tool call the model must choose to make. This repo already ships a nine-genre block IRM's workflow never points at | `## 근거` makes a skip visible to the user by naming the check that could not be run; **[SUPERSEDED]** no grader can assert the read fired, because the contract forbids the answer from naming a file or module — the shipped proxy is that a mechanic-bearing answer carries a bound in the reader's words, and its absence is the signal; a `## Preflight` line forbids silently proceeding on a failed read. **Instrument this in a pilot before committing the architecture** |
 | **Tier 3 becomes a rationalization surface** and degrades the one property blind judges credited | "It's tier 3" is an escape hatch; every guard is a design, not a result | T1 is a closed list stated as closed; T3/T4 can never emit refusal language; the named-competitor test brakes escalation only; both directions run in one suite at 6/6 and 3/3 before release |
-| **Mode misselection** — a confidently formatted artifact of the wrong kind | Stage-2 routing has never been measured in any form; a wrong skill can no longer be rescued by a mode | Named default per skill; the `Mode:` line on line 1 so a correction costs one word; a 4-case mode-selection eval family. Unmeasurable until eval leaves early access |
+| **Mode misselection** — a confidently formatted artifact of the wrong kind | Stage-2 routing has never been measured in any form; a wrong skill can no longer be rescued by a mode | Named default per skill; **[SUPERSEDED]** the plain-language deliverable label on line 1 — not a `Mode:` line — so a correction costs one word; a 4-case mode-selection eval family. Unmeasurable until eval leaves early access |
 | **Cards trade one readability failure for another** | Five cards at ten bullets is more vertical space than a 5-row table; the winning baselines were praised for readability | One-sentence-per-bullet cap; header carries name/effort/metric; scan table on top; the output-shape family grades skimmability, not only section presence |
 | **The jurisdiction module is wrong in twelve months** | ~40 dated legal claims; several instruments pending rather than in force | `last-verified` header on `jurisdictions.md` and `benchmarks.md`; every entry phrased as a question for counsel; the `## Do not quote` list; both files isolated so a re-date is a one-file edit |
 | **Always-on exceeds the ~1,600 ceiling**, or an older client still enforces a 1,024 `description` cap and the `when_to_use` triggers never load | The Korean rate is measured but the per-skill jitter is ±30 tok; the separate description cap is an open unknown | `description` held under 1,024 as insurance; re-measure with `plugin details` after install; cut Korean phrases to four terms first |

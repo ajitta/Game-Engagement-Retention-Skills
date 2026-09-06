@@ -74,7 +74,7 @@ Games generally do not recognise that a player is *returning* rather than contin
 1. **Detect the gap** and branch on its length — a 3-day and a 6-month return are different products.
 2. **Spoiler-safe recap**: restate the player's *own* prior choices and run state; never reveal story or content ahead of where they stopped, and never recap in a way that spoils an unopened beat.
 3. **Refresh controls and changed systems** in-context, not as a re-run tutorial.
-4. **Stage an early Pivot Point** — a moment that reminds the player of their expert self — before any new content [Hammad et al., CHI 2021; full treatment in `../../interaction-reward-moments/references/first-session.md`].
+4. **Stage an early Pivot Point** — a moment that reminds the player of their expert self — before any new content [Hammad et al., CHI 2021; full treatment in `${CLAUDE_SKILL_DIR}/../interaction-reward-moments/references/first-session.md`].
 5. **Make missed time catchable, not lost.** Marvel Snap's Sept 2025 patch added a 30-day non-resetting Bonus Challenge (50 missions fed by the same daily missions) inside a 35-day window explicitly so players who "miss a couple of days… still have the opportunity to earn everything" [Second Dinner, https://marvelsnap.com/patch-notes-september-16-2025/].
 6. Save the exact interaction state, not the level index.
 

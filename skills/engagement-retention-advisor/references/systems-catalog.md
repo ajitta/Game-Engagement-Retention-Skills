@@ -2,6 +2,8 @@
 
 Read in ADV `system` mode when the deliverable is one named system whose value spans a session *and* a return. Same fields per system: loop (in-session use → what accumulates → return event) · coupling · dominant failure · ethics families · instrumentation.
 
+**The `T<n> <slug>` stamps below are internal keying between these modules and never reach an answer.** They tell you which row to look up in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`; what the reader gets is the bound in their own words, or nothing at all when every bullet is met.
+
 ## The who-sets-the-appointment test
 
 Run it before the ethics row lookup, on any system that creates a return event.

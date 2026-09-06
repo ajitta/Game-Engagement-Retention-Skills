@@ -315,7 +315,8 @@ more *rigorous* on the specific things that are easy to forget and expensive to 
 - Does it decline to invent ship weeks and headcounts, or fill the roadmap because a roadmap looks complete?
 
 A positive delta there at `--runs 3` is the reproducible version of the README's manual
-A/B claim, which ran at n=2 with one judge and no reproducibility. It is also the honest
+A/B history — three matchups across two rounds, one prompt per matchup and one judge per
+pair, with no reproducibility. It is also the honest
 denominator for the plugin's always-on listing cost: three descriptions that load on
 every request whether or not a skill fires.
 

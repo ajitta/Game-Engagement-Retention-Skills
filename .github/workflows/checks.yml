@@ -1,0 +1,32 @@
+name: checks
+
+# The three invariant scripts are the load-bearing checks: they catch the
+# divergence between a SKILL.md and contracts.md that a skill loading alone at
+# invocation would turn into a silently missing rule. They need only bash and
+# coreutils, so they run here on every push.
+#
+# The two `claude plugin validate --strict` targets are NOT run here — they need
+# the Claude Code CLI. They are release checks, run locally; README says so.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  invariants:
+    runs-on: ubuntu-latest
+    # The scripts match Korean instrument names and prohibition words; a C locale
+    # would make those patterns silently miss.
+    env:
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Shared blocks are byte-identical across the three bodies
+        run: bash scripts/check-shared-blocks.sh
+      - name: No facts in SKILL.md bodies
+        run: bash scripts/check-no-facts-in-skills.sh
+      - name: Every T3 row carries a checkable compliant spec
+        run: bash scripts/check-ethics-rows.sh

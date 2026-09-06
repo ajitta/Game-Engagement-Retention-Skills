@@ -2,6 +2,8 @@
 
 Read this whenever a retention number is about to be quoted, targeted or compared — including when the user pastes one at you; day conventions live in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/metric-definitions.md`, per-genre reads in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/genre-profiles.md`.
 
+**last-verified: 2026-09.** Every row here is a vendor or first-party figure tied to the edition that published it, and editions are reissued annually — a row is not wrong when it ages, it is *about a different year*. If today is more than ~12 months past that date, say which edition the number came from before quoting it, and never let a stale row stand in for a current target.
+
 ## Standing rules
 
 - **Five fields or it is not a benchmark**: source · data year and edition · population with its floor · percentile · day convention. Missing one, it is context, never a target — and when a user quotes a number, first ask which of the five they can supply rather than accepting it.

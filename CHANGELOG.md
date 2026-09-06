@@ -4,13 +4,20 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-The version here is the `version` field of `.claude-plugin/plugin.json`. An installed copy stays on its cached version until that number changes, so every user-visible change ships with a bump and a `{name}--v{version}` tag.
+The version here is the `version` field of `.claude-plugin/plugin.json`. An installed copy stays on its cached version until that number changes, so every user-visible change ships with a bump and a `{name}--v{version}` tag. Tags start at
+2.1.0: 1.0.0, 1.1.0 and 2.0.0 were released before the tagging ritual and have none.
 
 ---
 
 ## [2.2.1] — 2026-09-06
 
-Correctness and truthfulness. Three skill-behaviour fixes, the release-gate claim corrected, and the false-positive graders repaired — the first release informed by actually running an eval case.
+Correctness and truthfulness. Three skill-behaviour fixes, the release-gate claim corrected, and the false-positive graders repaired — the first release informed by actually running an eval case. Every promise `04-design.md` made and this repository had not kept is now either kept or marked superseded.
+
+### Added
+
+- **CI, which three documents had been asserting for two releases.** `.github/workflows/checks.yml` runs the three invariant scripts on every push and pull request. The two `claude plugin validate --strict` targets stay local release checks — CI has no Claude Code CLI — and README, `CONTRIBUTING.md` and `04-design.md` now all say exactly that instead of "all in CI".
+- **`CONTRIBUTING.md`**, promised at `04-design.md` §2 and never written. It carries the one-topic-one-owner table across all 24 reference modules, the shared-block rule, the release ritual, and the note that topic ownership is enforced by review — no script compares modules against each other.
+- **`last-verified: 2026-09` on `benchmarks.md`**, matching `jurisdictions.md`. Benchmark rows are tied to the vendor edition that published them and editions reissue annually; a row does not become wrong when it ages, it becomes *about a different year*.
 
 ### Fixed
 
@@ -26,6 +33,11 @@ Correctness and truthfulness. Three skill-behaviour fixes, the release-gate clai
 
 - **The 6/6 false-positive release gate is now stated as declared, not met.** `README.md`, `evals/README.md` and the 2.0.0 entry here all said the gate binds the release. The suite has never been executed and `evals/results/` does not exist. The gate still binds — the standard did not move — but no document now implies it has been cleared.
 - **The manual eval procedure ran in a place that silently corrupts its own results.** `evals/README.md` showed the judge invocation being run from the repository root. `claude -p` prints only the final assistant message, and a project-level `Stop` hook takes that slot — on the first grading run made here the verdict came back as the hook's reply rather than a PASS/FAIL list, while the generation transcript was unaffected. The procedure now says to run every invocation from outside the repository with absolute paths. Hooks under `.claude/` are gitignored, so whether a given machine hits this is invisible from the tree.
+- **`04-design.md` is now marked as what it is: the plan, not the contract.** It carried a status of `draft` while describing a system that shipped three releases ago, and specified a tier-code ethics stamp, a literal `Mode:` line and a `docs/` exclusion that the shipped contract forbids or that was deliberately not taken. A header now names `contracts.md` as superseding §4, and eight points carry inline `[SUPERSEDED]` markers with the shipped rule beside them. The stale 480 KB figure is corrected to ~648 KB, and the `marketplace.json` edit instructions are marked as removed in 2.2.0. The reasoning around each is kept, because it records why.
+- **The largest-risk mitigation named an eval grader the contract makes impossible.** `04-design.md` §11 said a grader asserts the mandatory ethics read fired; no grader can, because the answer may never name a file or module. The shipped proxy — a mechanic-bearing answer carries a bound in the reader's words, and its absence is the signal — is named there instead.
+- **The sub-1,024 `description` budget was spent without a record.** `04-design.md` §11 held every `description` under 1,024 characters as insurance against an older client enforcing that cap. All three now run 1,122–1,254. It was spent deliberately, in the 2.1.0 routing rewrite, to move the Korean triggers into `description` where routing actually reads them; the risk accepted is that a client still enforcing 1,024 would drop the frontmatter.
+- **`interaction-reward-moments` kept a calibration example its own routing sends elsewhere.** A scene-less "our game isn't fun" is the advisor's by this skill's own frontmatter; the body now says so, and says that if it fired here anyway the answer is one question — the scene — not a hand-off back.
+- **Low-severity truthfulness.** The one bare relative cross-skill path in `churn-and-winback.md` now uses the `${CLAUDE_SKILL_DIR}` form every other module uses. `systems-catalog.md` says its `T<n> <slug>` stamps are internal keying that never reaches an answer. `evals/README.md` described the A/B history as n=2 with one judge; README describes three matchups across two rounds, and they now agree. The tag claim at the top of this file notes that 1.0.0, 1.1.0 and 2.0.0 predate the tagging ritual and have none. The repository-structure diagram no longer calls ~648 KB of tracked research that ships to installers "the design record".
 - **README corrections.** "authored and run **manually**" → "**documented to run manually**", matching the 2.0.0 entry which was already correct. The manual-run instruction now names the grader file per family under `evals/<case>/graders/` rather than assuming every case has `criteria.md` — only 16 of 38 do. "Both validators and all three scripts pass" → "The skills validator and all three scripts pass", which is what the following sentence already explained. A duplicated `CLAUDE.local.md` sentence removed.
 
 ---
@@ -59,7 +71,7 @@ Routing only. No skill body, reference module or output rule changed — this re
   - Meta-progression is split on a stated axis — the system belongs to the advisor, the pacing and unlock schedule to the lifecycle skill — replacing a one-word separator that real requests do not contain.
 - Feel-effect strength, safety and accessibility (flash, shake, haptics, camera motion) is claimed by the moment skill, which previously had no vocabulary for it while three installed design skills claimed all of it.
 - Domain lists end in "and similar consumer interactive apps" rather than reading as closed enumerations; a fitness or habit app previously routed only by accident.
-- Plugin and marketplace descriptions no longer sell the skills as designing "dopamine points", the term this release removed from the skills themselves.
+- Plugin and marketplace descriptions no longer sell the skills as designing "dopamine points", the term this release removed from the skills themselves. *(Precisely, and corrected in 2.2.1: removed from every **answer** — the body forbids it reaching the reader. `도파민 포인트` is deliberately kept in `interaction-reward-moments`'s `description` and in `plugin.json` keywords as an inbound routing trigger, because it is what users type.)*
 
 ### Fixed
 

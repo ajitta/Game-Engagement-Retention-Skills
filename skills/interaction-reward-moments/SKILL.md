@@ -17,7 +17,7 @@ $ARGUMENTS
 
 Required: product and genre or domain · platform — mobile, PC-Steam, console, web, Roblox-UGC · shipping markets · monetization model in one line · natural usage cadence · **the named scene** · **the feedback that scene already has** — visual, sound, haptic, UI, numbers · **who the scene is for** — new player or veteran.
 
-The last two are blocking here: without them the Feedback bullet cannot tell adding from restating, which is how a proposal ends up describing what already ships. When a proposal will carry a reward, currency, timer, randomness or purchase surface, also establish whether the audience includes minors — it can move a mechanic two tiers. Calibration: `"탑다운 로그라이크, 방 클리어 후 보상 선택이 밋밋해요"` → assume and proceed, since what is missing only moves tuning; `"우리 게임 재미없대요"` with no named scene → ask one question, and only one.
+The last two are blocking here: without them the Feedback bullet cannot tell adding from restating, which is how a proposal ends up describing what already ships. When a proposal will carry a reward, currency, timer, randomness or purchase surface, also establish whether the audience includes minors — it can move a mechanic two tiers. Calibration: `"탑다운 로그라이크, 방 클리어 후 보상 선택이 밋밋해요"` → assume and proceed, since what is missing only moves tuning; `"우리 게임 재미없대요"` with no named scene → this is the shape this skill's own routing sends to `engagement-retention-advisor`; if it fired here anyway, do not hand it back — ask the one question that makes it yours, the scene, and only that one.
 
 ## Preflight
 

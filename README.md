@@ -102,7 +102,7 @@ Reward-moment design — top-down roguelike, post-room upgrade pick
 - **Effort**: S (client-only, constants remote-configurable) · **Depends on**: nothing · **Kill if**: pair completion lands under chance +5pp
 ```
 
-Every answer carries the same fixed sections in the same order: the deliverable label → assumptions (every guessed input, tagged) → the mode's body → ordering by **impact per unit effort** → measurement plan → a redesign section only when a legal or platform bound actually failed → jurisdiction flags → **basis — one line in the designer's own words naming the checks that ran, and any check that could not be run**. That last line is a compliance device, not decoration: a skipped mandatory read surfaces there as a check that could not be run, in plain language and never as a filename.
+Every answer carries the same fixed sections in the same order: the deliverable label → assumptions (**at most four lines**, only the guesses that would change *which* proposals you get, each tagged) → the mode's body → ordering by **impact per unit effort** → measurement plan → a redesign section only when a legal or platform bound actually failed → jurisdiction flags → **basis — one line in the designer's own words naming the checks that ran, and any check that could not be run**. That last line is a compliance device, not decoration: a skipped mandatory read surfaces there as a check that could not be run, in plain language and never as a filename.
 
 Two rules the format enforces against invention. Effort is a band (S ≤1 week / M 1–3 weeks / L >3 weeks or new art or a systems change); ship **order** is stated, but ship weeks, headcounts and costs never are, because the model cannot know your calendar. And any number the skill introduces carries `[source | population | year | definition]` inline, or it is not written.
 
@@ -242,7 +242,7 @@ claude plugin validate ./skills --strict
 scripts/check-shared-blocks.sh && scripts/check-no-facts-in-skills.sh && scripts/check-ethics-rows.sh
 ```
 
-The skills validator and all three scripts pass. `claude plugin validate .claude-plugin/plugin.json --strict` exits 1 in a local checkout, on a warning about the untracked personal `CLAUDE.local.md` at the repository root; that file is gitignored and never reaches an installer. `claude plugin validate ./skills --strict` is the load-bearing one: a broken `SKILL.md` frontmatter loads at runtime with empty metadata — a skill with no description and therefore no routing, the worst failure this plugin has. The marketplace manifest is validated in the catalog repository, not here.
+The three scripts run in CI on every push (`.github/workflows/checks.yml`); the two validators are release checks run locally, because CI has no Claude Code CLI. The skills validator and all three scripts pass. `claude plugin validate .claude-plugin/plugin.json --strict` exits 1 in a local checkout, on a warning about the untracked personal `CLAUDE.local.md` at the repository root; that file is gitignored and never reaches an installer. `claude plugin validate ./skills --strict` is the load-bearing one: a broken `SKILL.md` frontmatter loads at runtime with empty metadata — a skill with no description and therefore no routing, the worst failure this plugin has. The marketplace manifest is validated in the catalog repository, not here.
 
 ### Research basis
 
@@ -273,7 +273,8 @@ Game-Engagement-Retention-Skills/
 │                            #   contracts (canonical shared blocks; never read at runtime)
 ├── evals/                   # 38 cases, ten families, one prompt + graders each
 ├── scripts/                 # check-shared-blocks · check-no-facts-in-skills · check-ethics-rows
-├── docs/                    # design record and the 2026-07 hardening notes
+├── docs/                    # ~648 KB of research and design record, plus the 2026-07
+│                            #   hardening notes — tracked, and it ships to installers
 └── LICENSE
 ```
 

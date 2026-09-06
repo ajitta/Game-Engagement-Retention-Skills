@@ -1,33 +1,41 @@
 ---
-status: draft
+status: mostly-closed
 revised: 2026-09-06
 ---
 
 # Remaining work after v2.2.0
 
+> **Worked through in 2.2.1.** Everything in §3, §4 and §5 below is now closed except where
+> a line says otherwise; `CHANGELOG.md` `[2.2.1]` is the record of what changed and why.
+> Two things came out of the work that this document did not predict: the false-positive
+> graders were themselves broken and would have failed a correct answer, and the documented
+> manual eval procedure ran in a directory where a project `Stop` hook silently replaces
+> the judge's verdict. Both are written up in the changelog. §7 is the one open item.
+
 A handoff. v2 shipped and is pushed; this document is the list of things the
 release states, promises or implies that are not yet true. It is written to be
 actionable without the session that produced it.
 
-Read `04-design.md` for the contract and `03-analysis.md` for why v2 exists. Do
-not re-derive either. **Scope every check to this repository** — `know-your-unknowns`
+Read `skills/engagement-retention-advisor/references/contracts.md` for the shipped output
+contract, `04-design.md` for the plan it was built from, and `03-analysis.md` for why v2
+exists. Do not re-derive them. **Scope every check to this repository** — `know-your-unknowns`
 and `claude-plugins` are separate and were deliberately left alone.
 
 ---
 
 ## 1. Where things stand
 
-Shipped, pushed and tagged: `game-engagement-retention-skills--v2.1.0` and
-`--v2.2.0`. Working tree clean.
+Shipped and tagged: `game-engagement-retention-skills--v2.1.0` and `--v2.2.0`; 2.2.1 is
+the current version.
 
 | Fact | Value | How to re-check |
 |---|---|---|
-| Version | 2.2.0 | `python3 -c "import json;print(json.load(open('.claude-plugin/plugin.json'))['version'])"` |
+| Version | 2.2.1 | `python3 -c "import json;print(json.load(open('.claude-plugin/plugin.json'))['version'])"` |
 | Always-on tokens | ~1,845 | `claude --plugin-dir . plugin details game-engagement-retention-skills` |
-| Frontmatter budget | 1,423 / 1,436 / 1,494 of 1,536 | see §5 |
+| `description` length | 1,254 / 1,142 / 1,122 characters | `for f in skills/*/SKILL.md; do sed -n 3p $f \| wc -c; done` |
 | Reference modules | 24 | `ls skills/*/references/*.md \| wc -l` |
-| Eval cases | 38, never executed | `ls -d evals/*/ \| wc -l`; `ls evals/results` is empty |
-| Invariant scripts | 3, all passing | `bash scripts/check-*.sh` |
+| Eval cases | 38; one has ever been executed | `ls -d evals/*/ \| wc -l`; `evals/results/` does not exist |
+| Invariant scripts | 3, all passing, all in CI | `bash scripts/check-*.sh`; `.github/workflows/checks.yml` |
 
 Distribution is through the catalog marketplace `ajitta`:
 
@@ -60,12 +68,13 @@ These items come from a four-lens audit that was **stopped before its
 adversarial verification pass finished**. Treat every entry below as a
 *candidate* unless this document marks it CONFIRMED.
 
-CONFIRMED means it was checked directly against the files in this session:
+CONFIRMED meant it was checked directly against the files. All four were confirmed and all
+four are now fixed:
 
 - the eval suite has never run (`evals/results/` is empty)
 - 16 of 38 cases have `criteria.md`; the rest use other grader filenames
 - the read-ceiling arithmetic does not close (§3.2)
-- there is no CI in this repository (`.github/` does not exist)
+- there was no CI in this repository (`.github/` now exists and runs the three scripts)
 
 Everything else: verify the quoted line before editing it. Several audit items
 in the original sweep were wrong about line numbers.
