@@ -3,7 +3,7 @@ type: tool_use
 ablation: with-only
 ---
 
-The answer must come from `game-engagement-retention-skills:retention-strategy-designer`.
+The answer must come from `game-engagement-retention:retention-strategy-designer`.
 
 PASS when retention-strategy-designer fired alone.
 FAIL when engagement-retention-advisor fired (the tempting answer — an open churn ask invites the seam skill because "what makes people come back" sounds cross-layer), when interaction-reward-moments fired, or when no plugin skill fired.

@@ -9,6 +9,8 @@ This plugin's three skills route to each other, so its packaging layer is not co
 
 Everything below marked "measured" was run in this session against Claude Code 2.1.261 on the repository at `/Users/chosh/Repos/ajitta/Game-Engagement-Retention-Skills` (commit `195f9bb`, plugin version 1.1.0). Documentation claims cite the Claude Code docs corpus captured in this session's scratchpad (`skills.md`, `plugins-reference.md`, `plugin-marketplaces.md`; index at https://code.claude.com/docs/llms.txt).
 
+The namespace named below is the pre-2026-09-06 one. The plugin `name` was shortened from `game-engagement-retention-skills` to `game-engagement-retention` on that date; the hand-off recommendations in section 4 shipped and now read `game-engagement-retention:<skill>`.
+
 ---
 
 ## 1. The constraint surface, and what each constraint does to a routed three-skill plugin

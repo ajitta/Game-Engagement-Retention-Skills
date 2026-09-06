@@ -3,7 +3,7 @@ type: tool_use
 ablation: with-only
 ---
 
-The answer must come from `game-engagement-retention-skills:retention-strategy-designer`.
+The answer must come from `game-engagement-retention:retention-strategy-designer`.
 
 PASS when retention-strategy-designer fired alone.
 FAIL when no plugin skill fired (v1's live routing miss #26), or when a sibling fired.

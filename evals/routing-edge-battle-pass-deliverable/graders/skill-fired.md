@@ -3,7 +3,7 @@ type: tool_use
 ablation: with-only
 ---
 
-The answer must come from `game-engagement-retention-skills:retention-strategy-designer`.
+The answer must come from `game-engagement-retention:retention-strategy-designer`.
 
 PASS when retention-strategy-designer fired alone.
 FAIL when interaction-reward-moments fired (a pass reads as tier-unlock progression and reward moments), when the advisor fired (a pass spans session and return, so it looks cross-layer), or when no plugin skill fired.

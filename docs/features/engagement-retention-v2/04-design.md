@@ -13,6 +13,9 @@ revised: 2026-09-06
 > during implementation carry a **[SUPERSEDED]** marker inline; the reasoning around them
 > is kept because it records *why*. `CHANGELOG.md` is what actually shipped; `05-plan.md`
 > is what is still open.
+> The namespace this document names throughout is now `game-engagement-retention:<skill>`:
+> the plugin `name` was shortened from `game-engagement-retention-skills` on 2026-09-06,
+> after this document was written. The old form below is the plan as it was drafted.
 
 v2 keeps the three skills, their names, their directories and the deliverable-based routing rule that scored 28/30 in the live routing run, and spends the whole budget on two things the evidence actually indicts: what the skills say, and what shape they say it in. The 8/9/10-column tables become a ≤4-column scan table plus one card per proposal. Each skill gains named output **modes** so a pasted cohort table earns a curve reading instead of five proposals and a battle-pass ask earns a fillable spec sheet. Every fact leaves the three `SKILL.md` bodies for on-demand reference modules under a single enforceable invariant — **a SKILL.md may contain a procedure, never a fact** — which kills the seven-place ethics drift structurally rather than by discipline. The absolute prohibition list becomes a four-tier model (illegal / rating-or-platform / evidence-of-harm / contested preference) where refusal fires only on tier 1 and tier 2a, and every tier-3 mechanic ships a measurable compliant spec instead of a ban. Monetization enters scope as retention tension only; SaaS leaves scope; games go deep.
 

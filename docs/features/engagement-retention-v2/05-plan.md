@@ -31,7 +31,7 @@ the current version.
 | Fact | Value | How to re-check |
 |---|---|---|
 | Version | 2.2.1 | `python3 -c "import json;print(json.load(open('.claude-plugin/plugin.json'))['version'])"` |
-| Always-on tokens | ~1,845 | `claude --plugin-dir . plugin details game-engagement-retention-skills` |
+| Always-on tokens | ~1,836 | `claude --plugin-dir . plugin details game-engagement-retention` |
 | `description` length | 1,254 / 1,142 / 1,122 characters | `for f in skills/*/SKILL.md; do sed -n 3p $f \| wc -c; done` |
 | Reference modules | 24 | `ls skills/*/references/*.md \| wc -l` |
 | Eval cases | 38; one has ever been executed | `ls -d evals/*/ \| wc -l`; `evals/results/` does not exist |
@@ -41,7 +41,7 @@ Distribution is through the catalog marketplace `ajitta`:
 
 ```
 /plugin marketplace add ajitta/claude-plugins
-/plugin install game-engagement-retention-skills@ajitta
+/plugin install game-engagement-retention@ajitta
 ```
 
 ### Settled — do not re-litigate
@@ -74,7 +74,7 @@ four are now fixed:
 - the eval suite has never run (`evals/results/` is empty)
 - 16 of 38 cases have `criteria.md`; the rest use other grader filenames
 - the read-ceiling arithmetic does not close (§3.2)
-- there was no CI in this repository (`.github/` now exists and runs the three scripts)
+- there was no CI in this repository (`.github/` now exists and runs the four scripts)
 
 Everything else: verify the quoted line before editing it. Several audit items
 in the original sweep were wrong about line numbers.
@@ -174,7 +174,7 @@ Ordered by cost to fix, cheapest first. None of these mislead a user.
 4. §4.1 — decide CI or no CI, then make every document agree.
 5. The rest as convenient.
 
-After any skill edit, run all three scripts plus `claude plugin validate ./skills --strict`, and re-measure with `claude --plugin-dir . plugin details game-engagement-retention-skills`. Any user-visible change needs a version bump in the same commit — a declared `version` is what makes an installed copy re-fetch at all — followed by `claude plugin tag . -m "... %s" --push`.
+After any skill edit, run all four scripts plus `claude plugin validate ./skills --strict`, and re-measure with `claude --plugin-dir . plugin details game-engagement-retention`. Any user-visible change needs a version bump in the same commit — a declared `version` is what makes an installed copy re-fetch at all — followed by `claude plugin tag . -m "... %s" --push`.
 
 ---
 
@@ -195,9 +195,9 @@ rather than merely loud. It does not rewrite history: a CHANGELOG entry below th
 newest one described the tree as it was, and "three invariant checks" was true
 when 2.0.0 shipped. And it does not read a quotation as an assertion: the house
 style writes a correction as `old → new`, and the left half is evidence, not a
-claim. Its header carries nine negative tests; run them before trusting an OK.
+claim. Its header carries twelve negative tests; run them before trusting an OK.
 
-**What it still cannot check** is a measured figure — the ~1,845 always-on token
+**What it still cannot check** is a measured figure — the ~1,836 always-on token
 cost, an A/B margin — because verifying one needs a tool the script does not have.
 Those stay the release ritual's job, and they are the next place this class of
 drift will appear.

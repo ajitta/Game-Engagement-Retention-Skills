@@ -27,9 +27,12 @@
 #                   (a tagged newest entry that no longer matches its tag)
 #   git:            `git tag x--v9.9.9 HEAD` on an unpushed commit, or reset the
 #                   remote-tracking ref behind a tag (a tag pushed without its branch)
+#   plugin.json:    rename "name" without adding the old one to LEGACY_NAMES
+#                   (every tag cut under the old prefix goes missing at once)
 #
-# All eleven were run against this tree on 2026-09-06 and all eleven failed the
-# script, which is the only reason to trust the OK line.
+# Eleven of these were run against this tree on 2026-09-06 and all eleven failed
+# the script; the twelfth arrived with the rename later that day and was run the
+# same way. That is the only reason to trust the OK line.
 #
 # Not caught, and not a gap: a count written only in prose with no noun this
 # script keys on ("thirty-eight of them"). The house style is to write the
@@ -88,6 +91,23 @@ n_skills=$(ls skills/*/SKILL.md 2>/dev/null | wc -l | tr -d ' ')
 n_scripts=$(ls scripts/check-*.sh 2>/dev/null | wc -l | tr -d ' ')
 name=$(sed -nE 's/.*"name"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/p' .claude-plugin/plugin.json | head -1)
 
+# The plugin `name` is the tag prefix, so shortening it orphans every tag cut
+# under the old one. `game-engagement-retention-skills` became
+# `game-engagement-retention` on 2026-09-06; the three tags that predate it are
+# left alone, because a tag is a historical fact and re-cutting them would
+# claim a name those releases never shipped under. Both prefixes resolve here.
+# Nothing new is ever written under a legacy name: release.sh and
+# `claude plugin tag` both derive the prefix from plugin.json.
+LEGACY_NAMES="game-engagement-retention-skills"
+resolve_tag() {  # $1 = version; echoes the tag that carries it, or nothing
+  for n in "$name" $LEGACY_NAMES; do
+    if git rev-parse -q --verify "refs/tags/$n--v$1" >/dev/null; then
+      echo "$n--v$1"; return 0
+    fi
+  done
+  return 1
+}
+
 # --- 1. counts asserted in prose --------------------------------------------
 # "38 cases across ten families"
 while IFS=: read -r f l text; do
@@ -144,8 +164,8 @@ if [ -n "$(git tag 2>/dev/null)" ]; then
     # release.sh verifies the tag itself, and section 5 verifies it landed on
     # the published branch.
     [ "$v" = "$declared" ] && continue
-    git rev-parse -q --verify "refs/tags/$name--v$v" >/dev/null || \
-      fail "CHANGELOG documents $v but there is no tag $name--v$v"
+    resolve_tag "$v" >/dev/null || \
+      fail "CHANGELOG documents $v but there is no tag $name--v$v (nor under any legacy name)"
   done
 else
   echo "note: no tags fetched, skipping the tag-coverage check (CI needs fetch-depth: 0)"
@@ -165,8 +185,8 @@ entry() {  # $1 = version; reads a CHANGELOG on stdin
 newest_heading=$(grep -oE '^## \[[^]]+\]' CHANGELOG.md | head -1)
 if [ -n "$(git tag 2>/dev/null)" ] && [ "$newest_heading" != "## [Unreleased]" ]; then
   v=${newest_heading#'## ['}; v=${v%]}
-  tag="$name--v$v"
-  if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
+  tag=$(resolve_tag "$v")
+  if [ -n "$tag" ]; then
     now=$(entry "$v" < CHANGELOG.md)
     was=$(git show "$tag^{}:CHANGELOG.md" 2>/dev/null | entry "$v")
     if [ -n "$was" ] && [ "$now" != "$was" ]; then

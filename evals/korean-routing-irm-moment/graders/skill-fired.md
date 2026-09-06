@@ -3,7 +3,7 @@ type: tool_use
 ablation: with-only
 ---
 
-The answer must come from `game-engagement-retention-skills:interaction-reward-moments`.
+The answer must come from `game-engagement-retention:interaction-reward-moments`.
 
 PASS when interaction-reward-moments fired alone.
 FAIL when a sibling fired or when no plugin skill fired.

@@ -3,7 +3,7 @@ type: tool_use
 ablation: with-only
 ---
 
-The answer must come from `game-engagement-retention-skills:retention-strategy-designer`.
+The answer must come from `game-engagement-retention:retention-strategy-designer`.
 
 PASS when retention-strategy-designer fired alone.
 FAIL when interaction-reward-moments fired (the tempting answer — "tutorial" is an interaction-reward-moments trigger word), when the advisor fired, or when no plugin skill fired.

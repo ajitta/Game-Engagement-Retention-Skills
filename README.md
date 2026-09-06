@@ -6,6 +6,15 @@ It keeps apart the two problems that generic advice collapses into one — the *
 
 Version 2.2.0. Games are the deep case; five consumer interactive domains ride alongside them; SaaS is explicitly out. See [Scope](#scope).
 
+**Install** — from the [ajitta/claude-plugins](https://github.com/ajitta/claude-plugins) catalog, then start a new session:
+
+```
+/plugin marketplace add ajitta/claude-plugins
+/plugin install game-engagement-retention@ajitta
+```
+
+Verification, updates, the slash commands and the no-plugin alternative are under [Installation](#installation).
+
 ---
 
 ## The three skills
@@ -148,15 +157,21 @@ Distributed through [ajitta/claude-plugins](https://github.com/ajitta/claude-plu
 
 ```
 /plugin marketplace add ajitta/claude-plugins
-/plugin install game-engagement-retention-skills@ajitta
+/plugin install game-engagement-retention@ajitta
 ```
 
-Already installed? `plugin.json` declares a `version`, so Claude Code only re-fetches when that string changes — `/plugin update game-engagement-retention-skills@ajitta` is a no-op while the cached version matches. Every release here bumps the field for that reason.
+Already installed? `plugin.json` declares a `version`, so Claude Code only re-fetches when that string changes — `/plugin update game-engagement-retention@ajitta` is a no-op while the cached version matches. Every release here bumps the field for that reason.
+
+**Installed under the old name?** The plugin ID was `game-engagement-retention-skills` through 2.2.1. Claude Code keys an installed copy on `name`, so a shortened one is a different plugin and no `/plugin update` carries the old copy across — remove it and install the ID above:
+
+```
+/plugin uninstall game-engagement-retention-skills@ajitta
+```
 
 Start a new session for the skills to load, then verify:
 
 ```
-/plugin details game-engagement-retention-skills@ajitta
+/plugin details game-engagement-retention@ajitta
 ```
 
 Expect **Skills (3): engagement-retention-advisor, interaction-reward-moments, retention-strategy-designer**.
@@ -166,9 +181,9 @@ Expect **Skills (3): engagement-retention-advisor, interaction-reward-moments, r
 Slash commands are namespaced by the plugin:
 
 ```
-/game-engagement-retention-skills:interaction-reward-moments  <named scene, loop, screen or beat> [--mode moments|first-win]
-/game-engagement-retention-skills:retention-strategy-designer <product + retention problem or named mechanic> [--mode strategy|read|cadence|calendar|economics|instrument]
-/game-engagement-retention-skills:engagement-retention-advisor <product + the two deliverables, or the named system> [--mode integrate|compare|system]
+/game-engagement-retention:interaction-reward-moments  <named scene, loop, screen or beat> [--mode moments|first-win]
+/game-engagement-retention:retention-strategy-designer <product + retention problem or named mechanic> [--mode strategy|read|cadence|calendar|economics|instrument]
+/game-engagement-retention:engagement-retention-advisor <product + the two deliverables, or the named system> [--mode integrate|compare|system]
 ```
 
 Auto-triggering needs no slash command — "our card-flip reveal feels cheap" reaches IRM, "배틀패스 설계해줘" reaches RSD in `cadence`, "combat feels flat and players churn" reaches ADV.
@@ -181,11 +196,11 @@ Copy the three folders under `skills/` into any `.claude/skills/` directory, kee
 
 ## Token cost
 
-Measured with `claude --plugin-dir . plugin details game-engagement-retention-skills` on Claude Code 2.1.261, 2026-09-06.
+Measured with `claude --plugin-dir . plugin details game-engagement-retention` on Claude Code 2.1.261, 2026-09-06; the always-on total re-measured on 2.1.263 after the name shortened, which is where the 9-token drop comes from.
 
 | Component | Always-on | On-invoke |
 |---|---|---|
-| Plugin total, all three skills registered | ~1,845 tok | — |
+| Plugin total, all three skills registered | ~1,836 tok | — |
 | Each skill's routing frontmatter | ~600–630 tok | — |
 | `engagement-retention-advisor` body | — | ~9.0k |
 | `interaction-reward-moments` body | — | ~9.9k |
@@ -194,7 +209,7 @@ Measured with `claude --plugin-dir . plugin details game-engagement-retention-sk
 
 **Per-invocation total, by mode** — body plus the modules that mode reads, at the ≈3.1 bytes/token the measured bodies imply. Cheapest is `retention-strategy-designer --mode economics` at ~16k; `--mode instrument` ~16k; `--mode read` ~17k; `engagement-retention-advisor --mode compare` ~17k; `interaction-reward-moments --mode first-win` ~19k; `--mode moments` ~19–22k depending on which pattern family the beat selects; `engagement-retention-advisor --mode integrate` ~20k; `retention-strategy-designer --mode calendar` ~25k; `--mode strategy` ~26k; `engagement-retention-advisor --mode system` ~27k. The most expensive is `retention-strategy-designer --mode cadence` — battle pass, streak, energy — at **~30k, about 15% of a 200k window in a single invocation**. For comparison, v1.1.0's advisor at its worst, following its own pointers, read ~43 KB ≈ 14k: every v2 mode costs more than the v1 worst case, and `cadence` costs more than twice it. The reads buy sourced, dated, jurisdiction-checked material the v1 bodies asserted from memory — but they are not cheap, and the three-read ceiling does not make them cheap.
 
-Always-on cost is paid in every session; on-invoke cost is paid each time a skill fires. v1.1.0 measured ~1,108 always-on tokens, so v2's richer routing and mode triggers cost about 740 more tokens per session — roughly a third of one percent of a 200k context window. The corpus is 24 reference modules, ~345 KB; the three-reads-per-invocation ceiling bounds any single invocation to the range above rather than to corpus size.
+Always-on cost is paid in every session; on-invoke cost is paid each time a skill fires. v1.1.0 measured ~1,108 always-on tokens, so v2's richer routing and mode triggers cost about 728 more tokens per session — roughly a third of one percent of a 200k context window. The corpus is 24 reference modules, ~345 KB; the three-reads-per-invocation ceiling bounds any single invocation to the range above rather than to corpus size.
 
 The routing text stays inside the frontmatter budget: `description` + `when_to_use` is 1,423 characters for the advisor, 1,436 for reward moments and 1,494 for retention, against a 1,536-character cap that the binary carries as its default. Korean trigger vocabulary now sits inside `description` rather than only in `when_to_use`, so it survives any shortening the listing budget applies.
 

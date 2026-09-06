@@ -3,7 +3,7 @@ type: tool_use
 ablation: with-only
 ---
 
-The answer must come from `game-engagement-retention-skills:engagement-retention-advisor`, invoked via the Skill tool.
+The answer must come from `game-engagement-retention:engagement-retention-advisor`, invoked via the Skill tool.
 
 PASS when engagement-retention-advisor fired and neither sibling skill fired.
 FAIL when interaction-reward-moments or retention-strategy-designer fired instead, when both siblings fired in sequence instead of the advisor, or when no plugin skill fired.

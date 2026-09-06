@@ -92,7 +92,7 @@ re-fetch — plus a `CHANGELOG.md` entry saying *which skill now fires different
 re-measure and record:
 
 ```sh
-claude --plugin-dir . plugin details game-engagement-retention-skills
+claude --plugin-dir . plugin details game-engagement-retention
 ```
 
 Release is one command:

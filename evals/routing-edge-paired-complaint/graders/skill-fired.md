@@ -3,7 +3,7 @@ type: tool_use
 ablation: with-only
 ---
 
-The answer must come from `game-engagement-retention-skills:engagement-retention-advisor`.
+The answer must come from `game-engagement-retention:engagement-retention-advisor`.
 
 PASS when engagement-retention-advisor fired alone.
 FAIL when interaction-reward-moments fired on "combat feels flat", when retention-strategy-designer fired on "players churn", when both fired in sequence, or when no plugin skill fired.
