@@ -239,10 +239,11 @@ The caveats cut both ways and are worth stating plainly: one prompt per matchup,
 ```sh
 claude plugin validate .claude-plugin/plugin.json --strict
 claude plugin validate ./skills --strict
-scripts/check-shared-blocks.sh && scripts/check-no-facts-in-skills.sh && scripts/check-ethics-rows.sh
+scripts/check-shared-blocks.sh && scripts/check-no-facts-in-skills.sh \
+  && scripts/check-ethics-rows.sh && scripts/check-claims.sh
 ```
 
-The three scripts run in CI on every push (`.github/workflows/checks.yml`); the two validators are release checks run locally, because CI has no Claude Code CLI. The skills validator and all three scripts pass. `claude plugin validate .claude-plugin/plugin.json --strict` exits 1 in a local checkout, on a warning about the untracked personal `CLAUDE.local.md` at the repository root; that file is gitignored and never reaches an installer. `claude plugin validate ./skills --strict` is the load-bearing one: a broken `SKILL.md` frontmatter loads at runtime with empty metadata — a skill with no description and therefore no routing, the worst failure this plugin has. The marketplace manifest is validated in the catalog repository, not here.
+The four scripts run in CI on every push (`.github/workflows/checks.yml`); the two validators are release checks run locally, because CI has no Claude Code CLI. The skills validator and all four scripts pass. `claude plugin validate .claude-plugin/plugin.json --strict` exits 1 in a local checkout, on a warning about the untracked personal `CLAUDE.local.md` at the repository root; that file is gitignored and never reaches an installer. `claude plugin validate ./skills --strict` is the load-bearing one: a broken `SKILL.md` frontmatter loads at runtime with empty metadata — a skill with no description and therefore no routing, the worst failure this plugin has. The marketplace manifest is validated in the catalog repository, not here.
 
 ### Research basis
 
@@ -272,7 +273,8 @@ Game-Engagement-Retention-Skills/
 │                            #   korea-market, integration-patterns, systems-catalog,
 │                            #   contracts (canonical shared blocks; never read at runtime)
 ├── evals/                   # 38 cases, ten families, one prompt + graders each
-├── scripts/                 # check-shared-blocks · check-no-facts-in-skills · check-ethics-rows
+├── scripts/                 # check-shared-blocks · check-no-facts-in-skills
+│                            #   · check-ethics-rows · check-claims
 ├── docs/                    # ~648 KB of research and design record, plus the 2026-07
 │                            #   hardening notes — tracked, and it ships to installers
 └── LICENSE

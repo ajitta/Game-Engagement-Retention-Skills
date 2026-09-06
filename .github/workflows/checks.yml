@@ -1,6 +1,6 @@
 name: checks
 
-# The three invariant scripts are the load-bearing checks: they catch the
+# The four invariant scripts are the load-bearing checks: they catch the
 # divergence between a SKILL.md and contracts.md that a skill loading alone at
 # invocation would turn into a silently missing rule. They need only bash and
 # coreutils, so they run here on every push.
@@ -24,9 +24,15 @@ jobs:
       LANG: C.UTF-8
     steps:
       - uses: actions/checkout@v4
+        with:
+          # check-claims.sh verifies that every release the CHANGELOG documents
+          # is tagged; a shallow checkout fetches no tags and it would skip.
+          fetch-depth: 0
       - name: Shared blocks are byte-identical across the three bodies
         run: bash scripts/check-shared-blocks.sh
       - name: No facts in SKILL.md bodies
         run: bash scripts/check-no-facts-in-skills.sh
       - name: Every T3 row carries a checkable compliant spec
         run: bash scripts/check-ethics-rows.sh
+      - name: Doc claims about counts, versions and gates match the tree
+        run: bash scripts/check-claims.sh

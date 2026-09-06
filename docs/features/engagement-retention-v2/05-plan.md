@@ -35,7 +35,7 @@ the current version.
 | `description` length | 1,254 / 1,142 / 1,122 characters | `for f in skills/*/SKILL.md; do sed -n 3p $f \| wc -c; done` |
 | Reference modules | 24 | `ls skills/*/references/*.md \| wc -l` |
 | Eval cases | 38; one has ever been executed | `ls -d evals/*/ \| wc -l`; `evals/results/` does not exist |
-| Invariant scripts | 3, all passing, all in CI | `bash scripts/check-*.sh`; `.github/workflows/checks.yml` |
+| Invariant scripts | 4, all passing, all in CI | `bash scripts/check-*.sh`; `.github/workflows/checks.yml` |
 
 Distribution is through the catalog marketplace `ajitta`:
 
@@ -178,11 +178,36 @@ After any skill edit, run all three scripts plus `claude plugin validate ./skill
 
 ---
 
-## 7. What would make this repeatable
+## 7. What would make this repeatable — BUILT
 
 The recurring failure in this project is a claim outliving the thing it
 described: benchmark rows, the "Skill wins 2/2" line, the `Mode:` contract, and
 now the eval gate. Two of the three invariant scripts exist because of it. A
-third check — one that greps `README.md` and `CHANGELOG.md` for assertions about
-counts and results, and fails when they disagree with the tree — would close the
-loop, and is the highest-value thing not yet built.
+fourth — `scripts/check-claims.sh` — now closes the loop: it re-derives every
+count, version and gate claim in the documents from the tree and fails on any
+disagreement, and it runs in CI.
+
+It caught its own arrival. Adding a fourth script made "three invariant scripts"
+false in four documents, which is exactly the drift it exists to find.
+
+Two things it deliberately does not do, and both are the reason it is trustworthy
+rather than merely loud. It does not rewrite history: a CHANGELOG entry below the
+newest one described the tree as it was, and "three invariant checks" was true
+when 2.0.0 shipped. And it does not read a quotation as an assertion: the house
+style writes a correction as `old → new`, and the left half is evidence, not a
+claim. Its header carries nine negative tests; run them before trusting an OK.
+
+**What it still cannot check** is a measured figure — the ~1,845 always-on token
+cost, an A/B margin — because verifying one needs a tool the script does not have.
+Those stay the release ritual's job, and they are the next place this class of
+drift will appear.
+
+## 8. Still open
+
+- The 6/6 and 3/3 eval gates are declared and unmet. One case of family 7 has
+  been executed once; the documented protocol is three runs per arm across both
+  families. `evals/README.md` has the procedure, including why it must be run
+  from outside this repository.
+- The two `claude plugin validate --strict` targets do not run in CI, because CI
+  has no Claude Code CLI. They are release checks, and nothing enforces that they
+  were run.

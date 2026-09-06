@@ -73,9 +73,10 @@ Editing a block means editing four files. Copy everything between and including 
 bash scripts/check-shared-blocks.sh
 bash scripts/check-no-facts-in-skills.sh
 bash scripts/check-ethics-rows.sh
+bash scripts/check-claims.sh
 ```
 
-These three run in CI on every push (`.github/workflows/checks.yml`). The two validators
+These four run in CI on every push (`.github/workflows/checks.yml`). The two validators
 below need the Claude Code CLI and are run locally:
 
 ```sh
