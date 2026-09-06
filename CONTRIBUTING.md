@@ -95,8 +95,22 @@ re-measure and record:
 claude --plugin-dir . plugin details game-engagement-retention-skills
 ```
 
-Release is `claude plugin tag . -m "… %s" --push`, which refuses on a dirty tree. Note
-that it pushes the **tag only** — `git push origin main` is a separate step.
+Release is one command:
+
+```sh
+scripts/release.sh "one-line release message"     # --dry-run to rehearse it
+```
+
+It refuses on a dirty tree, on a version already tagged, and when `plugin.json` and the
+newest CHANGELOG entry disagree; runs the four invariant scripts and both validators;
+records the always-on cost; then **pushes the branch and only then the tag.**
+
+That order is the reason the script exists. `claude plugin tag . --push` pushes the tag
+and not the branch, so the tagged commit reaches the remote on no branch. A git-based
+marketplace clones the default branch, so until someone runs `git push origin main` an
+installer gets the *previous* release while the tag advertises the new one. It happened on
+2.2.1. `check-claims.sh` now fails on any tag that is not reachable from the published
+branch, so the state is detectable as well as avoidable.
 
 **A change that does not touch a skill does not get a bump.** Tooling, CI and document
 fixes go under `## [Unreleased]` at the top of `CHANGELOG.md` and are absorbed by the next

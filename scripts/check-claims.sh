@@ -25,8 +25,10 @@
 #   README.md:      re-add "Skill wins 2/2" or "Both validators"
 #   CHANGELOG.md:   delete the [Unreleased] section, then edit the [2.2.1] entry
 #                   (a tagged newest entry that no longer matches its tag)
+#   git:            `git tag x--v9.9.9 HEAD` on an unpushed commit, or reset the
+#                   remote-tracking ref behind a tag (a tag pushed without its branch)
 #
-# All ten were run against this tree on 2026-09-06 and all ten failed the
+# All eleven were run against this tree on 2026-09-06 and all eleven failed the
 # script, which is the only reason to trust the OK line.
 #
 # Not caught, and not a gap: a count written only in prose with no noun this
@@ -168,7 +170,25 @@ if [ -n "$(git tag 2>/dev/null)" ] && [ "$newest_heading" != "## [Unreleased]" ]
   fi
 fi
 
-# --- 5. the eval suite's execution state, as the documents describe it -------
+# --- 5. every tag is reachable from the published branch ---------------------
+# `claude plugin tag . --push` pushes the TAG, not the branch. The commit it
+# names then exists on the remote as a dangling object: `git ls-remote --tags`
+# resolves it, but it is on no branch. A git-based marketplace clones the
+# default branch, so during that window an installer gets the previous release
+# while the tag says otherwise. `git push origin main` is the missing half, and
+# scripts/release.sh does both in order.
+remote_branch=$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null || echo origin/main)
+if [ -n "$(git tag 2>/dev/null)" ] && git rev-parse -q --verify "$remote_branch" >/dev/null 2>&1; then
+  for t in $(git tag); do
+    c=$(git rev-parse -q --verify "$t^{}" 2>/dev/null) || continue
+    git merge-base --is-ancestor "$c" "$remote_branch" 2>/dev/null || \
+      fail "tag $t names a commit that is not on $remote_branch — the tag was pushed without the branch, and an installer cloning the default branch does not get this release. Run: git push origin HEAD"
+  done
+else
+  echo "note: no tags or no tracked remote branch, skipping the tag-reachability check"
+fi
+
+# --- 6. the eval suite's execution state, as the documents describe it -------
 # The release gate is declared, not met, until transcripts exist. Whichever way
 # that flips, three documents have to move with it.
 if [ -d evals/results ] && [ -n "$(ls -A evals/results 2>/dev/null)" ]; then
@@ -183,11 +203,13 @@ else
   done
 fi
 
-# --- 6. claims retired as false, which must not come back -------------------
+# --- 7. claims retired as false, which must not come back -------------------
 # Each was in a shipped document and each was wrong.
 retired=(
   "Skill wins 2/2"            # a headline that outlived its test
-  "Both validators"           # the plugin.json validator exits 1 locally
+  "Both validators[^.]{0,60}pass"  # false: the plugin.json validator exits 1 locally.
+                              # Scoped to the assertion — naming the two validators
+                              # in order to run them is not the retired claim.
   "and run \*\*manually\*\*"  # the suite is documented to run, not run
   "all in CI"                 # two validate targets are local; CI has no CLI
 )
