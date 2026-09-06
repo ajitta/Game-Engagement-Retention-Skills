@@ -1,6 +1,6 @@
 ---
 feature: engagement-retention-v2
-phase: design
+phase: implementing
 owner: chosh1179
 created: 2026-09-06
 updated: 2026-09-06
@@ -31,6 +31,14 @@ skills' load-bearing citations no longer say what the skills claim they say.
 | [02i](02i-research-skillcraft.md) | research | Claude Code skill-craft constraints measured on 2.1.261 |
 | [03-analysis.md](03-analysis.md) | analysis | What is wrong with v1.1.0, ranked, with what survived verification |
 | [04-design.md](04-design.md) | design | The v2 specification: architecture, routing, modes, cards, ethics tiers, evals |
+| [05-plan.md](05-plan.md) | plan | Remaining work after v2.2.0 — what the release claims that is not yet true, ranked, with fixes |
+
+## Status
+
+v2 shipped as 2.2.0 and is tagged. `04-design.md` is the contract, but the
+shipped output contract is `skills/engagement-retention-advisor/references/contracts.md`,
+which supersedes the design's §4 after a 2026-09 polish pass. Outstanding work
+is in [05-plan.md](05-plan.md).
 
 ## How it was produced
 
