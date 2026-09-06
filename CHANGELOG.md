@@ -22,6 +22,7 @@ there is nothing here for it to re-fetch.
 ### Changed
 
 - **The invariant scripts are now four, and every document says so.** CI runs all four scripts; README, `CONTRIBUTING.md` and the `05-plan.md` status table moved from three to four. This correction was made *by* the new script, on its first run.
+- **`check-claims.sh` now verifies that a tagged release's entry still describes the tree that carries the tag.** The trap it closes was hit in this repository: 2.2.1 was tagged, work continued, and the new work was written into the `[2.2.1]` entry — so a reader checking that tag out found a changelog describing a file the tag does not contain. The check applies to the newest entry only, and only when it names a tagged version; annotating an *older* entry with a correction pointer is good practice and is deliberately left alone, as 2.1.0 carries one. It also documents why `## [Unreleased]` is load-bearing rather than decorative: without it the newest entry is a tagged release, and its counts — true when it shipped — get graded against today's tree.
 - **`05-plan.md` §7 is marked built**, with what the new check deliberately does not do — rewrite history, or read a quotation as an assertion — and what it still cannot check: a measured figure such as the always-on token cost. A new §8 lists the two things genuinely still open: the eval gates remain declared and unmet, and nothing enforces that the two local `claude plugin validate` targets were run.
 
 ---

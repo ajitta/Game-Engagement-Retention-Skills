@@ -23,13 +23,21 @@
 #   CHANGELOG.md:   insert "## [2.1.7]" below the newest *released* entry (no tag)
 #   README.md:      delete "never been executed"   (while evals/results/ is absent)
 #   README.md:      re-add "Skill wins 2/2" or "Both validators"
+#   CHANGELOG.md:   delete the [Unreleased] section, then edit the [2.2.1] entry
+#                   (a tagged newest entry that no longer matches its tag)
 #
-# All nine were run against this tree on 2026-09-06 and all nine failed the
+# All ten were run against this tree on 2026-09-06 and all ten failed the
 # script, which is the only reason to trust the OK line.
 #
 # Not caught, and not a gap: a count written only in prose with no noun this
 # script keys on ("thirty-eight of them"). The house style is to write the
 # number next to the thing it counts, which is what makes this check possible.
+#
+# One interaction worth knowing. `## [Unreleased]` is load-bearing, not
+# decoration: without it, the newest entry is a tagged release, and this script
+# grades that entry's counts — true when it shipped — against today's tree. The
+# resulting failure is correct ("the documents no longer describe the tree") and
+# the remedy is to open an Unreleased section, which is what CONTRIBUTING says.
 set -uo pipefail
 cd "$(dirname "$0")/.."
 status=0
@@ -76,6 +84,7 @@ n_families=$(grep -c '^### [0-9][0-9]* — ' evals/README.md)
 n_modules=$(ls skills/*/references/*.md 2>/dev/null | wc -l | tr -d ' ')
 n_skills=$(ls skills/*/SKILL.md 2>/dev/null | wc -l | tr -d ' ')
 n_scripts=$(ls scripts/check-*.sh 2>/dev/null | wc -l | tr -d ' ')
+name=$(sed -nE 's/.*"name"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/p' .claude-plugin/plugin.json | head -1)
 
 # --- 1. counts asserted in prose --------------------------------------------
 # "38 cases across ten families"
@@ -125,7 +134,6 @@ newest=$(grep -oE '^## \[[0-9]+\.[0-9]+\.[0-9]+\]' CHANGELOG.md | head -1 | tr -
 # --- 3. every release the changelog says is tagged, is tagged ----------------
 # CHANGELOG states tags begin at 2.1.0; earlier releases predate the ritual.
 if [ -n "$(git tag 2>/dev/null)" ]; then
-  name=$(sed -nE 's/.*"name"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/p' .claude-plugin/plugin.json | head -1)
   for v in $(grep -oE '^## \[[0-9]+\.[0-9]+\.[0-9]+\]' CHANGELOG.md | tr -d '#[] '); do
     case "$v" in 1.*|2.0.*) continue;; esac
     git rev-parse -q --verify "refs/tags/$name--v$v" >/dev/null || \
@@ -135,7 +143,32 @@ else
   echo "note: no tags fetched, skipping the tag-coverage check (CI needs fetch-depth: 0)"
 fi
 
-# --- 4. the eval suite's execution state, as the documents describe it -------
+# --- 4. a tagged release's entry describes the tree that carries that tag -----
+# The trap: tag a release, keep working, and write the new work into the entry
+# the tag already froze. A reader who checks the tag out then finds a changelog
+# describing files it does not contain. This was hit once, in 2.2.1.
+#
+# Newest entry only, and only when it names a tagged version. Annotating an
+# older entry with a correction pointer — "(corrected in 2.2.1: …)" — is good
+# practice and is deliberately left alone; 2.1.0 carries one.
+entry() {  # $1 = version; reads a CHANGELOG on stdin
+  awk -v v="## [$1]" 'index($0,v)==1 {on=1; print; next} on && /^## \[/ {exit} on {print}'
+}
+newest_heading=$(grep -oE '^## \[[^]]+\]' CHANGELOG.md | head -1)
+if [ -n "$(git tag 2>/dev/null)" ] && [ "$newest_heading" != "## [Unreleased]" ]; then
+  v=${newest_heading#'## ['}; v=${v%]}
+  tag="$name--v$v"
+  if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
+    now=$(entry "$v" < CHANGELOG.md)
+    was=$(git show "$tag^{}:CHANGELOG.md" 2>/dev/null | entry "$v")
+    if [ -n "$was" ] && [ "$now" != "$was" ]; then
+      fail "the [$v] entry has changed since $tag was cut, and it is still the newest entry — a reader checking that tag out gets a changelog describing a tree it does not have. Put post-tag work under '## [Unreleased]' instead"
+      diff <(printf '%s\n' "$was") <(printf '%s\n' "$now") | head -6
+    fi
+  fi
+fi
+
+# --- 5. the eval suite's execution state, as the documents describe it -------
 # The release gate is declared, not met, until transcripts exist. Whichever way
 # that flips, three documents have to move with it.
 if [ -d evals/results ] && [ -n "$(ls -A evals/results 2>/dev/null)" ]; then
@@ -150,7 +183,7 @@ else
   done
 fi
 
-# --- 5. claims retired as false, which must not come back -------------------
+# --- 6. claims retired as false, which must not come back -------------------
 # Each was in a shipped document and each was wrong.
 retired=(
   "Skill wins 2/2"            # a headline that outlived its test
