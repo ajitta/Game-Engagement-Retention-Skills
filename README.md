@@ -4,7 +4,7 @@ A Claude Code plugin of **three routed skills** for designing what makes a sessi
 
 It keeps apart the two problems that generic advice collapses into one — the **moment** (a single interaction inside a single session) and the **lifecycle** (a cohort returning over days and weeks) — routes each request to the skill that owns the *deliverable*, and answers in a fixed card format where every proposal carries a concrete trigger, a pre-registered metric with its baseline, guardrails including at least one user-harm metric, an effort band, and — only where there is a bound to hold or a price to name — one plain-language ethics line.
 
-Version 2.0.0. Games are the deep case; five consumer interactive domains ride alongside them; SaaS is explicitly out. See [Scope](#scope).
+Version 2.1.0. Games are the deep case; five consumer interactive domains ride alongside them; SaaS is explicitly out. See [Scope](#scope).
 
 ---
 
@@ -150,6 +150,8 @@ A local/private plugin. Adding your own repository as a marketplace source is no
 /plugin marketplace add https://github.com/ajitta/Game-Engagement-Retention-Skills
 /plugin install game-engagement-retention-skills@game-engagement-retention-skills
 ```
+
+Already installed? `plugin.json` declares a `version`, so Claude Code only re-fetches when that string changes — `/plugin update game-engagement-retention-skills@game-engagement-retention-skills` is a no-op while the cached version matches. Every release here bumps the field for that reason.
 
 Start a new session for the skills to load, then verify:
 

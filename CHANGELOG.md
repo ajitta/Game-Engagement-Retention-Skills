@@ -8,6 +8,29 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [2.1.0] — 2026-09-06
+
+Routing only. No skill body, reference module or output rule changed — this release moves and rewords the text that decides whether a skill fires at all.
+
+### Changed
+
+- **Routing trigger text rewritten** after a three-router test over 68 requests against this user's real 33-skill listing. Six defects were measured and fixed:
+  - Korean trigger vocabulary moved from `when_to_use` into `description`, so it no longer sits behind the field that a listing-budget shortening trims first. First Hangul now appears at character 42-130 of each entry instead of 1,136-1,149.
+  - A complaint that names no scene and no metric — "our players are bored", "make it more addictive", "the game feels grindy", "재미없대요" — now has an owner. Previously the Korean phrasings fired and the English ones matched nothing.
+  - The monetization clause is preconditioned on retention being the constraint being protected. "Retention is fine but nobody pays" previously fired the lifecycle skill; it is now declined.
+  - Route-away is keyed on the axis rather than the mechanic noun, so the *staging* of a pass tier-up, a reward claim or a streak-break screen stays with the moment skill while the *schedule* goes to the lifecycle skill.
+  - The onboarding/FTUE funnel, win-back, and A/B and experiment design are claimed positively by the lifecycle skill. The funnel route previously rested entirely on a disclaimer in the moment skill's tail.
+  - Meta-progression is split on a stated axis — the system belongs to the advisor, the pacing and unlock schedule to the lifecycle skill — replacing a one-word separator that real requests do not contain.
+- Feel-effect strength, safety and accessibility (flash, shake, haptics, camera motion) is claimed by the moment skill, which previously had no vocabulary for it while three installed design skills claimed all of it.
+- Domain lists end in "and similar consumer interactive apps" rather than reading as closed enumerations; a fitness or habit app previously routed only by accident.
+- Plugin and marketplace descriptions no longer sell the skills as designing "dopamine points", the term this release removed from the skills themselves.
+
+### Fixed
+
+- **2.0.0 shipped in three pushes with no version bump between them.** `plugin.json` declares a `version`, and Claude Code skips `/plugin update` and auto-update whenever the resolved version matches the cached one — so anyone who installed at the first 2.0.0 commit would never have received the eval suite, the rewritten README, or any of this release. The bump to 2.1.0 is what makes them reachable. Every future release bumps the field.
+
+---
+
 ## [2.0.0] — 2026-09-06
 
 A rewrite of what the skills say and what shape they say it in. The three skills keep their names, their directories and the deliverable-based routing rule; everything downstream of that changed.
@@ -46,18 +69,6 @@ The rule that did not change: route on the deliverable, not on keyword presence.
 - **`scripts/` — three invariant checks**, all passing: `check-shared-blocks.sh` (the routing block, card grammar and language contract are byte-identical across the three bodies and the canonical `contracts.md`), `check-no-facts-in-skills.sh` (no percentages, benchmark figures, jurisdiction or statute names, dates, prohibition lists or citations in a `SKILL.md`; the measurement windows the bodies keep inline by design are exempt, and the script's header carries the negative test), `check-ethics-rows.sh` (no tier-3 row without a numeric or observable compliant spec — which makes "energy is forbidden" literally unwritable).
 
 ### Changed
-
-- **Routing trigger text rewritten** after a three-router test over 68 requests against this user's real 33-skill listing. Six defects were measured and fixed:
-  - Korean trigger vocabulary moved from `when_to_use` into `description`, so it no longer sits behind the field that a listing-budget shortening trims first. First Hangul now appears at character 42-130 of each entry instead of 1,136-1,149.
-  - A complaint that names no scene and no metric — "our players are bored", "make it more addictive", "the game feels grindy", "재미없대요" — now has an owner. Previously the Korean phrasings fired and the English ones matched nothing.
-  - The monetization clause is preconditioned on retention being the constraint being protected. "Retention is fine but nobody pays" previously fired the lifecycle skill; it is now declined.
-  - Route-away is keyed on the axis rather than the mechanic noun, so the *staging* of a pass tier-up, a reward claim or a streak-break screen stays with the moment skill while the *schedule* goes to the lifecycle skill.
-  - The onboarding/FTUE funnel, win-back, and A/B and experiment design are claimed positively by the lifecycle skill. The funnel route previously rested entirely on a disclaimer in the moment skill's tail.
-  - Meta-progression is split on a stated axis — the system belongs to the advisor, the pacing and unlock schedule to the lifecycle skill — replacing a one-word separator that real requests do not contain.
-- Feel-effect strength, safety and accessibility (flash, shake, haptics, camera motion) is claimed by the moment skill, which previously had no vocabulary for it while three installed design skills claimed all of it.
-- Domain lists end in "and similar consumer interactive apps" rather than reading as closed enumerations; a fitness or habit app previously routed only by accident.
-- Plugin and marketplace descriptions no longer sell the skills as designing "dopamine points", the term this release removed from the skills themselves.
-
 
 - **Output shape: cards replace wide tables.** The 8/9/10-column proposal tables are gone. Output is now a scan table of at most four content columns (only when there are three or more items) plus one card per proposal, with bold inline labels and one sentence per bullet. The execution bullets that lost all three A/B runs — pre-registered measure with a baseline recorded *before* shipping, two to three guardrails including at least one user-harm metric, an ethics line in plain language whenever there is a bound to hold or a price to name, effort band, dependency, numeric kill threshold — sit **inside** the card so they cannot be dropped under length pressure. A wide all-fields table is emitted only on an explicit spreadsheet/CSV/Notion/PRD request, and then after the cards, never instead of them. Two-column mechanic **specs** stay tables, because a two-column table cannot collapse in a terminal.
 - **Anti-fabrication rule attached to the card.** Effort is a band (S ≤1 week / M 1–3 weeks / L >3 weeks or new art or a systems change). Ship *order* is stated; ship weeks, headcounts, salaries and costs never are. Any number a skill introduces carries `[source | population | year | definition]` or is not written.
