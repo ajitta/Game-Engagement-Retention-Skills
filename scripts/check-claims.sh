@@ -138,6 +138,12 @@ newest=$(grep -oE '^## \[[0-9]+\.[0-9]+\.[0-9]+\]' CHANGELOG.md | head -1 | tr -
 if [ -n "$(git tag 2>/dev/null)" ]; then
   for v in $(grep -oE '^## \[[0-9]+\.[0-9]+\.[0-9]+\]' CHANGELOG.md | tr -d '#[] '); do
     case "$v" in 1.*|2.0.*) continue;; esac
+    # The version plugin.json declares is the release in flight: its entry is
+    # written and its tag does not exist yet, by definition. Requiring one here
+    # would deadlock scripts/release.sh, which runs this check before tagging.
+    # release.sh verifies the tag itself, and section 5 verifies it landed on
+    # the published branch.
+    [ "$v" = "$declared" ] && continue
     git rev-parse -q --verify "refs/tags/$name--v$v" >/dev/null || \
       fail "CHANGELOG documents $v but there is no tag $name--v$v"
   done
