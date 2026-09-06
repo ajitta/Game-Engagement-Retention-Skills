@@ -4,7 +4,7 @@ A Claude Code plugin of **three routed skills** for designing what makes a sessi
 
 It keeps apart the two problems that generic advice collapses into one — the **moment** (a single interaction inside a single session) and the **lifecycle** (a cohort returning over days and weeks) — routes each request to the skill that owns the *deliverable*, and answers in a fixed card format where every proposal carries a concrete trigger, a pre-registered metric with its baseline, guardrails including at least one user-harm metric, an effort band, and — only where there is a bound to hold or a price to name — one plain-language ethics line.
 
-Version 2.1.0. Games are the deep case; five consumer interactive domains ride alongside them; SaaS is explicitly out. See [Scope](#scope).
+Version 2.2.0. Games are the deep case; five consumer interactive domains ride alongside them; SaaS is explicitly out. See [Scope](#scope).
 
 ---
 
@@ -144,19 +144,19 @@ Five false-positive guards hold the other direction, four of them structural: th
 
 ## Installation
 
-A local/private plugin. Adding your own repository as a marketplace source is not publishing — it is how Claude Code resolves the install manifest.
+Distributed through [ajitta/claude-plugins](https://github.com/ajitta/claude-plugins), a catalog repository that lists this plugin and points at this repository. The catalog holds no code; installs and updates come from here, at the version `plugin.json` declares.
 
 ```
-/plugin marketplace add https://github.com/ajitta/Game-Engagement-Retention-Skills
-/plugin install game-engagement-retention-skills@game-engagement-retention-skills
+/plugin marketplace add ajitta/claude-plugins
+/plugin install game-engagement-retention-skills@ajitta
 ```
 
-Already installed? `plugin.json` declares a `version`, so Claude Code only re-fetches when that string changes — `/plugin update game-engagement-retention-skills@game-engagement-retention-skills` is a no-op while the cached version matches. Every release here bumps the field for that reason.
+Already installed? `plugin.json` declares a `version`, so Claude Code only re-fetches when that string changes — `/plugin update game-engagement-retention-skills@ajitta` is a no-op while the cached version matches. Every release here bumps the field for that reason.
 
 Start a new session for the skills to load, then verify:
 
 ```
-/plugin details game-engagement-retention-skills@game-engagement-retention-skills
+/plugin details game-engagement-retention-skills@ajitta
 ```
 
 Expect **Skills (3): engagement-retention-advisor, interaction-reward-moments, retention-strategy-designer**.
@@ -239,11 +239,10 @@ The caveats cut both ways and are worth stating plainly: one prompt per matchup,
 ```sh
 claude plugin validate .claude-plugin/plugin.json --strict
 claude plugin validate ./skills --strict
-claude plugin validate . --strict
 scripts/check-shared-blocks.sh && scripts/check-no-facts-in-skills.sh && scripts/check-ethics-rows.sh
 ```
 
-Both component validators and all three scripts pass. `claude plugin validate .claude-plugin/plugin.json --strict` exits 1 in a local checkout, on a warning about the untracked personal `CLAUDE.local.md` at the repository root; that file is gitignored and never reaches an installer. `claude plugin validate ./skills --strict` is the load-bearing one: `claude plugin validate .` checks only the marketplace manifest, and a broken `SKILL.md` frontmatter passes it cleanly while loading at runtime with empty metadata — a skill with no description and therefore no routing, the worst failure this plugin has. The `plugin.json` validator warns only about the untracked local `CLAUDE.local.md`, which never reaches installers.
+Both validators and all three scripts pass. `claude plugin validate .claude-plugin/plugin.json --strict` exits 1 in a local checkout, on a warning about the untracked personal `CLAUDE.local.md` at the repository root; that file is gitignored and never reaches an installer. `claude plugin validate ./skills --strict` is the load-bearing one: a broken `SKILL.md` frontmatter loads at runtime with empty metadata — a skill with no description and therefore no routing, the worst failure this plugin has. The marketplace manifest is validated in the catalog repository, not here. The `plugin.json` validator warns only about the untracked local `CLAUDE.local.md`, which never reaches installers.
 
 ### Research basis
 
@@ -256,8 +255,7 @@ The skills describe design levers *consistent with* published work, never neuroc
 ```
 Game-Engagement-Retention-Skills/
 ├── .claude-plugin/
-│   ├── plugin.json          # manifest; skills are auto-scanned, not declared
-│   └── marketplace.json     # local install manifest
+│   └── plugin.json          # manifest; skills are auto-scanned, not declared
 ├── skills/
 │   ├── interaction-reward-moments/
 │   │   ├── SKILL.md         # procedure only, 193 lines

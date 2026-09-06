@@ -8,6 +8,20 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [2.2.0] — 2026-09-06
+
+Distribution only. No skill, reference module or routing text changed.
+
+### Changed
+
+- **Distributed through a catalog marketplace, [ajitta/claude-plugins](https://github.com/ajitta/claude-plugins).** Install is now `/plugin marketplace add ajitta/claude-plugins` then `/plugin install game-engagement-retention-skills@ajitta`, replacing `game-engagement-retention-skills@game-engagement-retention-skills` — a marketplace whose name only repeated the plugin's own. The catalog holds no code and points back at this repository, so installs and updates still resolve here at the version `plugin.json` declares.
+
+### Removed
+
+- **`.claude-plugin/marketplace.json`.** Keeping it would leave two install paths for one plugin. The marketplace manifest is validated in the catalog repository, so this repository's release checks drop the `claude plugin validate .` target and keep the `plugin.json` and `./skills` ones.
+
+---
+
 ## [2.1.0] — 2026-09-06
 
 Routing only. No skill body, reference module or output rule changed — this release moves and rewords the text that decides whether a skill fires at all.
