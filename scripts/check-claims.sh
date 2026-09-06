@@ -20,7 +20,7 @@
 #   README.md:      "all three scripts pass"       -> "all four scripts pass"
 #   README.md:      "three routed skills"          -> "four routed skills"
 #   plugin.json:    version 2.2.1                  -> 2.3.0, ahead of the CHANGELOG
-#   CHANGELOG.md:   insert "## [2.1.5]" below the newest entry (a version with no tag)
+#   CHANGELOG.md:   insert "## [2.1.7]" below the newest *released* entry (no tag)
 #   README.md:      delete "never been executed"   (while evals/results/ is absent)
 #   README.md:      re-add "Skill wins 2/2" or "Both validators"
 #
@@ -40,8 +40,11 @@ fail() { echo "FAIL: $*"; status=1; }
 # CHANGELOG.md is a historical record. "three invariant checks" was true when
 # 2.0.0 shipped and rewriting it would be falsifying the past, so only the
 # newest entry — the one that describes the plugin as it stands — is scanned.
-# Everything above the second `## [x.y.z]` heading is that entry.
-cl_end=$(grep -nE '^## \[[0-9]+\.[0-9]+\.[0-9]+\]' CHANGELOG.md | sed -n 2p | cut -d: -f1)
+# That is everything above the SECOND `## [` heading of any kind: with an
+# `## [Unreleased]` section present the newest entry is that one and the newest
+# released version is already history, and without it the newest version is the
+# entry. Keying on `## [x.y.z]` instead would make the range span both.
+cl_end=$(grep -nE '^## \[' CHANGELOG.md | sed -n 2p | cut -d: -f1)
 cl_end=${cl_end:-$(wc -l < CHANGELOG.md)}
 
 # grep over the docs, dropping two kinds of hit that are not assertions:

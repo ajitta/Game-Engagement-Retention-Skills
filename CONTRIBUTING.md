@@ -95,7 +95,15 @@ re-measure and record:
 claude --plugin-dir . plugin details game-engagement-retention-skills
 ```
 
-Release is `claude plugin tag . -m "… %s" --push`, which refuses on a dirty tree.
+Release is `claude plugin tag . -m "… %s" --push`, which refuses on a dirty tree. Note
+that it pushes the **tag only** — `git push origin main` is a separate step.
+
+**A change that does not touch a skill does not get a bump.** Tooling, CI and document
+fixes go under `## [Unreleased]` at the top of `CHANGELOG.md` and are absorbed by the next
+release. A bump exists to make an installed copy re-fetch; if there is nothing for it to
+re-fetch, bumping only costs every user a download. The trap this avoids is real and was
+hit once: work committed after a tag was written into that tag's entry, so a reader who
+checked the tag out found it described files it did not contain.
 
 ## Ethics changes
 
