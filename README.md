@@ -1,10 +1,15 @@
 # Game Engagement & Retention Skills
 
-A Claude Code plugin of **three routed skills** for designing what makes a session satisfying and what makes someone come back.
+[![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757)](#installation)
+[![version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fajitta%2FGame-Engagement-Retention-Skills%2Fmain%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&color=3E7BFA)](.claude-plugin/plugin.json)
+[![skills](https://img.shields.io/badge/skills-3%20routed-4C9A6A)](#the-three-skills)
+[![license](https://img.shields.io/badge/license-MIT-yellow)](LICENSE)
 
-It keeps apart the two problems that generic advice collapses into one — the **moment** (a single interaction inside a single session) and the **lifecycle** (a cohort returning over days and weeks) — routes each request to the skill that owns the *deliverable*, and answers in a fixed card format where every proposal carries a concrete trigger, a pre-registered metric with its baseline, guardrails including at least one user-harm metric, an effort band, and — only where there is a bound to hold or a price to name — one plain-language ethics line.
+**A Claude Code plugin of three routed skills for in-session reward moments and lifecycle retention in games and consumer interactive apps — the scene, the cohort, and the link between them.**
 
-Version 3.0.0. Games are the deep case; five consumer interactive domains ride alongside them; SaaS is explicitly out. See [Scope](#scope).
+The set keeps apart the two problems that generic advice collapses into one — the **moment** (a single interaction inside a single session) and the **lifecycle** (a cohort returning over days and weeks) — routes each request to the skill that owns the *deliverable*, and answers in a fixed card format where every proposal carries a concrete trigger, a pre-registered metric with its baseline, guardrails including at least one user-harm metric, an effort band, and — only where there is a bound to hold or a price to name — one plain-language ethics line.
+
+Games are the deep case; five consumer interactive domains ride alongside them; SaaS is explicitly out. See [Scope](#scope).
 
 **Install** — from the [ajitta/claude-plugins](https://github.com/ajitta/claude-plugins) catalog, then start a new session:
 
