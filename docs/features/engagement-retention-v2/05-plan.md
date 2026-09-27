@@ -26,16 +26,16 @@ and `claude-plugins` are separate and were deliberately left alone.
 ## 1. Where things stand
 
 Shipped and tagged under the old plugin name: `game-engagement-retention-skills--v2.1.0`,
-`--v2.2.0` and `--v2.2.1`. 3.0.0 is the current version and the first tagged as
-`game-engagement-retention--v3.0.0`.
+`--v2.2.0` and `--v2.2.1`. 3.0.0 was the first tagged as `game-engagement-retention--v3.0.0`; 3.1.0
+(the Opus 5.5 audit) is the current version.
 
 | Fact | Value | How to re-check |
 |---|---|---|
-| Version | 3.0.0 | `python3 -c "import json;print(json.load(open('.claude-plugin/plugin.json'))['version'])"` |
+| Version | 3.1.0 | `python3 -c "import json;print(json.load(open('.claude-plugin/plugin.json'))['version'])"` |
 | Always-on tokens | ~1,836 | `claude --plugin-dir . plugin details game-engagement-retention` |
 | `description` length | 1,254 / 1,142 / 1,122 characters | `for f in skills/*/SKILL.md; do sed -n 3p $f \| wc -c; done` |
 | Reference modules | 24 | `ls skills/*/references/*.md \| wc -l` |
-| Eval cases | 38; one has ever been executed | `ls -d evals/*/ \| wc -l`; `evals/results/` does not exist |
+| Eval cases | 39; one has ever been executed | `ls -d evals/*/ \| wc -l`; `evals/results/` does not exist |
 | Invariant scripts | 4, all passing, all in CI | `bash scripts/check-*.sh`; `.github/workflows/checks.yml` |
 
 Distribution is through the catalog marketplace `ajitta`:

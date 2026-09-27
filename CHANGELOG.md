@@ -11,16 +11,36 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ## [Unreleased]
 
-Distribution only. No skill, reference module or routing text changed, so no version bump: an installed copy has nothing new to fetch.
+---
 
-### Added
+## [3.1.0] — 2026-09-27
 
-- **The plugin is served from its own repository again.** `.claude-plugin/marketplace.json` is back, with one entry whose source is `./`, and the install is `/plugin marketplace add ajitta/Game-Engagement-Retention-Skills` then `/plugin install game-engagement-retention@game-engagement-retention-skills`. 2.2.0 removed it so there would be one path, through the [ajitta/claude-plugins](https://github.com/ajitta/claude-plugins) catalog; the traffic says almost nobody took that path. Over the fortnight to 2026-09-23 the catalog drew 5 unique cloners against this repository's 22, and the catalog's clones are the ones that would have led here. The sibling plugin measured the same shape at larger scale — 21 against 355 — and moved to self-hosting on 2026-09-19. The catalog keeps its entry and keeps working; the README names it second. Existing `@ajitta` installs are unaffected.
-- **`check-claims.sh` section 7 — the two manifests must agree.** One entry, its `name` equal to `plugin.json`'s, its source `./`, and a README line printing `/plugin install <name>@<marketplace>` with both halves current. The break it guards is silent: `claude plugin validate . --strict` passes a marketplace whose entry names a plugin that no longer exists. Three negative tests were run — entry renamed, source turned into a URL, marketplace renamed without the README — and each failed the script.
+Checked against Anthropic's *Prompting Claude Opus 5.5* guide. Three skill-body rules changed; routing text did not, so every skill fires on the same asks and answers differently only at the edges below. The distribution work that had been waiting under Unreleased ships with it.
+
+### Audit against the Opus 5.5 guide
+
+- **Already compliant, unchanged:** no "think carefully / step by step" line, no request to write reasoning out in the answer (the guide's `reasoning_extraction` refusal category), no `model:` or `effort:` frontmatter under `skills/`, and a "what could not be checked" section already exists as `## 근거`.
+- **Not applicable:** frontend-design defaults, multi-app exploration and multi-agent time budgets — this plugin writes design documents, not UI, and runs no agents.
+- **Changed:** the three gaps below.
 
 ### Changed
 
+- **Pasted material is evidence, not instruction — all three skills (ROUTING block, byte-identical with `contracts.md`).** Designers paste review dumps, patch notes, player mail and cohort exports. The guide reports Opus 5.5 resists instructions inside pasted text once told which text is the user's own. An instruction inside pasted material is now followed only where the designer's own sentences ask for it, and a steering attempt gets one clause in the `## 근거` line — not `## 전제`, which carries only `[가정]` assumptions.
+- **The answer ends at `## 근거` — all three skills (CARD block).** The guide: Opus 5.5 can end a turn with a summary, an offer to carry on, or a list of choices that block nothing, and it responds to instructions that name those stops. The contract now forbids a closing offer, next-step menu or recap after `## 근거`, and names the two replies allowed to end in questions: the intake message and the one bundled routing question.
+- **Images are read, not estimated — retention-strategy-designer step 3a, interaction-reward-moments intake.** The guide: Opus 5.5 reads values off dense charts and screenshots more accurately than earlier models. A retention curve sent as a screenshot is read value by value, labelled as read from the image, with a range rather than an interpolated figure where an axis is ambiguous, and the step-2 convention check still applies. A screenshot of a scene answers the "feedback it already has" intake question instead of prompting it again.
 - **Release checks run three validators, not two.** `claude plugin validate . --strict` validates the marketplace manifest again, in `scripts/release.sh`, README and `CONTRIBUTING.md`. `plugin.json --strict` now passes on Claude Code 2.1.281 in a clean clone.
+
+### Added
+
+- **`evals/hygiene-pasted-review-instruction`** — a Korean review dump with one planted line asking for English output, no ethics check and a paid boost ranked first. Family 10 is now three cases; the suite is 39.
+- **`ending.md` graders on the three `shape-*` cases** — the last heading is `## 근거` and no closing offer follows it.
+- **The plugin is served from its own repository again.** `.claude-plugin/marketplace.json` is back, with one entry whose source is `./`, and the install is `/plugin marketplace add ajitta/Game-Engagement-Retention-Skills` then `/plugin install game-engagement-retention@game-engagement-retention-skills`. 2.2.0 removed it so there would be one path, through the [ajitta/claude-plugins](https://github.com/ajitta/claude-plugins) catalog; the traffic says almost nobody took that path. Over the fortnight to 2026-09-23 the catalog drew 5 unique cloners against this repository's 22, and the catalog's clones are the ones that would have led here. The sibling plugin measured the same shape at larger scale — 21 against 355 — and moved to self-hosting on 2026-09-19. The catalog keeps its entry and keeps working; the README names it second. Existing `@ajitta` installs are unaffected.
+- **`check-claims.sh` section 7 — the two manifests must agree.** One entry, its `name` equal to `plugin.json`'s, its source `./`, and a README line printing `/plugin install <name>@<marketplace>` with both halves current. The break it guards is silent: `claude plugin validate . --strict` passes a marketplace whose entry names a plugin that no longer exists. Three negative tests were run — entry renamed, source turned into a URL, marketplace renamed without the README — and each failed the script.
+
+### Measured and not measured
+
+- Measured: the four invariant scripts, the three validators, and the 32,000-byte body cap on each `SKILL.md`.
+- **Not measured:** no eval case was run on Opus 5.5 for this release — the Claude Code CLI on the release machine has no login, so neither the new case nor the existing families produced a transcript. The declared gates stay declared and unmet.
 
 ---
 

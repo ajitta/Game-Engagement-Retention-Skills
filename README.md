@@ -252,7 +252,7 @@ The caveats cut both ways and are worth stating plainly: one prompt per matchup,
 
 ### The reproducible replacement
 
-`evals/` holds **38 cases across ten families** — routing positives, the six hardened routing edges, six previously homeless asks, Korean routing, mode selection, refusal true positives, **six refusal false positives that are a declared release gate at 6/6 — declared, not yet met, since the suite has never been executed**, output shape with a fabrication penalty, intake, and evidence hygiene.
+`evals/` holds **39 cases across ten families** — routing positives, the six hardened routing edges, six previously homeless asks, Korean routing, mode selection, refusal true positives, **six refusal false positives that are a declared release gate at 6/6 — declared, not yet met, since the suite has never been executed**, output shape with a fabrication penalty, intake, and evidence hygiene.
 
 `claude plugin eval` exists on 2.1.261 but is in early access on this account and currently scaffolds nothing, so the grader frontmatter schema is **unverified** and the suite is authored and **documented to run manually**: `claude -p "$(cat evals/<case>/prompt.md)" --plugin-dir .` for the with arm, the same prompt with no `--plugin-dir` for the baseline, three runs each, graded by a separate judge invocation against that case's grader file under `evals/<case>/graders/` — `criteria.md` for the refusal, intake, hygiene and shape families, `skill-fired.md`, `mode-line.md` or `korean-output.md` for the routing and mode families. The with-without ablation cannot score the routing families — a baseline Claude cannot route to skills it does not have — so those are marked with-only and read as a fired/not-fired indicator. The earn-its-cost argument lives in the scored families, where a plugin-free Claude gives a plausible answer and the graded question is whether it is as *rigorous*.
 
@@ -295,7 +295,7 @@ Game-Engagement-Retention-Skills/
 │       └── references/      # 7 modules: ethics-tiers, domain-ethics, jurisdictions,
 │                            #   korea-market, integration-patterns, systems-catalog,
 │                            #   contracts (canonical shared blocks; never read at runtime)
-├── evals/                   # 38 cases, ten families, one prompt + graders each
+├── evals/                   # 39 cases, ten families, one prompt + graders each
 ├── scripts/                 # check-shared-blocks · check-no-facts-in-skills
 │                            #   · check-ethics-rows · check-claims
 ├── docs/                    # ~648 KB of research and design record, plus the 2026-07
