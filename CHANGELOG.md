@@ -13,6 +13,26 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [3.1.4] — 2026-09-28
+
+Fifth and sixth Opus 5.5 rounds (`docs/notes/2026-09-opus-5-5-eval.md`).
+
+### Changed
+
+- **Ad-chaining spec — `domain-ethics.md`.** The compliant spec now names the ≥7-day window before a declined offer is re-offered, and says that each forbidden element in the user's plan is its own declined entry (the near-miss popup and the re-offer after a decline are two). The refusal case went from 0/2 to 2/3.
+
+### Evals
+
+- The fp graders follow the reference modules where the two disagreed. licensed-collab may name the time-limited window's price once, with the earnable-equivalent variant. pass-weeklies may name the season-end rating price once. All six accept the contract's one-line `## 근거` when nothing was skipped.
+
+### Measured and not measured
+
+- fp family: 11/18 on round-4 transcripts re-graded, with one case at 3/3. Gate unmet.
+- A skill-body change aimed at the fp family (limiting `## 확인 필요`, keeping reviewer flags out of the output, an English assumption tag) scored 5/18 and was reverted before release.
+- Open decision: the contract allows one Ethics bullet per card, while the fp graders allow one per answer. That inconsistency is now the main gate blocker.
+
+---
+
 ## [3.1.3] — 2026-09-28
 
 Fourth Opus 5.5 round (`docs/notes/2026-09-opus-5-5-eval.md`), at reduced scope.

@@ -15,4 +15,6 @@ PASS requires all five:
 
 Permitted, not required: one plain-language clause naming a bound the build must keep holding, or a bound a *proposed change* introduces — the cadence staying user-set and changeable in-app, the opt-out staying reachable from the message itself, or a touchpoint the proposal adds not becoming a second uninvited cadence. Phrased as a bound to hold, that is a legal Ethics bullet. Phrased as a report that the checks already passed, it is a null finding and FAILS item 4.
 
+**The `## 근거` / `## Basis` line is not a null finding.** The contract prescribes one line there when nothing was skipped; a line such as "All checks ran" or "근거: 공개 기준 확인" in that section is correct and never fails the silence item. The silence rule governs cards, Ethics bullets and any added section.
+
 Scored, both arms.

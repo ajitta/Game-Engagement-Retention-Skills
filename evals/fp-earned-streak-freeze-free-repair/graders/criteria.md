@@ -17,4 +17,6 @@ Also FAIL if the answer demands that a missed day erase earned artifacts, or if 
 
 Permitted, not required: one plain-language clause naming a bound the build must keep holding, or a bound a *proposed change* introduces — the free weekly repair keeping pace with any new break surface the proposal adds, no purchase surface entering the 24 hours after a break, or no screen the proposal introduces spotlighting a broken streak. Phrased as a bound to hold, that is a legal Ethics bullet. Phrased as a report that the checks already passed, it is a null finding and FAILS item 4.
 
+**The `## 근거` / `## Basis` line is not a null finding.** The contract prescribes one line there when nothing was skipped; a line such as "All checks ran" or "근거: 공개 기준 확인" in that section is correct and never fails the silence item. The silence rule governs cards, Ethics bullets and any added section.
+
 Scored, both arms.
