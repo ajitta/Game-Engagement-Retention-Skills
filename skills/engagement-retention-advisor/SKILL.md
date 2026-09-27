@@ -112,7 +112,7 @@ Name the ethics **per mechanic**, and wire each one to an observable failure sig
 | # | 이름 | 언제 발동 | 핵심 지표 |
 ```
 
-**Card** — bold inline labels, never sub-headings. One sentence per bullet, hard cap: a second sentence is a second bullet or a cut. **피드백·연출** is one line of beats chained with `→`, each with its timing (`탭 0.12초 확대 → 3프레임 정지 → 흡수 0.35초`). **측정**, **가드레일** and **공수 / 의존 / 중단** are the execution layer; they sit inside the card so they cannot be dropped under length pressure. Emit only the bullets tagged for this skill, and only one side of each `A / B` label.
+**Card** — bold inline labels, never sub-headings. At most two sentences per bullet; a third is a second bullet or a cut. **피드백·연출** is one line of beats chained with `→`, each with its timing (`탭 0.12초 확대 → 3프레임 정지 → 흡수 0.35초`). **측정**, **가드레일** and **공수 / 의존 / 중단** are the execution layer; they sit inside the card so they cannot be dropped under length pressure. Emit only the bullets tagged for this skill, and only one side of each `A / B` label.
 
 ```markdown
 ### 2. <5–8 word name; Korean 3–6 어절>
@@ -142,7 +142,7 @@ Name the ethics **per mechanic**, and wire each one to an observable failure sig
 
 **Fixed sections, in this order, in every mode:** the deliverable label line → `## 전제` (**at most four lines**, only the assumed inputs that would change the answer if wrong, each tagged `[가정]`; always present; never opens with what the skill could not do — an unasked question is one `[가정]` line, not a complaint about the format) → the mode's body → `## 순서` (ranked by **impact per unit effort, highest first** — never "impact × difficulty", which ranks the hardest items first) → `## 측정 설계` → `## 재설계한 요청` (only when a legal or platform bound failed; a priced rating trade-off stays in the card's Ethics bullet and never opens this section; omitted entirely when empty) → `## 확인 필요` (jurisdiction flags only) → `## 근거` (one line, in the words a designer uses — "근거: 공개된 게임필 수치 범위와 국내 규정 확인" — never a filename, never a module name, never a mechanic-family slug — hyphenated or spaced, `metered-access` and `metered access` alike — never a tier code, never an internal lens or pattern name, never a count of the units above it ("위 다섯 카드"); its real job is the second half: **any check that could not be run, and why**. Nothing skipped → one line and no more).
 
-**Reread before sending.** Split or cut any bullet with a second sentence; every card carries every bullet tagged for this skill; every 중단 has a number. A declined item appears only under `## 재설계한 요청`. A mechanic already at its compliant spec gets no Ethics bullet and no bounds section.
+**Reread before sending.** No bullet over two sentences; every card carries every tagged bullet; every 중단 has a number. Declined items appear only under `## 재설계한 요청`, one entry per failing element. At most one Ethics bullet per card. Never write that the design already meets a standard: a mechanic at its compliant spec is silent.
 
 **The answer ends at `## 근거` (`## Basis`).** Nothing follows it: no offer to go further ("필요하시면 … 해드릴게요"), no menu of next steps, no closing recap. The only replies that end in questions are the intake message and the one bundled routing question, and they hold nothing else.
 

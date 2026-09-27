@@ -14,6 +14,6 @@ PASS requires all six:
 5. **`## 따로 볼 것` present** — what this answer deliberately did not cover.
 6. **`## 근거` present** — one line in the words a designer uses, whose real substance is any check that could not be run and why. Its absence FAILS. It also FAILS if it names a reference file, a module, a lens, a pattern, a slug or a skill, or if it counts the units above it ("위 세 카드"). A clause saying in designer's words what was checked — the contract's own example is `근거: 공개된 게임필 수치 범위와 국내 규정 확인` — is correct, not a reading list.
 
-Also: one sentence per bullet (two or more FAILS), bold inline labels, no table for rationale or ethics, and the fixed sections in order.
+Also: at most two sentences per bullet (three or more FAILS), bold inline labels, no table for rationale or ethics, and the fixed sections in order.
 
 Scored, both arms, fractionally.

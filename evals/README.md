@@ -191,7 +191,7 @@ run in one suite because either one alone is easy to pass by moving the dial.
 One normal ask per skill, all three in Korean so the Korean-heading rule is in force.
 Each case carries two graders. `criteria.md` checks the artifact: scan table with exactly
 four content columns, no table over five columns anywhere, at least three cards carrying
-every canonical field including the three execution bullets, one sentence per bullet,
+every canonical field including the three execution bullets, at most two sentences per bullet,
 bold inline labels rather than sub-headings, and `## 근거` present — one line in a
 designer's words naming any check that could not be run, never a filename or module name.
 윤리 is not in the required-bullet set: it is conditional, and a clean mechanic omits it.

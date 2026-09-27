@@ -13,6 +13,25 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [3.1.3] — 2026-09-28
+
+Fourth Opus 5.5 round (`docs/notes/2026-09-opus-5-5-eval.md`), at reduced scope.
+
+### Changed
+
+- **At most two sentences per bullet — all three skills (CARD block).** The one-sentence hard cap was not obeyed by Opus 5.5 in any of three rounds, even after it was restated and a reread step was added. The cap now matches how the model writes; a third sentence becomes a second bullet or is cut. Shape graders and `evals/README.md` follow: three or more sentences FAILS.
+- **Reread step — all three skills (CARD block):** at most one Ethics bullet per card; never write that a design already meets a standard; one declined entry per failing element.
+- A one-line trim in interaction-reward-moments' quality bar keeps the body under 32,000 bytes.
+
+### Measured and not measured
+
+- fp family: 11/18 runs, up from 9/18, but no case at 3/3 (one was in round 3). Gate unmet. Two cases fail on what look like grader-vs-module disagreements, recorded as open.
+- Shape: 0/6, now on individual 3-sentence bullets and long names rather than on every card. `ending`: 6/6.
+- ad-chaining: 0/2, the ≥7-day snooze was out of scope for this release.
+- Not run: routing edge, homeless, Korean, mode, hygiene-korea-odds-statute.
+
+---
+
 ## [3.1.2] — 2026-09-28
 
 Second and third Opus 5.5 eval rounds (`docs/notes/2026-09-opus-5-5-eval.md`).
