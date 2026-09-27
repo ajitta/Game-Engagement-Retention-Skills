@@ -29,6 +29,9 @@
 #                   remote-tracking ref behind a tag (a tag pushed without its branch)
 #   plugin.json:    rename "name" without adding the old one to LEGACY_NAMES
 #                   (every tag cut under the old prefix goes missing at once)
+#   marketplace.json: plugins[0].name -> anything but plugin.json's name, or
+#                   source "./" -> a URL, or the marketplace "name" changed
+#                   without the README install lines
 #
 # Eleven of these were run against this tree on 2026-09-06 and all eleven failed
 # the script; the twelfth arrived with the rename later that day and was run the
@@ -229,7 +232,30 @@ else
   done
 fi
 
-# --- 7. claims retired as false, which must not come back -------------------
+# --- 7. the self-hosted marketplace installs this plugin ----------------------
+# This repository serves itself: `/plugin marketplace add
+# ajitta/Game-Engagement-Retention-Skills` reads .claude-plugin/marketplace.json.
+# Two manifests now have to agree, and the break is quiet — rename in plugin.json,
+# leave the entry behind, and `/plugin install` resolves to nothing while
+# `claude plugin validate . --strict` still passes. Pinned here: one entry, its
+# name is plugin.json's name, its source is this repository's root, and the
+# install line the README prints names this marketplace and this plugin.
+mp=.claude-plugin/marketplace.json
+if [ ! -f "$mp" ]; then
+  fail "$mp is missing — README's install command adds this repository as a marketplace and would fail"
+else
+  mp_name=$(sed -nE 's/^  "name"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/p' "$mp" | head -1)
+  entries=$(grep -cE '^      "name"[[:space:]]*:' "$mp")
+  entry_name=$(sed -nE 's/^      "name"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/p' "$mp" | head -1)
+  entry_src=$(sed -nE 's/^      "source"[[:space:]]*:[[:space:]]*"([^"]*)".*/\1/p' "$mp" | head -1)
+  [ "$entries" = "1" ] || fail "$mp lists $entries plugins; this repository serves one — a second entry is the catalog repository's job"
+  [ "$entry_name" = "$name" ] || fail "$mp advertises '$entry_name' but plugin.json declares '$name'; the README install line would resolve to nothing"
+  [ "$entry_src" = "./" ] || fail "$mp source is '${entry_src:-<not a string>}', not './'; a URL pins installs to whatever it serves and defeats self-hosting"
+  grep -qF "/plugin install $name@$mp_name" README.md || \
+    fail "README.md never prints '/plugin install $name@$mp_name' — the self-hosted install line no longer matches $mp"
+fi
+
+# --- 8. claims retired as false, which must not come back -------------------
 # Each was in a shipped document and each was wrong.
 retired=(
   "Skill wins 2/2"            # a headline that outlived its test

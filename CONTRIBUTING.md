@@ -76,10 +76,11 @@ bash scripts/check-ethics-rows.sh
 bash scripts/check-claims.sh
 ```
 
-These four run in CI on every push (`.github/workflows/checks.yml`). The two validators
+These four run in CI on every push (`.github/workflows/checks.yml`). The three validators
 below need the Claude Code CLI and are run locally:
 
 ```sh
+claude plugin validate . --strict                            # marketplace.json, the install path
 claude plugin validate .claude-plugin/plugin.json --strict   # exits 1 locally on CLAUDE.local.md; see README
 claude plugin validate ./skills --strict                     # the load-bearing one
 ```
@@ -102,7 +103,7 @@ scripts/release.sh "one-line release message"     # --dry-run to rehearse it
 ```
 
 It refuses on a dirty tree, on a version already tagged, and when `plugin.json` and the
-newest CHANGELOG entry disagree; runs the four invariant scripts and both validators;
+newest CHANGELOG entry disagree; runs the four invariant scripts and the three validators;
 records the always-on cost; then **pushes the branch and only then the tag.**
 
 That order is the reason the script exists. `claude plugin tag . --push` pushes the tag

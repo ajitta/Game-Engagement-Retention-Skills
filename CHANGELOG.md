@@ -9,6 +9,21 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [Unreleased]
+
+Distribution only. No skill, reference module or routing text changed, so no version bump: an installed copy has nothing new to fetch.
+
+### Added
+
+- **The plugin is served from its own repository again.** `.claude-plugin/marketplace.json` is back, with one entry whose source is `./`, and the install is `/plugin marketplace add ajitta/Game-Engagement-Retention-Skills` then `/plugin install game-engagement-retention@game-engagement-retention-skills`. 2.2.0 removed it so there would be one path, through the [ajitta/claude-plugins](https://github.com/ajitta/claude-plugins) catalog; the traffic says almost nobody took that path. Over the fortnight to 2026-09-23 the catalog drew 5 unique cloners against this repository's 22, and the catalog's clones are the ones that would have led here. The sibling plugin measured the same shape at larger scale — 21 against 355 — and moved to self-hosting on 2026-09-19. The catalog keeps its entry and keeps working; the README names it second. Existing `@ajitta` installs are unaffected.
+- **`check-claims.sh` section 7 — the two manifests must agree.** One entry, its `name` equal to `plugin.json`'s, its source `./`, and a README line printing `/plugin install <name>@<marketplace>` with both halves current. The break it guards is silent: `claude plugin validate . --strict` passes a marketplace whose entry names a plugin that no longer exists. Three negative tests were run — entry renamed, source turned into a URL, marketplace renamed without the README — and each failed the script.
+
+### Changed
+
+- **Release checks run three validators, not two.** `claude plugin validate . --strict` validates the marketplace manifest again, in `scripts/release.sh`, README and `CONTRIBUTING.md`. `plugin.json --strict` now passes on Claude Code 2.1.281 in a clean clone.
+
+---
+
 ## [3.0.0] — 2026-09-06
 
 The plugin's name is shorter, and that is why this is a major. `name` is the install

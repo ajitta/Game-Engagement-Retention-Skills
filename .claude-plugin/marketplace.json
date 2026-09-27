@@ -1,0 +1,17 @@
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "game-engagement-retention-skills",
+  "description": "The game-engagement-retention plugin, served from its own repository — one command to add, one to install, always at the version this repository declares.",
+  "owner": {
+    "name": "ajitta",
+    "email": "ajitta@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "game-engagement-retention",
+      "source": "./",
+      "description": "Three routed skills for designing in-session reward moments and lifecycle retention for games and consumer interactive apps — the scene, the cohort, and the link between them.",
+      "category": "productivity"
+    }
+  ]
+}

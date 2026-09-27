@@ -53,13 +53,15 @@ done
 
 step "Validators (these need the Claude Code CLI and do not run in CI)"
 if command -v claude >/dev/null 2>&1; then
+  printf '  %-34s' "validate . --strict (marketplace)"
+  claude plugin validate . --strict >/dev/null 2>&1 && echo "PASS" || die "marketplace validator"
   printf '  %-34s' "validate ./skills --strict"
   claude plugin validate ./skills --strict >/dev/null 2>&1 && echo "PASS" || die "skills validator"
   printf '  %-34s' "validate plugin.json --strict"
   if claude plugin validate .claude-plugin/plugin.json --strict >/dev/null 2>&1; then echo "PASS"
   else echo "warns (expected locally: untracked CLAUDE.local.md — see README)"; fi
 else
-  die "the claude CLI is not on PATH; the two validators are release checks and cannot be skipped"
+  die "the claude CLI is not on PATH; the three validators are release checks and cannot be skipped"
 fi
 
 step "Always-on cost, for the record"

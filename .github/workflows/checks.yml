@@ -5,7 +5,7 @@ name: checks
 # invocation would turn into a silently missing rule. They need only bash and
 # coreutils, so they run here on every push.
 #
-# The two `claude plugin validate --strict` targets are NOT run here — they need
+# The three `claude plugin validate --strict` targets are NOT run here — they need
 # the Claude Code CLI. They are release checks, run locally; README says so.
 
 on:

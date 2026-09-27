@@ -11,11 +11,11 @@ The set keeps apart the two problems that generic advice collapses into one — 
 
 Games are the deep case; five consumer interactive domains ride alongside them; SaaS is explicitly out. See [Scope](#scope).
 
-**Install** — from the [ajitta/claude-plugins](https://github.com/ajitta/claude-plugins) catalog, then start a new session:
+**Install** — straight from this repository, then start a new session:
 
 ```
-/plugin marketplace add ajitta/claude-plugins
-/plugin install game-engagement-retention@ajitta
+/plugin marketplace add ajitta/Game-Engagement-Retention-Skills
+/plugin install game-engagement-retention@game-engagement-retention-skills
 ```
 
 Verification, updates, the slash commands and the no-plugin alternative are under [Installation](#installation).
@@ -158,14 +158,16 @@ Five false-positive guards hold the other direction, four of them structural: th
 
 ## Installation
 
-Distributed through [ajitta/claude-plugins](https://github.com/ajitta/claude-plugins), a catalog repository that lists this plugin and points at this repository. The catalog holds no code; installs and updates come from here, at the version `plugin.json` declares.
+This repository carries its own marketplace manifest, so it installs straight from here — the version you get is the one `plugin.json` declares, with no catalog in between. This is the path the release checks verify:
 
 ```
-/plugin marketplace add ajitta/claude-plugins
-/plugin install game-engagement-retention@ajitta
+/plugin marketplace add ajitta/Game-Engagement-Retention-Skills
+/plugin install game-engagement-retention@game-engagement-retention-skills
 ```
 
-Already installed? `plugin.json` declares a `version`, so Claude Code only re-fetches when that string changes — `/plugin update game-engagement-retention@ajitta` is a no-op while the cached version matches. Every release here bumps the field for that reason.
+The catalog repository [ajitta/claude-plugins](https://github.com/ajitta/claude-plugins) also lists this plugin and still works — `/plugin marketplace add ajitta/claude-plugins` then `/plugin install game-engagement-retention@ajitta`. It exists to show ajitta's plugins side by side; both routes resolve to this repository. An install made through the catalog keeps working; there is no need to switch.
+
+Already installed? `plugin.json` declares a `version`, so Claude Code only re-fetches when that string changes — `/plugin update game-engagement-retention@game-engagement-retention-skills` (or `@ajitta`, for a catalog install) is a no-op while the cached version matches. Every release here bumps the field for that reason.
 
 **Installed under the old name?** The plugin ID was `game-engagement-retention-skills` through 2.2.1. Claude Code keys an installed copy on `name`, so a shortened one is a different plugin and no `/plugin update` carries the old copy across — remove it and install the ID above:
 
@@ -176,7 +178,7 @@ Already installed? `plugin.json` declares a `version`, so Claude Code only re-fe
 Start a new session for the skills to load, then verify:
 
 ```
-/plugin details game-engagement-retention@ajitta
+/plugin details game-engagement-retention@game-engagement-retention-skills
 ```
 
 Expect **Skills (3): engagement-retention-advisor, interaction-reward-moments, retention-strategy-designer**.
@@ -257,13 +259,14 @@ The caveats cut both ways and are worth stating plainly: one prompt per matchup,
 ### Checks that run on every change
 
 ```sh
+claude plugin validate . --strict
 claude plugin validate .claude-plugin/plugin.json --strict
 claude plugin validate ./skills --strict
 scripts/check-shared-blocks.sh && scripts/check-no-facts-in-skills.sh \
   && scripts/check-ethics-rows.sh && scripts/check-claims.sh
 ```
 
-The four scripts run in CI on every push (`.github/workflows/checks.yml`); the two validators are release checks run locally, because CI has no Claude Code CLI. The skills validator and all four scripts pass. `claude plugin validate .claude-plugin/plugin.json --strict` exits 1 in a local checkout, on a warning about the untracked personal `CLAUDE.local.md` at the repository root; that file is gitignored and never reaches an installer. `claude plugin validate ./skills --strict` is the load-bearing one: a broken `SKILL.md` frontmatter loads at runtime with empty metadata — a skill with no description and therefore no routing, the worst failure this plugin has. The marketplace manifest is validated in the catalog repository, not here.
+The four scripts run in CI on every push (`.github/workflows/checks.yml`); the three validators are release checks run locally, because CI has no Claude Code CLI. The marketplace and skills validators and all four scripts pass. `claude plugin validate .claude-plugin/plugin.json --strict` exits 1 in a local checkout, on a warning about the untracked personal `CLAUDE.local.md` at the repository root; that file is gitignored and never reaches an installer. `claude plugin validate ./skills --strict` is the load-bearing one: a broken `SKILL.md` frontmatter loads at runtime with empty metadata — a skill with no description and therefore no routing, the worst failure this plugin has. `claude plugin validate . --strict` checks `.claude-plugin/marketplace.json`, the manifest the install commands above go through; it does not check that the manifest's entry names this plugin, which is `check-claims.sh`'s job.
 
 ### Research basis
 
