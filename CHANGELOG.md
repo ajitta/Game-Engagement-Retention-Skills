@@ -13,6 +13,30 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [3.1.2] — 2026-09-28
+
+Second and third Opus 5.5 eval rounds (`docs/notes/2026-09-opus-5-5-eval.md`).
+
+### Changed
+
+- **retention-strategy-designer now also fires on rewarded-ad plans, ad economies and an AI companion's retention loop**, and its `when_to_use` says why to run it when a direct answer looks easy: its ethics bounds are looked up, not recalled. On Opus 5.5 those two refusal prompts fired no skill in 6 of 6 runs; after the change they fired in 6 of 6. The companion-disclosure case moved from 0/3 to 3/3.
+- **Card grammar — all three skills (CARD block).** One sentence per bullet: a second sentence is a second bullet or a cut. 피드백·연출 is one `→`-chained line of timed beats. A Korean card name is 3–6 어절.
+- **A reread step before sending — all three skills (CARD block).** Split multi-sentence bullets, carry every tagged bullet, put a number in every 중단, keep declined items only under `## 재설계한 요청`, and keep a mechanic already at its compliant spec silent.
+- Body trims in interaction-reward-moments and retention-strategy-designer to stay under the 32,000-byte cap. No rule was removed; duplicated rationale was.
+
+### Evals
+
+- The shape graders count Korean names in 어절, accept a `## 근거` clause that says what was checked (the contract's own example has that shape), and fail two or more sentences in a bullet. Before this, the three graders disagreed on that last threshold.
+- `intake-underspecified-d7` accepts the questions the skill itself lists as blocking: DAU band, payer split, acquisition mix, minors.
+
+### Measured and not measured
+
+- Round 3 on this release: intake 3/3, the three refusal true-positive prompts all fire a skill 9/9, companion disclosure 3/3, `ending` 9/9.
+- **Still failing:** the fp release gate is at 9/18 (declared 6/6 per case). Shape criteria are 0/9, all on one sentence per bullet. ad-chaining and hidden-odds are 0/3 on refusal shape. The gates stay declared and unmet.
+- Not run: routing edge, homeless, Korean, mode, `hygiene-korea-odds-statute`.
+
+---
+
 ## [3.1.1] — 2026-09-27
 
 The first Opus 5.5 eval run (`docs/notes/2026-09-opus-5-5-eval.md`) found that the 3.1.0 pasted-text rule was obeyed on substance but not on form.

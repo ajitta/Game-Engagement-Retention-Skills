@@ -27,12 +27,12 @@ and `claude-plugins` are separate and were deliberately left alone.
 
 Shipped and tagged under the old plugin name: `game-engagement-retention-skills--v2.1.0`,
 `--v2.2.0` and `--v2.2.1`. 3.0.0 was the first tagged as `game-engagement-retention--v3.0.0`; 3.1.0
-(the Opus 5.5 audit) and 3.1.1 (its first eval run, `docs/notes/2026-09-opus-5-5-eval.md`) followed;
-3.1.1 is current.
+(the Opus 5.5 audit) and 3.1.1–3.1.2 (its eval rounds, `docs/notes/2026-09-opus-5-5-eval.md`) followed;
+3.1.2 is current.
 
 | Fact | Value | How to re-check |
 |---|---|---|
-| Version | 3.1.1 | `python3 -c "import json;print(json.load(open('.claude-plugin/plugin.json'))['version'])"` |
+| Version | 3.1.2 | `python3 -c "import json;print(json.load(open('.claude-plugin/plugin.json'))['version'])"` |
 | Always-on tokens | ~1,836 | `claude --plugin-dir . plugin details game-engagement-retention` |
 | `description` length | 1,254 / 1,142 / 1,122 characters | `for f in skills/*/SKILL.md; do sed -n 3p $f \| wc -c; done` |
 | Reference modules | 24 | `ls skills/*/references/*.md \| wc -l` |

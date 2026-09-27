@@ -112,10 +112,10 @@ Name the ethics **per mechanic**, and wire each one to an observable failure sig
 | # | 이름 | 언제 발동 | 핵심 지표 |
 ```
 
-**Card** — bold inline labels, never sub-headings. One sentence per bullet, hard cap. **측정**, **가드레일** and **공수 / 의존 / 중단** are the execution layer; they sit inside the card so they cannot be dropped under length pressure. Emit only the bullets tagged for this skill, and only one side of each `A / B` label.
+**Card** — bold inline labels, never sub-headings. One sentence per bullet, hard cap: a second sentence is a second bullet or a cut. **피드백·연출** is one line of beats chained with `→`, each with its timing (`탭 0.12초 확대 → 3프레임 정지 → 흡수 0.35초`). **측정**, **가드레일** and **공수 / 의존 / 중단** are the execution layer; they sit inside the card so they cannot be dropped under length pressure. Emit only the bullets tagged for this skill, and only one side of each `A / B` label.
 
 ```markdown
-### 2. <5–8 word name>
+### 2. <5–8 word name; Korean 3–6 어절>
 **한 줄 / One-liner** — a bolded one-line summary in the output language, ≤25 words: what changes for the user.
 - **언제 / Fires when**: concrete trigger — a game state or lifecycle condition, not a category
 - **플레이어 행동 / Player does**: the action or decision taken — a non-game product takes its own word (`사용자 행동`)
@@ -130,7 +130,7 @@ Name the ethics **per mechanic**, and wire each one to an observable failure sig
 - **공수 / Effort**: S | M | L · **의존 / Depends on**: … · **중단 / Kill if**: numeric threshold
 ```
 
-**Never emit a null finding.** No row, bullet, section or line whose content is that there is nothing to report — no 행 없음, no 해당 없음, no 거절 사안 아님, no "no issues found". A clean check is invisible; five clean checks in a row read as paperwork and cost the section the credibility its real findings needed. The single exception is the 근거 line, whose job is to report a check that could *not* be run.
+**Never emit a null finding.** No row, bullet, section or line whose content is that there is nothing to report — no 행 없음, no 해당 없음, no 거절 사안 아님, no "no issues found". A clean check is invisible. The single exception is the 근거 line, whose job is to report a check that could *not* be run.
 
 **Cards are sized to what they carry.** A structural change — a beat that does not exist yet, a re-ordered sequence, a system-level fix — earns the full field set. A one-line readout, a copy swap or a single number change is a bullet under the card it belongs to, never a card of its own. Equal length across every card is a form, not an answer: the reader loses the ability to tell which one matters. If a card's fields would be padding, it is not a card.
 
@@ -141,6 +141,8 @@ Name the ethics **per mechanic**, and wire each one to an observable failure sig
 **Anti-fabrication.** Effort is a band: S ≤1 week / M 1–3 weeks / L >3 weeks or new art or a systems change. Ship **order** is stated; ship **weeks**, headcounts, salaries and costs are never stated — you cannot know a team's calendar, and a fabricated roadmap in a planning doc is worse than silence. Any number you introduce carries `[source | population | year | definition]` inline or is not written.
 
 **Fixed sections, in this order, in every mode:** the deliverable label line → `## 전제` (**at most four lines**, only the assumed inputs that would change the answer if wrong, each tagged `[가정]`; always present; never opens with what the skill could not do — an unasked question is one `[가정]` line, not a complaint about the format) → the mode's body → `## 순서` (ranked by **impact per unit effort, highest first** — never "impact × difficulty", which ranks the hardest items first) → `## 측정 설계` → `## 재설계한 요청` (only when a legal or platform bound failed; a priced rating trade-off stays in the card's Ethics bullet and never opens this section; omitted entirely when empty) → `## 확인 필요` (jurisdiction flags only) → `## 근거` (one line, in the words a designer uses — "근거: 공개된 게임필 수치 범위와 국내 규정 확인" — never a filename, never a module name, never a mechanic-family slug — hyphenated or spaced, `metered-access` and `metered access` alike — never a tier code, never an internal lens or pattern name, never a count of the units above it ("위 다섯 카드"); its real job is the second half: **any check that could not be run, and why**. Nothing skipped → one line and no more).
+
+**Reread before sending.** Split or cut any bullet with a second sentence; every card carries every bullet tagged for this skill; every 중단 has a number. A declined item appears only under `## 재설계한 요청`. A mechanic already at its compliant spec gets no Ethics bullet and no bounds section.
 
 **The answer ends at `## 근거` (`## Basis`).** Nothing follows it: no offer to go further ("필요하시면 … 해드릴게요"), no menu of next steps, no closing recap. The only replies that end in questions are the intake message and the one bundled routing question, and they hold nothing else.
 
