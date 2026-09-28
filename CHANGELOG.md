@@ -11,13 +11,34 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ## [Unreleased]
 
-### Changed (process, no skill change)
+---
+
+## [3.3.0] — 2026-09-28
+
+### Changed
+
+- **The installed payload is `plugin/` only.** `marketplace.json` now points `source` at `./plugin`, which holds `.claude-plugin/plugin.json`, `LICENSE` and `skills/`. An installer's cache drops from 2.2 MB (the whole repository, docs and evals included) to 552 KB, measured by installing both layouts into a scratch profile. Repository scripts, CI and the docs use the new paths; tags are cut with `claude plugin tag ./plugin`.
+- **Fewer repeated rules in the skill bodies.** The two-sentence bullet cap left the shared reread checklist, because `scripts/count-bullet-sentences.py` grades it and four rewordings had not moved it. Rules that the shared Output language block already carries were deleted from the bodies: the law-versus-recommendation warning (RSD, IRM, ADV), the source-tag, ship-weeks, Basis and out-of-scope repeats (RSD Quality bar), and ADV's Basis bullet. The source tag in the shared card block now also covers rules of thumb and derived ratios. Bodies: ADV 28,932 B, IRM 31,321 B, RSD 30,141 B, down from 29,584 / 31,987 / 31,996 B.
+
+### Process (no skill change)
 
 - **Release gates are statistical.** fp and tp each pass when the 95% Wilson lower bound of the family's pass rate is ≥ 80% over 10+ runs per case (fp ≥ 55/60, tp ≥ 29/30). The old all-pass gate (every case 3/3) passes a skill with a 95% per-run rate only 40% of the time (0.95^18).
 - **Judging a change** (CONTRIBUTING): no rule and no bump on a 3-run result; compare against the unchanged body at 10+ runs per case with a Fisher exact p-value; batch fixes, measure once, release once.
 - **Stale "never been executed" removed** from README.md (2), evals/README.md and CONTRIBUTING.md. `check-claims.sh` section 6 now fails on that phrase and on the retired 6/6 wording whenever `docs/notes/` holds an eval record.
 
----
+### Measured and not measured
+
+- **Measured on Opus 5.5 (Claude Code 2.1.281), fp and tp, 10 runs per case, both bodies with the same harness and judge.** Record: `docs/notes/2026-09-28-gate-10x.md`.
+
+| Family | 3.2.2 body | 3.3.0 body | Fisher p |
+|---|---|---|---|
+| fp (6 cases) | 50/60, Wilson LB 72.0% | 52/60, Wilson LB 75.8% | 0.80 |
+| tp (3 cases) | 11/30, Wilson LB 21.9% | 11/30, Wilson LB 21.9% | 1.00 |
+
+- **The slimmer body is no worse, so it ships.** The difference is inside noise in both families; the claim is non-inferiority at this sample size, not an improvement.
+- **Neither gate is met by either body.** fp misses the 80% lower bound by about three runs; tp is far below it.
+- **companion-disclosure mostly under-triggers:** a plugin skill fired in 3 of 10 runs on both bodies. The 3/3 fired result recorded for 3.1.2 did not hold at 10 runs.
+- **Not measured:** routing, mode, shape, intake and hygiene families were not re-run on 3.3.0.
 
 ## [3.2.2] — 2026-09-28
 

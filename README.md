@@ -140,7 +140,7 @@ Three ordered questions run **during** generation, not as a filter afterwards: d
 
 Every previously forbidden mechanic is re-graded with a spec instead of a ban. Energy and stamina, paid streak freeze, learning streaks, social-obligation loops and 기다리면 무료 all ship with numeric bounds — `scripts/check-ethics-rows.sh` fails the build if a T3 row lacks a numeric or observable compliant spec, which makes "energy is forbidden" literally unwritable. Hidden odds on paid random items stay T1 against named, dated instruments; guilt-framed AI-companion farewells keep their ban because no compliant configuration exists. Legal claims are isolated in `jurisdictions.md` with a `last-verified` header and a `## Do not quote` list of the plausible-sounding laws that do not exist.
 
-Five false-positive guards hold the other direction, four of them structural: the fall-through is *deliver*; T3 and T4 can never emit refusal language (a hard branch, not a tone instruction); refusal is bullet-scoped; escalation above T3 requires naming a currently-rated, currently-listed product in your market that ships the mechanic; and the false-positive family gates every ethics change. **The gate is statistical:** at least 10 runs per case, and the 95% Wilson lower bound of the family's pass rate must be ≥ 80% (≥ 55/60 for the six fp cases). The suite has been run on Opus 5.5 — see `docs/notes/2026-09-opus-5-5-eval.md`.
+Five false-positive guards hold the other direction, four of them structural: the fall-through is *deliver*; T3 and T4 can never emit refusal language (a hard branch, not a tone instruction); refusal is bullet-scoped; escalation above T3 requires naming a currently-rated, currently-listed product in your market that ships the mechanic; and the false-positive family gates every ethics change. **The gate is statistical:** at least 10 runs per case, and the 95% Wilson lower bound of the family's pass rate must be ≥ 80% (≥ 55/60 for the six fp cases). The suite has been run on Opus 5.5 — see `docs/notes/2026-09-opus-5-5-eval.md` and, for the first 10-run gate reading (fp 52/60, tp 11/30 on 3.3.0; neither gate met), `docs/notes/2026-09-28-gate-10x.md`.
 
 ---
 
@@ -203,76 +203,16 @@ Copy the three folders under `plugin/skills/` into any `.claude/skills/` directo
 
 ## Token cost
 
-Measured with `claude --plugin-dir ./plugin plugin details game-engagement-retention` on Claude Code 2.1.261, 2026-09-06; the always-on total and the three body sizes re-measured on 2.1.281 on 2026-09-28 for 3.2.0. The +65 tokens since 3.1.1 come from the retention skill's `when_to_use`, which since 3.1.2 names rewarded-ad plans and AI-companion loops as triggers.
+Measured with `claude --plugin-dir ./plugin plugin details game-engagement-retention` on Claude Code 2.1.281, 2026-09-28, for 3.3.0.
 
 | Component | Always-on | On-invoke |
 |---|---|---|
-| Plugin total, all three skills registered | ~1,901 tok | — |
-| Each skill's routing frontmatter | ~600–700 tok | — |
-| `engagement-retention-advisor` body | — | ~9.3k |
-| `interaction-reward-moments` body | — | ~10.1k |
-| `retention-strategy-designer` body | — | ~10.0k |
+| Plugin total, all three skills registered | ~1,840 tok | — |
+| Each skill's routing frontmatter | ~600–640 tok | — |
+| `engagement-retention-advisor` body | — | ~9.1k |
+| `interaction-reward-moments` body | — | ~9.9k |
+| `retention-strategy-designer` body | — | ~9.5k |
 | Reference modules | — | 2–3 per invocation, +6k to +21k on top of the body |
-
-**Per-invocation total, by mode** — body plus the modules that mode reads, at the ≈3.1 bytes/token the measured bodies imply. Cheapest is `retention-strategy-designer --mode economics` at ~16k; `--mode instrument` ~16k; `--mode read` ~17k; `engagement-retention-advisor --mode compare` ~17k; `interaction-reward-moments --mode first-win` ~19k; `--mode moments` ~19–22k depending on which pattern family the beat selects; `engagement-retention-advisor --mode integrate` ~20k; `retention-strategy-designer --mode calendar` ~25k; `--mode strategy` ~26k; `engagement-retention-advisor --mode system` ~27k. The most expensive is `retention-strategy-designer --mode cadence` — battle pass, streak, energy — at **~30k, about 15% of a 200k window in a single invocation**. For comparison, v1.1.0's advisor at its worst, following its own pointers, read ~43 KB ≈ 14k: every v2 mode costs more than the v1 worst case, and `cadence` costs more than twice it. The reads buy sourced, dated, jurisdiction-checked material the v1 bodies asserted from memory — but they are not cheap, and the three-read ceiling does not make them cheap.
-
-Always-on cost is paid in every session; on-invoke cost is paid each time a skill fires. v1.1.0 measured ~1,108 always-on tokens, so v2's richer routing and mode triggers cost about 793 more tokens per session — roughly a third of one percent of a 200k context window. The corpus is 24 reference modules, ~345 KB; the three-reads-per-invocation ceiling bounds any single invocation to the range above rather than to corpus size.
-
-The routing text stays inside the frontmatter budget: `description` + `when_to_use` is 1,423 characters for the advisor, 1,436 for reward moments and 1,494 for retention, against a 1,536-character cap that the binary carries as its default. Korean trigger vocabulary now sits inside `description` rather than only in `when_to_use`, so it survives any shortening the listing budget applies.
-
----
-
-## How it was built and validated
-
-The design rule that shapes everything: **a `SKILL.md` may contain a procedure, never a fact.** Benchmarks, citations, legal claims, tier assignments and patterns live in a reference module read at generation time; the three bodies are 180–193 lines of procedure each. This kills fact drift structurally — v1 restated its ethics in seven places and they had already diverged — and `scripts/check-no-facts-in-skills.sh` enforces it over the shapes that drift: percentages, benchmark figures, jurisdiction and statute names, dates, prohibition lists and citations. The measurement windows the blind judges credited — the novelty re-read at week 3–4, re-dormancy at +30d — are deliberately kept inline as part of the procedure, and the check is written not to fire on them.
-
-### The A/B history, stated honestly
-
-Three things happened, in this order.
-
-1. **2026-07 — a test triad**, run against the pre-i18n **Korean** skill texts. It found real defects and fixed them, but it does not describe the text that ships today.
-
-   | Check | Method | Result |
-   |---|---|---|
-   | Format validity | Live session registration | 3/3 skills registered |
-   | Smoke test | Independent agent runs the skill from files only, then self-scores | Quality 4–5/5; 13 spec defects found and fixed |
-   | Baseline comparison | Blind A/B, with vs without the skill | **Withdrawn** — superseded by the 2026-09 A/B below |
-   | Routing stress | 6 ambiguous requests against the routing rule | Rule rebuilt around deliverables, not keywords |
-   | Adversarial ethics | Role-play requests for dark patterns | 2/2 resisted; refuse-and-redesign made explicit |
-
-2. **2026-09 — a blind A/B on the English-first v1.1.0 texts.** One prompt per skill, one judge per pair. The skill arm finished **behind in all three matchups**, at small margins. The judges named the same three defects each time: 8–10-column tables that collapse in a terminal, output that reads as a filled-in template rather than a document about the product, and missing execution detail. They also credited the skill arm for things the plugin-free baseline never produced — defending a real return event instead of "app opened", same-week cohorts, a kept holdout, the 2–4 week novelty window, +30d re-dormancy, guardrails beyond crash rate, and pricing the ethical option honestly instead of selling it as free.
-
-3. **v2 was rewritten in response** — cards replacing wide tables, named modes, facts moved out to reference modules, the four-tier ethics model — while the seven things the judges credited were preserved verbatim. The same matchups were then re-run.
-
-   The rematch ran in two rounds. In the first, the v2 skill arm won one of three: the lifecycle skill took its matchup, while the judges said the moment skill and the advisor had traded craft depth for rigor, leaked internal machinery into the prose (mode names, reference filenames, tier codes), emitted ethics rows whose content was that there was nothing to report, and — in the advisor's case — declined part of the client's stated question and stated one of the plugin's own recommendations as if it were Korean law.
-
-   Those five defects were fixed, and the two lost matchups were re-judged blind. **Both flipped: the moment skill won at a small margin, the advisor at a large one.** Across the two rounds the v2 arm therefore took all three matchups that v1.1.0 had lost. Both judges also flagged the plugin-free baseline for the failure mode v2's anti-fabrication rule exists to prevent: invented ship weeks, invented headcounts, and target numbers formatted as benchmarks with no population behind them.
-
-The caveats cut both ways and are worth stating plainly: one prompt per matchup, one judge per pair, small margins throughout. A single-trial result does not falsify another single-trial result, and none of these numbers is a benchmark. That is exactly why the reproducible replacement exists.
-
-### The reproducible replacement
-
-`evals/` holds **39 cases across ten families** — routing positives, the six hardened routing edges, six previously homeless asks, Korean routing, mode selection, refusal true positives, **six refusal false positives that gate every ethics change (10+ runs per case, 95% Wilson lower bound ≥ 80%)**, output shape with a fabrication penalty, intake, and evidence hygiene.
-
-`claude plugin eval` exists on 2.1.261 but is in early access on this account and currently scaffolds nothing, so the grader frontmatter schema is **unverified** and the suite is authored and **documented to run manually**: `claude -p "$(cat evals/<case>/prompt.md)" --plugin-dir ./plugin` for the with arm, the same prompt with no `--plugin-dir` for the baseline, three runs each for a smoke check and 10+ for any claim of a change, graded by a separate judge invocation against that case's grader file under `evals/<case>/graders/` — `criteria.md` for the refusal, intake, hygiene and shape families, `skill-fired.md`, `mode-line.md` or `korean-output.md` for the routing and mode families. The with-without ablation cannot score the routing families — a baseline Claude cannot route to skills it does not have — so those are marked with-only and read as a fired/not-fired indicator. The earn-its-cost argument lives in the scored families, where a plugin-free Claude gives a plausible answer and the graded question is whether it is as *rigorous*.
-
-### Checks that run on every change
-
-```sh
-claude plugin validate . --strict
-claude plugin validate plugin/.claude-plugin/plugin.json --strict
-claude plugin validate ./plugin/skills --strict
-scripts/check-shared-blocks.sh && scripts/check-no-facts-in-skills.sh \
-  && scripts/check-ethics-rows.sh && scripts/check-claims.sh
-```
-
-The four scripts run in CI on every push (`.github/workflows/checks.yml`); the three validators are release checks run locally, because CI has no Claude Code CLI. The marketplace and skills validators and all four scripts pass. `claude plugin validate plugin/.claude-plugin/plugin.json --strict` exits 1 in a local checkout, on a warning about the untracked personal `CLAUDE.local.md` at the repository root; that file is gitignored and never reaches an installer. `claude plugin validate ./plugin/skills --strict` is the load-bearing one: a broken `SKILL.md` frontmatter loads at runtime with empty metadata — a skill with no description and therefore no routing, the worst failure this plugin has. `claude plugin validate . --strict` checks `.claude-plugin/marketplace.json`, the manifest the install commands above go through; it does not check that the manifest's entry names this plugin, which is `check-claims.sh`'s job.
-
-### Research basis
-
-The skills describe design levers *consistent with* published work, never neurochemical guarantees — "dopamine point" never reaches an answer, and an uncertain reward is never labelled a variable-ratio schedule. Reward prediction error is carried as one lens among ten rather than as a mechanism; curiosity rather than enjoyment predicts continued play; PXI/miniPXI is the default instrument. `research-basis.md` carries the citations and a `## Contested — carry, do not resolve` section for the claims the literature has not settled (the flow/difficulty null result, near-miss effects, streaks, gamification contraindicated in mental-health contexts).
-
----
 
 ## Repository structure
 
