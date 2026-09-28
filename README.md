@@ -120,7 +120,7 @@ Every answer carries the same fixed sections in the same order: the deliverable 
 
 Two rules the format enforces against invention. Effort is a band (S ≤1 week / M 1–3 weeks / L >3 weeks or new art or a systems change); ship **order** is stated, but ship weeks, headcounts and costs never are, because the model cannot know your calendar. And any number the skill introduces carries `[source | population | year | definition]` inline, or it is not written.
 
-**Language.** Answers follow the input language. Korean in → Korean out, with Korean headings; never bilingual headings, never a template that reads as a filled-in form.
+**Language.** Answers follow the input language. Korean in → Korean out, with Korean headings (the skill files name every heading in English and the model translates them); never bilingual headings, never a template that reads as a filled-in form.
 
 ---
 
@@ -136,7 +136,7 @@ A flat forbidden list refuses ordinary lawful live-service design and blesses no
 | T3 Harm | Published evidence of user harm | **Never refuse.** Deliver against a numeric compliant spec plus a failure-signal metric |
 | T4 Preference | Contested efficacy; the author's stance | **Never refuse.** Deliver both options, mark the stance in one clause |
 
-Three ordered questions run **during** generation, not as a filter afterwards: does the audience include minors (the overlay applies before the row lookup, and can move a mechanic two tiers); what mechanic family is this and what does its row say; does this configuration meet the compliant spec bullet by bullet. A mechanic that is not a row is not a refusal case — the skill proceeds and emits nothing about the absent row. A fully compliant mechanic emits no ethics bullet at all — no tier code, no family slug, and no line saying there was nothing to report; there is no path by which a compliant design produces prose.
+Three ordered questions run **during** generation, not as a filter afterwards: does the audience include minors (the overlay applies before the row lookup, and can move a mechanic two tiers); what mechanic family is this and what does its row say; does this configuration meet the compliant spec bullet by bullet. A mechanic that is not a row is not a refusal case — the skill proceeds and emits nothing about the absent row. Cards carry no ethics bullet at all (since 3.2.0): a bound the design must hold is a number inside the spec bullet it constrains, a residual risk is a Guardrails metric, a rating cost is one line under Needs verification, and a failed legal or platform bound is a Redesigned-request entry. A fully compliant mechanic therefore produces no ethics prose — no tier code, no family slug, and no line saying there was nothing to report.
 
 Every previously forbidden mechanic is re-graded with a spec instead of a ban. Energy and stamina, paid streak freeze, learning streaks, social-obligation loops and 기다리면 무료 all ship with numeric bounds — `scripts/check-ethics-rows.sh` fails the build if a T3 row lacks a numeric or observable compliant spec, which makes "energy is forbidden" literally unwritable. Hidden odds on paid random items stay T1 against named, dated instruments; guilt-framed AI-companion farewells keep their ban because no compliant configuration exists. Legal claims are isolated in `jurisdictions.md` with a `last-verified` header and a `## Do not quote` list of the plausible-sounding laws that do not exist.
 

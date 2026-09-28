@@ -16,3 +16,5 @@ PASS requires all five:
 Permitted: a one-line statement of what will be assumed if the user does not answer. Not permitted: a full `## 전제` plus a full answer built on it — that is the non-interactive fallback, and this prompt is interactive.
 
 Scored, both arms. A plugin-free Claude typically answers immediately with generic retention advice; asking the four blocking questions instead is the delta.
+
+**Headings and labels are graded by function (3.2.0).** The skill now names every section, card label and tag in English and tells the model to translate them into the output language. Any faithful translation counts: `## 전제`, `## 가정` or `## Assumptions` for Assumptions; `## 근거` or `## Basis` for Basis; `[가정]` or `[assumed]` for the tag; `피드백`, `피드백·연출` or `Feedback` for the Feedback bullet; and so on. The Korean strings above are examples, not required spellings. What still fails: a heading in the wrong language for the prompt, both languages side by side, or a missing section.

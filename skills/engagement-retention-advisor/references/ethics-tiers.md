@@ -24,7 +24,7 @@ Run these on each proposal **as it is drafted**, never as a filter pass afterwar
 
 1. **Minors first.** If the audience includes minors — declared, likely, or store-signalled — apply the overlay below *before* the row lookup. It can raise a T4 to T2b, and in Brazil it turns paid random items into a flat prohibition.
 2. **Name the mechanic family, look up its row** in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`. Not a row → **not a refusal case**: proceed and emit nothing about it — the five universal checks below still run. Silence is not clearance, and a missing row is not a licence to invent one.
-3. **Compare the configuration to the compliant spec, bullet by bullet.** All bullets met → **nothing is emitted at all**: no Ethics bullet, no row, no line saying there was nothing to report. No path exists by which a compliant mechanic produces prose. A bullet unmet → T1/T2a refuse that bullet only; T2b price it; T3/T4 deliver with a named residual risk.
+3. **Compare the configuration to the compliant spec, bullet by bullet.** All bullets met → **nothing is emitted at all**: no ethics prose, no row, no line saying there was nothing to report. No path exists by which a compliant mechanic produces prose. A bullet unmet → T1/T2a refuse that bullet only (Redesigned request); T2b price it in one Needs-verification line plus the variant that avoids it; T3/T4 deliver with the bound as a number in the spec and the residual risk as a Guardrails metric. There is no Ethics bullet on a card.
 
 ## Minors overlay — the switch, applied before the row lookup
 
@@ -40,20 +40,20 @@ Triggered by "directed at or likely accessed by", not by a declared target audie
 
 ## Refusal template
 
-`## 재설계한 요청`, after the cards, four lines per item, no preamble and no lecture. The rest of the answer continues normally. Omitted entirely when empty. Bullet-scoped: only the failing spec bullet is declined.
+`## Redesigned request` (translated into the output language), after the cards, four lines per item, no preamble and no lecture. The rest of the answer continues normally. Omitted entirely when empty. Bullet-scoped: only the failing spec bullet is declined. One entry per failing element: two forbidden elements in one plan are two entries, even when the plan chains them.
 
-1. **요청 / Request** — the configuration in the user's own words.
-2. **근거 / Ground** — instrument, article, effective date; or the study with its population. Never the tier code.
-3. **준수 버전 / Compliant version** — the numeric or observable spec that ships instead.
-4. **대가 / Cost** — what that costs in revenue, engagement or scope. Never omitted: an ethical option sold as a free lunch is not believed.
+1. **Request** — the configuration in the user's own words.
+2. **Ground** — instrument, article, effective date; or the study with its population. Never the tier code.
+3. **Compliant version** — the numeric or observable spec that ships instead.
+4. **Cost** — what that costs in revenue, engagement or scope. Never omitted: an ethical option sold as a free lunch is not believed.
 
 ```
-**요청** — 뽑기 확률을 표기하지 않고 "확률 UP" 배너만 노출
-**근거** — 게임산업법 제33조 제2항(2024-03-22 시행): 개별 아이템 확률을 게임 내·홈페이지·광고에 표기.
-  제33조의2(2025-08-01 시행)로 입증책임 전환
-**준수 버전** — 픽업 개별 확률 + 천장(0%-until-N 구조 명시) + 비독립 시행 여부를 배너·상점·광고 3곳에 동일 수치로,
-  변경 시 사전 공지 + 버전 로그
-**대가** — 확률 공개 자체의 지출 억제력은 약함(넥슨은 2021-03-05 자진 공개 후 큐브 매출이 46% 상승했다고 주장)
+**Request** — gacha odds left undisclosed, with only a "rate UP" banner
+**Ground** — 게임산업진흥에 관한 법률 §33(2) (in force 2024-03-22): per-item odds shown in-game, on the website and in ads.
+  §33-2 (in force 2025-08-01) shifts the burden of proof to the operator
+**Compliant version** — per-item pickup odds + pity ceiling (0%-until-N structure stated) + whether draws are independent,
+  identical figures on banner, shop and ads; pre-announcement + version log on every change
+**Cost** — disclosure alone restrains spend only weakly (Nexon claims Cube sales rose 46% after its voluntary disclosure on 2021-03-05)
 ```
 
 ## Five universal checks — run on every proposal *or* moment

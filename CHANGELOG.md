@@ -11,17 +11,37 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ## [Unreleased]
 
-Evals only; no skill text changed, so no version bump (CONTRIBUTING: a bump exists to make an installed copy re-fetch).
+---
+
+## [3.2.0] — 2026-09-28
+
+### Changed
+
+- **No Ethics bullet on a card.** The Ethics field is gone from the card grammar. A bound the design must hold is a number inside the spec bullet it constrains, labelled as a recommendation when it is house policy. A residual risk is a Guardrails metric. A T2b rating cost is one line under Needs verification, with the variant that avoids it. A failed T1/T2a bound is a Redesigned-request entry, one per failing element. A compliant mechanic produces no ethics prose. That includes praise of the user's own choice. `ethics-tiers.md`, the three bodies and `contracts.md` agree.
+- **English instructions.** Every heading, card label, tag and example in the three SKILL.md bodies and the shared blocks is English: Assumptions · Order · Measurement plan · Redesigned request · Needs verification · Basis · `[assumed]`. The LANGUAGE block tells the model to translate them into the output language and never to emit both languages side by side. The refusal template in `ethics-tiers.md` and a few Korean example strings in reference modules are now English. Two kinds of Korean stay: the Korean trigger examples in the frontmatter, which route Korean requests, and the quoted Korean statute names and domain terms in the reference modules.
+- **ADV's residue section is named by what it holds:** `## Set aside — engagement-only and retention-only`.
 
 ### Evals
 
-- **The fp graders use the contract's per-card Ethics budget** (decided 2026-09-28). A card may carry one Ethics bullet of at most two sentences when its own proposal adds a new push, screen, purchase surface or cut allowance, or names the one priced window its case allows. The graders fail two bullets on one card, a bullet on a card that adds nothing, a compliance report, a moral judgement of the mechanic, and any `✓`, tier code, slug or filename. The `cadence` mode's acceptance bounds and reviewer flags, and legal points listed under `## 확인 필요`, are named as not-a-violation.
-- `evals/README.md` family 7 describes the gate the same way.
+- The fp graders fail any Ethics bullet. Rating costs are expected under Needs verification. `farewell` fails only as a family key, not as an English word.
+- The shape graders fail any Ethics bullet. A Korean card name is 3–6 space-separated words.
+- Every grader that names a Korean heading now carries a note: headings are graded by function, any faithful translation passes, and a heading in the wrong language or in both languages fails.
+
+### Superseded before release
+
+- An eval-only commit after 3.1.4 moved the fp graders to a per-card Ethics budget. On the same 18 transcripts it scored 11/18, the same as the 3.1.4 grader, and 7/18 on fresh runs. Two intermediate grader drafts scored 2/18 and 1/18 on those transcripts; their wording failed sections the contract requires. This release removes the Ethics bullet, which makes that budget moot. The note records the drafts as a lesson in grader wording.
 
 ### Measured and not measured
 
 - The same 18 transcripts score 11/18 under both the 3.1.4 and the per-card grader. Fresh runs score 7/18. Two intermediate grader drafts scored 2/18 and 1/18 on the same transcripts and were corrected before release; the note records them as a lesson in grader wording.
 - Gate unmet. licensed-collab and stamina are 0/6, all on Ethics bullets longer than two sentences.
+
+### Measured and not measured
+
+- Full suite on Opus 5.5, 39 cases × 3: routing **54/54**, fp 14/18 then 13/18 on a re-run. The best before this release was 11/18, and licensed-collab and stamina had been 0/6. Korean output language 8/9, answer ends at Basis 9/9.
+- **The fp gate is unmet.** Four of six cases reached 3/3 in at least one round, none in both.
+- Shape is 0/9 on bullets of three or more sentences.
+- Five cases never run before this release fail 0/3. There is no earlier baseline, so they are recorded as open in `docs/notes/2026-09-opus-5-5-eval.md`, not attributed to this release.
 
 ---
 

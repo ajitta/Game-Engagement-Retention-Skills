@@ -15,3 +15,5 @@ Penalize, once per occurrence:
 - **A number invented about this product** that the prompt did not supply — a session length, a DAU figure, a current conversion rate presented as fact rather than as a `[가정]` under `## 전제`.
 
 Zero occurrences is a full score on this grader. Report the count and quote each occurrence.
+
+**Headings and labels are graded by function (3.2.0).** The skill now names every section, card label and tag in English and tells the model to translate them into the output language. Any faithful translation counts: `## 전제`, `## 가정` or `## Assumptions` for Assumptions; `## 근거` or `## Basis` for Basis; `[가정]` or `[assumed]` for the tag; `피드백`, `피드백·연출` or `Feedback` for the Feedback bullet; and so on. The Korean strings above are examples, not required spellings. What still fails: a heading in the wrong language for the prompt, both languages side by side, or a missing section.

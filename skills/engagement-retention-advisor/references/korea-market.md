@@ -103,14 +103,14 @@ The daily reading is the habit; the event readings are where money and genuine r
 
 A daily reading is a ritual, not a session: six beats, **30–90 s end to end [craft default — no published optimum]**, running at the 23:30–00:30 rollover.
 
-1. **의도** — the user picks today's focus (하루 전체 · 재물 · 애정 · 건강 · 일). This is free personalisation the domain gives away, and it produces the question *category* that is the only thing the log keeps (constraint 5).
-2. **명식** — show the chart and today's 일진 *before* the text. This is the receipt. Acceptance is insensitive to a merely *claimed* source [Rogers & Soule | 2009 | J. Cross-Cultural Psychology; stage-2 n=258, 130 Western / 128 Chinese | one Barnum profile labelled as Western- vs Chinese-astrology derived, self-rated accuracy], so "우리는 진짜 만세력을 씁니다" in copy buys nothing. Showing the chart and naming which element fired is the only version of that claim a user can check.
+1. **의도** — the user picks today's focus (whole day · wealth · love · health · work). This is free personalisation the domain gives away, and it produces the question *category* that is the only thing the log keeps (constraint 5).
+2. **명식** — show the chart and today's 일진 *before* the text. This is the receipt. Acceptance is insensitive to a merely *claimed* source [Rogers & Soule | 2009 | J. Cross-Cultural Psychology; stage-2 n=258, 130 Western / 128 Chinese | one Barnum profile labelled as Western- vs Chinese-astrology derived, self-rated accuracy], so "we use a real ephemeris" in copy buys nothing. Showing the chart and naming which element fired is the only version of that claim a user can check.
 3. **풀이** — the reading, keyed to the chart (next section).
 4. **개운** — exactly one action, doable today, costing nothing **[craft default]**. This is what makes tomorrow's check mean something.
 5. **기록** — save it with the date and the ephemeris version. The archive is this domain's honest compounding asset and the only thing that survives a lapsed month.
 6. **확인** — tomorrow's opening asks once, skippable and unscored, whether yesterday's 개운 landed **[craft default]**. A return reason built from the user's own record instead of a streak the app can take away.
 
-Reveal staging of roughly **0.6–1.5 s [craft default]** is legitimate 연출; a bar reading "분석 중" over a cached reading is a false claim, not staging.
+Reveal staging of roughly **0.6–1.5 s [craft default]** is legitimate 연출; a bar reading "analysing…" over a cached reading is a false claim, not staging.
 
 ### The category's content problem: Barnum text
 
@@ -120,7 +120,7 @@ This is where 사주 apps actually fail, and the failure is invisible to the met
 - Acceptance rises with the **specificity of the input the user believes was used**, the interpretation held identical — told it was general, vs derived from birth year+month, vs birth year+month+day [Snyder | 1974 | J. Clinical Psychology; three groups, one identical horoscope interpretation | self-rated acceptance; n not retrieved]. A 사주 app collects the most specific input in the category — date, time and place of birth — so it earns the *highest* acceptance for the *weakest* text.
 - Acceptance also tracks how favourable the profile is [Dickson & Kelly | 1985 | Psychological Reports 57:367–382 | review of the Barnum literature; acceptance of generalised personality feedback].
 
-**Consequence for measurement.** A "정확하다" rating cannot separate a chart-derived reading from a newspaper horoscope, and a satisfaction survey scores Barnum text at the top. Accuracy ratings are not a content-quality metric here.
+**Consequence for measurement.** An "it's accurate" rating cannot separate a chart-derived reading from a newspaper horoscope, and a satisfaction survey scores Barnum text at the top. Accuracy ratings are not a content-quality metric here.
 
 **The resolution floor.** An engine keyed only on 일간 × today's 일진 has 10 × 60 = 600 states in total and exactly **ten distinct readings across the entire user base on any given day**, one per 일간. That is arithmetic on the structure, not a benchmark. If two users with different 월지, different 대운 and different 용신 read the same paragraph today, the product is a horoscope column with a 만세력 bolted to the login screen.
 

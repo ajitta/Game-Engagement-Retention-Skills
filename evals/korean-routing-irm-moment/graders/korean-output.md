@@ -14,3 +14,5 @@ PASS requires all four:
 Also FAIL if the plain-language deliverable label on line 1 is absent, if it carries a `Mode:` prefix or an internal mode name, or if an English count-instruction or internal field name leaks in as a heading ("3-5 reward moments", "Input interpretation").
 
 With-only — a baseline Claude answering in Korean is not evidence about routing.
+
+**Headings and labels are graded by function (3.2.0).** The skill now names every section, card label and tag in English and tells the model to translate them into the output language. Any faithful translation counts: `## 전제`, `## 가정` or `## Assumptions` for Assumptions; `## 근거` or `## Basis` for Basis; `[가정]` or `[assumed]` for the tag; `피드백`, `피드백·연출` or `Feedback` for the Feedback bullet; and so on. The Korean strings above are examples, not required spellings. What still fails: a heading in the wrong language for the prompt, both languages side by side, or a missing section.

@@ -21,10 +21,10 @@ Read this family when the beat under design turns on a hidden or uncertain outco
 
 - **Fires when** — a challenge, route or run completes and a roll is due.
 - **Player does** — chooses risk tier, category or timing *before* the roll — the uncertainty is entered, not imposed.
-- **Feedback** — the category is visible pre-reveal (icon, colour, "무기 계열"); only the instance is hidden.
+- **Feedback** — the category is visible pre-reveal (icon, colour, "weapon class"); only the instance is hidden.
 - **Reward** — one guaranteed floor plus a chance at a higher tier. A floor converts a gamble into a choice.
 - **Validation** — repeat opt-in rate, perceived-fairness item, and whether players can state the odds unprompted.
-- **Bound** — disclose per-item odds wherever stakes are meaningful, and never attach the roll to real money without the §5 spec. Banded odds ("희귀 5–10%") are inside the odds-censoring effect above, not outside it.
+- **Bound** — disclose per-item odds wherever stakes are meaningful, and never attach the roll to real money without the §5 spec. Banded odds ("Rare 5–10%") are inside the odds-censoring effect above, not outside it.
 
 ## 3. Staged reveal
 
@@ -70,7 +70,7 @@ Read this family when the beat under design turns on a hidden or uncertain outco
 - **Validation** — question-submission rate, reading save rate, reflective follow-up rate. Do **not** validate on 부적/consultation conversion.
 - **Bound** — readings framed as reflection or entertainment, never prediction; no fear copy; **no paid relief from a negative reading**. About a quarter of users arrive in distress: motives were fun 30.1%, New-Year curiosity 30.0%, psychological comfort 23.6%, answers to worries 22.9%, predicting the future 21.0% [롯데멤버스 라임 survey via 중앙일보 | 2025 | Korean fortune-app users, multiple response | self-reported motive]. Night push in Korea needs separate night-send consent, and an expiring-credit nudge is 광고성 정보 — see `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`. A 시주-모름 path is mandatory and may never be a paywall gate.
 
-## 7. Narrative beat reveal (cliffhanger, 회차 마지막 컷)
+## 7. Narrative beat reveal (cliffhanger, an episode's last panel)
 
 **Use when** an episode, chapter or session ends on an unresolved beat.
 

@@ -16,3 +16,5 @@ PASS requires all five:
 Korean in, Korean out, Korean headings.
 
 Scored, both arms. This is the family where a plugin-free Claude most reliably fabricates a plausible-sounding statute name, which is precisely why it is graded.
+
+**Headings and labels are graded by function (3.2.0).** The skill now names every section, card label and tag in English and tells the model to translate them into the output language. Any faithful translation counts: `## 전제`, `## 가정` or `## Assumptions` for Assumptions; `## 근거` or `## Basis` for Basis; `[가정]` or `[assumed]` for the tag; `피드백`, `피드백·연출` or `Feedback` for the Feedback bullet; and so on. The Korean strings above are examples, not required spellings. What still fails: a heading in the wrong language for the prompt, both languages side by side, or a missing section.
