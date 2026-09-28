@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101c2a">
+  <meta name="description" content="Game Engagement & Retention Skills is a Claude Code plugin for designing satisfying in-session moments, lifecycle retention, and the link between them. Explore the three skills and install from GitHub.">
+  <link rel="canonical" href="https://ajitta.github.io/Game-Engagement-Retention-Skills/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Game Engagement & Retention Skills — Claude Code plugin">
+  <meta property="og:description" content="Design the moment, the return, and the link between them with three routed Claude Code skills.">
+  <meta property="og:url" content="https://ajitta.github.io/Game-Engagement-Retention-Skills/">
+  <title>Game Engagement & Retention Skills — Claude Code plugin</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --night: #101c2a;
+      --panel: #192c3e;
+      --line: #446074;
+      --text: #f3f8fb;
+      --muted: #c3d2dc;
+      --mint: #a9e8ce;
+      --amber: #ffd18d;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--night); color: var(--text); font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: var(--mint); text-underline-offset: .22em; }
+    a:hover { color: var(--amber); }
+    a:focus-visible { outline: 3px solid var(--amber); outline-offset: 4px; }
+    ::selection { background: var(--mint); color: var(--night); }
+    .wrap { width: min(1100px, calc(100% - 3rem)); margin-inline: auto; }
+    .site-header { border-bottom: 1px solid var(--line); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 72px; }
+    .wordmark { color: var(--text); font-size: .94rem; font-weight: 750; letter-spacing: -.025em; text-decoration: none; }
+    nav { display: flex; flex-wrap: wrap; gap: .7rem 1.5rem; font-size: .9rem; font-weight: 650; }
+    nav a { text-decoration: none; }
+    .hero { padding: clamp(4.5rem, 9vw, 8rem) 0 5.5rem; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 12ch; margin-bottom: 1.5rem; font-size: clamp(3.1rem, 6.4vw, 5.8rem); font-weight: 760; letter-spacing: -.04em; line-height: 1.02; }
+    .lead { max-width: 58ch; color: var(--muted); font-size: clamp(1.08rem, 1.55vw, 1.28rem); line-height: 1.55; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 2rem; }
+    .button { display: inline-flex; align-items: center; min-height: 48px; padding: .65rem 1.1rem; border: 1px solid var(--mint); border-radius: 7px; background: var(--mint); color: var(--night); font-weight: 750; text-decoration: none; }
+    .button:hover { background: #d5f4e6; color: var(--night); }
+    .text-link { font-weight: 700; }
+    .diagram { padding: 1.7rem; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+    .diagram h2 { margin-bottom: 1rem; color: var(--muted); font-size: .8rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
+    .diagram-row { display: grid; grid-template-columns: 6.2rem 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--line); }
+    .diagram-row span { color: var(--amber); font: 700 .78rem/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; }
+    .diagram-row p { margin: 0; font-size: 1.05rem; font-weight: 650; line-height: 1.45; }
+    .diagram-note { margin: 1rem 0 0; padding: .9rem 1rem; border-radius: 6px; background: #274a4d; color: #e9fff4; font-size: .93rem; font-weight: 650; }
+    section { scroll-margin-top: 2rem; }
+    .content { padding-block: 5.25rem; }
+    h2 { font-size: clamp(2rem, 3.8vw, 3.1rem); letter-spacing: -.035em; line-height: 1.12; }
+    .section-intro { max-width: 70ch; margin-bottom: 2.7rem; color: var(--muted); font-size: 1.08rem; }
+    .skills { border-top: 1px solid var(--line); }
+    .skill { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 1rem 3rem; padding: 1.65rem 0; border-bottom: 1px solid var(--line); }
+    .skill h3 { margin: 0; font-size: 1.35rem; letter-spacing: -.025em; }
+    .skill p { margin: 0; color: var(--muted); }
+    .skill code, .example code, .install code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .skill-name { display: block; margin-top: .25rem; color: var(--mint); font: .85rem/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+    .install { background: #e9f0f3; color: #172a39; }
+    .install .wrap { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 2.5rem; align-items: center; }
+    .install p { color: #334b5b; }
+    .install a { color: #155c52; }
+    pre { overflow-x: auto; margin: 0; padding: 1.5rem; border-radius: 8px; background: var(--night); color: var(--text); font: .88rem/1.9 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    pre code { font: inherit; }
+    .examples { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 2.5rem; }
+    .example { padding: 1.05rem 0; border-top: 1px solid var(--line); }
+    .example:last-child { border-bottom: 1px solid var(--line); }
+    .example code { display: block; color: var(--mint); font-size: .87rem; overflow-wrap: anywhere; }
+    .example p { margin: .4rem 0 0; color: var(--muted); }
+    .scope { padding-block: 2rem; border-top: 1px solid var(--line); background: var(--panel); }
+    .scope .wrap { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
+    .scope h2 { margin: 0; font-size: 1.1rem; }
+    .scope p { margin: 0; color: var(--muted); }
+    footer { padding-block: 2.5rem; color: var(--muted); font-size: .9rem; }
+    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem; }
+    footer p { max-width: 72ch; margin: 0; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 2rem, 620px); }
+      .header-inner { align-items: flex-start; flex-direction: column; justify-content: center; padding-block: 1rem; }
+      .hero { padding-block: 4rem; }
+      .hero-grid, .skill, .install .wrap, .examples, .scope .wrap { grid-template-columns: 1fr; }
+      .content { padding-block: 4rem; }
+      .diagram { padding: 1.25rem; }
+      .skill { gap: .65rem; }
+      .install .wrap, .examples { gap: 1.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="#top">Game Engagement &amp; Retention Skills</a>
+      <nav aria-label="Main navigation">
+        <a href="#skills">The skills</a>
+        <a href="#install">Install</a>
+        <a href="#examples">Examples</a>
+        <a href="https://github.com/ajitta/Game-Engagement-Retention-Skills">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>Design the moment. Understand the return.</h1>
+          <p class="lead">A Claude Code plugin with three routed skills for game engagement and retention. Work on a satisfying interaction, a lifecycle problem, or the link between them.</p>
+          <div class="actions">
+            <a class="button" href="#install">Install the plugin</a>
+            <a class="text-link" href="https://github.com/ajitta/Game-Engagement-Retention-Skills">View the GitHub repository ↗</a>
+          </div>
+        </div>
+        <div class="diagram" aria-label="How the three skills divide the work">
+          <h2>One problem, three deliverables</h2>
+          <div class="diagram-row"><span>Moment</span><p>What makes this interaction satisfying?</p></div>
+          <div class="diagram-row"><span>Lifecycle</span><p>What brings this cohort back?</p></div>
+          <div class="diagram-row"><span>Seam</span><p>How does the moment earn the next return?</p></div>
+          <p class="diagram-note">Route by the deliverable you need, not by a keyword in the prompt.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="content">
+      <div class="wrap">
+        <h2>Three skills, distinct jobs</h2>
+        <p class="section-intro">The plugin keeps scene design and cohort retention separate, then connects them when the request needs both.</p>
+        <div class="skills">
+          <article class="skill"><div><h3>Reward moments</h3><span class="skill-name">interaction-reward-moments</span></div><p>Design a reveal, choice, feedback beat, first win, or session exit. It focuses on the experience inside a session and the accessibility of proposed effects.</p></article>
+          <article class="skill"><div><h3>Retention strategy</h3><span class="skill-name">retention-strategy-designer</span></div><p>Read cohorts and leak windows; design return events, onboarding, cadence, LiveOps, and measurement for the lifecycle across sessions.</p></article>
+          <article class="skill"><div><h3>The connection</h3><span class="skill-name">engagement-retention-advisor</span></div><p>Handle two-deliverable requests, compare which layer to address first, or design a system whose value spans a session and a return.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="install" class="content install">
+      <div class="wrap">
+        <div>
+          <h2>Install in Claude Code</h2>
+          <p>Run these commands inside a Claude Code session, then start a new session. Use <code>/plugin details game-engagement-retention@game-engagement-retention-skills</code> to check that all three skills loaded.</p>
+          <a href="https://github.com/ajitta/Game-Engagement-Retention-Skills#installation">Read the full installation guide ↗</a>
+        </div>
+        <pre><code>/plugin marketplace add ajitta/Game-Engagement-Retention-Skills
+/plugin install game-engagement-retention@game-engagement-retention-skills</code></pre>
+      </div>
+    </section>
+
+    <section id="examples" class="content">
+      <div class="wrap examples">
+        <div>
+          <h2>Start with the work in front of you</h2>
+          <p class="section-intro">Name the scene, metric, or paired problem. The <a href="https://github.com/ajitta/Game-Engagement-Retention-Skills#the-three-skills">README</a> covers all modes and boundaries.</p>
+        </div>
+        <div>
+          <div class="example"><code>/game-engagement-retention:interaction-reward-moments Our card-flip reveal feels flat</code><p>Work on an in-session experience.</p></div>
+          <div class="example"><code>/game-engagement-retention:retention-strategy-designer D7 falls after onboarding</code><p>Investigate a lifecycle problem and how to measure a change.</p></div>
+          <div class="example"><code>/game-engagement-retention:engagement-retention-advisor Combat feels flat and players churn</code><p>Connect the moment to the return problem.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scope">
+      <div class="wrap">
+        <h2>Where it applies</h2>
+        <p>Games are the deep case. The plugin also supports interactive narrative, fortune and tarot, AI companions, journaling, and learning apps. SaaS and B2B retention are outside its scope; monetization design is outside its remit.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <p>Proposals are designed to include measurement, guardrails, and user-harm signals. Read the repository for the full method, limits, and validation history.</p>
+      <a href="https://github.com/ajitta/Game-Engagement-Retention-Skills">Source and documentation on GitHub ↗</a>
+    </div>
+  </footer>
+</body>
+</html>
