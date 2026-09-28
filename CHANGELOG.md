@@ -11,6 +11,18 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ## [Unreleased]
 
+Evals only; no skill text changed, so no version bump (CONTRIBUTING: a bump exists to make an installed copy re-fetch).
+
+### Evals
+
+- **The fp graders use the contract's per-card Ethics budget** (decided 2026-09-28). A card may carry one Ethics bullet of at most two sentences when its own proposal adds a new push, screen, purchase surface or cut allowance, or names the one priced window its case allows. The graders fail two bullets on one card, a bullet on a card that adds nothing, a compliance report, a moral judgement of the mechanic, and any `✓`, tier code, slug or filename. The `cadence` mode's acceptance bounds and reviewer flags, and legal points listed under `## 확인 필요`, are named as not-a-violation.
+- `evals/README.md` family 7 describes the gate the same way.
+
+### Measured and not measured
+
+- The same 18 transcripts score 11/18 under both the 3.1.4 and the per-card grader. Fresh runs score 7/18. Two intermediate grader drafts scored 2/18 and 1/18 on the same transcripts and were corrected before release; the note records them as a lesson in grader wording.
+- Gate unmet. licensed-collab and stamina are 0/6, all on Ethics bullets longer than two sentences.
+
 ---
 
 ## [3.1.4] — 2026-09-28
