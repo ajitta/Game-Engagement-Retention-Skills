@@ -203,20 +203,20 @@ Copy the three folders under `skills/` into any `.claude/skills/` directory, kee
 
 ## Token cost
 
-Measured with `claude --plugin-dir . plugin details game-engagement-retention` on Claude Code 2.1.261, 2026-09-06; the always-on total re-measured on 2.1.263 after the name shortened, which is where the 9-token drop comes from.
+Measured with `claude --plugin-dir . plugin details game-engagement-retention` on Claude Code 2.1.261, 2026-09-06; the always-on total and the three body sizes re-measured on 2.1.281 on 2026-09-28 for 3.2.0. The +65 tokens since 3.1.1 come from the retention skill's `when_to_use`, which since 3.1.2 names rewarded-ad plans and AI-companion loops as triggers.
 
 | Component | Always-on | On-invoke |
 |---|---|---|
-| Plugin total, all three skills registered | ~1,836 tok | — |
-| Each skill's routing frontmatter | ~600–630 tok | — |
-| `engagement-retention-advisor` body | — | ~9.0k |
-| `interaction-reward-moments` body | — | ~9.9k |
-| `retention-strategy-designer` body | — | ~9.7k |
+| Plugin total, all three skills registered | ~1,901 tok | — |
+| Each skill's routing frontmatter | ~600–700 tok | — |
+| `engagement-retention-advisor` body | — | ~9.3k |
+| `interaction-reward-moments` body | — | ~10.1k |
+| `retention-strategy-designer` body | — | ~10.0k |
 | Reference modules | — | 2–3 per invocation, +6k to +21k on top of the body |
 
 **Per-invocation total, by mode** — body plus the modules that mode reads, at the ≈3.1 bytes/token the measured bodies imply. Cheapest is `retention-strategy-designer --mode economics` at ~16k; `--mode instrument` ~16k; `--mode read` ~17k; `engagement-retention-advisor --mode compare` ~17k; `interaction-reward-moments --mode first-win` ~19k; `--mode moments` ~19–22k depending on which pattern family the beat selects; `engagement-retention-advisor --mode integrate` ~20k; `retention-strategy-designer --mode calendar` ~25k; `--mode strategy` ~26k; `engagement-retention-advisor --mode system` ~27k. The most expensive is `retention-strategy-designer --mode cadence` — battle pass, streak, energy — at **~30k, about 15% of a 200k window in a single invocation**. For comparison, v1.1.0's advisor at its worst, following its own pointers, read ~43 KB ≈ 14k: every v2 mode costs more than the v1 worst case, and `cadence` costs more than twice it. The reads buy sourced, dated, jurisdiction-checked material the v1 bodies asserted from memory — but they are not cheap, and the three-read ceiling does not make them cheap.
 
-Always-on cost is paid in every session; on-invoke cost is paid each time a skill fires. v1.1.0 measured ~1,108 always-on tokens, so v2's richer routing and mode triggers cost about 728 more tokens per session — roughly a third of one percent of a 200k context window. The corpus is 24 reference modules, ~345 KB; the three-reads-per-invocation ceiling bounds any single invocation to the range above rather than to corpus size.
+Always-on cost is paid in every session; on-invoke cost is paid each time a skill fires. v1.1.0 measured ~1,108 always-on tokens, so v2's richer routing and mode triggers cost about 793 more tokens per session — roughly a third of one percent of a 200k context window. The corpus is 24 reference modules, ~345 KB; the three-reads-per-invocation ceiling bounds any single invocation to the range above rather than to corpus size.
 
 The routing text stays inside the frontmatter budget: `description` + `when_to_use` is 1,423 characters for the advisor, 1,436 for reward moments and 1,494 for retention, against a 1,536-character cap that the binary carries as its default. Korean trigger vocabulary now sits inside `description` rather than only in `when_to_use`, so it survives any shortening the listing budget applies.
 

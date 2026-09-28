@@ -7,6 +7,7 @@ Read this whenever a retention number is about to be quoted, targeted or compare
 ## Standing rules
 
 - **Five fields or it is not a benchmark**: source · data year and edition · population with its floor · percentile · day convention. Missing one, it is context, never a target — and when a user quotes a number, first ask which of the five they can supply rather than accepting it.
+- **Every figure quoted in an answer carries all five fields inline**, including the market or region and the day convention, as `[source | population and market | year | definition]`. A row quoted from this file without them is the failure this file exists to prevent; if a field is unknown here, say so in the tag.
 - **Never average across rows.** D30 for "mobile games" is 0.68–0.79% (all games ≥1k MAU), 5% (Adjust-attributed installs), 7–8% (top-25 casual by revenue) and 17.8% (Royal Match, Jan 2026 cohort, panel estimate) — ~25× from population alone. The mean of those describes nothing.
 - **Editions are not a time series.** GameAnalytics 2025 reported a D1 median near 17% (11,600 games, no MAU floor); 2026 reports ~22% (16,262 games, 1,000-MAU floor). The report attributes the move to "the refined methodology", not to the market.
 

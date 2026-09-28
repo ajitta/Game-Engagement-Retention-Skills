@@ -13,6 +13,32 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [3.2.1] — 2026-09-28
+
+### Fixed
+
+- **RSD routing text fits the 1,536-character cap.** Since 3.1.2 `description` + `when_to_use` ran to 1,679 characters, past the point where Claude Code truncates the skill listing. It is now 1,512. A first cut that dropped the example 'set up retention analytics events' took homeless-analytics-taxonomy from 3/3 to 0/3; the example is back and the cut came from elsewhere.
+- **Korean gacha-odds law routes to RSD.** The statute case answered from memory with no skill loaded in round 10; `when_to_use` now names Korean gacha-odds law.
+- **Read mode has no cards, Order or Measurement plan.** The mode row now specifies a label line, 2–4 paragraphs and Basis, and the fixed-sections rule defers to the mode row.
+
+### Changed
+
+- The ban on saying a mechanic is already safe, compliant or well chosen covers the whole answer: intro, Assumptions, spec table and cards.
+- Reread: the two-sentence limit covers every list, not only cards; declined items never appear in an opening paragraph.
+- `liveops-cadence.md`: a calendar counts weeks from season start and never invents dates or holidays.
+- `benchmarks.md`: every quoted figure carries the full `[source | population and market | year | definition]` tag.
+- README and plan: always-on cost re-measured at ~1,901 tokens on Claude Code 2.1.281, and body sizes updated.
+
+### Measured and not measured
+
+- **Measured on Opus 5.5 (round 13, 18 cases × 3 runs):**
+  - fp 15/18, up from 13–14/18. Companion, pass-weeklies and wait-or-pay are 3/3; streak, licensed-collab and stamina are 2/3.
+  - Every routing case re-run for the description cut fires RSD 3/3.
+  - Read mode 2/3, calendar roadmap 2/3 and Korea odds statute 1/3, all up from 0/3.
+- **Unchanged:** shape 0/9 (three-sentence bullets), benchmark tags 0/3 and hidden-odds 0/3 (the refusal still opens the answer).
+- **Not measured:** the 21 cases outside this round were not re-run on 3.2.1.
+- The fp release gate (every case 3/3) is **still not met**.
+
 ## [3.2.0] — 2026-09-28
 
 ### Changed

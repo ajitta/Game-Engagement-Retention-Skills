@@ -2,6 +2,8 @@
 
 Read when the deliverable is a named cadence mechanic (battle pass, quest stack, login calendar, energy meter, streak, push plan, win-back campaign) or a dated multi-week calendar — for the field list, the acceptance bounds a reviewer can check, and the sizing rules that replace copied constants.
 
+**A calendar counts weeks from season start** (Week 1, Week 2, …). Never pin it to real dates, holidays or a start day the user did not give; name the holiday windows to check against instead, as a question for their calendar.
+
 Every spec below is tagged with its canonical **ethics family slug**, and each Reviewer-flags block ends with the slug a failed flag lands on. The slug is a row title in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md` and an entry in the compliant-spec index of `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/ethics-tiers.md`; the slug is internal keying and never reaches the answer — when a bound, a price or a residual risk must be stated, say it in the reader's own words. Read the row before signing off — this file owns the cadence bounds, not the tier.
 
 ## Sizing before specifying
