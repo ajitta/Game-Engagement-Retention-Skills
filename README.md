@@ -1,7 +1,7 @@
 # Game Engagement & Retention Skills
 
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757)](#installation)
-[![version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fajitta%2FGame-Engagement-Retention-Skills%2Fmain%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&color=3E7BFA)](.claude-plugin/plugin.json)
+[![version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fajitta%2FGame-Engagement-Retention-Skills%2Fmain%2Fplugin%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&color=3E7BFA)](plugin/.claude-plugin/plugin.json)
 [![skills](https://img.shields.io/badge/skills-3%20routed-4C9A6A)](#the-three-skills)
 [![license](https://img.shields.io/badge/license-MIT-yellow)](LICENSE)
 
@@ -197,13 +197,13 @@ Auto-triggering needs no slash command — "our card-flip reveal feels cheap" re
 
 ### Manual alternative (no plugin)
 
-Copy the three folders under `skills/` into any `.claude/skills/` directory, keeping all three as **siblings**. The shared ethics modules are read across skill directories at `../<skill>/references/<file>.md`, so a partial copy of one skill breaks those reads. The plugin path is more robust; use it unless you cannot.
+Copy the three folders under `plugin/skills/` into any `.claude/skills/` directory, keeping all three as **siblings**. The shared ethics modules are read across skill directories at `../<skill>/references/<file>.md`, so a partial copy of one skill breaks those reads. The plugin path is more robust; use it unless you cannot.
 
 ---
 
 ## Token cost
 
-Measured with `claude --plugin-dir . plugin details game-engagement-retention` on Claude Code 2.1.261, 2026-09-06; the always-on total and the three body sizes re-measured on 2.1.281 on 2026-09-28 for 3.2.0. The +65 tokens since 3.1.1 come from the retention skill's `when_to_use`, which since 3.1.2 names rewarded-ad plans and AI-companion loops as triggers.
+Measured with `claude --plugin-dir ./plugin plugin details game-engagement-retention` on Claude Code 2.1.261, 2026-09-06; the always-on total and the three body sizes re-measured on 2.1.281 on 2026-09-28 for 3.2.0. The +65 tokens since 3.1.1 come from the retention skill's `when_to_use`, which since 3.1.2 names rewarded-ad plans and AI-companion loops as triggers.
 
 | Component | Always-on | On-invoke |
 |---|---|---|
@@ -254,19 +254,19 @@ The caveats cut both ways and are worth stating plainly: one prompt per matchup,
 
 `evals/` holds **39 cases across ten families** — routing positives, the six hardened routing edges, six previously homeless asks, Korean routing, mode selection, refusal true positives, **six refusal false positives that gate every ethics change (10+ runs per case, 95% Wilson lower bound ≥ 80%)**, output shape with a fabrication penalty, intake, and evidence hygiene.
 
-`claude plugin eval` exists on 2.1.261 but is in early access on this account and currently scaffolds nothing, so the grader frontmatter schema is **unverified** and the suite is authored and **documented to run manually**: `claude -p "$(cat evals/<case>/prompt.md)" --plugin-dir .` for the with arm, the same prompt with no `--plugin-dir` for the baseline, three runs each for a smoke check and 10+ for any claim of a change, graded by a separate judge invocation against that case's grader file under `evals/<case>/graders/` — `criteria.md` for the refusal, intake, hygiene and shape families, `skill-fired.md`, `mode-line.md` or `korean-output.md` for the routing and mode families. The with-without ablation cannot score the routing families — a baseline Claude cannot route to skills it does not have — so those are marked with-only and read as a fired/not-fired indicator. The earn-its-cost argument lives in the scored families, where a plugin-free Claude gives a plausible answer and the graded question is whether it is as *rigorous*.
+`claude plugin eval` exists on 2.1.261 but is in early access on this account and currently scaffolds nothing, so the grader frontmatter schema is **unverified** and the suite is authored and **documented to run manually**: `claude -p "$(cat evals/<case>/prompt.md)" --plugin-dir ./plugin` for the with arm, the same prompt with no `--plugin-dir` for the baseline, three runs each for a smoke check and 10+ for any claim of a change, graded by a separate judge invocation against that case's grader file under `evals/<case>/graders/` — `criteria.md` for the refusal, intake, hygiene and shape families, `skill-fired.md`, `mode-line.md` or `korean-output.md` for the routing and mode families. The with-without ablation cannot score the routing families — a baseline Claude cannot route to skills it does not have — so those are marked with-only and read as a fired/not-fired indicator. The earn-its-cost argument lives in the scored families, where a plugin-free Claude gives a plausible answer and the graded question is whether it is as *rigorous*.
 
 ### Checks that run on every change
 
 ```sh
 claude plugin validate . --strict
-claude plugin validate .claude-plugin/plugin.json --strict
-claude plugin validate ./skills --strict
+claude plugin validate plugin/.claude-plugin/plugin.json --strict
+claude plugin validate ./plugin/skills --strict
 scripts/check-shared-blocks.sh && scripts/check-no-facts-in-skills.sh \
   && scripts/check-ethics-rows.sh && scripts/check-claims.sh
 ```
 
-The four scripts run in CI on every push (`.github/workflows/checks.yml`); the three validators are release checks run locally, because CI has no Claude Code CLI. The marketplace and skills validators and all four scripts pass. `claude plugin validate .claude-plugin/plugin.json --strict` exits 1 in a local checkout, on a warning about the untracked personal `CLAUDE.local.md` at the repository root; that file is gitignored and never reaches an installer. `claude plugin validate ./skills --strict` is the load-bearing one: a broken `SKILL.md` frontmatter loads at runtime with empty metadata — a skill with no description and therefore no routing, the worst failure this plugin has. `claude plugin validate . --strict` checks `.claude-plugin/marketplace.json`, the manifest the install commands above go through; it does not check that the manifest's entry names this plugin, which is `check-claims.sh`'s job.
+The four scripts run in CI on every push (`.github/workflows/checks.yml`); the three validators are release checks run locally, because CI has no Claude Code CLI. The marketplace and skills validators and all four scripts pass. `claude plugin validate plugin/.claude-plugin/plugin.json --strict` exits 1 in a local checkout, on a warning about the untracked personal `CLAUDE.local.md` at the repository root; that file is gitignored and never reaches an installer. `claude plugin validate ./plugin/skills --strict` is the load-bearing one: a broken `SKILL.md` frontmatter loads at runtime with empty metadata — a skill with no description and therefore no routing, the worst failure this plugin has. `claude plugin validate . --strict` checks `.claude-plugin/marketplace.json`, the manifest the install commands above go through; it does not check that the manifest's entry names this plugin, which is `check-claims.sh`'s job.
 
 ### Research basis
 
@@ -279,22 +279,15 @@ The skills describe design levers *consistent with* published work, never neuroc
 ```
 Game-Engagement-Retention-Skills/
 ├── .claude-plugin/
-│   └── plugin.json          # manifest; skills are auto-scanned, not declared
-├── skills/
-│   ├── interaction-reward-moments/
-│   │   ├── SKILL.md         # procedure only, 193 lines
-│   │   └── references/      # 9 modules: lenses, 5 pattern families,
-│   │                        #   first-session, feel-and-accessibility, research-basis
-│   ├── retention-strategy-designer/
-│   │   ├── SKILL.md         # 181 lines
-│   │   └── references/      # 8 modules: playbook, metric-definitions, benchmarks,
-│   │                        #   experiments, liveops-cadence, genre-profiles,
-│   │                        #   churn-and-winback, retention-economics
-│   └── engagement-retention-advisor/
-│       ├── SKILL.md         # 180 lines
-│       └── references/      # 7 modules: ethics-tiers, domain-ethics, jurisdictions,
-│                            #   korea-market, integration-patterns, systems-catalog,
-│                            #   contracts (canonical shared blocks; never read at runtime)
+│   └── marketplace.json     # source "./plugin": installers cache only plugin/
+├── plugin/                  # the installed payload (~550 KB)
+│   ├── .claude-plugin/
+│   │   └── plugin.json      # manifest; skills are auto-scanned, not declared
+│   └── skills/
+│       ├── interaction-reward-moments/      # SKILL.md + 9 modules
+│       ├── retention-strategy-designer/     # SKILL.md + 8 modules
+│       └── engagement-retention-advisor/    # SKILL.md + 7 modules,
+│                                            #   incl. contracts.md (canonical shared blocks)
 ├── evals/                   # 39 cases, ten families, one prompt + graders each
 ├── scripts/                 # check-shared-blocks · check-no-facts-in-skills
 │                            #   · check-ethics-rows · check-claims

@@ -27,7 +27,7 @@ set -uo pipefail
 cd "$(dirname "$0")/.."
 status=0
 
-for f in skills/*/SKILL.md; do
+for f in plugin/skills/*/SKILL.md; do
   body=$(sed '1,/^---$/d; 1,/^---$/d' "$f")   # drop frontmatter; descriptions may name triggers
 
   # Retention percentages — with the sign, and spelled out without it
@@ -69,7 +69,7 @@ done
 
 # Modules are read at runtime too, and the ≤3-read ceiling bounds how many load,
 # not how large one is. Same cap, so the worst-case invocation stays bounded.
-for m in skills/*/references/*.md; do
+for m in plugin/skills/*/references/*.md; do
   b=$(wc -c < "$m" | tr -d ' ')
   [ "$b" -gt 32000 ] && { echo "FAIL($m): $b bytes, over the 32000-byte module cap"; status=1; }
 done

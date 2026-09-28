@@ -5,7 +5,7 @@
 # the defect, and this script removes the mechanism.
 set -uo pipefail
 cd "$(dirname "$0")/.."
-CONTRACTS=skills/engagement-retention-advisor/references/contracts.md
+CONTRACTS=plugin/skills/engagement-retention-advisor/references/contracts.md
 status=0
 
 extract() { # $1=file $2=block name
@@ -21,7 +21,7 @@ for block in ROUTING CARD LANGUAGE; do
   if [ -z "$ref" ]; then
     echo "FAIL: $CONTRACTS has no $block block"; status=1; continue
   fi
-  for skill in skills/*/SKILL.md; do
+  for skill in plugin/skills/*/SKILL.md; do
     got=$(extract "$skill" "$block")
     if [ -z "$got" ]; then
       echo "FAIL: $skill is missing the $block block"; status=1
@@ -39,10 +39,10 @@ done
 # owning skill (`${CLAUDE_SKILL_DIR}/../<skill>/references/<file>.md`), which
 # resolves correctly for a same-skill read too. SKILL.md bodies are exempt —
 # there the own-directory form is the correct one.
-if grep -rn '\${CLAUDE_SKILL_DIR}/references/' skills/*/references/*.md; then
+if grep -rn '\${CLAUDE_SKILL_DIR}/references/' plugin/skills/*/references/*.md; then
   echo "FAIL: reference modules must not use own-directory paths — a module cannot assume which skill is reading it" >&2
   status=1
 fi
 
-[ $status -eq 0 ] && echo "OK: ROUTING, CARD and LANGUAGE blocks identical across $(ls skills/*/SKILL.md | wc -l | tr -d ' ') skills; no own-directory pointers in reference modules"
+[ $status -eq 0 ] && echo "OK: ROUTING, CARD and LANGUAGE blocks identical across $(ls plugin/skills/*/SKILL.md | wc -l | tr -d ' ') skills; no own-directory pointers in reference modules"
 exit $status

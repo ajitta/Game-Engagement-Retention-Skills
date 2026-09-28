@@ -89,10 +89,10 @@ word2num() {
 # --- the tree, re-derived every run -----------------------------------------
 n_cases=$(ls -d evals/*/ 2>/dev/null | wc -l | tr -d ' ')
 n_families=$(grep -c '^### [0-9][0-9]* — ' evals/README.md)
-n_modules=$(ls skills/*/references/*.md 2>/dev/null | wc -l | tr -d ' ')
-n_skills=$(ls skills/*/SKILL.md 2>/dev/null | wc -l | tr -d ' ')
+n_modules=$(ls plugin/skills/*/references/*.md 2>/dev/null | wc -l | tr -d ' ')
+n_skills=$(ls plugin/skills/*/SKILL.md 2>/dev/null | wc -l | tr -d ' ')
 n_scripts=$(ls scripts/check-*.sh 2>/dev/null | wc -l | tr -d ' ')
-name=$(sed -nE 's/.*"name"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/p' .claude-plugin/plugin.json | head -1)
+name=$(sed -nE 's/.*"name"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/p' plugin/.claude-plugin/plugin.json | head -1)
 
 # The plugin `name` is the tag prefix, so shortening it orphans every tag cut
 # under the old one. `game-engagement-retention-skills` became
@@ -146,13 +146,13 @@ while IFS=: read -r f l text; do
   [ -z "${text:-}" ] && continue
   w=$(printf '%s' "$text" | sed -E 's/^(the )?([a-z0-9]+) (routed )?skills$/\2/')
   w=$(word2num "$w")
-  [ "$w" = "$n_skills" ] || fail "$f:$l claims $w skills; skills/ has $n_skills"
+  [ "$w" = "$n_skills" ] || fail "$f:$l claims $w skills; plugin/skills/ has $n_skills"
 done < <(claims "\\b(the )?$NUM (routed )?skills\\b" | grep -v ' of the ')
 
 # --- 2. the declared version is the one the changelog documents --------------
-declared=$(sed -nE 's/.*"version"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/p' .claude-plugin/plugin.json | head -1)
+declared=$(sed -nE 's/.*"version"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/p' plugin/.claude-plugin/plugin.json | head -1)
 newest=$(grep -oE '^## \[[0-9]+\.[0-9]+\.[0-9]+\]' CHANGELOG.md | head -1 | tr -d '#[] ')
-[ -n "$declared" ] || fail "no version in .claude-plugin/plugin.json"
+[ -n "$declared" ] || fail "no version in plugin/.claude-plugin/plugin.json"
 [ "$declared" = "$newest" ] || \
   fail "plugin.json declares $declared but the newest CHANGELOG entry is $newest — an installed copy re-fetches on the declared version, so the two cannot drift"
 
@@ -254,7 +254,7 @@ else
   entry_src=$(sed -nE 's/^      "source"[[:space:]]*:[[:space:]]*"([^"]*)".*/\1/p' "$mp" | head -1)
   [ "$entries" = "1" ] || fail "$mp lists $entries plugins; this repository serves one — a second entry is the catalog repository's job"
   [ "$entry_name" = "$name" ] || fail "$mp advertises '$entry_name' but plugin.json declares '$name'; the README install line would resolve to nothing"
-  [ "$entry_src" = "./" ] || fail "$mp source is '${entry_src:-<not a string>}', not './'; a URL pins installs to whatever it serves and defeats self-hosting"
+  [ "$entry_src" = "./plugin" ] || fail "$mp source is '${entry_src:-<not a string>}', not './plugin'; the installer caches exactly that directory, and a URL defeats self-hosting"
   grep -qF "/plugin install $name@$mp_name" README.md || \
     fail "README.md never prints '/plugin install $name@$mp_name' — the self-hosted install line no longer matches $mp"
 fi

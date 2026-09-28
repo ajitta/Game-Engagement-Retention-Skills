@@ -5,7 +5,7 @@ described — a benchmark row whose edition moved, a rule that changed in one of
 places, a gate that stopped being met. Everything below exists to make that kind of drift
 either impossible or loud.
 
-Read `README.md` for what the plugin does, `skills/engagement-retention-advisor/references/contracts.md`
+Read `README.md` for what the plugin does, `plugin/skills/engagement-retention-advisor/references/contracts.md`
 for the shipped output contract, and `docs/features/engagement-retention-v2/05-plan.md` for
 what is currently open.
 
@@ -81,19 +81,19 @@ below need the Claude Code CLI and are run locally:
 
 ```sh
 claude plugin validate . --strict                            # marketplace.json, the install path
-claude plugin validate .claude-plugin/plugin.json --strict   # exits 1 locally on CLAUDE.local.md; see README
-claude plugin validate ./skills --strict                     # the load-bearing one
+claude plugin validate plugin/.claude-plugin/plugin.json --strict   # exits 1 locally on CLAUDE.local.md; see README
+claude plugin validate ./plugin/skills --strict                     # the load-bearing one
 ```
 
 ## Changing a skill
 
-Any user-visible change ships with a `version` bump in `.claude-plugin/plugin.json` **in
+Any user-visible change ships with a `version` bump in `plugin/.claude-plugin/plugin.json` **in
 the same commit** — a declared version is the only thing that makes an installed copy
 re-fetch — plus a `CHANGELOG.md` entry saying *which skill now fires differently*. Then
 re-measure and record:
 
 ```sh
-claude --plugin-dir . plugin details game-engagement-retention
+claude --plugin-dir ./plugin plugin details game-engagement-retention
 ```
 
 Release is one command:

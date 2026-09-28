@@ -25,7 +25,7 @@
 
 > **What these graders grade.** The assertions here are keyed to the **shipped output
 > contract** — the three fenced blocks in
-> `skills/engagement-retention-advisor/references/contracts.md`, copied byte-identically into
+> `plugin/skills/engagement-retention-advisor/references/contracts.md`, copied byte-identically into
 > all three `SKILL.md` bodies and pinned by `scripts/check-shared-blocks.sh`. Where that
 > contract and 04-design.md §4/§10 disagree, **the contract wins and the graders follow it**,
 > because a polish pass deliberately changed the output shape after a blind A/B judged the
@@ -266,7 +266,7 @@ check; a gate reading or a before/after comparison needs 10+ per case.
 
 ```sh
 # with arm — the plugin resolves from this repo
-claude -p "$(cat evals/fp-stamina-published-refill/prompt.md)" --plugin-dir .
+claude -p "$(cat evals/fp-stamina-published-refill/prompt.md)" --plugin-dir ./plugin
 
 # baseline arm — same prompt, no plugin
 claude -p "$(cat evals/fp-stamina-published-refill/prompt.md)"
@@ -293,7 +293,7 @@ of the run and can take that slot. It did exactly that on the first grading run 
 the generation transcript came back clean, and the judge's verdict came back as the hook's
 reply instead of a PASS/FAIL list. A hook under `.claude/` is gitignored and personal, so
 whether you have one is machine-specific and the failure is silent — `cd` to a scratch
-directory and pass `--plugin-dir /absolute/path/to/this/repo` rather than relying on not
+directory and pass `--plugin-dir /absolute/path/to/this/repo/plugin` rather than relying on not
 having one.
 
 For the with-only families (1–5) run the with arm only — grading a baseline transcript

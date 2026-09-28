@@ -7,7 +7,7 @@
 # contains a digit and would otherwise satisfy the numeric test on its own.
 set -uo pipefail
 cd "$(dirname "$0")/.."
-F=skills/engagement-retention-advisor/references/domain-ethics.md
+F=plugin/skills/engagement-retention-advisor/references/domain-ethics.md
 status=0
 [ -f "$F" ] || { echo "FAIL: $F missing"; exit 1; }
 

@@ -26,8 +26,8 @@ msg=${1:-}
 step() { printf '\n\033[1m==> %s\033[0m\n' "$*"; }
 die()  { printf '\nFAIL: %s\n' "$*" >&2; exit 1; }
 
-version=$(sed -nE 's/.*"version"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/p' .claude-plugin/plugin.json | head -1)
-name=$(sed -nE 's/.*"name"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/p' .claude-plugin/plugin.json | head -1)
+version=$(sed -nE 's/.*"version"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/p' plugin/.claude-plugin/plugin.json | head -1)
+name=$(sed -nE 's/.*"name"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/p' plugin/.claude-plugin/plugin.json | head -1)
 tag="$name--v$version"
 branch=$(git rev-parse --abbrev-ref HEAD)
 
@@ -55,10 +55,10 @@ step "Validators (these need the Claude Code CLI and do not run in CI)"
 if command -v claude >/dev/null 2>&1; then
   printf '  %-34s' "validate . --strict (marketplace)"
   claude plugin validate . --strict >/dev/null 2>&1 && echo "PASS" || die "marketplace validator"
-  printf '  %-34s' "validate ./skills --strict"
-  claude plugin validate ./skills --strict >/dev/null 2>&1 && echo "PASS" || die "skills validator"
+  printf '  %-34s' "validate ./plugin/skills --strict"
+  claude plugin validate ./plugin/skills --strict >/dev/null 2>&1 && echo "PASS" || die "skills validator"
   printf '  %-34s' "validate plugin.json --strict"
-  if claude plugin validate .claude-plugin/plugin.json --strict >/dev/null 2>&1; then echo "PASS"
+  if claude plugin validate plugin/.claude-plugin/plugin.json --strict >/dev/null 2>&1; then echo "PASS"
   else echo "warns (expected locally: untracked CLAUDE.local.md — see README)"; fi
 else
   die "the claude CLI is not on PATH; the three validators are release checks and cannot be skipped"
@@ -66,13 +66,13 @@ fi
 
 step "Always-on cost, for the record"
 if command -v claude >/dev/null 2>&1; then
-  claude --plugin-dir . plugin details "$name" 2>/dev/null | grep -E 'Always-on' || echo "  (not reported)"
+  claude --plugin-dir ./plugin plugin details "$name" 2>/dev/null | grep -E 'Always-on' || echo "  (not reported)"
 fi
 
 if [ "$dry" = "1" ]; then
   step "--dry-run: stopping before the branch push and the tag"
   echo "  would run: git push origin $branch"
-  echo "  would run: claude plugin tag . -m \"$msg %s\" --push"
+  echo "  would run: claude plugin tag ./plugin -m \"$msg %s\" --push"
   exit 0
 fi
 
@@ -81,7 +81,7 @@ step "Pushing $branch"
 git push origin "$branch" || die "branch push failed — nothing has been tagged, so nothing is inconsistent"
 
 step "Tagging and pushing $tag"
-claude plugin tag . -m "$msg %s" --push || die "tagging failed; the branch is pushed, so re-run once fixed"
+claude plugin tag ./plugin -m "$msg %s" --push || die "tagging failed; the branch is pushed, so re-run once fixed"
 
 step "Verifying the tag is reachable from the published branch"
 git fetch --quiet origin

@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "game-engagement-retention",
-      "source": "./",
+      "source": "./plugin",
       "description": "Three routed skills for designing in-session reward moments and lifecycle retention for games and consumer interactive apps — the scene, the cohort, and the link between them.",
       "category": "productivity"
     }
