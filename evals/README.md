@@ -9,8 +9,9 @@
   Every grader here uses the documented shape — a `type:` key naming the grader kind,
   with the criteria in the body — plus one `ablation:` key, because §10 requires the
   routing families to be marked with-only. The three field values in use are
-  `type: tool_use`, `type: llm_judge`, and `ablation: with-only | scored`. All three
-  key names and all four values are guesses. When eval leaves early access, run one
+  `type: tool_use`, `type: llm_judge`, `type: script` (with a `run:` command that reads
+  the final message on stdin), and `ablation: with-only | scored`. All of these key names
+  and values are guesses. When eval leaves early access, run one
   case, read the error, and rename the keys across the suite; the case bodies do not
   change.
 
@@ -189,12 +190,18 @@ run in one suite because either one alone is easy to pass by moving the dial.
 ### 8 — Output shape (3)
 
 One normal ask per skill, all three in Korean so the Korean-heading rule is in force.
-Each case carries two graders. `criteria.md` checks the artifact: scan table with exactly
+Each case carries three graders. `criteria.md` checks the artifact: scan table with exactly
 four content columns, no table over five columns anywhere, at least three cards carrying
-every canonical field including the three execution bullets, at most two sentences per bullet,
+every canonical field including the three execution bullets,
 bold inline labels rather than sub-headings, and `## 근거` present — one line in a
 designer's words naming any check that could not be run, never a filename or module name.
 There is no 윤리 / Ethics bullet (removed in 3.2.0); a card carrying one fails.
+
+`bullets.md` is a **script** grader: `scripts/count-bullet-sentences.py` counts sentences in
+every list item and fails any over two. It replaced the judge's reading of that rule in
+3.2.2, because across seven Opus 5.5 rounds the judge's calls on the same rule varied
+between runs. The script is not an invariant check and does not run in CI; it runs on a
+saved transcript.
 
 `anti-fabrication.md` is a **penalty** grader, and it exists because LLM judges reward
 comprehensive-looking output: a baseline that invents "week 1, two engineers, +5% D1"

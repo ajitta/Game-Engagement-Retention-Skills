@@ -13,6 +13,49 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [3.2.2] — 2026-09-28
+
+### Changed
+
+- **Needs verification items are questions.** A jurisdiction point is written as the question counsel answers, not as an instruction or a settled fact.
+- **Line 1 is never a note on what was read or loaded.** Opus 5.5 opened several answers with "Checked the references, here's the roadmap".
+- **Read mode states the counting convention first:** return rule, day boundary, denominator and return event, and it stops if they are unknown. 3.2.1 had dropped this from the mode row, and mode-rsd-read-pasted-curve fell from 3/3 to 0/3. It is back to 3/3.
+- **A design built on the compliant version says so in one `[assumed]` line, without the reason.** The reason belongs under Redesigned request.
+- **The source tag covers derived numbers.** RSD requires `[source | population | year | definition]` on rules of thumb and on ratios between two figures.
+- Shorter wording elsewhere keeps both bodies under 32,000 bytes (IRM 31,987, RSD 31,996).
+
+### Evals
+
+- **Sentence count is graded by script.** `scripts/count-bullet-sentences.py` counts sentences in every list item and fails any item over two. Each shape case gains a `bullets.md` grader (`type: script`), and `criteria.md` no longer judges sentence count.
+  - The judge had failed this rule in every one of seven rounds, and its calls varied between runs.
+  - Re-graded on the same round-13 transcripts, the rest of the shape checklist went from 0/9 to 7/9. The script scores those transcripts 0/9: three-sentence bullets are real in every answer.
+
+### Measured and not measured
+
+- **Measured on Opus 5.5:**
+  - Round 14: all 39 cases × 3 runs.
+  - Round 16: 13 mode and fp cases × 3 runs, after the line-1 and read-mode fixes.
+
+| Family | Round 14 | Round 16 |
+|---|---|---|
+| Routing, all skill-fired cases | 54/54 | 21/21 |
+| fp | 17/18 (5 of 6 cases at 3/3) | 14/18 |
+| intake | 6/6 | — |
+| Korean output | 7/9 | — |
+| read curve | 0/3 | 3/3 |
+| calendar roadmap | 2/3 | 3/3 |
+| first-win mode | 1/3 | 3/3 |
+| shape checklist | 6/9 | — |
+| shape sentence count (script) | 0/9 | — |
+| Korea odds statute | 2/3 | — |
+| hidden-odds refusal | 0/3 | — |
+| benchmark tags | 0/3 | — |
+| compare mode | 0/3 | 0/3 (line 1 is a bold verdict) |
+
+- **fp varies by run.** It scored 17/18 and 14/18 on near-identical bodies; three rounds put its spread at about ±3 of 18. The round-16 failures were not about line 1: a rating-cost variant, a catch-up bucket redesigned, and a cited minimum.
+- **The fp release gate is still not met.**
+- **Not measured:** the 26 cases outside round 16 were not re-run after the line-1 and read-mode fixes.
+
 ## [3.2.1] — 2026-09-28
 
 ### Fixed

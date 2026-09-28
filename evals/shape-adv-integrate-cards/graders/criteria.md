@@ -14,7 +14,7 @@ PASS requires all six:
 5. **`## 따로 볼 것` / Set aside present** — the engagement-only and retention-only residue: candidates that failed to integrate, one line each with why. Any faithful heading for that function passes (`## 따로 볼 것`, `## 보류`, `## 버린 안`, `## Set aside`).
 6. **`## 근거` present** — one line in the words a designer uses, whose real substance is any check that could not be run and why. Its absence FAILS. It also FAILS if it names a reference file, a module, a lens, a pattern, a slug or a skill, or if it counts the units above it ("위 세 카드"). A clause saying in designer's words what was checked — the contract's own example is `근거: 공개된 게임필 수치 범위와 국내 규정 확인` — is correct, not a reading list.
 
-Also: at most two sentences per bullet (three or more FAILS), bold inline labels, no table for rationale or ethics, and the fixed sections in order.
+Also: bold inline labels (sentence count is graded by script in `bullets.md`), no table for rationale or ethics, and the fixed sections in order.
 
 Scored, both arms, fractionally.
 
