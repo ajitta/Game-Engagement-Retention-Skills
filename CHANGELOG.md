@@ -11,6 +11,12 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ## [Unreleased]
 
+### Changed (process, no skill change)
+
+- **Release gates are statistical.** fp and tp each pass when the 95% Wilson lower bound of the family's pass rate is ≥ 80% over 10+ runs per case (fp ≥ 55/60, tp ≥ 29/30). The old all-pass gate (every case 3/3) passes a skill with a 95% per-run rate only 40% of the time (0.95^18).
+- **Judging a change** (CONTRIBUTING): no rule and no bump on a 3-run result; compare against the unchanged body at 10+ runs per case with a Fisher exact p-value; batch fixes, measure once, release once.
+- **Stale "never been executed" removed** from README.md (2), evals/README.md and CONTRIBUTING.md. `check-claims.sh` section 6 now fails on that phrase and on the retired 6/6 wording whenever `docs/notes/` holds an eval record.
+
 ---
 
 ## [3.2.2] — 2026-09-28

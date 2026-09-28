@@ -126,10 +126,27 @@ The four-tier model is deliberate and reverses an earlier absolute-prohibition p
 the 2.0.0 entry in `CHANGELOG.md` before proposing a ban. Refusal fires only on T1 and
 T2a, is scoped to the failing spec bullet, and the rest of the answer still ships.
 
-Two eval families gate an ethics change — family 7 (six refusal false positives) at 6/6
-and family 6 (three true positives) at 3/3. **Both gates are declared and neither has been
-met**: the suite has never been fully executed. `evals/README.md` has the manual
-procedure, including why you must run it from outside this repository.
+Two eval families gate an ethics change — family 7 (six refusal false positives) and
+family 6 (three true positives). Each gate is the 95% Wilson lower bound of the family's
+pass rate at ≥ 80%, over at least 10 runs per case: ≥ 55/60 for fp, ≥ 29/30 for tp.
+`evals/README.md` has the procedure, including why you must run it from outside this
+repository; `docs/notes/` holds the dated run records.
+
+## Judging a change
+
+Three runs per case is a smoke check, not a measurement. Same-body re-runs of the fp
+family have scored 17/18 and 14/18, so a 3-run delta of that size is noise.
+
+- **No rule is added, and no version is bumped, on a 3-run result.** A change counts as
+  an improvement only when it is compared with the unchanged body under the same
+  harness at 10+ runs per case, and the difference clears noise (report the Fisher exact
+  p-value next to the counts).
+- **Batch fixes, measure once, release once.** One release per measured batch, not per
+  fix.
+- **Prefer removing structure to adding rules.** The largest recorded gain (3.2.0, fp
+  18/36 → 27/36) came from deleting the Ethics bullet; four rewordings of the
+  two-sentence rule moved nothing. A form rule the model keeps breaking belongs in a
+  script grader, not in another sentence of the body.
 
 ## Writing a fact
 

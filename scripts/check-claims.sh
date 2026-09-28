@@ -21,7 +21,7 @@
 #   README.md:      "three routed skills"          -> "four routed skills"
 #   plugin.json:    version 2.2.1                  -> 2.3.0, ahead of the CHANGELOG
 #   CHANGELOG.md:   insert "## [2.1.7]" below the newest *released* entry (no tag)
-#   README.md:      delete "never been executed"   (while evals/results/ is absent)
+#   README.md:      re-add "never been executed" (docs/notes/ has eval records)
 #   README.md:      re-add "Skill wins 2/2" or "Both validators"
 #   CHANGELOG.md:   delete the [Unreleased] section, then edit the [2.2.1] entry
 #                   (a tagged newest entry that no longer matches its tag)
@@ -218,18 +218,22 @@ else
 fi
 
 # --- 6. the eval suite's execution state, as the documents describe it -------
-# The release gate is declared, not met, until transcripts exist. Whichever way
-# that flips, three documents have to move with it.
-if [ -d evals/results ] && [ -n "$(ls -A evals/results 2>/dev/null)" ]; then
-  for f in README.md CHANGELOG.md evals/README.md; do
-    grep -q "never been executed" "$f" && \
-      fail "$f still says the suite has 'never been executed', but evals/results/ has transcripts"
+# The suite has been run (docs/notes/ holds dated records), so "never been
+# executed" is now a stale claim. It sat in README.md, evals/README.md and
+# CONTRIBUTING.md for three releases after the runs, because the old check only
+# looked for evals/results/, which stays gitignored-empty by design. The retired
+# "6/6" / "3/3" all-pass gate is pinned out for the same reason: it is the
+# wording that outlived its definition.
+if ls docs/notes/*eval*.md >/dev/null 2>&1; then
+  for f in README.md evals/README.md CONTRIBUTING.md; do
+    grep -qiE "never been (fully )?executed" "$f" && \
+      fail "$f says the suite has never been executed, but docs/notes/ has eval records"
+    grep -qE "6/6 — release gate|at 6/6 or|must pass 6/6" "$f" && \
+      fail "$f still states the retired all-pass 6/6 gate; the gate is the Wilson lower bound"
   done
+  grep -q "Wilson" evals/README.md || fail "evals/README.md must define the statistical release gate"
 else
-  for f in README.md CHANGELOG.md evals/README.md; do
-    grep -q "never been executed" "$f" || \
-      fail "$f must say the suite has 'never been executed' while evals/results/ is empty or absent — the 6/6 gate is declared, not met"
-  done
+  fail "no docs/notes/*eval*.md record — the documents claim runs exist"
 fi
 
 # --- 7. the self-hosted marketplace installs this plugin ----------------------
