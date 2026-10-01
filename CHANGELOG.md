@@ -29,8 +29,10 @@ All three skills fire on the same frontmatter as 3.3.1 — nothing routes differ
 ### Measured and not measured
 
 - **Measured:** always-on cost unchanged at ~1,840 tok (frontmatter untouched); on-invoke bodies ~7.5k / ~8.3k / ~7.9k (ADV / IRM / RSD) per `claude plugin details` on Claude Code 2.1.284 (3.3.1: ~9.1k / ~9.9k / ~9.5k). Worst-case per-trigger stacks by tiktoken sum of body plus every module the mode reads, 3.3.1 → 3.4.0: RSD `cadence` with the games and learning files 31,349 → 25,745 (games only 24,922); ADV `system` 20,516 → 14,075; IRM `moments` with feel 27,701 → 21,187.
-- PENDING: 10-run fp/tp comparison vs 3.3.1
-- **Not measured:** routing families 1–5, intake, shape and hygiene were not re-run on 3.4.0 at the time of writing; the 10-run batch above is the release gate reading for this body.
+- **Gate families, 10 runs per case, same harness for both bodies** (`claude-opus-5-5`, Claude Code 2.1.284, `claude -p --plugin-dir <abs>` from a scratch directory, tools Skill/Read/Glob/Grep, each transcript judged by a separate `claude -p` against the case's `criteria.md`; 3.3.1 arm from a worktree at the 3.3.1 commit). fp 59/60 (LB 91.1%) → 56/60 (LB 84.1%), Fisher p 0.36; tp 23/30 (LB 59.1%) → 26/30 (LB 70.3%), Fisher p 0.51. Both differences are inside noise, so 3.4.0 ships on non-inferiority, as 3.3.0 did. fp clears the ≥ 55/60 gate on both bodies; tp clears it on neither (hidden-odds 3/10 → 6/10 is the whole gap). Per case and record: `docs/notes/2026-10-01-token-cost-review/06-gate-10x.md`.
+- **One case to watch:** fp-companion-checkin went 10/10 → 7/10. All three failures are runs that picked `strategy` (reading `retention-playbook.md`) instead of `cadence`, and wrote bounds as standalone bullets the grader reads as a compliance stamp; every `cadence` run passed on both bodies (3.3.1 strategy runs: 2/2). Three runs is not a finding, but it is the first place to look if fp drops.
+- **Reads, measured:** `domain-ethics` reads per run 1.81 → 0.96 and total Read calls 4.83 → 4.13 across the 90 gate runs — the 3.3.1 body read the 31 KB catalogue about twice per run; 3.4.0 reads one domain file.
+- **Not measured at release:** routing families 1–5, intake, shape and hygiene. The frontmatter is byte-identical to 3.3.1, so skill selection is unchanged; mode choice and output shape are not covered by the gate reading.
 
 ---
 
