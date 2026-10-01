@@ -53,7 +53,7 @@ for f in plugin/skills/*/SKILL.md; do
   # Prohibition lists (the v1 shape the tiering replaced) — bullet, heading,
   # bare prose, or Korean. Not bare `illegal`: that is the T1 tier name.
   hits=$(printf '%s\n' "$body" | grep -niE '^[[:space:]]*([-*+]|#+)?[[:space:]]*(forbidden|prohibited|never (recommend|propose|allow)|do not (recommend|propose|use))|^[[:space:]]*금지' || true)
-  [ -n "$hits" ] && { echo "FAIL($f): prohibition list in a skill body — belongs in domain-ethics.md"; printf '%s\n' "$hits" | head -5; status=1; }
+  [ -n "$hits" ] && { echo "FAIL($f): prohibition list in a skill body — belongs in a domain-ethics/ file"; printf '%s\n' "$hits" | head -5; status=1; }
 
   # Study citations, including attribution by author name
   hits=$(printf '%s\n' "$body" | grep -nE 'https?://|doi:|et al\.,? [0-9]{4}|\([12][0-9]{3}\)|\bper [A-Z][A-Za-z]+|according to [A-Z]|\bstud(y|ies) show|research shows|연구에 따르면|[A-Z][a-z]+ (found|showed|reports)' || true)
@@ -69,7 +69,8 @@ done
 
 # Modules are read at runtime too, and the ≤3-read ceiling bounds how many load,
 # not how large one is. Same cap, so the worst-case invocation stays bounded.
-for m in plugin/skills/*/references/*.md; do
+# The second glob is the per-domain split of domain-ethics (references/<dir>/*.md).
+for m in plugin/skills/*/references/*.md plugin/skills/*/references/*/*.md; do
   b=$(wc -c < "$m" | tr -d ' ')
   [ "$b" -gt 32000 ] && { echo "FAIL($m): $b bytes, over the 32000-byte module cap"; status=1; }
 done

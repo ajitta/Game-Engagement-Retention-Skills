@@ -1,6 +1,6 @@
 # Jurisdictions
 
-Read whenever a T1/T2 candidate appears, or when the user has not named a target market. Facts only — the tier procedure is in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/ethics-tiers.md`, the per-mechanic specs in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`.
+Read whenever a T1/T2 candidate appears, or when the user has not named a target market. Facts only — the tier procedure is in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/ethics-tiers.md`, the per-mechanic specs in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/<domain>.md`.
 
 **last-verified: 2026-09.** Every line here ends in an unwritten clause — *verify with counsel before shipping*. Design-planning input, not legal advice, and the fastest-rotting content in the set: if today is more than ~6 months past that date, say so before citing it.
 
@@ -12,7 +12,7 @@ Three consequences, in order:
 
 1. **Never attach an instrument's name to a rule this file does not state.** Not "under 정보통신망법…", not "the DSA requires…", not "regulators require…". Cite the provision as this file writes it, or say *our recommendation* and name no instrument at all.
 2. **Never widen a provision past the mechanism it names.** A rule about *consent, hour of day and disclosure* is not a rule about *frequency or cadence*. A disclosure duty is not a ban. A rating floor is not illegality. An enforcement order against one company is not a statute binding another. If the thing you are about to constrain is not the thing the provision names, what you are writing is a recommendation.
-3. **Sort every constraint you state into one of three buckets and say which one.** **Law** — a named instrument here, in force, with its date. **Contract or rating** — store guidelines, PEGI/USK: binding by agreement, enforced by rejection, removal or an age tier, never by a court. **Recommendation** — this plugin's design judgement, which includes *every* tier, threshold and house rule in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/ethics-tiers.md` and `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`. The tiers are not law and never were.
+3. **Sort every constraint you state into one of three buckets and say which one.** **Law** — a named instrument here, in force, with its date. **Contract or rating** — store guidelines, PEGI/USK: binding by agreement, enforced by rejection, removal or an age tier, never by a court. **Recommendation** — this plugin's design judgement, which includes *every* tier, threshold and house rule in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/ethics-tiers.md` and `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/<domain>.md`. The tiers are not law and never were.
 
 The failure this rule exists to prevent, from a real answer: the plugin's own once-a-day push guidance was delivered to a client as 정보통신망법 §50. **No Korean statute caps daily message frequency** — see the §50 entry below. A designer carries that to counsel and is wrong, and every other legal line in the answer loses its credit alongside it.
 

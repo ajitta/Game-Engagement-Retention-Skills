@@ -30,7 +30,7 @@ each other. If you add a fact, find its owner here first.
 | Topic | Owner |
 |---|---|
 | The tier procedure itself — how T1/T2a/T2b/T3/T4 decide a response | `advisor/ethics-tiers.md` |
-| Per-mechanic compliant specs, and every mechanic-family row | `advisor/domain-ethics.md` |
+| Per-mechanic compliant specs, and every mechanic-family row | `advisor/domain-ethics/<domain>.md` — six files (`games`, `learning`, `companion-journaling`, `mental-health`, `narrative`, `fortune`); the compliant-spec index in `ethics-tiers.md` names which file holds each family's row, and the shared preamble of those files carries no tier code (`check-ethics-rows.sh` would count it as a row) |
 | Laws, store rules, rating bodies, in-force dates | `advisor/jurisdictions.md` |
 | Korean market product convention (not Korean law) | `advisor/korea-market.md` |
 | Guild, UGC, meta-progression, in-game economy systems | `advisor/systems-catalog.md` |
@@ -51,7 +51,8 @@ each other. If you add a fact, find its owner here first.
 | Pattern families | `irm/patterns-{reveal,progress,relief,social,nongame}.md` |
 
 Where a topic legitimately touches two owners — streaks, for instance — the split is by
-*kind*, not by convenience: the mechanic and its ethics row are `domain-ethics.md`'s, the
+*kind*, not by convenience: the mechanic and its ethics row are `domain-ethics/learning.md`'s (a
+game's streak looks its row up there too — the index says so), the
 cadence and its numbers are `liveops-cadence.md`'s, and the evidence that habits form at
 all is `retention-playbook.md`'s. Say the thing once, in the owner, and point at it from
 anywhere else.

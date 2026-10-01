@@ -65,7 +65,7 @@ A 사주 app has **사용자** and **리딩**. It has no 플레이어, no win st
 | 역술인 · 명리학자 | The practitioner | The domain's authority voice; product copy speaks *for* one |
 | 개운 | A luck-improving action — colour, direction, hour, number | The domain's native call-to-action: free, specific, doable today |
 | 신수 | The whole-year fortune | An annual product, bought once |
-| 부적 | Talisman | The highest-risk revenue surface — fear-priced by default (`${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`, T3) |
+| 부적 | Talisman | The highest-risk revenue surface — fear-priced by default (`${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/fortune.md`, T3) |
 | 띠 | Zodiac animal | The one key every Korean user already knows — the zero-friction entry |
 
 **뽑기 has no referent here.** A reading that changes when neither the chart nor the date changed is a broken engine, and two users comparing phones will find it.
@@ -92,7 +92,7 @@ Practice conventions, no citation. Each has its own trigger, cadence and payer; 
 | 신년운세 · 토정비결 | The calendar | Once a year, Dec–Feb | 토정비결 resolves the lunar birth date to a 상·중·하 괘 index (8 × 6 × 3 = 144 verse sets), each carrying **twelve monthly sections** — one January purchase that legitimately contains twelve return dates. Release them monthly at the 절; never dump all twelve on the buy screen | The whole year's demand lands in one window; a bad January is unrecoverable |
 | 궁합 | A relationship | Episodic | The only reading needing a *second* person's birth data — a native invite. Send a link and let the other person enter their own data; never have the user type it for them (third-party data — constraint 5, and `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` for the duty) | Verdict framing on a real relationship |
 | 택일 | An event: 이사, 개업, 결혼, 계약 | One-off, high intent | The user hands you a future date. That is a booked, honest return trigger months out — and the reason to ask for it | 손없는 날 (음력 dates ending in 9 or 0) concentrates demand onto a handful of days: the problem is capacity, not persuasion |
-| 삼재 | The 띠 cycle — three years in every nine | Known years ahead | A scheduled, personal re-entry with the date already in the chart | The domain's biggest fear-monetisation trap: a 부적 upsell against a 삼재 warning is the forbidden T3 configuration in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md` |
+| 삼재 | The 띠 cycle — three years in every nine | Known years ahead | A scheduled, personal re-entry with the date already in the chart | The domain's biggest fear-monetisation trap: a 부적 upsell against a 삼재 warning is the forbidden T3 configuration in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/fortune.md` |
 | 작명 · 개명 | A birth, or a name change | Once in a lifetime | Not a retention surface — a high-price one-off that pays for the engine | Wrong 한자 stroke tables ship a permanent error |
 
 The daily reading is the habit; the event readings are where money and genuine re-entry live. A plan that only tunes the daily loop has answered a quarter of the product.
@@ -131,7 +131,7 @@ This is where 사주 apps actually fail, and the failure is invisible to the met
 3. **Fire rate.** For each line, the share of a day's readings containing it. A line present in most of today's readings is a horoscope. Bound it before launch **[craft default — no published optimum]**; the 600-state floor is the arithmetic to argue the bound with.
 4. **Determinism.** Re-run a stored reading against its stored ephemeris version — any diff is a bug. For LLM-written interpretations this is the test that the text renders the *chart* and not the prompt: hold the chart facts in a structured layer and let the model only phrase them.
 
-**Valence.** Because acceptance rises with favourability, an engine that can never emit an unfavourable reading will score well and mean nothing. Keep the unfavourable readings — and keep them off any screen or session segment carrying a purchase surface (the T3 configuration in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`).
+**Valence.** Because acceptance rises with favourability, an engine that can never emit an unfavourable reading will score well and mean nothing. Keep the unfavourable readings — and keep them off any screen or session segment carrying a purchase surface (the T3 configuration in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/fortune.md`).
 
 ### Five domain constraints — pre-ship checklist
 

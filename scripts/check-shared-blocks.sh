@@ -38,8 +38,9 @@ done
 # module breaks the moment a sibling skill reads it. Modules must always name the
 # owning skill (`${CLAUDE_SKILL_DIR}/../<skill>/references/<file>.md`), which
 # resolves correctly for a same-skill read too. SKILL.md bodies are exempt —
-# there the own-directory form is the correct one.
-if grep -rn '\${CLAUDE_SKILL_DIR}/references/' plugin/skills/*/references/*.md; then
+# there the own-directory form is the correct one. The split modules under
+# references/<dir>/ are modules too and get the same check.
+if grep -rn '\${CLAUDE_SKILL_DIR}/references/' plugin/skills/*/references/*.md plugin/skills/*/references/*/*.md; then
   echo "FAIL: reference modules must not use own-directory paths — a module cannot assume which skill is reading it" >&2
   status=1
 fi

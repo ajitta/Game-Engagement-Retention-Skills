@@ -62,7 +62,7 @@ The gacha clock is a **42-day version split into two 21-day banner phases** [Gen
 - **PC/console has a commercial deadline, not a paywall:** a Steam purchase is refundable within 14 days if played under 2 hours, Early Access playtime included — the first two hours are the D0 gate.
 - **Paywall model buys conversion, not durability:** hard paywalls convert 10.7% trial-to-paid by day 35 vs 2.1% freemium (~5×) and earn $3.09 vs $0.38 per install by day 60, yet one-year retention is at parity, 27% vs 28% [RevenueCat, 2026-03-19 | 115,000+ apps, >$16B revenue | subscription apps].
 - **Month 1 is the subscription intervention window:** it carries **35% of all annual-plan cancellations**; mid-year monthly cancellation runs 3–10% [same source]. Define subscription retention as M1/M12 paid survival.
-- Purchase-surface legality is in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` (Korea 전자상거래법 six dark-pattern types); ending paywalls and free-path integrity are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`.
+- Purchase-surface legality is in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` (Korea 전자상거래법 six dark-pattern types); ending paywalls and free-path integrity are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/narrative.md`.
 
 ## Guardrails for any monetization-touching change
 

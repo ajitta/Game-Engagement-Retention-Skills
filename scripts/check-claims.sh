@@ -89,7 +89,10 @@ word2num() {
 # --- the tree, re-derived every run -----------------------------------------
 n_cases=$(ls -d evals/*/ 2>/dev/null | wc -l | tr -d ' ')
 n_families=$(grep -c '^### [0-9][0-9]* — ' evals/README.md)
-n_modules=$(ls plugin/skills/*/references/*.md 2>/dev/null | wc -l | tr -d ' ')
+# A module is any .md under a skill's references/, including the per-domain
+# files under references/domain-ethics/ (3.4.0): each is read on its own at
+# runtime and each is bounded by the module byte cap, so each counts as one.
+n_modules=$(find plugin/skills/*/references -name '*.md' 2>/dev/null | wc -l | tr -d ' ')
 n_skills=$(ls plugin/skills/*/SKILL.md 2>/dev/null | wc -l | tr -d ' ')
 n_scripts=$(ls scripts/check-*.sh 2>/dev/null | wc -l | tr -d ' ')
 name=$(sed -nE 's/.*"name"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/p' plugin/.claude-plugin/plugin.json | head -1)

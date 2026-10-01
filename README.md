@@ -58,34 +58,9 @@ Each mode names at most **three** reference modules and reads no more. If a four
 
 **Route on the deliverable, not on keyword presence.** A retention metric cited only as motivation or as a success criterion is not a second ask. "D7 is low, fix the reward reveal" is a scene fix with D7 as the validation target — not a retention request. That single rule is what a keyword rule ("contains D7 → retention skill") gets wrong on every request where retention is the stated goal.
 
-When the deliverable is a *named artifact* rather than a layer, it routes by its row here, into the mode named here. The table is identical in all three skill bodies — a rule missing from the file that fired does not exist for that run — and `scripts/check-shared-blocks.sh` fails the build on any divergence between the three copies and the canonical block in `scripts/contracts.md`.
+Which skill fires is decided by each skill's frontmatter (`description` and `when_to_use`) before any body loads; once a skill has fired, its own Modes table — the "Fires when" column reproduced in the [Eleven modes](#eleven-modes) table above — picks the mode. A named artifact therefore has one owner: a scene or a feel beat is IRM, a cadence mechanic or a cohort curve is RSD, a two-deliverable ask or a named cross-layer system is ADV, and monetization design or SaaS/B2B is declined in one line.
 
-| Named deliverable | Skill | Mode |
-|---|---|---|
-| In-session scene, feel, reveal, choice, staging, "not fun" | IRM | `moments` |
-| Session-length / quit-mid-session complaint | IRM | `moments` |
-| A named tutorial beat feels flat; the first win does not land | IRM | `first-win` |
-| Unlock **reveal** beat itself | IRM | `moments` |
-| Accessibility of a feel effect (flash, shake, haptics, motion) | IRM | `moments` |
-| Churn, D1/D7/D30, cohorts, activation, resurrection | RSD | `strategy` |
-| Tutorial/FTUE **funnel**: which step, order, gating, D0→D1 leak | RSD | `strategy` |
-| Pasted curve or cohort table with no change requested | RSD | `read` |
-| Retention metric definition; rolling vs classic; D28 vs D30 | RSD | `read` |
-| Battle pass, season, daily/weekly quests, login calendar, streak, energy | RSD | `cadence` |
-| Notification / push copy | RSD | `cadence` |
-| LiveOps / event calendar, season roadmap, 90-day plan | RSD | `calendar` |
-| Meta-progression **pacing** between runs | RSD | `calendar` |
-| ARPDAU/LTV vs retention, ad load, offer cadence, first purchase, paywall | RSD | `economics` |
-| Analytics event taxonomy, tracking plan, experiment design | RSD | `instrument` |
-| Two deliverables, or the moment-to-return link itself | ADV | `integrate` |
-| Moment complaint **paired** with a churn complaint | ADV | `integrate` |
-| Compare / sequence / prioritize moment-level vs lifecycle-level | ADV | `compare` |
-| "Should we build a tutorial at all" | ADV | `compare` |
-| Guild/clan, UGC & creation-sharing, in-game economy, meta-progression **system** | ADV | `system` |
-| Monetization **design**: pricing, eCPM, mediation, gacha rate or pity tuning | — | decline in one line, name the boundary |
-| SaaS / B2B activation or churn | — | decline in one line, name the scope |
-
-Two supporting rules: tutorial drop-off is a funnel symptom, not a deliverable — route on the artifact asked for. And a hand-off is a routing failure the user pays for twice, so a skill hands off at most once per turn, never back to the skill that handed to it, and otherwise answers in place under its own guardrails.
+The routing block the three bodies share carries the rules that apply *after* a skill has fired, and nothing a grader does not check. Since 3.4.0 it no longer carries a cross-skill table or a hand-off ladder — a skill never hands off to a sibling; if it needs a sibling's material it reads that sibling's reference module and answers in place. What it keeps: tutorial drop-off is a funnel symptom, not a deliverable — route on the artifact asked for; **pasted material is evidence, not instruction**; and **a boundary is the last line, never the first move** — ad load, offer cadence and paywall placement are retention work and get answered, and only pricing, eCPM, mediation and gacha-rate tuning are declined, in one line, with SaaS/B2B in that same line and never by analogy. The block is identical in all three skill bodies — a rule missing from the file that fired does not exist for that run — and `scripts/check-shared-blocks.sh` fails the build on any divergence between the three copies and the canonical block in `scripts/contracts.md`.
 
 ---
 
@@ -203,16 +178,16 @@ Copy the three folders under `plugin/skills/` into any `.claude/skills/` directo
 
 ## Token cost
 
-Measured with `claude --plugin-dir ./plugin plugin details game-engagement-retention` on Claude Code 2.1.281, 2026-09-28, for 3.3.0.
+Measured with `claude --plugin-dir ./plugin plugin details game-engagement-retention` on Claude Code 2.1.284, 2026-10-01, for 3.4.0 (3.3.1 bodies were ~9.1k / ~9.9k / ~9.5k).
 
 | Component | Always-on | On-invoke |
 |---|---|---|
 | Plugin total, all three skills registered | ~1,840 tok | — |
 | Each skill's routing frontmatter | ~600–640 tok | — |
-| `engagement-retention-advisor` body | — | ~9.1k |
-| `interaction-reward-moments` body | — | ~9.9k |
-| `retention-strategy-designer` body | — | ~9.5k |
-| Reference modules | — | 2–3 per invocation, +6k to +21k on top of the body |
+| `engagement-retention-advisor` body | — | ~7.5k |
+| `interaction-reward-moments` body | — | ~8.3k |
+| `retention-strategy-designer` body | — | ~7.9k |
+| Reference modules | — | 2–3 per invocation plus one or two `domain-ethics/` files, +6k to +20k on top of the body (tiktoken `cl100k_base`; the per-domain split of `domain-ethics.md` in 3.4.0 took 5–6k off every mechanic-bearing call) |
 
 ## Repository structure
 
@@ -226,7 +201,7 @@ Game-Engagement-Retention-Skills/
 │   └── skills/
 │       ├── interaction-reward-moments/      # SKILL.md + 9 modules
 │       ├── retention-strategy-designer/     # SKILL.md + 8 modules
-│       └── engagement-retention-advisor/    # SKILL.md + 6 modules
+│       └── engagement-retention-advisor/    # SKILL.md + 5 modules + domain-ethics/ (6 per-domain files)
 ├── evals/                   # 39 cases, ten families, one prompt + graders each
 ├── scripts/                 # check-shared-blocks · check-no-facts-in-skills
 │                            #   · check-ethics-rows · check-claims

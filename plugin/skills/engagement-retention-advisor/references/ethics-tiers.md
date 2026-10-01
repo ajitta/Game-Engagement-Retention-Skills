@@ -1,6 +1,6 @@
 # Ethics Tiers — the canonical protocol
 
-Read before generating any mechanic-bearing proposal, moment, spec sheet or calendar beat — mandatory for all three skills. Tiers and procedure live here; per-mechanic rows live in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`; every dated legal claim lives in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`.
+Read before generating any mechanic-bearing proposal, moment, spec sheet or calendar beat — mandatory for all three skills. Tiers and procedure live here; per-mechanic rows live in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/<domain>.md`, one file per domain, and the compliant-spec index below names the file for each family; every dated legal claim lives in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`.
 
 ## The four tiers
 
@@ -23,18 +23,20 @@ The T2a/T2b split is the load-bearing correction. A flat "refuse on T1 and T2" r
 Run these on each proposal **as it is drafted**, never as a filter pass afterwards; a check at step 5 tells the model at step 5 that it should have acted at step 2.
 
 1. **Minors first.** If the audience includes minors — declared, likely, or store-signalled — apply the overlay below *before* the row lookup. It can raise a T4 to T2b, and in Brazil it turns paid random items into a flat prohibition.
-2. **Name the mechanic family, look up its row** in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`. Not a row → **not a refusal case**: proceed and emit nothing about it — the five universal checks below still run. Silence is not clearance, and a missing row is not a licence to invent one.
+2. **Name the mechanic family, look up its row** in the domain-ethics file the compliant-spec index below names for it (`${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/<file>`; read both when the index names two). Not a row → **not a refusal case**: proceed and emit nothing about it — the five universal checks below still run. Silence is not clearance, and a missing row is not a licence to invent one.
 3. **Compare the configuration to the compliant spec, bullet by bullet.** All bullets met → **nothing is emitted at all**: no ethics prose, no row, no line saying there was nothing to report. No path exists by which a compliant mechanic produces prose. A bullet unmet → T1/T2a refuse that bullet only (Redesigned request); T2b price it in one Needs-verification line plus the variant that avoids it; T3/T4 deliver with the bound as a number in the spec and the residual risk as a Guardrails metric. There is no Ethics bullet on a card.
 
 ## Minors overlay — the switch, applied before the row lookup
 
-Triggered by "directed at or likely accessed by", not by a declared target audience; from June 2026 the store may assert the age for you.
+Triggered by "directed at or likely accessed by", not by a declared target audience; from June 2026 the store may assert the age for you. Answer yes when minors are declared, likely (rating, art style, platform, an existing under-18 cohort in the data), or store-signalled.
 
 - **EU DSA Art. 28 guidelines (2025-07-14):** streaks, autoplay, push **default off**; persuasive design aimed predominantly at engagement removed; accounts private by default.
 - **Brazil Lei 15.211 (in force 2026-03-17):** paid random items **prohibited outright** where the rating admits minors or access is likely; fines to 10% of Brazilian group revenue, capped R$50m per infraction.
 - **China 未成年人网络保护条例 Art. 44:** per-transaction and per-day spend caps by age band.
 - **US:** Texas SB 2420 — store age signal, re-consent when the app adds monetization; CA SB 243 — three-hour break reminders.
 - **Korea 게임산업진흥에 관한 법률 12-3:** hourly play-time notice. **Australia:** paid loot boxes force minimum M; simulated gambling R 18+.
+
+The overlay can raise a T4 to T2b, and in Brazil converts a T1-with-a-compliant-spec into a flat prohibition.
 
 **Say the cost out loud.** Roblox reported a mid-single-digit engagement headwind and a low-single-digit bookings headwind from mandatory age checks [Roblox shareholder letter | Q4 2025 | platform-wide | company-reported]. A designer surprised by that cost rolls the protection back.
 
@@ -79,37 +81,37 @@ A T3 row whose spec cannot be checked against a build is a ban wearing a spec's 
 
 ## Compliant-spec index
 
-Sections are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`; the dated legal stamps behind every T1/T2 row are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`; the 기다리면 무료 mechanics table is in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/korea-market.md`. **Slug** is the shared family vocabulary for keying these modules to each other. It is internal: never print a slug or a tier code in an answer. When a bound, a price or a residual risk must be stated, say it in plain language.
+Rows are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/<file>`, one file per domain — the File column names the one to read, and both when it names two (a game's streak rows sit in `learning.md`); the dated legal stamps behind every T1/T2 row are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`; the 기다리면 무료 mechanics table is in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/korea-market.md`. **Slug** is the shared family vocabulary for keying these modules to each other. It is internal: never print a slug or a tier code in an answer. When a bound, a price or a residual risk must be stated, say it in plain language.
 
-| Mechanic family | Slug | Tier | Section · jurisdictions to check |
+| Mechanic family | Slug | Tier | File · jurisdictions to check |
 |---|---|---|---|
-| Hidden / false odds on paid random items | `odds` | T1 | Games · KR, JP, US; Brazil bans outright where minors |
-| Ad-chained variable rewards | `ad-chaining` | T1 / T2a | Games · KR 전자상거래법 반복간섭 |
-| One-shot window on core content | `one-shot` | T2a | Games — no compliant version |
-| Ending paywalls (sold product, or final episodes pay-only) | `ending-paywall` | T2a | Interactive narrative — no compliant version |
-| Expiring login chains | `login-chain` | T2b | Games, Learning · PEGI, EU DSA Art. 28 |
-| Pass / quest expiry | `pass-expiry` | T2b | Games · PEGI |
-| FOMO / time- and quantity-limited windows | `fomo-window` | T2b | Games · PEGI, EU CPC, UK CMA |
-| Energy / stamina · learning volume and pacing gates | `metered-access` | T3 | Games, Learning · EU CPC binds pricing presentation only |
-| Guilt streaks | `guilt-streak` | T3 | Learning |
-| Paid streak freeze / repair | `streak-repair` | T3 | Learning |
-| Social-obligation loops | `social-obligation` | T3 | Games — no jurisdiction addresses it |
-| Companion farewell manipulation | `farewell` | T3, ban kept | AI companion / journaling |
-| AI not-human disclosure | `companion-disclosure` | T1 | AI companion · NY GBL Art. 47, CA SB 243, KR AI Basic Act 31(1) |
-| Suicide / self-harm crisis handling | `crisis-protocol` | T1 | AI companion · CA SB 243 |
-| Sycophancy tuning · distress-timed offers · minor attachment loops | `sycophancy` | T3 | AI companion / journaling |
-| Entry-text / mood data flow to SDKs | — | T3 | AI companion / journaling · FTC BetterHelp order as the floor |
-| Gamification layer as primary lever | — | T3 | Mental-health and habit |
-| Vulnerable adults (adult ADHD, gambling history) | — | T3 | Mental-health and habit |
-| Cliffhanger staging (five tests) | — | T3 | Interactive narrative |
-| Earn-rate cut · recap · hiatus duty | — | T3 | Interactive narrative |
-| Coin bundles and subscriptions | `currency-obfuscation` | T1 in Korea | Interactive narrative · KR 전자상거래법 six dark-pattern types |
-| Fear-driven or paid-relief fortune loops | — | T3 | Fortune / 사주 |
-| Fortune reading log · 시주-모름 path | — | T3 / T1 | Fortune · KR PIPA §23, AI Basic Act Art. 31, 정보통신망법 §50 |
-| Wait-or-pay / 기다리면 무료 | `wait-or-pay` | T4 | Interactive narrative · korea-market mechanics table |
-| Minors in the audience (run before the lookup) | `minors-overlay` | raises the row's tier; flat T1 in Brazil | Domain-ethics universal check 6 · the overlay section above |
+| Hidden / false odds on paid random items | `odds` | T1 | `games.md` · KR, JP, US; Brazil bans outright where minors |
+| Ad-chained variable rewards | `ad-chaining` | T1 / T2a | `games.md` · KR 전자상거래법 반복간섭 |
+| One-shot window on core content | `one-shot` | T2a | `games.md` — no compliant version |
+| Ending paywalls (sold product, or final episodes pay-only) | `ending-paywall` | T2a | `narrative.md` — no compliant version |
+| Expiring login chains | `login-chain` | T2b | `games.md`, `learning.md` · PEGI, EU DSA Art. 28 |
+| Pass / quest expiry | `pass-expiry` | T2b | `games.md` · PEGI |
+| FOMO / time- and quantity-limited windows | `fomo-window` | T2b | `games.md` · PEGI, EU CPC, UK CMA |
+| Energy / stamina · learning volume and pacing gates | `metered-access` | T3 | `games.md`, `learning.md` · EU CPC binds pricing presentation only |
+| Guilt streaks | `guilt-streak` | T3 | `learning.md` (also the row for a game's streak) |
+| Paid streak freeze / repair | `streak-repair` | T3 | `learning.md` (also the row for a game's streak) |
+| Social-obligation loops | `social-obligation` | T3 | `games.md` — no jurisdiction addresses it |
+| Companion farewell manipulation | `farewell` | T3, ban kept | `companion-journaling.md` |
+| AI not-human disclosure | `companion-disclosure` | T1 | `companion-journaling.md` · NY GBL Art. 47, CA SB 243, KR AI Basic Act 31(1) |
+| Suicide / self-harm crisis handling | `crisis-protocol` | T1 | `companion-journaling.md` · CA SB 243 |
+| Sycophancy tuning · distress-timed offers · minor attachment loops | `sycophancy` | T3 | `companion-journaling.md` |
+| Entry-text / mood data flow to SDKs | — | T3 | `companion-journaling.md` · FTC BetterHelp order as the floor |
+| Gamification layer as primary lever | — | T3 | `mental-health.md` |
+| Vulnerable adults (adult ADHD, gambling history) | — | T3 | `mental-health.md` |
+| Cliffhanger staging (five tests) | — | T3 | `narrative.md` |
+| Earn-rate cut · recap · hiatus duty | — | T3 | `narrative.md` |
+| Coin bundles and subscriptions | `currency-obfuscation` | T1 in Korea | `narrative.md` · KR 전자상거래법 six dark-pattern types |
+| Fear-driven or paid-relief fortune loops | — | T3 | `fortune.md` |
+| Fortune reading log · 시주-모름 path | — | T3 / T1 | `fortune.md` · KR PIPA §23, AI Basic Act Art. 31, 정보통신망법 §50 |
+| Wait-or-pay / 기다리면 무료 | `wait-or-pay` | T4 | `narrative.md` · korea-market mechanics table |
+| Minors in the audience (run before the lookup) | `minors-overlay` | raises the row's tier; flat T1 in Brazil | no domain file — the overlay section above |
 
-This index is complete against `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md`; a family absent from BOTH is genuinely not a row. A `—` slug marks a domain-scope block rather than a named family: consult it for the spec. Slugs and tier codes are internal keying between these modules and never appear in an answer.
+This index is complete against the six files in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/`; a family absent from BOTH is genuinely not a row. A `—` slug marks a domain-scope block rather than a named family: consult it for the spec. Slugs and tier codes are internal keying between these modules and never appear in an answer.
 
 ## Contested — carry both sides, never resolve silently
 

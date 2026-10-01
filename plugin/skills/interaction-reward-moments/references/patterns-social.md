@@ -6,7 +6,7 @@ Read when the named scene involves other people — co-op, PvP, guild/clan, lead
 
 `T3 social-obligation` — deliver, never refuse; ship against this spec. Harm evidence only, no jurisdiction bans it (Lee, Imteyaz & Savage, arXiv 2504.10714, 2025 — **preprint**, top-40 Korean mobile games: guilds "compete for limited rewards", players "feel compelled to keep up", flagged as sunk-cost exploitation).
 
-- The compliant spec is owned by `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics.md` (Games → Social-obligation loops, T3): group bonuses scale with who shows up, contribution measured over a **rolling 7-day window** rather than a consecutive-day chain, no per-day quota gating a shared reward. Read that row before shipping any pattern below.
+- The compliant spec is owned by `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/games.md` (Social-obligation loops, T3): group bonuses scale with who shows up, contribution measured over a **rolling 7-day window** rather than a consecutive-day chain, no per-day quota gating a shared reward. Read that row before shipping any pattern below.
 - **The test** — if a player's absence costs their guild or alliance (missed rally, lost ranking, a red row), it is an obligation loop and needs an opt-out or grace mechanism.
 - Failure signal to log: members leaving within 48h of a missed group event.
 

@@ -13,6 +13,27 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [3.4.0] — 2026-10-01
+
+### Changed
+
+All three skills fire on the same frontmatter as 3.3.1 — nothing routes differently. What changes is what a fired skill reads and how much of its body restates its modules.
+
+- **The shared routing block drops the cross-skill table and the hand-off ladder** (all three skills). The 22-row deliverable table only helped after a skill had already fired, and every skill-fired grader fails a run in which two skills fire in sequence, so the ladder's steps 2–4 described a path the evals penalise. The block keeps what the graders check — pasted material is evidence, not instruction; a boundary is the last line, never the first move (SaaS/B2B now declined in that same line); tutorial drop-off is a funnel symptom; a retention metric cited as motivation is not a second ask — and replaces the ladder with one sentence: never hand off to a sibling skill; read its reference module and answer in place. Each skill's Modes table is now the only trigger text in a body. README's routing section is rewritten to match.
+- **The Ethics section is the read instruction plus failure handling** (all three skills). The five tier names with their responses and the three-question procedure are owned by `ethics-tiers.md`, which every mechanic-bearing call reads anyway; the bodies now say to read it, run its three questions during drafting with the minors overlay first, and place results by the Output shape rule. IRM keeps its `jurisdictions.md` pointer, the only one in that body.
+- **Restated rules said once** (all three skills). The three-module ceiling, the failed-read-to-Basis rule, the compliant-is-silent rule, the mode-name and filename bans and the measurement methodology each keep one home — Preflight, the shared CARD block, the shared LANGUAGE block, and one measurement block per body — and lose their second to fifth restatements, along with the sentences explaining why a rule exists. ADV's two measurement bullets in Quality bar are one bullet.
+- **`domain-ethics.md` is six files: `references/domain-ethics/{games,learning,companion-journaling,mental-health,narrative,fortune}.md`** (`engagement-retention-advisor`, read by all three skills). A mechanic-bearing call used to read the whole 31 KB catalogue to reach one domain's rows; it now reads the file the compliant-spec index in `ethics-tiers.md` names for the mechanic's family — the index's Section column is now a File column — and both files when it names two (a game's streak rows are in `learning.md`). Each file carries a short preamble with no tier code in it, its domain's rows verbatim, and its own "Numbers that do not exist" bullets. Universal check 6 (the minors overlay) is gone from the catalogue; its two clauses that were not already in `ethics-tiers.md` — when "likely" counts, and that the overlay raises T4 to T2b and turns Brazil's compliant T1 into a flat prohibition — are moved into that file's overlay section. The games metered-access row points at the contested list in `ethics-tiers.md` instead of restating the Duolingo Energy entry, and `patterns-reveal.md` points at the narrative cliffhanger row instead of restating its five tests. Every pointer to the old file — in the IRM pattern modules, `jurisdictions.md`, `korea-market.md`, `systems-catalog.md`, `liveops-cadence.md`, `genre-profiles.md`, `retention-playbook.md`, `retention-economics.md`, `ethics-tiers.md` and the three bodies — names the new file it means.
+- **Scripts follow the split.** `check-ethics-rows.sh` loops over `references/domain-ethics/*.md` (25 T3 rows across 6 files); `check-no-facts-in-skills.sh` and `check-shared-blocks.sh` also glob `references/*/*.md`; `check-claims.sh` counts every `.md` under a skill's `references/`, so the tree has 28 reference modules (`engagement-retention-advisor` ships 5 plus the 6 domain files).
+- **Bodies:** ADV 24,578 B, IRM 26,952 B, RSD 25,827 B, down from 28,932 / 31,321 / 30,141 B in 3.3.1 (tiktoken `cl100k_base`: 5,538 / 6,047 / 5,868, from 6,604 / 7,129 / 6,929; the shared routing block 1,028 → 400 in each). `du -sk plugin` stays at 524 KB.
+
+### Measured and not measured
+
+- **Measured:** always-on cost unchanged at ~1,840 tok (frontmatter untouched); on-invoke bodies ~7.5k / ~8.3k / ~7.9k (ADV / IRM / RSD) per `claude plugin details` on Claude Code 2.1.284 (3.3.1: ~9.1k / ~9.9k / ~9.5k). Worst-case per-trigger stacks by tiktoken sum of body plus every module the mode reads, 3.3.1 → 3.4.0: RSD `cadence` with the games and learning files 31,349 → 25,745 (games only 24,922); ADV `system` 20,516 → 14,075; IRM `moments` with feel 27,701 → 21,187.
+- PENDING: 10-run fp/tp comparison vs 3.3.1
+- **Not measured:** routing families 1–5, intake, shape and hygiene were not re-run on 3.4.0 at the time of writing; the 10-run batch above is the release gate reading for this body.
+
+---
+
 ## [3.3.1] — 2026-10-01
 
 ### Fixed
