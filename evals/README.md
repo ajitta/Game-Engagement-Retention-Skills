@@ -25,7 +25,7 @@
 
 > **What these graders grade.** The assertions here are keyed to the **shipped output
 > contract** — the three fenced blocks in
-> `plugin/skills/engagement-retention-advisor/references/contracts.md`, copied byte-identically into
+> `scripts/contracts.md`, copied byte-identically into
 > all three `SKILL.md` bodies and pinned by `scripts/check-shared-blocks.sh`. Where that
 > contract and 04-design.md §4/§10 disagree, **the contract wins and the graders follow it**,
 > because a polish pass deliberately changed the output shape after a blind A/B judged the

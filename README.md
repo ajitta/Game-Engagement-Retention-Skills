@@ -58,7 +58,7 @@ Each mode names at most **three** reference modules and reads no more. If a four
 
 **Route on the deliverable, not on keyword presence.** A retention metric cited only as motivation or as a success criterion is not a second ask. "D7 is low, fix the reward reveal" is a scene fix with D7 as the validation target — not a retention request. That single rule is what a keyword rule ("contains D7 → retention skill") gets wrong on every request where retention is the stated goal.
 
-When the deliverable is a *named artifact* rather than a layer, it routes by its row here, into the mode named here. The table is identical in all three skill bodies — a rule missing from the file that fired does not exist for that run — and `scripts/check-shared-blocks.sh` fails the build on any divergence between the three copies and the canonical block in `contracts.md`.
+When the deliverable is a *named artifact* rather than a layer, it routes by its row here, into the mode named here. The table is identical in all three skill bodies — a rule missing from the file that fired does not exist for that run — and `scripts/check-shared-blocks.sh` fails the build on any divergence between the three copies and the canonical block in `scripts/contracts.md`.
 
 | Named deliverable | Skill | Mode |
 |---|---|---|
@@ -220,23 +220,24 @@ Measured with `claude --plugin-dir ./plugin plugin details game-engagement-reten
 Game-Engagement-Retention-Skills/
 ├── .claude-plugin/
 │   └── marketplace.json     # source "./plugin": installers cache only plugin/
-├── plugin/                  # the installed payload (~550 KB)
+├── plugin/                  # the installed payload (~525 KB)
 │   ├── .claude-plugin/
 │   │   └── plugin.json      # manifest; skills are auto-scanned, not declared
 │   └── skills/
 │       ├── interaction-reward-moments/      # SKILL.md + 9 modules
 │       ├── retention-strategy-designer/     # SKILL.md + 8 modules
-│       └── engagement-retention-advisor/    # SKILL.md + 7 modules,
-│                                            #   incl. contracts.md (canonical shared blocks)
+│       └── engagement-retention-advisor/    # SKILL.md + 6 modules
 ├── evals/                   # 39 cases, ten families, one prompt + graders each
 ├── scripts/                 # check-shared-blocks · check-no-facts-in-skills
 │                            #   · check-ethics-rows · check-claims
+│                            #   · contracts.md (canonical shared blocks, never read at runtime)
 ├── docs/                    # ~648 KB of research and design record, plus the 2026-07
-│                            #   hardening notes — tracked, and it ships to installers
+│                            #   hardening notes — tracked, not installed (since 3.3.0 the
+│                            #   payload is plugin/ only)
 └── LICENSE
 ```
 
-`contracts.md` is the canonical source for the routing block, the card grammar and the language rule; the copies inside each `SKILL.md` are byte-compared against it in CI. The duplication is unavoidable — each skill file loads alone at invocation — so divergence, not duplication, is the defect.
+`scripts/contracts.md` is the canonical source for the routing block, the card grammar and the language rule; the copies inside each `SKILL.md` are byte-compared against it in CI. It lives outside `plugin/` because no skill reads it at runtime. The duplication is unavoidable — each skill file loads alone at invocation — so divergence, not duplication, is the defect.
 
 ---
 

@@ -143,7 +143,7 @@ Say the cost out loud: mandatory age checks produced a mid-single-digit engageme
 
 ## Numbers that do not exist
 
-- **기다리면 무료 conversion.** No platform publishes wait-or-pay conversion, the wait-vs-pay split, or timer-optimisation data. The circulating 25% conversion and ~₩30M → ~₩68M daily GMV figures are 카카오페이지, 2014 — historical, never current.
+- **기다리면 무료 conversion.** No platform publishes wait-or-pay conversion, the wait-vs-pay split, or timer-optimisation data. The circulating 25% conversion and ~₩30M → ~₩68M daily GMV figures are one 2019 write-up of a 2014-era 카카오페이지 launch [DBR via 인터비즈 | 2019], not a current rate.
 - **Korean fortune-app retention.** No public D1/D7/D30 for any 사주/운세/타로 app. 포스텔러's "~40% of the 2019 cohort still active" is self-reported with no retention definition — not a benchmark.
 - **Gamification in mental health.** No head-to-head RCT of gamified vs non-gamified versions of the same app; the JAMA Psychiatry result is a trial-level moderator only.
 - **Journaling-app retention.** Day One, Stoic, 답다, 마인디, 하루콩 publish nothing; the only proxy is the 2019 tracker/diary D30 of 6.1%.

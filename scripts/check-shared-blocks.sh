@@ -5,7 +5,7 @@
 # the defect, and this script removes the mechanism.
 set -uo pipefail
 cd "$(dirname "$0")/.."
-CONTRACTS=plugin/skills/engagement-retention-advisor/references/contracts.md
+CONTRACTS=scripts/contracts.md
 status=0
 
 extract() { # $1=file $2=block name

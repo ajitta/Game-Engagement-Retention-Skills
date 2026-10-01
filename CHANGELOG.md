@@ -13,6 +13,23 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [3.3.1] — 2026-10-01
+
+### Fixed
+
+No skill fires differently and no output shape changes. The fixes are to what a skill finds when it follows a module's pointer, and to what the repository says about itself.
+
+- **Five owner pointers in reference modules led to files that do not hold the fact.** `patterns-relief.md` and `systems-catalog.md` sent the Ascarza difficulty-relief effect sizes to `experiments.md`, which has no Ascarza entry; both now point at `churn-and-winback.md`, where the sizes and the per-round-read caveat live. `patterns-relief.md` and `patterns-nongame.md` sent the Silverman & Barasch streak-framing percentages to `retention-playbook.md`, which never cites the study; they now point at `research-basis.md` (the research-citations owner per CONTRIBUTING), with the responsibility moderator pointed at `liveops-cadence.md` where it is actually stated. `patterns-relief.md` sent the Duolingo Streak Revival counts to `domain-ethics.md`, which has none; it now points at `churn-and-winback.md`, the win-back owner. The `domain-ethics.md` pointer in `patterns-nongame.md` is narrowed to the guilt-streak row's rules, which is what that row holds.
+- **The wait-or-pay (기다리면 무료) figures are dated the same way in all three places that cite them.** `domain-ethics.md` and `liveops-cadence.md` now use `systems-catalog.md`'s wording — one 2019 write-up of a 2014-era launch — instead of "2014 — historical" and a bare "2019".
+- **The win-back evidence in `liveops-cadence.md` carries source tags.** Its Streak Revival, 畅玩服 and Aion2 bullets restated `churn-and-winback.md`'s facts without the source tag that file carries; the tags are copied in and the bullet list now names `churn-and-winback.md` as the owner. Both files keep their text, because no mode reads them together.
+
+### Changed (repository, not skill)
+
+- **`contracts.md` moved from `plugin/skills/engagement-retention-advisor/references/` to `scripts/`.** No skill reads it at runtime; its only consumers are `check-shared-blocks.sh`, CONTRIBUTING and the eval README. Out of `plugin/` it stops shipping to installers and stops counting as a reference module: the tree has 23 reference modules (`engagement-retention-advisor` ships 6), and `du -sk plugin` drops from 540 KB to 524 KB. README, CONTRIBUTING and `evals/README.md` use the new path; README no longer says `docs/` ships to installers, which has been false since 3.3.0.
+- **Review record added under `docs/notes/2026-10-01-token-cost-review/`** — the token-cost and over-engineering research, the proposal that this release's Phase A implements, and its independent verification. Phase B (body slimming and the `domain-ethics.md` split) is unimplemented and waits on a 10-run measurement.
+
+---
+
 ## [3.3.0] — 2026-09-28
 
 ### Changed

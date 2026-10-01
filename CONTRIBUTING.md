@@ -5,7 +5,7 @@ described — a benchmark row whose edition moved, a rule that changed in one of
 places, a gate that stopped being met. Everything below exists to make that kind of drift
 either impossible or loud.
 
-Read `README.md` for what the plugin does, `plugin/skills/engagement-retention-advisor/references/contracts.md`
+Read `README.md` for what the plugin does, `scripts/contracts.md`
 for the shipped output contract, and `docs/features/engagement-retention-v2/05-plan.md` for
 what is currently open.
 
@@ -35,7 +35,7 @@ each other. If you add a fact, find its owner here first.
 | Korean market product convention (not Korean law) | `advisor/korea-market.md` |
 | Guild, UGC, meta-progression, in-game economy systems | `advisor/systems-catalog.md` |
 | How the three skills hand work to each other | `advisor/integration-patterns.md` |
-| The routing block, card grammar and language rule | `advisor/contracts.md` |
+| The routing block, card grammar and language rule | `scripts/contracts.md` — not a reference module and never read at runtime; the canonical copy the shared-block check diffs against |
 | Retention benchmark numbers and their populations | `rsd/benchmarks.md` |
 | Metric definitions and day conventions | `rsd/metric-definitions.md` |
 | Per-genre retention profiles | `rsd/genre-profiles.md` |
@@ -58,7 +58,7 @@ anywhere else.
 
 ## Shared blocks
 
-The `ROUTING`, `CARD` and `LANGUAGE` blocks live in `contracts.md` and are copied
+The `ROUTING`, `CARD` and `LANGUAGE` blocks live in `scripts/contracts.md` (outside the installed payload) and are copied
 **byte-identically** into all three `SKILL.md` bodies. This duplication is unavoidable — a
 skill file loads alone at invocation, so a rule missing from the file that fired does not
 exist for that run. Divergence, not duplication, is the defect, and
