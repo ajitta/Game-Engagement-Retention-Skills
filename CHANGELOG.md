@@ -13,6 +13,21 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [3.4.1] — 2026-10-01
+
+### Fixed
+
+- **The shared routing block is back to its 3.3.1 text — the 22-row deliverable table and the hand-off ladder included** (all three skills). 3.4.0 removed both on the reasoning that the table only helps after a skill has fired and that every skill-fired grader fails a two-skill run. The second half held for the 18 routing cases, and the first half was the mistake: the table is how a skill that fired first on someone else's deliverable knows to hand off. `mode-adv-compare-build-tutorial` ("should we build a tutorial at all?") fires `retention-strategy-designer` first on every body; on 3.3.1 the table's `ADV compare` row sent it on to `engagement-retention-advisor` (3/3 passing), on 3.4.0 it answered in place with the wrong artifact (0/3). Restoring only a one-sentence hand-off rule did not fix it (0/3), so the whole block was restored, byte-identical to 3.3.1. The rest of 3.4.0 stays: the Ethics sections, the restated rules said once, and the `domain-ethics/` split.
+- **Bodies:** ADV 26,877 B, IRM 29,251 B, RSD 28,126 B — 2,102 B each above 3.4.0, still 2,015–2,070 B below 3.3.1 (28,932 / 31,321 / 30,141 B). README's routing section says the table is back.
+
+### Measured and not measured
+
+- **Measured, 3 runs per case unless stated, same harness as the 3.4.0 gate reading:** skill-fired 54/54 (18 cases), Korean output 9/9; `mode-adv-compare-build-tutorial` 3/5 at 5 runs — all three runs in which a skill fired handed off to `engagement-retention-advisor` and passed; the two failures fired no plugin skill at all and answered plain. Firing happens on the frontmatter, which is byte-identical across 3.3.1, 3.4.0 and 3.4.1, so a no-fire run is not something the body can change; 3.3.1 had 0/3 no-fire on this case and 3.4.0 0/3, which is inside 3-run noise.
+- `homeless-rolling-vs-classic` fails mode-line on all three bodies (3.3.1 0/3, 3.4.0 1/3, 3.4.1 0/3): it predates this work and is not addressed here.
+- **Not re-measured:** the fp/tp 10-run gate. The ethics path this release touches is none — the routing block is the 3.3.1 text both gate readings already ran against on 3.3.1 — so the 3.4.0 reading (fp 56/60, tp 26/30) stands as the latest.
+
+---
+
 ## [3.4.0] — 2026-10-01
 
 ### Changed
