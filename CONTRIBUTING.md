@@ -17,8 +17,9 @@ what is currently open.
 
 Benchmarks, statutes, study results, prohibition lists and dates belong in reference
 modules, which are read on demand and can be re-dated in one place. `scripts/check-no-facts-in-skills.sh`
-enforces this and carries its own negative test in a comment block — paste any line from
-that block into a body and the script must exit 1 naming it.
+enforces this and carries its own negative test in a comment block, which it runs on itself
+before it reads a body — paste any line from that block into a body and the script must
+exit 1 naming it.
 
 ## One topic, one owner
 

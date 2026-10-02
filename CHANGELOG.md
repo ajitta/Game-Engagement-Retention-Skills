@@ -17,6 +17,11 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 - **`homeless-rolling-vs-classic` mode-line matches the `read` row.** Since 3.2.2 the row is "convention first + 2–4 paragraphs" (at most five), and the CARD block makes `## Assumptions` and `## Basis` fixed sections; the grader still said "two to four paragraphs" and judges counted the fixed sections as a structured document. It also stops treating the English word "read" in a label as a leaked mode name (judges split on it). Answers that run past five paragraphs still fail.
 - **3.4.1 gate reading with the corrected graders** (`docs/notes/2026-10-02-gate-10x-3.4.1.md`): fp 58/60 (LB 88.6%, passes), tp 27/30 (LB 74.4%, does not; needs 29/30). Re-judging the saved 3.4.0 hidden-odds transcripts with the corrected grader moves that case 6/10 → 8/10; the remaining tp failures are model-side and spread over three items.
 
+### Fixed (tooling, no skill change)
+
+- **`check-no-facts-in-skills.sh` reads the bodies again.** Its frontmatter strip ran the same range twice (`sed '1,/^---$/d; 1,/^---$/d'`). On GNU sed the second range opens on the first body line and, with no further `---` in the file, deletes to the end, so every pattern rule read zero lines and only the size cap was live. The line dates from the commit that added the script (`e549cfd`, 2026-09-06). Reproduced on GNU sed 4.9; CI runs on `ubuntu-latest`, which also ships GNU sed, but no CI run was made to confirm it there. The strip is one range now, and the three shipped bodies pass with the rules live (173 / 188 / 176 body lines read, was 0 / 0 / 0).
+- **The script runs its own negative test.** The header lines that "must exit 1" were a manual test, which is how the strip stayed broken unnoticed. Each line now goes through the same strip and rules as the body of a one-line `SKILL.md` before any real body is read, and a line that gets through fails the script. Putting the double strip back fails every line. Two lines were added to the header (a legal claim alone, a date alone): the existing first line trips both of those rules at once, so either could have rotted behind the other. With them, switching off any one of the seven pattern rules fails the self-test.
+
 ---
 
 ## [3.4.1] — 2026-10-01
