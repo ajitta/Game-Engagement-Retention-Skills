@@ -9,7 +9,19 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
-## [Unreleased]
+## [3.4.2] — 2026-10-03
+
+### Fixed
+
+- **`description` fits the 1,024-character cap that claude.ai applies** (`engagement-retention-advisor`, `interaction-reward-moments`). Adding the marketplace on claude.ai warned "field 'description' in SKILL.md must be at most 1024 characters" for both skills: claude.ai stores `description` cut to 1,024 characters, and the two ran to 1,198 and 1,082. Their closing sentences moved, word for word, to the head of `when_to_use`: ADV's motivation-is-not-a-second-ask sentence with its two hand-offs, and IRM's cadence route-away sentence. `description` is now 952 / 830 / 1,023 (ADV / IRM / RSD); RSD was already under the cap and is untouched. In Claude Code no skill fires on different words: the listing joins the two fields, so the words and their order are the same, the combined lengths are the same (1,423 / 1,436 / 1,512 of 1,536), and only the ` - ` separator sits earlier. On claude.ai the two descriptions used to end mid-sentence at character 1,024 and now end on a sentence.
+- **There are two caps, not one.** The 2.x entry below and `docs/features/engagement-retention-v2/02i-research-skillcraft.md` call 1,024 a cap "that never bound". That holds for Claude Code, whose cap is 1,536 over `description` + `when_to_use`. claude.ai's cap is 1,024 on `description` alone, and `claude plugin validate ./plugin/skills --strict` (2.1.287) does not report it — it passed on the 3.4.1 frontmatter too.
+
+### Measured and not measured
+
+- **Measured:** always-on cost ~1,840 tok (ADV ~600, IRM ~600, RSD ~640), from `claude --plugin-dir ./plugin plugin details`.
+- **Not measured: routing.** No eval ran on the new frontmatter, which had been byte-identical across 3.3.1, 3.4.0 and 3.4.1. This release rests on the argument above (same words, same order, same combined length), not on the 10-run comparison CONTRIBUTING asks for before a bump.
+- **Not confirmed: that the claude.ai warning is gone.** It does not reproduce locally, so it can only be checked by adding the marketplace again after this release.
+- **Not known: whether claude.ai reads `when_to_use`.** If it does not, the moved sentences do not reach it. ADV then loses "A retention metric or a return cited only as motivation is NOT a second", which the old cut kept; the three hand-offs after it were already cut. IRM loses its cadence route-away sentence, of which the old cut dropped only the last 58 characters.
 
 ### Evals (no skill change)
 
