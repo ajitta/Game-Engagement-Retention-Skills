@@ -107,7 +107,7 @@ A mechanic **spec** stays a table; a **proposal** becomes a card.
 
 **Mandatory read.** Before generating any mechanic-bearing proposal — a cadence mechanic, a notification plan, a monetization-touching change, any card carrying a mechanic — read `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/ethics-tiers.md`, then the file its compliant-spec index names for the mechanic's family under `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/` (both files when it names two; a game's streak rows are in `learning.md`). If either read fails, record in Basis the check that could not be run, and never assign a tier from memory.
 
-Run that module's three questions on each proposal as it is drafted, never as a filter afterwards; the minors overlay runs before the row lookup.
+Run `ethics-tiers.md`'s three questions on each proposal as it is drafted, never as a filter afterwards; the minors overlay runs before the row lookup.
 
 Where a result lands is the Output shape section's rule: a bound as a number in the spec bullet, a residual risk as a Guardrails metric, a rating cost under Needs verification, a failed legal or platform bound under Redesigned request. A compliant mechanic produces nothing.
 

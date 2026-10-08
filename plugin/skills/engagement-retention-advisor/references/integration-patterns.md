@@ -8,7 +8,7 @@ Each pairing names a beat, the carrier that moves its value into the next sessio
 
 **Beat** the session yields a persistent object the player owns — base, deck, logbook, saved reading, published island · **Carrier** it survives without being re-derived · **Return** extending that object, not "opening the app" · **→ engagement-only** if one session can rebuild it · **→ retention-only** if it grows where the player never sees it change.
 
-Three classes, ascending return inertia: power / knowledge / position-and-collection. Knowledge-only designs draw "zero feeling of progression between runs" within days; give mastery a visible artifact — logbook, recipe list, map annotation [02e §4 | qualitative]. Co-op hits without meta-progression run ~3–5.3% D30 against 11.3% for Dead by Daylight [AppMagic via GameDev Reports | 2026 | three named premium PC co-op titles, not a genre median | D30 estimate] — **[contested]**, confounded by title age, licence and years of operation, so order-of-magnitude only; owner: `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/genre-profiles.md`.
+Three classes, ascending return inertia: power / knowledge / position-and-collection. Knowledge-only designs draw "zero feeling of progression between runs" within days; give mastery a visible artifact — logbook, recipe list, map annotation [Steam community threads on Slay the Spire 2 Early Access | 2026 | qualitative]. Co-op hits without meta-progression run ~3–5.3% D30 against 11.3% for Dead by Daylight [AppMagic via GameDev Reports | 2026 | three named premium PC co-op titles, not a genre median | D30 estimate] — **[contested]**, confounded by title age, licence and years of operation, so order-of-magnitude only; owner: `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/genre-profiles.md`.
 
 ## 2. Capacity-growth proof → mastery ladder
 
@@ -30,7 +30,7 @@ The pre-outcome window carries the arousal: skin-conductance slopes were greater
 
 ## 5. Catch-up entry → resurrection
 
-**Beat** the 복귀 유저's first session back lands in current content, not at the back of a queue · **Carrier** non-resetting buckets, season entry without prior chapters, restored status · **Return** re-entry, then the +7d/+30d re-dormancy check · **→ engagement-only** if the catch-up is a bribe (reactivation spikes, re-dormancy flat) · **→ retention-only** if the offer arrives with no recap, so a returning player is handled as one who never left.
+**Beat** the returning player's (복귀 유저) first session back lands in current content, not at the back of a queue · **Carrier** non-resetting buckets, season entry without prior chapters, restored status · **Return** re-entry, then the +7d/+30d re-dormancy check · **→ engagement-only** if the catch-up is a bribe (reactivation spikes, re-dormancy flat) · **→ retention-only** if the offer arrives with no recap, so a returning player is handled as one who never left.
 
 Two worked forms: a 30-day non-resetting bonus track of 50 missions in a 35-day window, so players who "miss a couple of days… still have the opportunity to earn everything" [Second Dinner | Marvel Snap patch notes, 16 Sep 2025]; and status restoration — one-time revival of the longest-ever streak for three lessons, 15.4M revived, nearly 8M with no active streak [Duolingo Q2 2026 shareholder letter | June 2026 | Duolingo lapsed learners | vendor, no holdout disclosed]. Anchor the flow on the **Pivot Point**, a moment restoring the player as their expert self, since games "do not recognize that the player is returning to rather than continuing" [Hammad et al. | CHI 2021 | small-n].
 
@@ -49,7 +49,7 @@ Positive exits come from satisfaction plus closure at a structural end-point, an
 ## The two diagnostic questions
 
 1. **What accumulates?** Classify as power / knowledge / position-and-collection / social position / **nothing**. "Nothing" is a finding, not a gap to paper over: no beat, however good, produces day-N retention without a carrier, so the deliverable becomes the carrier.
-2. **Would this moment be worth returning for if nothing were withheld?** Remove the energy meter, the timer, the daily cap, the 기다리면 무료 wait, and ask whether the return event survives. If it does not, the mechanic sells time back instead of creating value. Metered access is legitimate only when it caps session length or rate-limits an economy, and the designer must name which [02d §4].
+2. **Would this moment be worth returning for if nothing were withheld?** Remove the energy meter, the timer, the daily cap, the 기다리면 무료 wait, and ask whether the return event survives. If it does not, the mechanic sells time back instead of creating value. Metered access is legitimate only when it caps session length or rate-limits an economy, and the designer must name which.
 
 ## Sequencing heuristic for `compare`
 
@@ -64,8 +64,8 @@ Never sequence off a beta or soft-launch read: Squad Busters ran beta D7 of 29% 
 
 ## Numbers that do not exist
 
-- **Win-back and re-dormancy rates.** No 2024–2026 primary dataset; vendor "10–25% recovered" and "5–10× cheaper than acquisition" carry no methodology. Build the baseline against a randomized holdout of matched lapsed users [02d §7].
-- **In-game stopping cues.** No published A/B on wrap-up screens, "you're caught up" signals or session-goal prompts [02c §5.3].
-- **Recap systems.** No experiment on recap and returning-player retention or comprehension [02d §7].
-- **Visible choice consequence → D7/D30 return.** No study links them; measure replay starts and next-session return per variant instead [02a §8.3].
-- **Wait-or-pay conversion.** No platform publishes 기다리면 무료 conversion rates [02d §4].
+- **Win-back and re-dormancy rates.** No 2024–2026 primary dataset; vendor "10–25% recovered" and "5–10× cheaper than acquisition" carry no methodology. Build the baseline against a randomized holdout of matched lapsed users.
+- **In-game stopping cues.** No published A/B on wrap-up screens, "you're caught up" signals or session-goal prompts.
+- **Recap systems.** No experiment on recap and returning-player retention or comprehension.
+- **Visible choice consequence → D7/D30 return.** No study links them; measure replay starts and next-session return per variant instead.
+- **Wait-or-pay conversion.** No platform publishes 기다리면 무료 conversion rates.

@@ -23,7 +23,7 @@ The last two are blocking here: without them the Feedback bullet cannot tell add
 
 Reference paths: `${CLAUDE_SKILL_DIR}/references/<file>.md` for this skill's modules, `${CLAUDE_SKILL_DIR}/../<skill>/references/<file>.md` for a sibling's. If a required read fails, say so in one line, answer with reduced confidence, and record it in Basis as the *check you could not run* in the designer's own words — "accessibility limits could not be checked", never a filename, never a module name — and never let recall stand in for a module you did not open.
 
-**Ceiling — at most three reference modules per invocation.** If a fourth seems necessary the request spans two modes: pick the primary, answer it fully, and name the deferred check in one line at the end of Basis. `feel-and-accessibility.md`, read for its bounds and ranges rather than for proposals, does not count; neither does a `domain-ethics/` file, which is a section, not a module.
+**Ceiling — at most three reference modules per invocation.** If a fourth seems necessary the request spans two modes: pick the primary, answer it fully, and name the deferred check in one line at the end of Basis. `feel-and-accessibility.md`, read for its bounds and ranges rather than for proposals, does not count; neither does a `domain-ethics/` file, which extends `ethics-tiers.md` rather than adding a module, nor `jurisdictions.md` when it is read only to reproduce a legal or platform claim.
 
 <!-- ROUTING -->
 ## Routing
@@ -70,8 +70,8 @@ Tutorial drop-off is a funnel symptom, not a deliverable — route on the artifa
 
 | Mode | Fires when | Reads, in order (≤3) | Body of the answer |
 |---|---|---|---|
-| `moments` | A named scene, loop, reveal, choice, unlock or feel beat is flat; a session-length or quit-mid-session complaint | `moment-lenses.md` → the one pattern family the retrieval key picks → `../engagement-retention-advisor/references/ethics-tiers.md` | Beat audit → scan table → 3–5 cards → staging sequence with craft values for the strongest moment → cross-cutting tuning notes |
-| `first-win` | A named tutorial beat, the first session, the first win that does not land, or how a session ends | `moment-lenses.md` → `first-session.md` → `patterns-progress.md` | Beat audit of the first session → 1–3 cards → staging timeline with craft values → repeat-fatigue ladder and the low-spec / accessibility triage line |
+| `moments` | A named scene, loop, reveal, choice, unlock or feel beat is flat; a session-length or quit-mid-session complaint | `moment-lenses.md` → the one pattern family the retrieval key picks → `../engagement-retention-advisor/references/ethics-tiers.md` | Beat map → scan table → 3–5 cards → staging sequence with craft values for the strongest moment → cross-cutting tuning notes |
+| `first-win` | A named tutorial beat, the first session, the first win that does not land, or how a session ends | `moment-lenses.md` → `first-session.md` → `patterns-progress.md` | Beat map of the first session → 1–3 cards → staging timeline with craft values → repeat-fatigue ladder and the low-spec / accessibility triage line |
 
 In `first-win`, `ethics-tiers.md` takes the third slot whenever a proposed beat carries a reward, currency, timer, randomness or purchase surface. The ethics read displaces a pattern family, never the reverse.
 
@@ -83,7 +83,7 @@ In `first-win`, `ethics-tiers.md` takes the third slot whenever a proposed beat 
 | A bar, a set, a milestone, an earned unlock, or proof the player got better | `patterns-progress.md` |
 | Other people — co-op, PvP, guild, leaderboard, a result worth showing someone | `patterns-social.md` |
 | Failure, near-loss, comeback, a broken streak, or re-entry after a gap | `patterns-relief.md` |
-| The product is fortune/saju, journaling, companion, learning or episodic narrative | `patterns-nongame.md` — overrides the four above |
+| The product is fortune/saju, journaling or mental-health, companion, learning or episodic narrative | `patterns-nongame.md` — overrides the four above |
 
 Two substitutions: when the ask is the strength, safety or accessibility of a sensory effect — flash, shake, haptics, camera, motion, game feel and hit impact — `feel-and-accessibility.md` takes the family slot; when a mechanism claim or a number has to survive a stakeholder, `research-basis.md` takes it. Any card prescribing a sensory effect is bounded by `feel-and-accessibility.md`, but a bound is not a source of proposals: it is read for its ranges and hard bounds whenever the answer carries feel values, and takes the family slot only when the ask itself is the strength, safety or accessibility of an effect.
 
@@ -106,7 +106,7 @@ Two substitutions: when the ask is the strength, safety or accessibility of a se
 
 Legal and platform claims come from `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` under the Output language rule.
 
-Run that module's three questions on each candidate inside step 4, as it is drafted and never as a filter afterwards; the minors overlay runs before the row lookup.
+Run `ethics-tiers.md`'s three questions on each candidate inside step 4, as it is drafted and never as a filter afterwards; the minors overlay runs before the row lookup.
 
 Where a result lands is the Output shape section's rule: a bound as a number in the spec bullet, a residual risk as a Guardrails metric, a rating cost under Needs verification, a failed legal or platform bound under Redesigned request. A compliant mechanic produces nothing.
 
@@ -165,7 +165,7 @@ The Measurement plan is one block for the whole answer, not the cards repeated.
 
 - **One pre-registered primary metric**, named before the change ships, with its baseline measured on the current build first. A metric picked after the data is a story.
 - **Playtest and telemetry as a pair** — what to watch a player do, and the event that records it. A feel change only telemetry can see is not a feel change.
-- **Same-week cohorts and a kept holdout** when the beat ships to a live build, re-measured at week 3–4: a new beat's first read is inflated by novelty for roughly the first two to four weeks, so the week-1 number is a ceiling, not a result. A before/after line across a patch is not evidence.
+- **Same-week cohorts and a kept holdout** when the beat ships to a live build, re-measured at week 3–4 on the same arms, with both readings reported: a new beat's first read is inflated by novelty, so the week-1 number is a ceiling, not a result. A before/after line across a patch is not evidence.
 - **Guardrails, at least one a user-harm metric**: opt-out rate, notification-permission revocation, uninstall, refund rate, and the frequency of coercion words (forced, burden, every day) in store reviews. Crash rate alone is not a guardrail set.
 - **Over-engagement is an alarm, not a win.** A jump in session length or firing frequency in the heaviest decile reads as a harm signal until a wellbeing measure says otherwise. Each failure signal carries the number at which the beat is rolled back.
 

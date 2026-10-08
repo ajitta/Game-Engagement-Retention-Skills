@@ -1,6 +1,6 @@
 # Korea: market, products and vocabulary
 
-Read when the product ships in Korea, the team is Korean, or the user writes Korean. Every dated legal duty lives in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`; this file carries none.
+Read when the product ships in Korea and the ask turns on local convention, or a Korean mechanic is named; Korean-language input alone is not a trigger. Every dated legal duty lives in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`; this file carries none.
 
 ## Market anchors
 
@@ -13,9 +13,9 @@ All rows: [KOCCA 2025 게임이용자 실태조사 | 2025 fieldwork | n=10,000 n
 - **The substitute**, base = the 1,331 who named one: video/OTT/TV/film/anime **86.3%**. Not 86.3% of non-players — that is the standard misquote.
 - Spending: 37.8% bought an in-game item in the year [via GG review — secondary]; annual spend per person PC ₩186k / mobile ₩89k / console ₩323k.
 
-Industry ₩23조8,515억, +3.9%; mobile 59.0%, PC 25.2%, console 5.0%; exports $8.503B [KOCCA 2025 게임백서 | 2024 data]. Mobile IAP roughly flat at ~$5.3B, Google Play ~75% [Sensor Tower | 2025].
+Industry ₩23.85T, +3.9%; mobile 59.0%, PC 25.2%, console 5.0%; exports $8.503B [KOCCA 2025 게임백서 | 2024 data]. Mobile IAP roughly flat at ~$5.3B, Google Play ~75% [Sensor Tower | 2025].
 
-**MAU scale** [Mobile Index | May 2026]: top Korean mobile games run **2.2–2.6M MAU** (Roblox 2.26M, Block Blast 2.24M, Brawl Stars 1.82M) against YouTube 48.1M and KakaoTalk 46.4M app-wide. US and Chinese MAU anchors mislead a Korean team badly.
+**MAU scale** [Mobile Index | May 2026]: top Korean mobile games run **1.8–2.6M MAU** (Roblox 2.26M, Block Blast 2.24M, Brawl Stars 1.82M) against YouTube 48.1M and KakaoTalk 46.4M app-wide. US and Chinese MAU anchors mislead a Korean team badly.
 
 ## Numbers that do not exist
 
@@ -42,9 +42,9 @@ Category MAU [Mobile Index | Feb 2025 | top three >80% of category]: 점신 950,
 | Retention question | Daily return frequency | Top-up and repurchase |
 | Risk surface | Ad load, push consent | Subscription and cancellation flows |
 
-**The Scale row is [unverified]** [no source in the v2 research file | revenue stated as 2023, filing basis unstated | cumulative lifetime downloads and registered members, not actives | revenue = operator annual revenue]. The Feb 2025 category-MAU line above is the only sourced scale figure here; quote that one.
+**The Scale row is [unverified]** [no retrievable source | revenue stated as 2023, filing basis unstated | cumulative lifetime downloads and registered members, not actives | revenue = operator annual revenue]. For scale, quote the sourced Mobile Index MAU figures in this section instead.
 
-포스텔러's own numbers — 1.42M MAU Jan 2025, ~6 uses/week, 50–60% of payers repurchase within three months — are **[self-reported, no stated retention definition]** and are not a benchmark. Motives [롯데멤버스 라임 via 중앙일보 | 2025 | multiple response]: fun 30.1%, New-Year curiosity 30.0%, comfort 23.6%, worries 22.9%, prediction 21.0% — roughly a quarter arrive in distress.
+포스텔러's own numbers — 1.42M MAU Jan 2025, ~6 uses/week, 50–60% of payers repurchase within three months — are **[self-reported, no stated retention definition]** and are not a benchmark; Mobile Index puts 포스텔러 at 678,052 MAU for January 2025 — quote that figure for scale. Motives [롯데멤버스 라임 via 중앙일보 | 2025 | multiple response]: fun 30.1%, New-Year curiosity 30.0%, comfort 23.6%, worries 22.9%, prediction 21.0% — roughly a quarter arrive in distress.
 
 **Midnight rollover, not a morning horoscope.** 포스텔러 reports traffic peaking at midnight as users check *tomorrow's* fortune before bed. The daily appointment is **23:30–00:30 KST**; build the streak, the push and the reveal around the rollover.
 
@@ -52,7 +52,7 @@ Category MAU [Mobile Index | Feb 2025 | top three >80% of category]: 점신 950,
 
 ### The product's own vocabulary
 
-A 사주 app has **사용자** and **리딩**. It has no 플레이어, no win state, no difficulty curve, no 손맛 and no 타격감 — importing them is the tell that the advice was written for a game and relabelled. Terms below are 명리학 practice, not research; no citation exists.
+A 사주 app has **users (사용자)** and **readings (리딩)**. It has no players (플레이어), no win state, no difficulty curve, no game feel (손맛) and no hit impact (타격감) — importing them is the tell that the advice was written for a game and relabelled. Terms below are 명리학 practice, not research; no citation exists.
 
 | Term | What it names | What it forces on the product |
 |---|---|---|
@@ -60,7 +60,7 @@ A 사주 app has **사용자** and **리딩**. It has no 플레이어, no win st
 | 일간 | The day-stem, the chart's "self" — one of ten | The primary key every interpretation branches on |
 | 만세력 | The ephemeris converting birth data into pillars | A versioned asset (constraint 4); the most expensive thing to get wrong |
 | 십신 · 오행 · 용신 | Relational roles, five elements, the favourable element | The language a reading is written in — a line with no 십신/오행 condition is not a reading |
-| 풀이 · 해석 | The written interpretation | The unit of delivery. "리딩", never "콘텐츠" |
+| 풀이 · 해석 | The written interpretation | The unit of delivery: a reading (리딩), never "content" (콘텐츠) |
 | 상담 | A session with a human practitioner | An upsell that is a booking, not a text purchase: scheduling, no-shows, capacity |
 | 역술인 · 명리학자 | The practitioner | The domain's authority voice; product copy speaks *for* one |
 | 개운 | A luck-improving action — colour, direction, hour, number | The domain's native call-to-action: free, specific, doable today |
@@ -92,7 +92,7 @@ Practice conventions, no citation. Each has its own trigger, cadence and payer; 
 | 신년운세 · 토정비결 | The calendar | Once a year, Dec–Feb | 토정비결 resolves the lunar birth date to a 상·중·하 괘 index (8 × 6 × 3 = 144 verse sets), each carrying **twelve monthly sections** — one January purchase that legitimately contains twelve return dates. Release them monthly at the 절; never dump all twelve on the buy screen | The whole year's demand lands in one window; a bad January is unrecoverable |
 | 궁합 | A relationship | Episodic | The only reading needing a *second* person's birth data — a native invite. Send a link and let the other person enter their own data; never have the user type it for them (third-party data — constraint 5, and `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` for the duty) | Verdict framing on a real relationship |
 | 택일 | An event: 이사, 개업, 결혼, 계약 | One-off, high intent | The user hands you a future date. That is a booked, honest return trigger months out — and the reason to ask for it | 손없는 날 (음력 dates ending in 9 or 0) concentrates demand onto a handful of days: the problem is capacity, not persuasion |
-| 삼재 | The 띠 cycle — three years in every nine | Known years ahead | A scheduled, personal re-entry with the date already in the chart | The domain's biggest fear-monetisation trap: a 부적 upsell against a 삼재 warning is the forbidden T3 configuration in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/fortune.md` |
+| 삼재 | Three consecutive years in every twelve of the 띠 (zodiac) cycle, then nine clear | Known years ahead | A scheduled, personal re-entry with the date already in the chart | The domain's biggest fear-monetisation trap: a 부적 upsell against a 삼재 warning is the forbidden T3 configuration in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/fortune.md` |
 | 작명 · 개명 | A birth, or a name change | Once in a lifetime | Not a retention surface — a high-price one-off that pays for the engine | Wrong 한자 stroke tables ship a permanent error |
 
 The daily reading is the habit; the event readings are where money and genuine re-entry live. A plan that only tunes the daily loop has answered a quarter of the product.
@@ -103,12 +103,12 @@ The daily reading is the habit; the event readings are where money and genuine r
 
 A daily reading is a ritual, not a session: six beats, **30–90 s end to end [craft default — no published optimum]**, running at the 23:30–00:30 rollover.
 
-1. **의도** — the user picks today's focus (whole day · wealth · love · health · work). This is free personalisation the domain gives away, and it produces the question *category* that is the only thing the log keeps (constraint 5).
-2. **명식** — show the chart and today's 일진 *before* the text. This is the receipt. Acceptance is insensitive to a merely *claimed* source [Rogers & Soule | 2009 | J. Cross-Cultural Psychology; stage-2 n=258, 130 Western / 128 Chinese | one Barnum profile labelled as Western- vs Chinese-astrology derived, self-rated accuracy], so "we use a real ephemeris" in copy buys nothing. Showing the chart and naming which element fired is the only version of that claim a user can check.
-3. **풀이** — the reading, keyed to the chart (next section).
-4. **개운** — exactly one action, doable today, costing nothing **[craft default]**. This is what makes tomorrow's check mean something.
-5. **기록** — save it with the date and the ephemeris version. The archive is this domain's honest compounding asset and the only thing that survives a lapsed month.
-6. **확인** — tomorrow's opening asks once, skippable and unscored, whether yesterday's 개운 landed **[craft default]**. A return reason built from the user's own record instead of a streak the app can take away.
+1. **Focus (의도)** — the user picks today's focus (whole day · wealth · love · health · work). This is free personalisation the domain gives away, and it produces the question *category* that is the only thing the log keeps (constraint 5).
+2. **Chart (명식)** — show the chart and today's 일진 *before* the text. This is the receipt. Acceptance is insensitive to a merely *claimed* source [Rogers & Soule | 2009 | J. Cross-Cultural Psychology; stage-2 n=258, 130 Western / 128 Chinese | one Barnum profile labelled as Western- vs Chinese-astrology derived, self-rated accuracy], so "we use a real ephemeris" in copy buys nothing. Showing the chart and naming which element fired is the only version of that claim a user can check.
+3. **Reading (풀이)** — the reading, keyed to the chart (next section).
+4. **Luck action (개운)** — exactly one action, doable today, costing nothing **[craft default]**. This is what makes tomorrow's check mean something.
+5. **Save (기록)** — save it with the date and the ephemeris version. The archive is this domain's honest compounding asset and the only thing that survives a lapsed month.
+6. **Check-back (확인)** — tomorrow's opening asks once, skippable and unscored, whether yesterday's 개운 landed **[craft default]**. A return reason built from the user's own record instead of a streak the app can take away.
 
 Reveal staging of roughly **0.6–1.5 s [craft default]** is legitimate 연출; a bar reading "analysing…" over a cached reading is a false claim, not staging.
 
@@ -157,7 +157,7 @@ Introduced by 카카오페이지 in 2014 by porting 애니팡's heart timer into
 
 **2014 figures — never present as current** [카카오페이지 via DBR | 2014 | some titles]: conversion reached 25%, daily GMV ~₩30M → ~₩68M in month one, first monthly operating profit ₩100M Dec 2014; ~4,000 titles by 2019.
 
-**23-hour drift versus a fixed expiring ticket.** A 24-hour refill anchored to last use makes the user later every day until the appointment leaves their waking hours and the habit dies. A **23-hour** refill drifts the free episode *earlier* each day, so the appointment stays reachable — any ticket or energy system on a daily cadence should use a sub-24-hour period. A **fixed clock grant** (22:00, or 00:00/12:00) plus expiry plus same-time push buys the opposite properties: a shared social moment and loss aversion, at the cost of anyone whose day does not contain that hour. They are different mechanics; pick one deliberately.
+**23-hour drift versus a fixed daily grant.** A 24-hour refill anchored to last use makes the user later every day until the appointment leaves their waking hours and the habit dies. A **23-hour** refill drifts the free episode *earlier* each day, so the appointment stays reachable. A **fixed clock grant** (22:00, or 00:00/12:00) plus a same-time push buys the opposite property: a shared social moment, at the cost of anyone whose day does not contain that hour. Both are acceptable; pick one deliberately. The expiry the incumbents above attach to a fixed grant is the failing form — a free ticket never expires unused (`${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/narrative.md`).
 
 **Wait / ad / pay / subscribe is the 2025–26 default, not a binary.** WEBTOON Premium (2025-09-17) sells coin packs $3.99–$49.99 with bonus coins, ad-free Originals and episode discounts above the entry tier, auto-renewing; the English Daily Pass was abolished 2025-05-29 in favour of ad-watch 3-day unlocks. Scale does not carry economics: Piccoma was Japan's #1 app by revenue across all categories in 2025, but **Japan RPD $18.58 against Korea's $1.69 — an 11× gap** **[unverified]** [no source retrievable | data year unstated | which app population the two markets cover is unstated | RPD = revenue per download]. Two side effects to budget: heavy 기다무 use is reported to depress per-title paid conversion and author income, and **ending paywalls** (last N episodes pay-only, completed works behind multi-year waits) are a documented backlash and churn risk.
 

@@ -154,6 +154,6 @@ family have scored 17/18 and 14/18, so a 3-run delta of that size is noise.
 
 Every number carries `[source | population | year | definition]` or it is not written.
 Every legal claim is reproduced from `jurisdictions.md` with the instrument's own name and
-its in-force date, or it is not stated. A house recommendation is labelled `권장` or
-`기준선` — presenting one as a statute is the most expensive error available here, because
+its in-force date, or it is not stated. A house recommendation is labelled "recommended" or
+"baseline" in the output language — presenting one as a statute is the most expensive error available here, because
 the reader takes it to their legal team.

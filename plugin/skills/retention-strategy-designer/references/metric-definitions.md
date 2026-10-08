@@ -70,12 +70,12 @@ Items 1–3 are **blocking** — their documented gaps (≈16× on return rule, 
 3. **Return event** — any session, or a defined critical event? What is the session rule?
 4. **Cadence intent** — daily, weekly or episodic? Decides whether D1/D7, W1/W4 or DAU/MAU is even the right metric.
 
-Assumable, tuning-level: cohort size per install week · channel mix, platform and region split · the D0→D30 curve for ≥3 install weeks rather than a point · lifecycle events overlaying the window · available segment splits · churn destination, category-exit vs competitor-switch · experiment capacity · constraints: markets, minors in the audience, monetisation model, and disclosure duties — for Korea, 확률형 아이템 disclosure under 게임산업진흥에 관한 법률.
+Assumable, tuning-level: cohort size per install week · channel mix, platform and region split · the D0→D30 curve for ≥3 install weeks rather than a point · lifecycle events overlaying the window · available segment splits · churn destination, category-exit vs competitor-switch · experiment capacity · constraints: markets, minors in the audience, monetisation model, and disclosure duties — for Korea, 확률형 아이템 (paid random item) disclosure under 게임산업진흥에 관한 법률.
 
 A user-supplied benchmark needs source, edition or data year, population with its floor, definition tag and percentile before it enters a diagnosis. Missing any one, it is context, not a benchmark, and must not become a target.
 
 ## Numbers that do not exist
 
-- **No public Korean install-cohort D1/D7/D30.** KOCCA measures usage rate and daily minutes, not install cohorts; Mobile Index publishes MAU, installs and usage time with 이탈률 gated; Airbridge's Korea benchmark covers UA channels only and explicitly carries no D1/D7/D30 or LTV. Use Adjust × Sensor Tower Japan as a **stated** proxy; never synthesise a Korean triple.
+- **No public Korean install-cohort D1/D7/D30.** KOCCA measures usage rate and daily minutes, not install cohorts; Mobile Index publishes MAU, installs and usage time with 이탈률 (churn rate) gated; Airbridge's Korea benchmark covers UA channels only and explicitly carries no D1/D7/D30 or LTV. Use Adjust × Sensor Tower Japan as a **stated** proxy; never synthesise a Korean triple.
 - **No quantified reroll share.** Rerolling inflates the install denominator and depresses D1 in gacha and account-bound products, but no dataset here measures how much **[unverified]**. Do not apply a correction factor — compute a second D1 on a post-tutorial or post-first-gacha denominator and compare. Airbridge absorbs same-device rerolls by collapsing duplicates; multi-account and multi-device rerolls survive.
 - **No published universal DAU/MAU target.** Readable only against the product's own intended cadence.

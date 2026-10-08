@@ -1,6 +1,6 @@
 # Relief, Recovery and Re-entry Patterns
 
-Read when the scene is a failure, a near-loss, a comeback, a broken streak, or a 복귀 유저 opening the app after a gap.
+Read when the scene is a failure, a near-loss, a comeback, a broken streak, or a returning player (복귀 유저) opening the app after a gap.
 
 ## Family bound
 
@@ -36,7 +36,7 @@ Highlighting an *intact* streak raises re-engagement while surfacing a *broken* 
 
 ## 6. Re-entry after a lapse
 
-Returning is not resuming: "game systems do not recognize that the player is returning to rather than continuing gameplay uninterrupted" [Hammad et al., CHI 2021 | autobiographical design study]. Beat order: recognise the return → spoiler-safe recap restating the player's *own* prior choices → **Pivot Point**, a scene that reminds them of their expert self → catch-up entry into the current season without clearing the backlog. The one documented resurrection form is restoring lost *status* for a small bounded effort: a June 2026 one-time event restored longest-ever streaks for three lessons, at a vendor-reported scale of millions [Duolingo Q2 2026 shareholder letter | 2026 data | Duolingo learners | vendor-reported, no holdout described] — the counts and the retention claim attached to them are in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/churn-and-winback.md` (win-back channels).
+Returning is not resuming: "game systems do not recognize that the player is returning to rather than continuing gameplay uninterrupted" [Hammad et al., CHI 2021 | autobiographical design study]. Beat order: recognise the return → spoiler-safe recap restating the player's *own* prior choices → **Pivot Point**, a scene that reminds them of their expert self → catch-up entry into the current season without clearing the backlog. The one documented resurrection form is restoring lost *status* for a small bounded effort: a June 2026 one-time event restored longest-ever streaks for three lessons, at a vendor-reported scale of millions [Duolingo Q2 2026 shareholder letter | 2026 data | Duolingo learners | vendor-reported, no holdout described] — the counts and the retention claim attached to them are in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/churn-and-winback.md` (Win-back by lapse cause).
 - **Bound** — recap and catch-up entry are free; a re-entry flow whose first interactive element is an offer makes the lapse itself the product.
 
 ## Numbers that do not exist
@@ -44,6 +44,6 @@ Returning is not resuming: "game systems do not recognize that the player is ret
 - No A/B result for a login-calendar redesign, welcome-back calendar or catch-up mechanic, 2024–2026. "Welcome-back calendar lifts D7 by X%" is unsourced.
 - No effect size for *paid* streak repair as distinct from free.
 - No study linking streak length to a learning or skill outcome.
-- No 2023–2026 near-miss experiment in a non-gambling game; the last is Larche et al. 2017 (Candy Crush: near-misses raised frustration and urge).
+- No 2023–2026 near-miss experiment in a non-gambling game; the last is Larche et al. 2017 (Candy Crush: near-misses raised frustration and urge) **[unverified]**.
 - No causal evidence tying visible failure- or choice-consequence feedback to D7/D30 return.
 - Fabricated — a widely blogged "2020 JPSP: 63% higher abandonment after one missed day" exists in no journal.

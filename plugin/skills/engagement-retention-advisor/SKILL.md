@@ -93,7 +93,7 @@ Legal, store-policy and rating claims come from `jurisdictions.md` under the Out
 
 **Mandatory read.** Before generating any mechanic-bearing proposal, read `${CLAUDE_SKILL_DIR}/references/ethics-tiers.md`, then the `${CLAUDE_SKILL_DIR}/references/domain-ethics/<domain>.md` file for this product's domain (step 2 reads it for vocabulary either way) plus any other file its compliant-spec index names for the mechanic's family — a game's streak rows are in `learning.md`. Domain files never count against the ceiling. This body carries no per-mechanic rules, no tier assignments and no legal claims: if a read fails, record in Basis the check that could not be run, and never assign a tier from memory.
 
-Run that module's three questions on each proposal as it is drafted, never as a filter afterwards; the minors overlay runs before the row lookup.
+Run `ethics-tiers.md`'s three questions on each proposal as it is drafted, never as a filter afterwards; the minors overlay runs before the row lookup.
 
 Where a result lands is the Output shape section's rule: a bound as a number in the spec bullet, a residual risk as a Guardrails metric, a rating cost under Needs verification, a failed legal or platform bound under Redesigned request. A compliant mechanic produces nothing.
 
@@ -152,7 +152,7 @@ Inside that fixed order, the mode's body is:
 
 - **`integrate`** — scan table (column 3 = return event · window) → 3–5 integrated cards, each carrying both a moment and a return mechanism → `## Set aside — engagement-only and retention-only` for the engagement-only and retention-only residue.
 - **`compare`** — an options table `| Option | Impact | Effort | Depends on |` → the **measurement order**: which layer must be instrumented and read first, and why the other option's result is uninterpretable until it is → at most one card, emitted only when the two layers genuinely reinforce each other. A which-first question answered with five proposals is a non-answer.
-- **`system`** — a two-column `| Field | Value |` system sheet (in-session use · what accumulates · the return event it creates · who sets the appointment, the player or the server clock · dominant failure mode · ethics families in play) → 2–3 sub-mechanic cards → the instrumentation that would prove the system works.
+- **`system`** — a two-column `| Field | Value |` system sheet (in-session use · what accumulates · the return event it creates · who sets the appointment, the player or the server clock · dominant failure mode · the bounds its mechanics must hold, in plain words) → 2–3 sub-mechanic cards → the instrumentation that would prove the system works.
 
 <!-- LANGUAGE -->
 ## Output language

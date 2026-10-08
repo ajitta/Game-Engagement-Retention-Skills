@@ -2,7 +2,7 @@
 
 Read in ADV `system` mode when the deliverable is one named system whose value spans a session *and* a return. Same fields per system: loop (in-session use → what accumulates → return event) · coupling · dominant failure · ethics families · instrumentation.
 
-**The `T<n> <slug>` stamps below are internal keying between these modules and never reach an answer.** They tell you which row to look up in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/games.md`; what the reader gets is the bound in their own words, or nothing at all when every bullet is met.
+**The `T<n> <slug>` stamps below are internal keying between these modules and never reach an answer.** They key into the compliant-spec index in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/ethics-tiers.md`, which names the domain file holding each row; what the reader gets is the bound in their own words, or nothing at all when every bullet is met.
 
 ## The who-sets-the-appointment test
 
@@ -31,7 +31,7 @@ Run it before the ethics row lookup, on any system that creates a return event.
 
 ## 3. Meta-progression
 
-- **Loop** — gives a lost or finished run a residue → one of five classes in ascending return inertia (**power**, **knowledge**, **position/collection**, **social position** per §1, **nothing**) → returns on the next run, gated by an unlock the player can name. **Couples** to nothing external — the only system here with no clock owner, so the safest investment and the slowest to validate.
+- **Loop** — gives a lost or finished run a residue → one of four classes in ascending return inertia (**power**, **knowledge**, **position/collection**, **social position** per §1) — or **nothing**, the failure case → returns on the next run, gated by an unlock the player can name. **Couples** to nothing external — the only system here with no clock owner, so the safest investment and the slowest to validate.
 - Position/collection holds hardest because a returner cannot re-derive it, which is why puzzle D28 outlasts genres with far higher D1. Knowledge-only designs have no visible return event: give mastery an **artifact** (logbook, discovered-recipe list, map annotation).
 - **Fails when** the accumulation stops looking like it goes somewhere: Pokémon TCG Pocket carried power, knowledge *and* collection and still fell 51M → 39M → 30M → 28M average MAU across 2025 quarters; DeNA named login frequency and existing-user retention, and answered with the collection experience rather than more pack-opening [DeNA Q3 FY3/2026 via gamebiz | 2026 | first-party disclosure].
 - **Fails when** validated on the wrong timescale: Squad Busters' beta reached D7 29→38% on 140,000+ testers and launch retention still missed — the one-month soft launch "only validated D7" [Supercell | 2026 | first-party postmortem]. Also when a nerf reads as confiscation; the remedy is expectation-setting, not restraint from balancing.
@@ -51,16 +51,16 @@ Run it before the ethics row lookup, on any system that creates a return event.
 
 What the spend loop does *to* the return loop. Pricing, eCPM and pity tuning are out of scope.
 
-- **Loop** — an offer surface placed on a game state (resource-out pinch, pre-boss, streak break, rotation) → spend-derived power and collection, which is also meta-progression, which is why a monetization tune is a retention change → returns on the banner or offer window. **Server-set by construction**, so it fails the appointment test by default and needs a published return schedule (`T2b fomo-window`; a one-shot window on core content is `one-shot` at its escalated tier — no compliant version).
+- **Loop** — an offer surface placed on a game state (resource-out pinch, pre-boss, streak break, rotation) → spend-derived power and collection, which is also meta-progression, which is why a monetization tune is a retention change → returns on the banner or offer window. **Server-set by construction**, so it fails the appointment test by default and needs a published return schedule (`T2b fomo-window`; a one-shot window on core content is `one-shot` (T2a) — no compliant version).
 - **Fails when** the pinch point is assumed necessary: easing difficulty for high-churn-risk users raised retention *and* premium spend in a randomized rollout [Ascarza, Netzer & Runge, IJRM 42(4):975–995 | 2025 | ~330,000 users, F2P mobile puzzle | 12-week randomized rollout vs holdout]. Effect sizes, and why the per-round read misleads: `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/churn-and-winback.md`.
 - **Fails when** a tune reads as betrayal — Infinity Nikki v1.5 (2025-04-29): more pieces per set, less generous pity → review-bomb, apologies, compensation. In a cozy product a tightening is a brand-risk event, not an economy tune.
 - **Fails when** retention is treated as the revenue predictor: Last War had the weakest retention among top 4X titles and was still the #1 4X title by 2024 revenue at ~$1.1B [Sensor Tower / Naavik | 2024–25 | US iOS panel estimates].
-- **Ethics** — `T1 odds` on any 확률형 아이템 shipping to Korea. A **dynamic or personalized** drop rate is exposed under 게임산업진흥에 관한 법률 §33-2 (burden shift, in force 2025-08-01, no adjudicated case as of 2026-09); fixed disclosed rates plus an audit log are the safe configuration. The statutory detail is `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`'s.
-- **Instrument** — payer-count vs ARPPU decomposition, refund rate, top-decile spend concentration, opt-out and uninstall, and 강제 / 부담 / 매일 keyword frequency in store reviews.
+- **Ethics** — `T1 odds` on any 확률형 아이템 shipping to Korea. A **dynamic or personalized** drop rate still owes per-item disclosure under 게임산업진흥에 관한 법률 §33(2) (in force 2024-03-22), and §33-2 (burden shift, in force 2025-08-01, no adjudicated case as of 2026-09) raises the damages exposure if it misleads; fixed disclosed rates plus an audit log are the safe configuration. The statutory detail is `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`'s.
+- **Instrument** — payer-count vs ARPPU decomposition, refund rate, top-decile spend concentration, opt-out and uninstall, and 강제 (forced) / 부담 (burden) / 매일 (every day) keyword frequency in store reviews.
 
 ## Numbers that do not exist
 
 - **No measurement ties alliance or guild obligation to retention** — analyst assertion only; neither Naavik nor the DoF/Katkoff framing supplies data. Never supply a guild-join → D30 lift figure.
 - **No first-party retention curves for roguelites** (Balatro, Hades II, Blue Prince, Peak, Schedule I) — sales and Steam concurrency proxies only, so there is no effect size for a power meta versus a knowledge meta.
-- **No platform publishes 기다리면 무료 / wait-or-pay conversion rates.** The circulating "up to 25% purchase conversion" and the 3,000만원 → 6,800만원 daily-GMV doubling are one 2019 write-up of a 2014-era launch [DBR via 인터비즈 | 2019], not a current rate.
+- **No platform publishes 기다리면 무료 / wait-or-pay conversion rates.** The circulating "up to 25% purchase conversion" and the ~₩30M → ~₩68M daily-GMV doubling are one 2019 write-up of a 2014-era launch [DBR via 인터비즈 | 2019], not a current rate.
 - **No UGC-experience benchmark outside the GameAnalytics session-length bands**, and none at all for Fortnite Creative islands.

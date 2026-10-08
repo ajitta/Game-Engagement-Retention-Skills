@@ -53,9 +53,9 @@ A satisfying moment is therefore not the one rated most pleasant at the outcome;
 
 ## Difficulty and DDA — churn-risk relief with a monetization cost
 
-The v1 citation was misread. PMC8943660 is **Larche & Dixon, *J. Behav. Addict.* 9(3), 2020, n=60, Candy Crush**: easy levels produced the least flow, and flow added **21.8% of variance in "urge to keep playing" beyond arousal** — which the authors read as a risk marker ("high flow may in part account for why problem players report playing for longer than intended"). It belongs to the ethics review, never to the objectives list.
+This source is commonly misread. PMC8943660 is **Larche & Dixon, *J. Behav. Addict.* 9(3), 2020, n=60, Candy Crush**: easy levels produced the least flow, and flow added **21.8% of variance in "urge to keep playing" beyond arousal** — which the authors read as a risk marker ("high flow may in part account for why problem players report playing for longer than intended"). It belongs to the ethics review, never to the objectives list.
 
-Fisher & Kulshreshth (*Virtual Worlds*, 2024) is a methods survey and carries no retention claim. The retention evidence is a field RCT: easing difficulty for **at-risk** players raised Retention-1/7/14 by **+2.7 / +2.5 / +2.0 pp** (p<0.001), net **+$0.07 per average user**, while "significantly decreas[ing] purchases in the specific round played" (Ascarza, Netzer & Runge, *IJRM* 42(4):975–995, 2025; ~330,000 users, 12-week randomized rollout, free-to-play mobile puzzle). Pulling the other way, early *skill* signals — fewer moves, more stars — were inversely related to retention (Drachen et al., AIIDE 2016): "too easy for skilled players" is a separate failure mode.
+Fisher & Kulshreshth (*Virtual Worlds*, 2024) is a methods survey and carries no retention claim. The retention evidence is a field RCT: easing difficulty for **at-risk** players raised Retention-1/7/14 by **+2.7 / +2.5 / +2.0 pp** (Retention-7/14 = played at least once within 7/14 days, not classic day-N; p<0.001), net **+$0.07 per average user**, while "significantly decreas[ing] purchases in the specific round played" (Ascarza, Netzer & Runge, *IJRM* 42(4):975–995, 2025; ~330,000 users, 12-week randomized rollout, free-to-play mobile puzzle). Pulling the other way, early *skill* signals — fewer moves, more stars — were inversely related to retention (Drachen et al., AIIDE 2016): "too easy for skilled players" is a separate failure mode.
 
 ## Uncertainty — what replicates, what does not
 
@@ -89,8 +89,8 @@ Exit quality is designable: "disengagement from games should be constructively d
 ## Numbers that do not exist
 
 - No direct replication of Larche & Dixon 2020; generalization beyond Candy Crush is untested.
-- No 2023–2026 near-miss experiment in a *non-gambling* game; the latest game-specific evidence is Larche et al. 2017 (Candy Crush near-misses raised frustration and urge).
-- No pre-registered digital replication of endowed progress; the canonical 34%-vs-19% completion figures remain Nunes & Drèze's 2006 car-wash field study.
+- No 2023–2026 near-miss experiment in a *non-gambling* game; the latest game-specific evidence is Larche et al. 2017 (Candy Crush near-misses raised frustration and urge) **[unverified]**.
+- No pre-registered digital replication of endowed progress; the canonical 34%-vs-19% completion figures remain Nunes & Drèze's 2006 car-wash field study **[unverified]**.
 - No evidence linking visible choice consequences to D7/D30 return; replay decisions track "the likelihood of seeing something new… versus the effort required to replay" (Wang, Ang & Mitchell, PACM HCI 2021, n=12).
 - No Korean-language validation of PXI, miniPXI or any need-satisfaction instrument — pilot with back-translation and report item-level reliability rather than assume the published factor structure holds.
 - No head-to-head RCT of gamified vs non-gamified versions of the same mental-health app.

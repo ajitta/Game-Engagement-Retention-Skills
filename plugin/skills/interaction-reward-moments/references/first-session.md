@@ -65,7 +65,7 @@ Positive exits come from satisfaction plus **closure at a structural end-point t
 
 The session-goal row rests on goal achievement, competing activities and push being the most prevalent stopping cues [Ernst & Schnauber-Stockmann, *Communication Research* | 2026 | 118 participants, 1,893 TikTok/Instagram sessions]. Same study, push-timing consequence: **an incoming notification ends the session of the app currently in use.**
 
-**Korea, mandatory.** 게임산업진흥에 관한 법률 제12조의3 and 시행령 제8조의3 require displaying elapsed play time on screen and posting the warning '과도한 게임이용은 정상적인 일상생활에 지장을 줄 수 있습니다.' **every hour for at least 3 seconds** (시행 2025-10-23; verify with counsel). The 강제적 셧다운제 curfew was abolished 2022-01-01 — never cite it. Design move: align the wrap-up beat *with* the hourly notice rather than fight it.
+**Korea, mandatory.** 게임산업진흥에 관한 법률 §12-3 (in force 2025-10-23) requires displaying elapsed play time on screen and posting the warning '과도한 게임이용은 정상적인 일상생활에 지장을 줄 수 있습니다.' **every hour for at least 3 seconds** — reproduce it from `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`; verify with counsel. The 강제적 셧다운제 curfew was abolished 2022-01-01 — never cite it. Design move: align the wrap-up beat *with* the hourly notice rather than fight it.
 
 ## Return: the Pivot Point
 
