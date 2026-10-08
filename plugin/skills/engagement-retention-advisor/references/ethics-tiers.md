@@ -34,7 +34,7 @@ Triggered by "directed at or likely accessed by", not by a declared target audie
 - **Brazil Lei 15.211 (in force 2026-03-17):** paid random items **prohibited outright** where the rating admits minors or access is likely; fines to 10% of Brazilian group revenue, capped R$50m per infraction.
 - **China 未成年人网络保护条例 Art. 44:** per-transaction and per-day spend caps by age band.
 - **US:** Texas SB 2420 — store age signal, re-consent when the app adds monetization; CA SB 243 — three-hour break reminders.
-- **Korea 게임산업진흥에 관한 법률 12-3:** hourly play-time notice. **Australia:** paid loot boxes force minimum M; simulated gambling R 18+.
+- **Korea 게임산업진흥에 관한 법률 §12-3 (in force 2025-10-23):** guardian consent at signup and 게임시간 선택제 (play-time selection) on request for under-18s; the hourly play-time notice applies to every player, not only minors. **Australia:** paid loot boxes force minimum M; simulated gambling R 18+.
 
 The overlay can raise a T4 to T2b, and in Brazil converts a T1-with-a-compliant-spec into a flat prohibition.
 
@@ -66,7 +66,7 @@ The overlay can raise a T4 to T2b, and in Brazil converts a T1-with-a-compliant-
 4. **Transparency** — are odds, costs and consequences visible before commitment?
 5. **Metric** — is success measured by a meaningful return event, or by opens and session length, which compulsion inflates?
 
-A failed check is not a refusal. Label the item "retention only → redesign", name the failing check, and ship the transparent alternative inside the same card.
+A failed check is not a refusal: redesign the item until the check passes and ship the transparent alternative in its place — the bound it must hold as a number in the spec bullet it constrains, the residual risk as a Guardrails metric. Never print the check's name or a label for the failure; in ADV `integrate`, an item that cannot be redesigned goes under Set aside, one line.
 
 ## Four false-positive guards
 
@@ -89,7 +89,7 @@ Rows are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/doma
 | Ad-chained variable rewards | `ad-chaining` | T1 / T2a | `games.md` · KR 전자상거래법 반복간섭 |
 | One-shot window on core content | `one-shot` | T2a | `games.md` — no compliant version |
 | Ending paywalls (sold product, or final episodes pay-only) | `ending-paywall` | T2a | `narrative.md` — no compliant version |
-| Expiring login chains | `login-chain` | T2b | `games.md`, `learning.md` · PEGI, EU DSA Art. 28 |
+| Expiring login chains | `login-chain` | T2b | `games.md` · PEGI, EU DSA Art. 28 |
 | Pass / quest expiry | `pass-expiry` | T2b | `games.md` · PEGI |
 | FOMO / time- and quantity-limited windows | `fomo-window` | T2b | `games.md` · PEGI, EU CPC, UK CMA |
 | Energy / stamina · learning volume and pacing gates | `metered-access` | T3 | `games.md`, `learning.md` · EU CPC binds pricing presentation only |
@@ -107,7 +107,7 @@ Rows are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/doma
 | Earn-rate cut · recap · hiatus duty | — | T3 | `narrative.md` |
 | Coin bundles and subscriptions | `currency-obfuscation` | T1 in Korea | `narrative.md` · KR 전자상거래법 six dark-pattern types |
 | Fear-driven or paid-relief fortune loops | — | T3 | `fortune.md` |
-| Fortune reading log · 시주-모름 path | — | T3 / T1 | `fortune.md` · KR PIPA §23, AI Basic Act Art. 31, 정보통신망법 §50 |
+| Fortune reading log · unknown-birth-hour (시주 모름) path | — | T3 / T1 | `fortune.md` · KR PIPA §23, AI Basic Act Art. 31, 정보통신망법 §50 |
 | Wait-or-pay / 기다리면 무료 | `wait-or-pay` | T4 | `narrative.md` · korea-market mechanics table |
 | Minors in the audience (run before the lookup) | `minors-overlay` | raises the row's tier; flat T1 in Brazil | no domain file — the overlay section above |
 

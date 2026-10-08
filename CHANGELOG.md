@@ -9,6 +9,58 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [3.4.3] — 2026-10-09
+
+A consistency and language pass over the installed payload. Frontmatter (`description`, `when_to_use`) and the three shared blocks are byte-identical to 3.4.2, so no skill fires on different words. What changes is what a fired skill reads: contradictions between modules, Korean text with no English, and pointers to things the payload does not contain.
+
+### Fixed — contradictions between shipped files
+
+- **Odds disclosure cited to the wrong provision** (`genre-profiles.md`, `churn-and-winback.md`, `systems-catalog.md`). The duty is 게임산업진흥에 관한 법률 §33(2), in force 2024-03-22; §33-2 (2025-08-01) puts the burden of disproving intent and negligence on the operator. RSD dated the disclosure duty to 2025-08-01, and RSD and ADV said a personalised drop rate was "exposed under §33-2", a rule `jurisdictions.md` does not state.
+- **Push frequency: two owners disagreed.** `jurisdictions.md` called "one push per day" the plugin's recommendation; `liveops-cadence.md` (the cadence owner) rejects a flat daily cap for a per-segment budget. `jurisdictions.md` now says no daily cap is Korean law and points at the cadence guidance. `domain-ethics/fortune.md` tied "no multiple daily pushes" to §50, which `jurisdictions.md` calls the worst error the file can cause; it now states the §50(1)/§50(3) consent duties for advertising pushes only (as `jurisdictions.md` scopes them) and labels the daily cap a recommendation. `patterns-reveal.md` and `liveops-cadence.md` now separate statute from KISA guidance and carry the in-force dates.
+- **A failed universal check** (`ethics-tiers.md`) told the model to print "retention only → redesign" and name the check inside the card, against the CARD block (no ethics prose, no internal names) and ADV's Set-aside rule. It now redesigns the item into spec bounds and Guardrails metrics.
+- **Wait-or-pay expiry.** `korea-market.md` presented a fixed grant *plus expiry* as a legitimate choice and said every daily system "should" drift; the owner row (`domain-ethics/narrative.md`) accepts a fixed grant and fails only the expiry. Aligned to the owner.
+- **Korea §12-3** sat in the minors overlay as if minors-only; the hourly play-time notice applies to every player (`jurisdictions.md`). **CA SB 243** in `companion-journaling.md` and `patterns-nongame.md` read as scoping the AI-status disclosure and the published crisis protocol to known minors; only the break reminders are.
+- **The ADV `system` sheet** asked for an "ethics families in play" row, which the LANGUAGE block (no family slugs) and CARD block (no ethics prose) forbid. The row is now the bounds the mechanics must hold, in plain words.
+- **Numbers that disagreed with their own source or file:** the JAMA Psychiatry meta-analysis year (2025 → 2026, matching `research-basis.md` and `ethics-tiers.md`); the Duolingo streak figures (`learning.md` said "data year not stated, unverified"; the source is the Duolingo research blog post of 2022-01-31, checked against the page and now cited with its URL in `learning.md`; the other files already said 2022); 삼재 ("three years in every nine" → three in every twelve); the MAU range that excluded its own example (2.2–2.6M → 1.8–2.6M); the 40/20/10 benchmark band (labelled P95–P99, the file's own table puts it at ~P90 on D1); the Seki & Ishikawa ratio (charge vs normal attack, as the paper says, not heavy vs light).
+- **Ascarza et al. Retention-1/7/14** now carries the paper's definition (Retention-7/14 = played at least once within 7/14 days, cumulative), so a control value of 64.3% is not read as a classic D7 against `benchmarks.md`.
+- **Win-back lapse figures** (`churn-and-winback.md`, `liveops-cadence.md`) now carry the bases `korea-market.md` requires (44.0% of 3,828 ex-players; 86.3% of the 1,331 who named a substitute) — the file names the base-less form as "the standard misquote".
+- **Store rule outside its owner.** The Google Play 15 s / 5 s closeability rules lived only in `retention-economics.md`; they now sit in `jurisdictions.md` (checked against the current Play policy pages) and RSD points there.
+- **Lifecycle-stage names** differed across files (at-risk / lapsing / lapsed / active). The push-segment field (`liveops-cadence.md`) and the stage table (`retention-playbook.md`) now use the body's vocabulary (new · current · power · lapsing · dormant · resurrected); `churn-and-winback.md` keeps "at-risk" as the name of the targeting signal.
+
+### Fixed — confusing or dangling instructions
+
+- "Run that module's three questions" (all three bodies) followed a sentence about `jurisdictions.md`; it now names `ethics-tiers.md`.
+- IRM: the mode table said "Beat audit", the procedure `## Beat map` — one name now. The retrieval key now includes mental-health products, as `patterns-nongame.md` already did. The module ceiling now says the legal read for a claim does not take a slot (a gacha or fortune beat needed a fourth module under the old wording). The novelty sentence ("two to four weeks", then re-measure at week 3–4) contradicted itself and put a duration in a body; it now matches `experiments.md`.
+- Pointers to files and sections that do not ship: research-file tags (`[02d §4]`, `(02e §4)`, "the v2 research file", "v1"), a maintainer comment naming `02d-…md`, `patterns-reveal.md`'s "§1" and "arousal-and-sleep note above", `patterns-relief.md`'s "(win-back channels)", `nongame`'s "never-quote list" in `learning.md`, `systems-catalog.md`'s "look up in `games.md`" (two of its stamps live elsewhere), the `login-chain` index row naming `learning.md`, and `retention-playbook.md`'s habit claim pointing at a module that does not contain it (now cited to Wood & Rünger 2016, with the wasted-spend conclusion labelled an inference).
+- `korea-market.md` was read "when the user writes Korean"; RSD reads it for a Korean market or a named Korean mechanic, ADV only when the ask also turns on local convention. The module now says the same, and that Korean-language input alone is not a trigger.
+- `jurisdictions.md` prescribed "our recommendation"; the LANGUAGE block allows only "recommended" or "baseline". CONTRIBUTING said the same with Korean labels (`권장`, `기준선`).
+
+### Fixed — Korean text in shipped files
+
+Korean stays where it does work (trigger phrases, statute and source names, quoted terms of art). Removed or glossed:
+
+- Output labels named in Korean: `experiments.md` "측정 / 가드레일 / 중단" (the last is not a CARD label) → Measure / Guardrails / Kill if; `korea-market.md`'s six ritual beats (의도 … 확인) now lead with English labels.
+- Korean currency notation (₩23조8,515억, 3,000만원 → 6,800만원) → ₩23.85T, ~₩30M → ~₩68M; 시행 → in force; a Korean decree article `jurisdictions.md` does not carry (시행령 제8조의3) removed.
+- Unglossed terms of art now carry an English gloss at use: 천장, 부적, 시주 모름, 일진, 삼재, 절기, 야자시/조자시, 도감, 복귀 유저, 휴재, 확률형 아이템, 이탈률, 작품 감상 이탈 예측, the review keywords 강제 · 부담 · 매일, the Korean school/holiday calendar, and 사용자 / 리딩 / 플레이어 / 손맛 / 타격감 where they were given as output vocabulary. The one Korean-led heading (`## 1. 사주 / 운세 daily reveal`) now leads in English.
+
+### Measured and not measured
+
+- **Measured:** the four invariant scripts and the three validators pass; frontmatter character counts are unchanged (description 952 / 830 / 1,023, combined 1,423 / 1,436 / 1,512); bodies ADV 26,910 B, IRM 29,387 B, RSD 28,132 B.
+- **Measured, 3.4.2 vs 3.4.3, same harness, run in parallel** (`docs/notes/2026-10-09-gate-10x-3.4.3.md`):
+  - Gate families at 10 runs per case: fp 47/60 vs 47/60 (p = 1.00); tp 13/30 vs 15/30 (p = 0.80).
+  - Mode cases at 5 runs per case: 15/20 vs 13/20 (p = 0.73).
+  - So 3.4.3 is non-inferior. Routing cannot move: frontmatter and shared blocks are byte-identical.
+- **Not met: the release gate, on either arm.** fp needs 55/60 and tp 29/30. 3.4.1 read fp 58/60 and tp 27/30 on 2026-10-02. The 3.4.2 baseline differs from 3.4.1 only in frontmatter, yet now reads 47/60 and 13/30, so the drop is drift in the model or the judge, not this change. It is undiagnosed. `mode-irm-first-win-tutorial-beat` 5/5 → 3/5 is the case to watch: the two failures are a progress-note line 1 and four cards.
+- **Independent verification:** a separate `claude -p` run (Opus, high effort) checked the diff hunk by hunk against the owner modules and the eval graders; its fifteen findings (two widenings of §50, a §33-2 trigger, a dropped qualifier, missing dates and tags) are folded into this release.
+- **Found and left open**, each needing a body or shared-block change that should be measured first:
+  - ADV's `Ceiling` says `jurisdictions.md` and `korea-market.md` each "replace one of the three" without naming which, while every read is mandatory.
+  - `systems-catalog.md` §5 (monetization ↔ retention) is a second home for a topic CONTRIBUTING gives to `retention-economics.md`, and ADV's mode table cannot route to it.
+  - RSD routes win-back to `cadence`, which never reads its owner `churn-and-winback.md`; the FTUE funnel routes to `strategy`, whose read set does not include the FTUE owner `first-session.md`; the `calendar` and `economics` rows omit the `ethics-tiers.md` read the Ethics section makes mandatory; "unless a T1/T2 candidate" does not say whether T2b counts.
+  - The CARD block's `Segment · stage` bullet has no "resurrected", which `churn-and-winback.md` requires reporting separately (shared block).
+  - ADV's `description` routes "the goal itself is raw time-in-app or session length" to ADV, while IRM's `description`, the shared routing table and `routing-edge-session-length` send a session-length complaint to IRM. The line between a goal and a complaint is not stated anywhere. A fix touches frontmatter, so it needs the routing families run first.
+
+---
+
 ## [3.4.2] — 2026-10-03
 
 ### Fixed

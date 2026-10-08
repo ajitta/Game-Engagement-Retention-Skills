@@ -13,7 +13,7 @@ Retention failure is a value-delivery failure before it is a notification failur
 1. **What accumulates between sessions?** If nothing does, it is engagement work wearing a retention label.
 2. **Would this be worth returning for if nothing were withheld?** If the pull comes only from expiry or removal, it is a pressure loop, not value.
 
-**Stored-value classes**, ascending by return inertia (02e §4):
+**Stored-value classes**, ascending by return inertia:
 
 | Class | Example | Return inertia |
 |---|---|---|
@@ -46,7 +46,7 @@ Name the stage before naming the intervention. A streak aimed at dormant users i
 | New | before the habit moment | time-to-first-value, comprehension |
 | Current | returning at natural cadence | loop depth, discovery, what accumulates |
 | Power | above cadence, high investment | mastery, identity, community, creation tools |
-| At-risk | gap widening against **this player's own** median gap | relevance re-proof, friction removal |
+| Lapsing (at-risk) | gap widening against **this player's own** median gap | relevance re-proof, friction removal |
 | Dormant | many cycles missed | what changed since they left + easy re-entry |
 | Resurrected | returned after dormancy | fast re-activation; never treat as new or as current |
 
@@ -71,7 +71,7 @@ Re-entry checklist: save interaction state, not the level index · open on a Piv
 
 **[contested] cliffhanger vs closure at exit.** Written-story experiments: cliffhanger raised desire for the next instalment, no enjoyment loss (Schibler, Hahn & Green, 2023). Lab study with electrodermal and cortisol measures: arousal rose, intention-to-continue did not (Wirz et al., 2022). Neither measured next-day return in a game — ship it as an A/B, never a recommendation.
 
-**D8–D30 — three systems, next section.** The window v1 covered in one line.
+**D8–D30 — three systems, next section.**
 
 **D30+ — novelty exhausted.** No compounding asset, no community, or trust erosion from ad-load and paywall creep (`${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/retention-economics.md`). Split churn by destination first: category exit and competitor switch need different responses, and where time scarcity is the stated cause the answer is a *lower-commitment* mode, not a larger reward — the Korean case, where the substitute category is video/OTT, is in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/korea-market.md` (KOCCA 2025 게임이용자 실태조사).
 
@@ -105,7 +105,7 @@ Not a calendar date: it is the point at which **cumulative content consumed by y
 
 - **Fogg (B = MAP).** Behaviour needs motivation, ability and prompt at once. Raise ability before prompt volume: prompts without ability produce opt-outs, and a notification opt-out is a one-way door.
 - **Hook Model (Eyal).** Trigger → action → variable reward → investment. Use it as a map and **resist the variable-reward leg actively** — that leg becomes compulsion design, and it is the one regulators name. The *investment* leg (stored value) is the durable, defensible part; prefer legible earned rewards carrying competence information.
-- **Habit is not more reward.** Habitual behaviour becomes insensitive to reward devaluation, so escalating incentives aimed at already-habitual users are wasted spend (`${CLAUDE_SKILL_DIR}/../interaction-reward-moments/references/research-basis.md`).
+- **Habit is not more reward.** Habitual behaviour becomes insensitive to reward devaluation, so escalating incentives aimed at already-habitual users are likely wasted spend [Wood & Rünger, *Annual Review of Psychology* 67:289–314, 2016 | review of lab and field habit studies | habitual responding is insensitive to changes in outcome value] — the wasted-spend conclusion is an inference from that finding, not a measured result.
 - **No fixed days-to-habit.** Locate the habit moment empirically — where this cohort's key-action curve flattens — and treat any circulating day count as folklore.
 
 ## Numbers that do not exist

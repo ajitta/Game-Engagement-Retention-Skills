@@ -47,7 +47,7 @@ Every spec below is tagged with its canonical **ethics family slug**, and each R
 
 **The citable 2025 pattern.** Marvel Snap's 2025-09-16 patch added a 30-day "Bonus Challenge" of 50 missions advancing from the *same* daily missions as the weekly challenge: it "does not reset weekly", sits inside a 35-day calendar window, and exists so players who "miss a couple of days… still have the opportunity to earn everything" [Second Dinner, 2025, marvelsnap.com/patch-notes-september-16-2025/].
 
-**Acceptance bounds** — dailies feed the weekly and monthly buckets from the same actions (one play session, three layers of credit); the longest bucket spans ≥30 days inside a ≥35-day window and does not reset weekly; a player who misses 2 consecutive days can still complete the monthly bucket; the whole stack is completable at ≤3 play days/week; **no cumulative-consecutive-day requirement anywhere in the stack.**
+**Acceptance bounds** — dailies feed the weekly and monthly buckets from the same actions (one play session, three layers of credit); the longest bucket spans ≥30 days inside a ≥35-day window and does not reset weekly; a player who misses 2 consecutive days can still complete the monthly bucket; the whole stack is completable at ≤3 play days/week; **no consecutive-day requirement anywhere in the stack.**
 
 **Reviewer flags** — a weekly bucket that requires daily presence to fill; a monthly bucket fed by different actions than the dailies (that is a second job, not a catch-up). Failed flags land on `pass-expiry`; a consecutive-day requirement anywhere in the stack lands on `login-chain`.
 
@@ -99,7 +99,7 @@ Every spec below is tagged with its canonical **ethics family slug**, and each R
 
 ## 6. Notification · `T1/T2a ad-chaining` bound applies to any offer payload
 
-**Fields** — payload type (value-ready / social / achievement / content-drop / reminder); trigger; segment (new / active / at-risk / lapsed); delivery window; per-segment weekly budget; template pool + rotation rule; in-app payoff; opt-out path.
+**Fields** — payload type (value-ready / social / achievement / content-drop / reminder); trigger; segment (new / current / lapsing / dormant / resurrected); delivery window; per-segment weekly budget; template pool + rotation rule; in-app payoff; opt-out path.
 
 **Reach is no longer assumable.** Android push opt-in fell 2023→2024 at every percentile (high/median/low 88.0/71.3/42.1% → 79.7/59.5/37.1%) while iOS held (73.9/49.1/27.3% → 74.1/49.4/27.1%); median direct open rates ~3.4% Android, ~3.1% iOS [Airship 2025 Push Notification Benchmarks | Jan–Dec 2024 data | apps on the Airship platform | direct open]. The 2026 edition [681B pushes, 3B users, published 2026-03-31] reports Android 13+ runtime permissions closing the gap to near parity and Android median/low-tier apps cutting send volume 15% YoY. The circulating "Android 97% / iOS 54%" appears nowhere in Airship's text.
 
@@ -109,7 +109,7 @@ Every spec below is tagged with its canonical **ethics family slug**, and each R
 
 **Rotation rule.** Duolingo's sleeping/recovering bandit over reminder templates (eligibility as sleeping arms, a decaying recency penalty as recovering arms, conversion = a lesson within two hours) produced **+0.5% DAU and +2% new-user retention over an already A/B-optimised random-template baseline** [Yancey & Settles, KDD 2020 — still the only published notification study of its kind].
 
-**Acceptance bounds** — every push names its concrete in-app destination and payoff; behaviour-triggered, not broadcast; templates rotate with a recency penalty; **budget set per segment with an opt-out guardrail, not a global ≤1/day** (the flat cap is **[contested]**: high frequency does not always cause churn when the payload is high-value and content-gated). Korea: night-window sends separately consented, "(광고)" prefix, one-tap opt-out that does not require login, expiring-reward alerts treated as advertising, ≥7-day snooze on any re-prompt — dated statute text in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`. EU minors: push off by default.
+**Acceptance bounds** — every push names its concrete in-app destination and payoff; behaviour-triggered, not broadcast; templates rotate with a recency penalty; **budget set per segment with an opt-out guardrail, not a global ≤1/day** (the flat cap is **[contested]**: high frequency does not always cause churn when the payload is high-value and content-gated). Korea, statute: advertising sends need §50(1) consent, a separate §50(3) consent for 21:00–08:00, and the "(광고)" prefix (정보통신망법 §50, statutory text as at 2026-09); re-asking a settled consent decision two or more times needs a "don't ask again for ≥7 days" option (전자상거래법 반복간섭, in force 2025-02-14). Korea, regulator guidance (KISA anti-spam guide, 2026-03-04, not statute): opt-out without login; expiring-reward alerts treated as advertising. Dated text in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`. EU minors: push off by default.
 
 **Reviewer flags** — opt-out rate absent from the guardrail list; a notification whose subject is an expiry; tone chosen on assertion (there is no controlled evidence a gentler tone retains better, only that it draws fewer complaints **[contested]**); vendor push-conversion self-reports used as targets. An offer payload that chains or re-offers after a decline lands on `ad-chaining`; a push whose subject is an expiry lands on `fomo-window` (and on `guilt-streak` if the expiring thing is a streak); push left on for minors lands on `minors-overlay`.
 
@@ -123,7 +123,7 @@ Every spec below is tagged with its canonical **ethics family slug**, and each R
 
 **Channel ranking by plausibility** (evidence is the thinnest in this whole module): status restoration and friend gift/recall > in-app return calendar > push > email.
 - Status restoration: Duolingo's one-time June 2026 "Streak Revival" let lapsed learners restore their longest-ever streak for three lessons — 15.4M revived, nearly 8M with no active streak, and the revived cohort retained better than a typical re-engaged cohort [Duolingo Q2 2026 shareholder letter | no holdout disclosed].
-- Friction removal over bribes: NetEase revived a 22-year-old MMO with 畅玩服 for Fantasy Westward Journey PC — removing time-based fees, simplifying systems — reaching a record 3.58M peak concurrency [NetEase Q3 2025 coverage | uncontrolled]. This matches the stated Korean churn cause: lack of time 44.0%, with video/OTT the substitute at 86.3% [KOCCA 2025 게임이용자 실태조사 | n=10,000 | published 2025-12-18].
+- Friction removal over bribes: NetEase revived a 22-year-old MMO with 畅玩服 for Fantasy Westward Journey PC — removing time-based fees, simplifying systems — reaching a record 3.58M peak concurrency [NetEase Q3 2025 coverage | uncontrolled]. This matches the stated Korean churn cause: time shortage for 44.0% of 3,828 lapsed players, with video/OTT the substitute for 86.3% of the 1,331 who named one [KOCCA 2025 게임이용자 실태조사 | n=10,000 | published 2025-12-18 | multiple response].
 - Non-push reach: in Marvel Rivals' gifting rollout, 41% of purchases were gifts and 25% of gift buyers had never played or had lapsed [Discord, 2026 — **vendor with a commercial interest**].
 - Email is weak: ~16% open, under 2% click-through on win-back mail [Jagex GDC "Returners and Retention" — **[unverified]**, no retrievable URL].
 - Publish the schedule against the expected decay curve rather than reacting: NCSOFT said Aion2 traffic "declined along the expected decay curve" and pre-planned a 6-month anniversary event plus a Season 4 update [FETV concall coverage, 2026]. Sources, URLs and the full win-back evidence are owned by `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/churn-and-winback.md`.
@@ -142,14 +142,14 @@ Windows that move a Korean product's baseline and its intervention timing. **The
 
 | Window | When | Cadence consequence |
 |---|---|---|
-| 겨울방학 | late Dec – early Feb, plus a short 봄방학 | longest teen availability block of the year |
-| 설날 | lunar 1/1, 3-day national holiday (moves each solar year) | travel + family time; both a spike and a dead zone by segment |
-| 여름방학 | mid/late July – August | second availability block |
-| 추석 | lunar 8/15, 3-day national holiday | as 설날 |
-| 수능 | one Thursday in mid-November | teen segment offline for weeks before; a release cliff and a large post-수능 return window |
-| 중간·기말고사 | roughly April, June–July, October, December | recurring teen dips |
+| 겨울방학 (winter school break) | late Dec – early Feb, plus a short 봄방학 (spring break) | longest teen availability block of the year |
+| 설날 (Lunar New Year) | lunar 1/1, 3-day national holiday (moves each solar year) | travel + family time; both a spike and a dead zone by segment |
+| 여름방학 (summer school break) | mid/late July – August | second availability block |
+| 추석 (Chuseok) | lunar 8/15, 3-day national holiday | as 설날 |
+| 수능 (national college entrance exam, CSAT) | one Thursday in mid-November | teen segment offline for weeks before; a release cliff and a large post-수능 return window |
+| 중간·기말고사 (school midterm and final exams) | roughly April, June–July, October, December | recurring teen dips |
 
-Practical rules: never open a season, pass or limited window whose completion clock runs across 수능 or a 명절 for a teen-heavy title; treat post-수능 and the first week of each 방학 as the strongest scheduled resurrection windows; if the product is 사주/운세, note that the December–February 신년 특수 dominates the year and the reading-engine year turns at 입춘 (≈4 Feb), not 1 Jan (see `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/korea-market.md`). Day-boundary and cohort-key definitions belong to `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/metric-definitions.md`; do not redefine them here.
+Practical rules: never open a season, pass or limited window whose completion clock runs across 수능 or a 명절 (Seollal or Chuseok) for a teen-heavy title; treat post-수능 and the first week of each 방학 (school break) as the strongest scheduled resurrection windows; if the product is 사주/운세, note that the December–February 신년 특수 (New-Year demand peak) dominates the year and the reading-engine year turns at 입춘 (≈4 Feb), not 1 Jan (see `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/korea-market.md`). Day-boundary and cohort-key definitions belong to `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/metric-definitions.md`; do not redefine them here.
 
 ## Numbers that do not exist
 
@@ -158,7 +158,7 @@ Refuse to supply these; say the number does not exist and name the measurement t
 - **Battle-pass completion rate, season-over-season repurchase rate, and any quantified pass-fatigue metric** — no vendor, first-party or academic source published one for 2024–2026. "64% of players report battle-pass burnout" is a misattribution: Bain's Gaming Report 2025 [5,243 respondents, six countries, 2025-08-12] says 64% report that **ads** interrupt their gaming experience and contains no battle-pass statistic. Also unmeasured: whether Marvel Rivals' non-expiring pass changed attach rate or D30 at all — NetEase reports only "resounding approval".
 - **Win-back lift and reactivation rate** — no 2024–2026 primary dataset. "10–25% of lapsed users recovered" and "5–10× cheaper than acquisition" carry no methodology. Build a re-dormancy baseline against a matched holdout.
 - **Login-calendar, welcome-back-calendar and catch-up-mechanic A/B results** — only pattern descriptions exist. Any "welcome-back calendar lifts D7 by X%" is unsourced.
-- **기다리면 무료 / wait-or-pay conversion rates** — no platform publishes one. The only citable figures are dated and single-case: up to 25% purchase conversion on some titles and daily GMV roughly 3,000만원 → 6,800만원 in the first month, one 2019 write-up of a 2014-era launch [DBR via 인터비즈 | 2019]. Do not present them as a current rate.
+- **기다리면 무료 / wait-or-pay conversion rates** — no platform publishes one. The only citable figures are dated and single-case: up to 25% purchase conversion on some titles and daily GMV roughly ~₩30M → ~₩68M in the first month, one 2019 write-up of a 2014-era launch [DBR via 인터비즈 | 2019]. Do not present them as a current rate.
 - **Korea-specific D1/D7/D30 install-cohort benchmarks** — none published by anyone. Use the stated proxy in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/benchmarks.md` and build an internal baseline.
 - **Post-streak-break abandonment rate in apps** — no quantitative estimate exists; the backfire evidence is qualitative and small-n.
 - **Optimal push frequency as a single number** — the ≤1/day cap is **[contested]**; derive a per-segment budget with an opt-out guardrail instead.

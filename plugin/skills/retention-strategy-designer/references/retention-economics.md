@@ -46,7 +46,7 @@ Directionally replicated in-app: revenue/user +43% at 6 sponsored slots, daily e
 
 ## Placement: rewarded pinch point vs forced interstitial
 
-Compliance floor precedes optimisation: interstitials at level start, before the splash screen, or after the user chose another action are violations whatever the test says; they must be closeable within 15s, 5s for child-directed apps; opted-in rewarded and post-score-screen interstitials are exempt [Google Play Better Ads Experiences | effective 2022-09-30, current]. Canonical compliant placement: after the score/result screen.
+Compliance floor precedes optimisation: interstitials at level start, before the splash screen, or after the user chose another action are violations whatever the test says; closeability limits (15 s for full-screen interstitials, 5 s for any interrupting ad shown to children) and their exemptions are reproduced from `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` [Google Play Better Ads Experiences (effective 2022-09-30) and Families policy | checked 2026-10]. Canonical compliant placement: after the score/result screen.
 
 - **Resource-out pinch point beats between-levels:** 38.1% engagement for rewarded placements fired when the player runs out of resources vs 23.8% between levels; >15 placements up to 46%; top reward types gacha 31.1%, extra moves 30.5%, daily rewards 30.3% [Unity 2024 report via PocketGamer.biz and GameDev Reports | **primary gated**].
 - **Forced vs optional, measured:** forced interstitials after every level lowered fun *and* in-game performance (active play 343s vs 627s control — the ad took about half the session); an optional rewarded video letting players avoid demotion scored the highest FunQ mean, 66.9 (SD 16.4), above the no-ads control [Fitton, MacKenzie & Read, IDC 2024, https://eprints.lancs.ac.uk/id/eprint/229351/ | n=95 children aged 9–11, single-game lab study; differences small].
@@ -74,7 +74,7 @@ Pre-register these beside the primary metric; read them against the pre-change b
 | Top-decile spend share | Dependence on a shrinking group | Rises vs baseline |
 | Refund / chargeback rate | Regret at the purchase surface | Any rise vs baseline |
 | Uninstall · opt-out · permission revocation | The exit margin ad load loads onto | Any rise vs baseline |
-| Review-keyword share: 강제 · 부담 · 매일 | Coercion, in the players' own words | Weekly share rises vs baseline |
+| Review-keyword share: forced · burden · every day (강제 · 부담 · 매일 in Korean reviews) | Coercion, in the players' own words | Weekly share rises vs baseline |
 
 Split revenue into interstitial, rewarded and IAP, and report retention by payer-propensity segment — one ARPDAU number hides the segment that is leaving.
 

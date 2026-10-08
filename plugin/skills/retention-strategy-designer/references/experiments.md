@@ -1,6 +1,6 @@
 # Retention Experiment Design
 
-Read when the answer must say how a change gets measured — RSD `instrument` and `economics` modes, any card's 측정 / 가드레일 / 중단 bullets, or when a user asks whether their change can be tested at their scale.
+Read when the answer must say how a change gets measured — RSD `instrument` and `economics` modes, any card's Measure / Guardrails / Kill if bullets, or when a user asks whether their change can be tested at their scale.
 
 ## Baseline before ship
 
@@ -31,7 +31,7 @@ One metric per experiment, defined as a **return event** at the product's natura
 
 - uninstall rate · notification opt-out rate · support-complaint rate · refund rate
 - **sessions initiated and active days**, not session length: in the Pandora ad-load experiment ~40% of the decline came from users no longer active at all and ~42% from fewer active days, only ~18% from shorter sessions
-- one user-harm metric matched to the mechanic — top-decile spend concentration for anything monetised, 강제 / 부담 / 매일 keyword frequency in store reviews, minors' share of the affected cohort wherever the minors overlay applies
+- one user-harm metric matched to the mechanic — top-decile spend concentration for anything monetised, 강제 (forced) / 부담 (burden) / 매일 (every day) keyword frequency in store reviews, or their equivalents in the reviews' language, minors' share of the affected cohort wherever the minors overlay applies
 
 ## Novelty, τ(t), and when to read
 
