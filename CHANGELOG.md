@@ -46,7 +46,11 @@ Korean stays where it does work (trigger phrases, statute and source names, quot
 ### Measured and not measured
 
 - **Measured:** the four invariant scripts and the three validators pass; frontmatter character counts are unchanged (description 952 / 830 / 1,023, combined 1,423 / 1,436 / 1,512); bodies ADV 26,910 B, IRM 29,387 B, RSD 28,132 B.
-- **Not measured: any eval.** Routing cannot move (frontmatter and shared blocks are byte-identical). The changed body lines (IRM ceiling, retrieval key, Beat map; the `ethics-tiers.md` failed-check rule; the `system` sheet row) can move mode-line and gate families, and no 10-run comparison was made. CONTRIBUTING asks for one before a bump; this entry rests on the fixes being corrections to the repo's own owner modules, not on a measured gain.
+- **Measured, 3.4.2 vs 3.4.3, same harness, run in parallel** (`docs/notes/2026-10-09-gate-10x-3.4.3.md`):
+  - Gate families at 10 runs per case: fp 47/60 vs 47/60 (p = 1.00); tp 13/30 vs 15/30 (p = 0.80).
+  - Mode cases at 5 runs per case: 15/20 vs 13/20 (p = 0.73).
+  - So 3.4.3 is non-inferior. Routing cannot move: frontmatter and shared blocks are byte-identical.
+- **Not met: the release gate, on either arm.** fp needs 55/60 and tp 29/30. 3.4.1 read fp 58/60 and tp 27/30 on 2026-10-02. The 3.4.2 baseline differs from 3.4.1 only in frontmatter, yet now reads 47/60 and 13/30, so the drop is drift in the model or the judge, not this change. It is undiagnosed. `mode-irm-first-win-tutorial-beat` 5/5 → 3/5 is the case to watch: the two failures are a progress-note line 1 and four cards.
 - **Independent verification:** a separate `claude -p` run (Opus, high effort) checked the diff hunk by hunk against the owner modules and the eval graders; its fifteen findings (two widenings of §50, a §33-2 trigger, a dropped qualifier, missing dates and tags) are folded into this release.
 - **Found and left open**, each needing a body or shared-block change that should be measured first:
   - ADV's `Ceiling` says `jurisdictions.md` and `korea-market.md` each "replace one of the three" without naming which, while every read is mandatory.
