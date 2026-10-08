@@ -1,6 +1,6 @@
 # Korea: market, products and vocabulary
 
-Read when the product ships in Korea and the ask turns on local convention, or a Korean mechanic is named; Korean-language input alone is not a trigger. Every dated legal duty lives in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`; this file carries none.
+Read when the product ships in Korea or a Korean mechanic is named (ADV reads it only when the ask also turns on local convention); Korean-language input alone is not a trigger. Every dated legal duty lives in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`; this file carries none.
 
 ## Market anchors
 
@@ -44,7 +44,7 @@ Category MAU [Mobile Index | Feb 2025 | top three >80% of category]: 점신 950,
 
 **The Scale row is [unverified]** [no retrievable source | revenue stated as 2023, filing basis unstated | cumulative lifetime downloads and registered members, not actives | revenue = operator annual revenue]. For scale, quote the sourced Mobile Index MAU figures in this section instead.
 
-포스텔러's own numbers — 1.42M MAU Jan 2025, ~6 uses/week, 50–60% of payers repurchase within three months — are **[self-reported, no stated retention definition]** and are not a benchmark; Mobile Index puts 포스텔러 at 678,052 MAU for January 2025 — quote that figure for scale. Motives [롯데멤버스 라임 via 중앙일보 | 2025 | multiple response]: fun 30.1%, New-Year curiosity 30.0%, comfort 23.6%, worries 22.9%, prediction 21.0% — roughly a quarter arrive in distress.
+포스텔러's own numbers — 1.42M MAU Jan 2025, ~6 uses/week, 50–60% of payers repurchase within three months — are **[self-reported, no stated retention definition]** and are not a benchmark; Mobile Index puts 포스텔러 at 678,052 MAU for January 2025 [Mobile Index via 헤럴드경제 | 2026 | app MAU | Jan 2025 monthly actives] — quote that figure for scale. Motives [롯데멤버스 라임 via 중앙일보 | 2025 | multiple response]: fun 30.1%, New-Year curiosity 30.0%, comfort 23.6%, worries 22.9%, prediction 21.0% — roughly a quarter arrive in distress.
 
 **Midnight rollover, not a morning horoscope.** 포스텔러 reports traffic peaking at midnight as users check *tomorrow's* fortune before bed. The daily appointment is **23:30–00:30 KST**; build the streak, the push and the reveal around the rollover.
 
@@ -139,7 +139,7 @@ This is where 사주 apps actually fail, and the failure is invisible to the met
 
 1. **일진 day boundary.** The day pillar turns at 자시 — 23:00, not 00:00 — and schools disagree on 야자시/조자시, so it is **[contested]** inside the tradition. Whichever rule the product picks must be the same rule in the reading engine, the push scheduler and the streak counter; otherwise the same evening returns two different fortunes.
 2. **절기 / 입춘 year boundary.** The month pillar turns on the 24 solar terms and the 사주 year turns at **입춘, ≈4 February** — not 1 January, not 설날. Marketing peaks in December–January while the engine's year turns in February. State which boundary "2027년 신년운세" means, or January-born users compute against the wrong year pillar.
-3. **시주-모름 path.** Many users do not know their birth time and the hour pillar is one of four, so "모름" is mandatory, not an edge case: degrade to a three-pillar reading, name which conclusions are unavailable instead of fabricating them, and never gate the paywall on the time field.
+3. **Unknown-birth-hour (시주 모름) path.** Many users do not know their birth time and the hour pillar is one of four, so the unknown path is mandatory, not an edge case: degrade to a three-pillar reading, name which conclusions are unavailable instead of fabricating them, and never gate the paywall on the time field.
 4. **진태양시 and ephemeris versioning.** A correct 만세력 needs solar/lunar conversion plus Korea's historical time bases: standard meridian 135°E against Seoul's ~127°E (~30 min correction, applied by some schools and not others), UTC+8:30 for part of the 1950s, DST in 1948–1951, 1955–1960, 1987–1988. Births near a boundary silently produce the wrong hour pillar. Treat the ephemeris as a **versioned asset**; log which version produced each stored reading.
 5. **Sensitive-data-by-inference log schema.** Birth date, time and place are not per se 민감정보 (the enumerated 민감정보 categories, with the instrument and its date, are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` → 개인정보 보호법; quote them from there or not at all). But a log recording "asked about a health problem" or a 종교 framing creates 민감정보 by inference, and free-text worry inputs routinely do. Keep the question category, drop the free text — the Mirror Journal trial deleted entries immediately after automated risk classification, retaining only mood, risk flags, timestamps and word counts [medRxiv | 2026 | **preprint**]. Birth data never changes: re-onboarding is cheap here, a breach is unrecoverable.
 

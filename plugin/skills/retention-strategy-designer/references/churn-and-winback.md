@@ -43,7 +43,7 @@ A churn score alone does not deploy: publishers "are usually unable to apply hig
 
 Ranking by churn probability sends the heaviest pressure to the people most likely to opt out. Target **persuadables** by estimated uplift and model **delayed** response — multi-treatment multi-task uplift networks are deployed for gaming bonuses with "whether to play" as the outcome [Wei et al., 2024, https://arxiv.org/abs/2408.12803], and push-frequency uplift must model delay because "inappropriate push frequencies often trigger users to close notification switches, directly harming long-term user retention" [Zheng et al., AAAI 2026 | validated on a 14-day A/B test, >1 billion users].
 
-Hard gate: a **personalized or dynamic drop rate** on a paid random item in a Korean-market event still owes per-item odds disclosure under 게임산업진흥에 관한 법률 §33(2), and §33-2 raises the damages exposure if it misleads — reproduce both from `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` before proposing one. Recommended: personalize difficulty and content, not odds or price.
+Hard gate: a **personalized or dynamic drop rate** on a paid random item in a Korean-market event still owes per-item odds disclosure under 게임산업진흥에 관한 법률 §33(2) (in force 2024-03-22), and §33-2 (in force 2025-08-01) puts the burden of disproving intent and negligence on the operator for any violation — reproduce both from `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` before proposing one. Recommended: personalize difficulty and content, not odds or price.
 
 ## Split the churn before choosing a tactic
 

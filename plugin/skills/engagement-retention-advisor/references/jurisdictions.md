@@ -24,7 +24,7 @@ The failure this rule exists to prevent, from a real answer: the plugin's own on
 
 | Provision | In force | Core duty |
 |---|---|---|
-| §33(2) + 시행령 §19-2 | 2024-03-22 | Per-item odds, 천장, bundle components |
+| §33(2) + 시행령 §19-2 | 2024-03-22 | Per-item odds, 천장 (pity ceiling), bundle components |
 | §33-2 소송 특례 | 2025-08-01 | Reversed burden; ≤3× only on found intent |
 | §12-3 과몰입 예방조치 | 2025-10-23 | Hourly on-screen play time + warning |
 | §31-2 국내대리인 | 2025-10-23 | Korean agent for large foreign operators |
@@ -35,7 +35,7 @@ The failure this rule exists to prevent, from a real answer: the plugin's own on
 - **The relief centre, not a court, is what a designer meets.** GRAC's 확률형 아이템 피해구제센터 opened in Busan 2026-02-27; 609 consultations and 11 formal relief filings by 2026-05-22. Mediation-led. [GRAC | 2026]
 - **Enforcement volume — three windows, three units, never merged.** 2024-03-22→2024-10-08: 1,255 games monitored, 544 violation cases, 65.4% foreign. Full first year: 3,829 cases monitored, 950 violations, 99.3% corrected **[unverified — the source does not state the year boundary]**. Cumulative to 2025-09-22: 2,181 violations across 338 companies, foreign ~70%. Reading 65.4% against ~70% as a trend compares two denominators. [메트로서울, Dealsite | 2025]
 - **Compliance is partial**: of Korea's 100 highest-grossing iPhone games, 90 carried paid loot boxes and only **84.4% of those disclosed probabilities**. [Xiao & Park, *Acta Psychologica* | 2025 | KR top-100 grossing iPhone]
-- **§12-3** — show elapsed play time plus "과도한 게임이용은 정상적인 일상생활에 지장을 줄 수 있습니다." **every hour for ≥3 seconds**; verify real name and age; under-18s get guardian consent at signup, 게임시간 선택제 on request, play-time and payment disclosed to the guardian.
+- **§12-3** — show elapsed play time plus "과도한 게임이용은 정상적인 일상생활에 지장을 줄 수 있습니다." **every hour for ≥3 seconds**; verify real name and age; under-18s get guardian consent at signup, 게임시간 선택제 (play-time selection) on request, play-time and payment disclosed to the guardian.
 - **§31-2** triggers on **any one** of: prior-year **total worldwide** revenue ≥₩1T (not Korea-only, not games-only); ≥1,000 new installs/day averaged on Korean mobile across all stores; ministerial designation. The **youth PC-online spend cap of ₩70,000/month still stands**; the adult ₩500,000 cap went in 2019.
 
 ### 전자상거래법 — six dark-pattern types, unlawful since 2025-02-14
@@ -88,7 +88,7 @@ KFTC interpretive 소비자보호지침 effective 2025-10-24. **숨은갱신** �
 
 A login chain that resets accrued value on a missed day costs a European age tier; a limited-time bundle costs another. Aligned with Germany's USK criteria since 2023. **[unverified]** — trade press reports an ESRB spokesperson declining a similar scheme, but no ESRB primary statement was located; treat the rating consequence as Europe-plus-Australia.
 
-**Store rules bind everywhere by contract — enforced by rejection or removal, not by a regulator, and not appealable to one.** Apple Review Guideline 3.1.1 (Dec 2017): loot-box odds disclosed **prior to purchase**. Google Play (May 2019) is stricter in wording — "in advance of, **and in close and timely proximity to**, that purchase." Google Play Better Ads Experiences (2022-09-30) bans unexpected full-screen interstitials at level or content-segment start, before the splash screen, or after the user chose another action, and requires every full-screen interstitial to be closeable after 15 seconds; opt-in interstitials, interstitials that do not interrupt (after a score screen) and opted-in rewarded ads are exempt from the 15-second rule. Google Play Families policy, for ads shown to children or users of unknown age: any ad that interferes with normal use or play, rewarded and opt-in ads included, must be closeable after 5 seconds. [Google Play Developer Program Policy — Ads, Families | current as at 2026-10 | apps on Google Play | placement and closeability duties]
+**Store rules bind everywhere by contract — enforced by rejection or removal, not by a regulator, and not appealable to one.** Apple Review Guideline 3.1.1 (Dec 2017): loot-box odds disclosed **prior to purchase**. Google Play (May 2019) is stricter in wording — "in advance of, **and in close and timely proximity to**, that purchase." Google Play Better Ads Experiences (2022-09-30) bans unexpected full-screen interstitials at level or content-segment start, before the splash screen, or after the user chose another action, and requires every full-screen interstitial to be closeable after 15 seconds; opt-in interstitials, interstitials that do not interrupt (after a score screen) and opted-in rewarded ads are exempt from the 15-second rule. Google Play Families policy, for ads shown to children or users of unknown age: any ad that interferes with normal use or play, rewarded and opt-in ads included, must be closeable after 5 seconds. [Google Play Developer Program Policy — Ads, https://support.google.com/googleplay/android-developer/answer/9857753; Families, https://support.google.com/googleplay/android-developer/answer/9893335 | checked 2026-10 | apps on Google Play | placement and closeability duties]
 
 ## European Union
 
