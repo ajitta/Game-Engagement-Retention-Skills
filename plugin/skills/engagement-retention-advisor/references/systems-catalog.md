@@ -1,6 +1,6 @@
 # Cross-layer systems catalog
 
-Read in ADV `system` mode when the deliverable is one named system whose value spans a session *and* a return. Same fields per system: loop (in-session use → what accumulates → return event) · coupling · dominant failure · ethics families · instrumentation.
+Read in ADV `system` mode when the deliverable is one named system whose value spans a session *and* a return. Same fields per system: loop (in-session use → what accumulates → return event) · coupling · dominant failure · ethics rows to look up (internal keying, never printed) · instrumentation.
 
 **The `T<n> <slug>` stamps below are internal keying between these modules and never reach an answer.** They key into the compliant-spec index in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/ethics-tiers.md`, which names the domain file holding each row; what the reader gets is the bound in their own words, or nothing at all when every bullet is met.
 
@@ -49,7 +49,7 @@ Run it before the ethics row lookup, on any system that creates a return event.
 
 ## 5. Monetization ↔ retention coupling
 
-What the spend loop does *to* the return loop. Pricing, eCPM and pity tuning are out of scope.
+Read with §4 when the in-game economy carries an offer surface: what the spend loop does *to* the return loop, as a system. The trade-off arithmetic — LTV frame, ARPDAU vs D7, ad load, offer cadence — is owned by `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/retention-economics.md`. Pricing, eCPM and pity tuning are out of scope.
 
 - **Loop** — an offer surface placed on a game state (resource-out pinch, pre-boss, streak break, rotation) → spend-derived power and collection, which is also meta-progression, which is why a monetization tune is a retention change → returns on the banner or offer window. **Server-set by construction**, so it fails the appointment test by default and needs a published return schedule (`T2b fomo-window`; a one-shot window on core content is `one-shot` (T2a) — no compliant version).
 - **Fails when** the pinch point is assumed necessary: easing difficulty for high-churn-risk users raised retention *and* premium spend in a randomized rollout [Ascarza, Netzer & Runge, IJRM 42(4):975–995 | 2025 | ~330,000 users, F2P mobile puzzle | 12-week randomized rollout vs holdout]. Effect sizes, and why the per-round read misleads: `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/churn-and-winback.md`.

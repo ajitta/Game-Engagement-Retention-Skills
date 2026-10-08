@@ -134,7 +134,7 @@ Headings, labels and tags below are written in English; an answer translates eac
 - **Feedback**: the staging beat with timings                   [IRM, ADV]
 - **Next hook**: the curiosity question the beat leaves open        [IRM, ADV]
 - **Return event + window**: the event that counts, and when [RSD, ADV]
-- **Segment · stage**: new · current · power · lapsing · dormant        [RSD, ADV]
+- **Segment · stage**: new · current · power · lapsing · dormant · resurrected        [RSD, ADV]
 - **Measure**: pre-registered primary metric + the baseline to record BEFORE shipping
 - **Guardrails**: 2–3 metrics, at least one user-harm metric — the observable signal of any residual risk the mechanic carries
 - **Effort**: S | M | L · **Depends on**: … · **Kill if**: numeric threshold
