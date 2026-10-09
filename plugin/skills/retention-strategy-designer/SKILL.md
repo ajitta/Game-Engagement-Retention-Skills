@@ -74,14 +74,14 @@ Pick one before writing anything. `strategy` is the default. The mode decides wh
 |---|---|---|---|
 | `strategy` *(default)* | Open lifecycle ask: churn, D1/D7/D30, cohorts, activation, resurrection, FTUE funnel | `retention-playbook.md` + `genre-profiles.md` + `ethics-tiers.md` | Scan table + 3–5 cards + Order + Measurement plan |
 | `read` | A number, curve, cohort table or metric definition is itself the object, and no change was requested | `metric-definitions.md` + `benchmarks.md` | Label line + convention first (return rule, day boundary, denominator, return event; stop if unknown) + 2–4 paragraphs (≤2 hypotheses on a curve) + Basis. **No cards, Order or Measurement plan** |
-| `cadence` | A named mechanic is the deliverable: pass, quest stack, login calendar, streak, energy, notification, win-back | `liveops-cadence.md` + `ethics-tiers.md` + `jurisdictions.md` | Two-column `Field \| Value` spec sheet + acceptance bounds + reviewer flags + one worked fill |
-| `calendar` | A dated multi-week plan: LiveOps calendar, season roadmap, meta-progression pacing between runs | `liveops-cadence.md` + `genre-profiles.md` | `Week \| Beat \| Type \| Return event \| Metric` + 3 mini-cards + cadence-collision check |
-| `economics` | A revenue-versus-retention trade-off: ARPDAU/LTV vs D7, ad load, offer cadence, first purchase, paywall | `retention-economics.md` + `experiments.md` | LTV frame + one worked break-even + bounds. ≤2 cards |
+| `cadence` | A named mechanic is the deliverable: pass, quest stack, login calendar, streak, energy, notification | `liveops-cadence.md` + `ethics-tiers.md` + `jurisdictions.md` | Two-column `Field \| Value` spec sheet + acceptance bounds + reviewer flags + one worked fill |
+| `calendar` | A dated multi-week plan: LiveOps calendar, season roadmap, meta-progression pacing between runs | `liveops-cadence.md` + `genre-profiles.md` + `ethics-tiers.md` | `Week \| Beat \| Type \| Return event \| Metric` + 3 mini-cards + cadence-collision check |
+| `economics` | A revenue-versus-retention trade-off: ARPDAU/LTV vs D7, ad load, offer cadence, first purchase, paywall | `retention-economics.md` + `experiments.md` + `ethics-tiers.md` | LTV frame + one worked break-even + bounds. ≤2 cards |
 | `instrument` | Tracking plan, event taxonomy, experiment design | `experiments.md` + `metric-definitions.md` | `Event \| Fires when \| Properties \| Answers` + return-event and cohort-key definitions |
 
 **`economics` is where an ad-load or revenue-versus-retention concern gets answered, including when it arrives inside a request whose deliverable is something else.** A client who states that ad revenue matters, or that they watch ad exposure per session, has raised a retention question and is owed an answer to it — the ad-surface placement, the per-session load the design assumes, which of those factors is capped and eats retention versus which moves with product work, and the rewarded placements that double as return bookings. When the primary deliverable is another mode's, do not defer that half and do not hand it to a sibling: pull the `economics` frame into the same answer as a section or a card and answer it there. Only the pricing, the rate and the mediation stack fall outside, and those are declined in the one boundary line at the end, never in place of the answer. A sibling skill that hands this concern back to you is handing you work to do, not a routing note to repeat.
 
-**Swap rule.** In `strategy`, when the deliverable is churn diagnosis, at-risk targeting or win-back, read `churn-and-winback.md` in place of `genre-profiles.md`. In `cadence`, when the market is Korea or a Korean mechanic is named, `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/korea-market.md` replaces `jurisdictions.md` unless a T1/T2 candidate is present.
+**Swap rule.** In `strategy`, when the deliverable is churn diagnosis, at-risk targeting or a win-back campaign, read `churn-and-winback.md` in place of `genre-profiles.md`; when it is the tutorial/FTUE funnel, read `${CLAUDE_SKILL_DIR}/../interaction-reward-moments/references/first-session.md` in place of `genre-profiles.md`. In `cadence`, when the market is Korea or a Korean mechanic is named, `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/korea-market.md` replaces `jurisdictions.md` unless a T1, T2a or T2b candidate is present.
 
 A mechanic **spec** stays a table; a **proposal** becomes a card.
 
@@ -135,7 +135,7 @@ Headings, labels and tags below are written in English; an answer translates eac
 - **Feedback**: the staging beat with timings                   [IRM, ADV]
 - **Next hook**: the curiosity question the beat leaves open        [IRM, ADV]
 - **Return event + window**: the event that counts, and when [RSD, ADV]
-- **Segment · stage**: new · current · power · lapsing · dormant        [RSD, ADV]
+- **Segment · stage**: new · current · power · lapsing · dormant · resurrected        [RSD, ADV]
 - **Measure**: pre-registered primary metric + the baseline to record BEFORE shipping
 - **Guardrails**: 2–3 metrics, at least one user-harm metric — the observable signal of any residual risk the mechanic carries
 - **Effort**: S | M | L · **Depends on**: … · **Kill if**: numeric threshold

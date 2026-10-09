@@ -40,9 +40,9 @@ A mode is chosen before anything is written, but it is never printed: line 1 of 
 |---|---|---|---|
 | IRM | `moments` | A named scene, loop, reveal, choice or feel beat is flat; a session-length complaint | Scan table + 3–5 cards + staging sequence + cross-cutting tuning notes |
 | IRM | `first-win` | A tutorial beat, the first session, or how a session ends | 1–3 cards + staging timeline with timings + accessibility check |
-| RSD | `strategy` | Open lifecycle ask: churn, D1/D7/D30, cohorts, activation, resurrection, FTUE funnel | Scan table + 3–5 cards + ordering + measurement plan |
+| RSD | `strategy` | Open lifecycle ask: churn, D1/D7/D30, cohorts, activation, resurrection and win-back, FTUE funnel | Scan table + 3–5 cards + ordering + measurement plan |
 | RSD | `read` | A number, curve, cohort table or metric definition is itself the object | Definition check + curve reading + ≤2 hypotheses. **No proposal cards** |
-| RSD | `cadence` | A named mechanic: pass, quest stack, login calendar, streak, energy, notification, win-back | Two-column spec sheet + acceptance bounds + reviewer flags + one worked fill |
+| RSD | `cadence` | A named mechanic: pass, quest stack, login calendar, streak, energy, notification | Two-column spec sheet + acceptance bounds + reviewer flags + one worked fill |
 | RSD | `calendar` | A dated multi-week plan: LiveOps calendar, season roadmap, meta-progression pacing | `Week / Beat / Type / Return event / Metric` + 3 mini-cards + collision check |
 | RSD | `economics` | Revenue-versus-retention trade-off: ARPDAU/LTV vs D7, ad load, offer cadence, paywall | LTV frame + one worked break-even + bounds. ≤2 cards |
 | RSD | `instrument` | Tracking plan, event taxonomy, experiment design | `Event / Fires when / Properties / Answers` + return-event and cohort-key definitions |
@@ -178,15 +178,15 @@ Copy the three folders under `plugin/skills/` into any `.claude/skills/` directo
 
 ## Token cost
 
-Measured with `claude --plugin-dir ./plugin plugin details game-engagement-retention` on Claude Code 2.1.284, 2026-10-01, for 3.4.0 (3.3.1 bodies were ~9.1k / ~9.9k / ~9.5k).
+Measured with `claude --plugin-dir ./plugin plugin details game-engagement-retention` on Claude Code 2.1.284, 2026-10-09, for 3.5.0 (3.3.1 bodies were ~9.1k / ~9.9k / ~9.5k).
 
 | Component | Always-on | On-invoke |
 |---|---|---|
-| Plugin total, all three skills registered | ~1,840 tok | — |
+| Plugin total, all three skills registered | ~1,873 tok | — |
 | Each skill's routing frontmatter | ~600–640 tok | — |
-| `engagement-retention-advisor` body | — | ~7.5k |
-| `interaction-reward-moments` body | — | ~8.3k |
-| `retention-strategy-designer` body | — | ~7.9k |
+| `engagement-retention-advisor` body | — | ~8.6k |
+| `interaction-reward-moments` body | — | ~9.4k |
+| `retention-strategy-designer` body | — | ~9k |
 | Reference modules | — | 2–3 per invocation plus one or two `domain-ethics/` files, +6k to +20k on top of the body (tiktoken `cl100k_base`; the per-domain split of `domain-ethics.md` in 3.4.0 took 5–6k off every mechanic-bearing call) |
 
 ## Repository structure
