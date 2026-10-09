@@ -9,6 +9,30 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [3.5.2] — 2026-10-09
+
+### Fixed
+
+- **`engagement-retention-advisor` now takes feel numbers from `feel-and-accessibility.md`.** Step 4 used to send ADV to `moment-lenses.md` for timing windows, feedback layering, frame counts, the repeat-fatigue ladder and low-spec triage, but that file contains none of them; `feel-and-accessibility.md` owns them. ADV now reads that file for its ranges and bounds whenever a card prescribes a feel value. As in IRM, this read does not count against the three-module ceiling. Step 6 no longer describes the card as a diff against a section that has been removed. Routing text is unchanged. The ADV body grows from ~8.6k to ~8.7k tokens.
+
+### Measured — smoke check only
+
+The owner chose **one run per case**: 7 ADV cases, both arms in parallel against 3.5.1, each graded by a separate judge. This is below the CONTRIBUTING bar of 10+ runs per case, so it shows only that nothing broke outright. It is not evidence of an improvement.
+
+- **Same verdict on both arms for every grader.** Both arms pass the skill-fired check in all five cases that have one (`routing-positive-adv-two-deliverables`, `routing-edge-paired-complaint`, `routing-edge-prioritization`, `korean-routing-adv-integrate`, `homeless-guild-system`), and both pass the mode line on `mode-adv-compare-build-tutorial`. Both arms also pass `shape-adv-integrate-cards` on criteria and ending, and both fail it on bullet sentence count.
+- **Fails on both arms, not caused by this change:**
+  - `korean-routing-adv-integrate` Korean output: both answers asked scoping questions instead of opening with a deliverable label.
+  - `homeless-guild-system` mode line: the 3.5.1 run asked intake questions. The 3.5.2 run delivered the `system` artifact but opened with a preamble line.
+- **Anti-fabrication on `shape-adv-integrate-cards`:** 0 penalties on 3.5.1 and 2 on 3.5.2. One penalty is a "2-week" rollout interval, the other an untagged set-structure number. Neither is a feel value, and at n = 1 the difference is not readable.
+- **The fix is used:** the 3.5.2 arm read `feel-and-accessibility.md` in 3 of 7 runs and the 3.5.1 arm in 0 of 7.
+- **Generation cost:** $4.15 on 3.5.1 and $4.16 on 3.5.2.
+
+### Not measured
+
+- **The fp/tp gate families** were not run, and no grader checks feel timings, so whether ADV's feel numbers are now more accurate is unmeasured.
+
+---
+
 ## [3.5.1] — 2026-10-09
 
 ### Fixed

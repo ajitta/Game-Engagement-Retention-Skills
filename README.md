@@ -178,13 +178,13 @@ Copy the three folders under `plugin/skills/` into any `.claude/skills/` directo
 
 ## Token cost
 
-Measured with `claude --plugin-dir ./plugin plugin details game-engagement-retention` on Claude Code 2.1.284, 2026-10-09, for 3.5.1 (3.3.1 bodies were ~9.1k / ~9.9k / ~9.5k).
+Measured with `claude --plugin-dir ./plugin plugin details game-engagement-retention` on Claude Code 2.1.284, 2026-10-09, for 3.5.2 (3.3.1 bodies were ~9.1k / ~9.9k / ~9.5k).
 
 | Component | Always-on | On-invoke |
 |---|---|---|
 | Plugin total, all three skills registered | ~1,871 tok | — |
 | Each skill's routing frontmatter | ~600–640 tok | — |
-| `engagement-retention-advisor` body | — | ~8.6k |
+| `engagement-retention-advisor` body | — | ~8.7k |
 | `interaction-reward-moments` body | — | ~9.4k |
 | `retention-strategy-designer` body | — | ~9k |
 | Reference modules | — | 2–3 per invocation plus one or two `domain-ethics/` files, +6k to +20k on top of the body (tiktoken `cl100k_base`; the per-domain split of `domain-ethics.md` in 3.4.0 took 5–6k off every mechanic-bearing call) |
