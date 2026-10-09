@@ -9,6 +9,34 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [3.5.1] — 2026-10-09
+
+### Fixed
+
+- **`engagement-retention-advisor` now fires on a build-or-not question** (`when_to_use`). On 3.4.3 and 3.5.0, every run of `mode-adv-compare-build-tutorial` ("Should we build a tutorial at all?") fired no plugin skill and answered with a plain opinion, 18 of 18 saved transcripts; every saved run in which a skill fired had passed. The grader was sound — this was a routing miss. `when_to_use` now opens with "Build-or-not asks too ('do we even need a tutorial?'), even when an opinion seems enough." To stay under the 1,536-character listing cap, two English examples that each have their own routing case were removed ('design reveal moments and a week-2 return plan', 'better combat feel or a win-back push first?'). Lengths: description 972 (unchanged), combined 1,517.
+
+### Measured
+
+Both arms ran in parallel against 3.5.0, 5 runs per case (`docs/notes/2026-10-09-followup-diagnostics.md`):
+
+- **`mode-adv-compare-build-tutorial`:** 0/5 → 5/5 (p = 0.008).
+- **The cases the new trigger could disturb did not move:**
+  - `routing-positive-adv-two-deliverables`, `routing-edge-prioritization` and `routing-edge-paired-complaint`: 5/5 → 5/5 each.
+  - `routing-edge-session-length` (must stay IRM): 5/5 → 5/5.
+  - `korean-routing-adv-integrate`: 10/10 → 10/10.
+  - `homeless-tutorial-funnel` (must stay RSD): 10/10 → 10/10.
+- **Always-on cost:** ~1,871 tok.
+
+### Not measured
+
+- **The fp/tp gate families.** This release changes ADV frontmatter only. The gate cases fire RSD and read no ADV body text that changed.
+
+### Diagnosed, no change
+
+- **`refusal-tp-hidden-odds`.** Saved transcripts suggested 3.5.0 regressed the case: a refusal paragraph above the answer in 9/10 runs, against 2/10 on 3.4.3 (p = 0.006). A parallel rerun at 10 runs per arm did not reproduce that: 0/10 vs 2/10 PASS, and the paragraph appeared in 3/10 runs on both. The case is batch-unstable on both bodies, so no body change follows.
+
+---
+
 ## [3.5.0] — 2026-10-09
 
 Closes the open items 3.4.3 left: what each skill reads, one routing line, and one lifecycle stage. The routing table, the hand-off ladder and the LANGUAGE block are unchanged. The CARD block gains one word.
