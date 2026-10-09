@@ -9,6 +9,49 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [3.5.0] — 2026-10-09
+
+Closes the open items 3.4.3 left: what each skill reads, one routing line, and one lifecycle stage. The routing table, the hand-off ladder and the LANGUAGE block are unchanged. The CARD block gains one word.
+
+### Changed
+
+- **`engagement-retention-advisor` — `description` / `when_to_use`.** "The goal itself is raw time-in-app or session length" is now "the goal itself is more raw time-in-app with no scene or complaint named". `when_to_use` opens with "Sessions too short or players quitting mid-session is interaction-reward-moments". IRM's description, the shared routing table and `routing-edge-session-length` already sent a session-length complaint to IRM; ADV's line now agrees. Lengths are description 972 (cap 1,024) and combined 1,525 (cap 1,536). This is the only skill whose firing text changed.
+- **ADV module ceiling names what each conditional read displaces.** `jurisdictions.md`, read only to reproduce a legal claim, takes no slot. `korea-market.md` takes the third slot in `system` and `compare`, and in `integrate` the `moment-lenses.md` slot when no beat is being staged; otherwise it stays unread and the question goes in Basis. `ethics-tiers.md` is never displaced. Before this, the text said "each replace one of the three" without naming which, while every read was mandatory.
+- **RSD read sets.**
+  - A win-back campaign is `strategy` with `churn-and-winback.md`. Win-back left the `cadence` row, which never read its owner module.
+  - The FTUE funnel reads `first-session.md` in place of `genre-profiles.md`.
+  - `calendar` and `economics` list `ethics-tiers.md`, which the Ethics section already made mandatory for them.
+  - The Korea swap's "T1/T2" is now "T1, T2a or T2b".
+- **CARD block — `Segment · stage` gains `resurrected`** (all three bodies and `scripts/contracts.md`). `churn-and-winback.md` requires reporting that cohort separately, and the bullet had no stage to put it under.
+- **`systems-catalog.md` §5** says it is read with §4 when the economy carries an offer surface, and that the trade-off arithmetic belongs to `retention-economics.md`. Its per-system field list says "ethics rows to look up (internal keying, never printed)" instead of "ethics families".
+
+### Measured and not measured
+
+Full tables: `docs/notes/2026-10-09-measure-3.5.0.md`. Measured 3.4.3 vs 3.5.0:
+
+- **Routing, Korean and mode families** (22 cases, 3 runs each, both arms in parallel):
+  - routing skill-fired: 27/27 vs 27/27
+  - homeless: 35/36 vs 35/36
+  - Korean: 17/18 vs 18/18
+  - mode: 8/12 vs 9/12
+  - `routing-edge-session-length`: 3/3 on both
+- **Gate families** (10 runs per case; same judge, same day, about five hours apart):
+  - fp: 47/60 vs 49/60 (p = 0.82)
+  - tp: 15/30 vs 16/30 (p = 1.00)
+
+Case to watch: `refusal-tp-hidden-odds` scored 0/10. Its item-1 failure (a refusal paragraph above the answer) was 7, 3 and 9 runs out of 10 on 3.4.2, 3.4.3 and 3.5.0. It reads the same modules on every version, and nothing in this change touches refusal placement.
+
+Not met on either arm: the absolute gate (fp 55/60, tp 29/30). `docs/notes/2026-10-09-judge-drift.md` shows the judge model grading the same 10-02 transcripts stricter a week later. It moved 9 verdicts, all PASS → FAIL. An absolute reading from another week is therefore not comparable to the threshold.
+
+- **Always-on cost:** ~1,873 tok (3.4.3: ~1,840). The +33 tok comes from the ADV `when_to_use` sentence. On-invoke bodies, as `plugin details` reports them: ADV ~8.6k, IRM ~9.4k, RSD ~9k. The README table is updated to these figures; its 3.4.0 figures had been taken with a different counting method.
+
+### Tooling and records (no skill change)
+
+- `docs/notes/2026-10-09-judge-drift.md` — the 2×2 cross-judge diagnosis of the gate drop.
+- A script grader for the mechanical half of fp item 4 (`✓`, tier codes, slugs, filenames) was written and run over 180 saved transcripts. Judges had already failed 6 of the 7 transcripts it flagged; the seventh was a false positive. It was not shipped. The failures that move the score are semantic.
+
+---
+
 ## [3.4.3] — 2026-10-09
 
 A consistency and language pass over the installed payload. Frontmatter (`description`, `when_to_use`) and the three shared blocks are byte-identical to 3.4.2, so no skill fires on different words. What changes is what a fired skill reads: contradictions between modules, Korean text with no English, and pointers to things the payload does not contain.
