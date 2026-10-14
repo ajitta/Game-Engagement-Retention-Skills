@@ -9,7 +9,7 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
-## [Unreleased]
+## [3.5.4] — 2026-10-14
 
 ### Fixed
 
