@@ -9,6 +9,16 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [Unreleased]
+
+### Changed
+
+- **`engagement-retention-advisor` re-measures at week 3–4, like the rest of the plugin.** Its Quality bar said to re-read results "at 2–4 weeks". `experiments.md`, `churn-and-winback.md`, `retention-strategy-designer` and `interaction-reward-moments` all say to read after at least two full weekly cycles and re-measure at week 3–4. ADV now says the same.
+- **The `Korean triggers:` keyword lists are gone from the ADV and RSD `when_to_use` fields.** Every keyword repeated a category the routing text already names in English. The one exception, 콘텐츠 소진, is kept in RSD as "content exhaustion". The Korean glosses in `description` and the Korean examples stay, because the `korean-routing-*` graders test them. Combined description + `when_to_use` length: ADV 1,517 → 1,452, RSD 1,512 → 1,475. Not yet measured: run the `routing-*` and `korean-routing-*` cases at 10+ runs before release.
+- **`interaction-reward-moments` names a mechanism in the vocabulary of the lenses it read.** The Quality bar pointed at `research-basis.md`'s vocabulary, but neither default mode reads that file. Following the line meant either a fourth read, which breaks the three-module ceiling, or working from memory, which Preflight forbids. The two bans that matter most (no dopamine claim, no "variable-ratio schedule") stay in the same line.
+- **The shared CARD block says "the source-tag rule below" instead of "the stamp rule below".** No paragraph was called the stamp rule; the phrase meant the `[source | population | year | definition]` tag in Anti-fabrication. Changed in `scripts/contracts.md` and all three `SKILL.md`.
+- **`korean-routing-adv-integrate` grader note corrected.** It called 뭐부터 the advisor's declared Korean trigger, but that word has not been in `SKILL.md` since `99f1ddc`. The note now says the prompt is the advisor's own Korean example. Pass/fail logic is unchanged.
+
 ## [3.5.2] — 2026-10-09
 
 ### Fixed
