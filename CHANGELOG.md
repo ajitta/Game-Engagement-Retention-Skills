@@ -9,15 +9,23 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
-## [Unreleased]
+## [3.5.3] — 2026-10-14
 
 ### Changed
 
 - **`engagement-retention-advisor` re-measures at week 3–4, like the rest of the plugin.** Its Quality bar said to re-read results "at 2–4 weeks". `experiments.md`, `churn-and-winback.md`, `retention-strategy-designer` and `interaction-reward-moments` all say to read after at least two full weekly cycles and re-measure at week 3–4. ADV now says the same.
-- **The `Korean triggers:` keyword lists are gone from the ADV and RSD `when_to_use` fields.** Every keyword repeated a category the routing text already names in English. The one exception, 콘텐츠 소진, is kept in RSD as "content exhaustion". The Korean glosses in `description` and the Korean examples stay, because the `korean-routing-*` graders test them. Combined description + `when_to_use` length: ADV 1,517 → 1,452, RSD 1,512 → 1,475. Not yet measured: run the `routing-*` and `korean-routing-*` cases at 10+ runs before release.
+- **The `Korean triggers:` keyword lists are gone from the ADV and RSD `when_to_use` fields.** Every keyword repeated a category the routing text already names in English. The one exception, 콘텐츠 소진, is kept in RSD as "content exhaustion". The Korean glosses in `description` and the Korean examples stay, because the `korean-routing-*` graders test them. Combined description + `when_to_use` length: ADV 1,517 → 1,452, RSD 1,512 → 1,475.
 - **`interaction-reward-moments` names a mechanism in the vocabulary of the lenses it read.** The Quality bar pointed at `research-basis.md`'s vocabulary, but neither default mode reads that file. Following the line meant either a fourth read, which breaks the three-module ceiling, or working from memory, which Preflight forbids. The two bans that matter most (no dopamine claim, no "variable-ratio schedule") stay in the same line.
 - **The shared CARD block says "the source-tag rule below" instead of "the stamp rule below".** No paragraph was called the stamp rule; the phrase meant the `[source | population | year | definition]` tag in Anti-fabrication. Changed in `scripts/contracts.md` and all three `SKILL.md`.
 - **`korean-routing-adv-integrate` grader note corrected.** It called 뭐부터 the advisor's declared Korean trigger, but that word has not been in `SKILL.md` since `99f1ddc`. The note now says the prompt is the advisor's own Korean example. Pass/fail logic is unchanged.
+
+### Measured — smoke check only
+
+The owner chose **3 runs per case, variant arm only**: the 12 `routing-*` and `korean-routing-*` cases on `f704fc7`. That is a smoke check, not the 10+ runs CONTRIBUTING asks for, and it has no 3.5.2 arm except the one noted below. Harness: claude-opus-5-5, Claude Code 2.1.299, `claude -p --plugin-dir` from a scratch directory, `--setting-sources project,local`, tools Skill/Read/Glob/Grep, stream-json. Skill-fired was graded from the tool calls; Korean output by a separate judge per transcript. Generation cost $6.15.
+
+- **Skill-fired 36/36.** Every case fired the expected skill and no sibling, including every ADV and RSD case, the two skills whose trigger lists were removed.
+- **Korean output 3/9.** IRM 3/3. ADV and RSD 0/3 each: every answer was the bundled intake question message (no product named in the prompt), which the grader scores as a missing deliverable. A 3.5.2 arm on the same two cases under the same harness gave intake-only replies in 6/6 runs too, so this is not caused by this release. It matches the ADV failure recorded for 3.5.2.
+- **A first pass was discarded.** Read was denied in the non-interactive session, so 9 of its 36 answers were written without their reference files. Skill-fired was 36/36 there as well. All 36 were re-run with Read allowed.
 
 ## [3.5.2] — 2026-10-09
 
