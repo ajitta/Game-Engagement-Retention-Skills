@@ -9,6 +9,12 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [Unreleased]
+
+### Changed
+
+- **`korean-routing-adv-integrate` and `korean-routing-rsd-lifecycle` prompts now supply every required input.** Both named no product details, so the skills correctly sent the bundled intake message instead of an answer, and `korean-output.md`, which grades the headings of a delivered answer, failed them. The RSD prompt was almost the same ask as `intake-underspecified-d7`, which expects exactly that intake message, so the suite contradicted itself. Each prompt keeps its first sentence verbatim (the routing discriminator) and adds a paragraph with platform, market, rating, monetization, cadence and the metric. RSD also gets the metric's provenance and the DAU, payer and acquisition figures. Graders are unchanged. Check on 3.5.3, 3 runs per case: skill-fired 6/6; Korean output 5/6, against 0/6 with the old prompts. The one failure is a real defect: `## 근거` ran past one line.
+
 ## [3.5.3] — 2026-10-14
 
 ### Changed
