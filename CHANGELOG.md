@@ -11,6 +11,10 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ## [Unreleased]
 
+### Fixed
+
+- **The Basis line stays one line even when checks were skipped.** The shared CARD block said "one line under the heading" but closed with "Nothing skipped → one line and no more", which reads as permission for more lines once a check was skipped. One `korean-routing-adv-integrate` answer did exactly that: an intro sentence plus three bulleted unrun checks, failing `korean-output.md`. The clause now says the unrun checks go in that same line, separated by semicolons, never as a list or a second line. Changed in `scripts/contracts.md` and all three `SKILL.md`. Check on the three Korean routing cases, 3 runs each: skill-fired 9/9, Korean output 9/9, every Basis one line. The defect appeared in 1 of the 42 answers graded before the fix, so a clean 9 shows nothing broke. It is not evidence that the rate went down.
+
 ### Changed
 
 - **`korean-routing-adv-integrate` and `korean-routing-rsd-lifecycle` prompts now supply every required input.** Both named no product details, so the skills correctly sent the bundled intake message instead of an answer, and `korean-output.md`, which grades the headings of a delivered answer, failed them. The RSD prompt was almost the same ask as `intake-underspecified-d7`, which expects exactly that intake message, so the suite contradicted itself. Each prompt keeps its first sentence verbatim (the routing discriminator) and adds a paragraph with platform, market, rating, monetization, cadence and the metric. RSD also gets the metric's provenance and the DAU, payer and acquisition figures. Graders are unchanged. Check on 3.5.3, 3 runs per case: skill-fired 6/6; Korean output 5/6, against 0/6 with the old prompts. The one failure is a real defect: `## 근거` ran past one line.
