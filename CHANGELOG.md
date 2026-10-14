@@ -23,7 +23,7 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 The owner chose **3 runs per case, variant arm only**: the 12 `routing-*` and `korean-routing-*` cases on `f704fc7`. That is a smoke check, not the 10+ runs CONTRIBUTING asks for, and it has no 3.5.2 arm except the one noted below. Harness: claude-opus-5-5, Claude Code 2.1.299, `claude -p --plugin-dir` from a scratch directory, `--setting-sources project,local`, tools Skill/Read/Glob/Grep, stream-json. Skill-fired was graded from the tool calls; Korean output by a separate judge per transcript. Generation cost $6.15.
 
-- **Skill-fired 36/36.** Every case fired the expected skill and no sibling, including every ADV and RSD case, the two skills whose trigger lists were removed.
+- **Skill-fired 36/36.** Every case fired the expected skill and no sibling, including every ADV and RSD case, whose trigger lists were removed.
 - **Korean output 3/9.** IRM 3/3. ADV and RSD 0/3 each: every answer was the bundled intake question message (no product named in the prompt), which the grader scores as a missing deliverable. A 3.5.2 arm on the same two cases under the same harness gave intake-only replies in 6/6 runs too, so this is not caused by this release. It matches the ADV failure recorded for 3.5.2.
 - **A first pass was discarded.** Read was denied in the non-interactive session, so 9 of its 36 answers were written without their reference files. Skill-fired was 36/36 there as well. All 36 were re-run with Read allowed.
 
