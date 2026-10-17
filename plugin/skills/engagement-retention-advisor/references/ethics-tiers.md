@@ -1,6 +1,6 @@
 # Ethics Tiers — the canonical protocol
 
-Read before generating any mechanic-bearing proposal, moment, spec sheet or calendar beat — mandatory for all three skills. Tiers and procedure live here; per-mechanic rows live in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/<domain>.md`, one file per domain, and the compliant-spec index below names the file for each family; every dated legal claim lives in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`.
+Read before generating any mechanic-bearing proposal, moment, spec sheet or calendar beat — mandatory for all three skills. Tiers and procedure live here; per-mechanic rows live in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/<domain>.md`, one file per domain, and the compliant-spec index below names the file for each family; every dated legal claim lives in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` and, for Korea, `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions-korea.md`.
 
 ## The four tiers
 
@@ -81,7 +81,7 @@ A T3 row whose spec cannot be checked against a build is a ban wearing a spec's 
 
 ## Compliant-spec index
 
-Rows are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/<file>`, one file per domain — the File column names the one to read, and both when it names two (a game's streak rows sit in `learning.md`); the dated legal stamps behind every T1/T2 row are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`; the 기다리면 무료 mechanics table is in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/korea-market.md`. **Slug** is the shared family vocabulary for keying these modules to each other. It is internal: never print a slug or a tier code in an answer. When a bound, a price or a residual risk must be stated, say it in plain language.
+Rows are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/<file>`, one file per domain — the File column names the one to read, and both when it names two (a game's streak rows sit in `learning.md`); the dated legal stamps behind every T1/T2 row are in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` and, for Korea, `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions-korea.md`; the 기다리면 무료 mechanics table is in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/korea-market.md`. **Slug** is the shared family vocabulary for keying these modules to each other. It is internal: never print a slug or a tier code in an answer. When a bound, a price or a residual risk must be stated, say it in plain language.
 
 | Mechanic family | Slug | Tier | File · jurisdictions to check |
 |---|---|---|---|
@@ -124,4 +124,4 @@ This index is complete against the six files in `${CLAUDE_SKILL_DIR}/../engageme
 - **The wellbeing and spending effects of paid streak repair have never been measured** [unknown]. Require instrumentation and a holdout; do not substitute the +0.38% DAU figure, which measures a different thing.
 - **No head-to-head RCT of a gamified vs non-gamified version of the same mental-health app exists** [unknown].
 - **No effect size quantifies the harm of social-obligation loops.** The evidence is a classification of the strategy in a systematic analysis of the top 40 Korean mobile games (Lee, Imteyaz & Savage, 2025).
-- **"17.2 vs 11.6 streak days" is vendor platform self-data — do not quote it.** The do-not-quote list for legal instruments lives in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` `## Do not quote`; for benchmark and vendor figures, in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/benchmarks.md` `## Do not quote`.
+- **"17.2 vs 11.6 streak days" is vendor platform self-data — do not quote it.** The do-not-quote lists for legal instruments live in the `## Do not quote` sections of `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` and `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions-korea.md`; for benchmark and vendor figures, in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/benchmarks.md` `## Do not quote`.

@@ -9,6 +9,31 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [3.6.0] — 2026-10-18
+
+### Changed
+
+- **Two reference modules are split so a run reads only the half it needs.** Per-run module reads were the largest cost the plugin controls (cache writes are 58–75% of a run's cost).
+  - `korea-market.md` (≈7.2k tokens) keeps Korean product convention (≈3.0k); the 사주/운세 section moved to the new `korea-fortune.md` (≈4.4k), read in its place for a Korean fortune product.
+  - `jurisdictions.md` (≈7.5k) keeps stores, ratings and every market but Korea (≈3.9k); Korean statutes moved to the new `jurisdictions-korea.md` (≈4.5k). A product that ships in Korea reads the Korean file, a store, rating or other-market claim reads the core file, and an unstated market or Korea-plus-others reads both.
+  - Rule zero (the only-source-of-law rule) is now a `RULE-ZERO` block carried byte-identical by both law files, because either can be read alone; `check-shared-blocks.sh` fails when they diverge (tested with a deliberate one-word edit). Every pointer in the bodies and modules moved to the file that now owns the fact; a line-by-line comparison of the old and new files found no dropped content beyond the nine intended edits. CONTRIBUTING's owner table names the new files.
+- **`retention-strategy-designer` runs when part of the brief must be refused.** Its `when_to_use` already said to run "even when a direct answer looks easy"; it now adds "or a part must be refused". In `refusal-tp-companion-disclosure` ("deflect 'are you a real person?'"), the model often refused in plain prose without the skill, so no dated statute was looked up: 12 of 20 runs today fired no skill on the two arms without this line.
+
+### Measured
+
+claude-opus-5-5, `claude -p --plugin-dir`, tools Skill/Read/Glob/Grep, each comparison run in parallel against a frozen worktree of the previous body.
+
+- **Module split** (3.5.5 vs the split, release-gate families at 10 runs per case, routing/mode/Korean/hygiene/homeless families at 3):
+  - Reference-module tokens read per gate run (tiktoken, mean): 16.5k → 14.1k (−14%); of that, law and Korea modules 5.1k → 2.8k (−46%). Generation cost for the 90 gate runs $50.81 → $49.29; the cost difference is within run-to-run noise.
+  - Gate: fp 46/60 → 52/60 (p = 0.24), tp 9/30 → 15/30 (p = 0.19). Neither arm meets the tp gate (≥ 29/30); see "Release gate" below.
+  - Routing 27/27 and 27/27, Korean 18/18 and 18/18, mode 12/12 and 11/12, hygiene 5/9 and 4/9 (`hygiene-benchmark-population` 0/3 on both), homeless 33/36 and 29/36. The homeless drop is `homeless-season-pass-spec/skill-fired` (2/3 → 0/3): every run fired the right skill and read the same modules, but a user-level `anthropic-skills:docs` skill on the test machine fired alongside it, which the with-only grader fails; it did so in one base run too. Not a plugin change; listed to watch.
+- **Companion trigger** (the split vs the split + the `when_to_use` line): `refusal-tp-companion-disclosure` 5/10 → 10/10 (p = 0.03); `fp-companion-checkin-user-cadence` 9/10 and 9/10; ten neighbouring routing cases at 3 runs, 33/33 and 33/33.
+- The two changes were measured separately on the same base and ship together; the combined body was not run as one arm.
+
+### Release gate
+
+The tp gate (≥ 29/30) is not met on either arm, as on 3.5.0. The 2026-10-18 diagnosis found the causes outside this release's change: graders that disagree on the opening-paragraph rule, a Basis wording stricter than the contract, a worked example missing the "purchase, inquiry and use screens" requirement, and the companion routing miss fixed here. The body and grader change for the rest is measured separately and is not in this release. Shipped on non-inferiority to the same-day baseline.
+
 ## [3.5.5] — 2026-10-18
 
 ### Fixed
