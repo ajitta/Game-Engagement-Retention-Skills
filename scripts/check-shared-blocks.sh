@@ -33,6 +33,20 @@ for block in ROUTING CARD LANGUAGE; do
   done
 done
 
+# Rule zero of the law files: jurisdictions.md and jurisdictions-korea.md are each
+# read alone (a Korea-only answer reads only the Korean file), so each carries the
+# whole rule. Same defect as above: divergence, not duplication.
+J=plugin/skills/engagement-retention-advisor/references
+rz_core=$(extract "$J/jurisdictions.md" RULE-ZERO)
+rz_kr=$(extract "$J/jurisdictions-korea.md" RULE-ZERO)
+if [ -z "$rz_core" ] || [ -z "$rz_kr" ]; then
+  echo "FAIL: a jurisdiction file is missing the RULE-ZERO block"; status=1
+elif [ "$rz_core" != "$rz_kr" ]; then
+  echo "FAIL: RULE-ZERO diverges between jurisdictions.md and jurisdictions-korea.md"
+  diff <(printf '%s\n' "$rz_core") <(printf '%s\n' "$rz_kr") | head -20
+  status=1
+fi
+
 # A reference module cannot assume which skill is reading it: ${CLAUDE_SKILL_DIR}
 # resolves to the FIRING skill's directory, so an own-directory pointer inside a
 # module breaks the moment a sibling skill reads it. Modules must always name the
@@ -45,5 +59,5 @@ if grep -rn '\${CLAUDE_SKILL_DIR}/references/' plugin/skills/*/references/*.md p
   status=1
 fi
 
-[ $status -eq 0 ] && echo "OK: ROUTING, CARD and LANGUAGE blocks identical across $(ls plugin/skills/*/SKILL.md | wc -l | tr -d ' ') skills; no own-directory pointers in reference modules"
+[ $status -eq 0 ] && echo "OK: ROUTING, CARD and LANGUAGE blocks identical across $(ls plugin/skills/*/SKILL.md | wc -l | tr -d ' ') skills; RULE-ZERO identical in both jurisdiction files; no own-directory pointers in reference modules"
 exit $status

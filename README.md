@@ -201,7 +201,7 @@ Game-Engagement-Retention-Skills/
 │   └── skills/
 │       ├── interaction-reward-moments/      # SKILL.md + 9 modules
 │       ├── retention-strategy-designer/     # SKILL.md + 8 modules
-│       └── engagement-retention-advisor/    # SKILL.md + 5 modules + domain-ethics/ (6 per-domain files)
+│       └── engagement-retention-advisor/    # SKILL.md + 7 modules + domain-ethics/ (6 per-domain files)
 ├── evals/                   # 39 cases, ten families, one prompt + graders each
 ├── scripts/                 # check-shared-blocks · check-no-facts-in-skills
 │                            #   · check-ethics-rows · check-claims
