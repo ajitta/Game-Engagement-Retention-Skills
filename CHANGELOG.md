@@ -9,6 +9,16 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [3.5.5] — 2026-10-18
+
+### Fixed
+
+- **`retention-strategy-designer` no longer looks for `jurisdictions.md` in its own folder.** The `cadence` row of the Modes table and the swap rule named the file bare, so the model sometimes read `retention-strategy-designer/references/jurisdictions.md`, which does not exist, then retried at the right path. In the saved 3.5.0 transcripts that happened in 17 of 546 runs, all of them RSD `cadence` (10 of 30 `fp-pass-weeklies-monthly-bucket` runs). Pass rates did not differ with or without the miss (12/17 vs 179/275), so this costs a turn, not a verdict. The two places now give the full sibling path, and the Paths line names the four shared files that live in the advisor's folder.
+
+### Measured — smoke check only
+
+Three RSD `cadence` cases, 5 runs each, 3.5.4 and this fix in parallel (claude-opus-5-5, `claude -p --plugin-dir`, tools Skill/Read/Glob/Grep). Wrong-path reads: 1 of 15 runs on 3.5.4, 0 of 15 here. The 3.5.4 rate in this batch was lower than in the saved transcripts, so this shows the fix does not break the read; it does not measure how often the miss happened before. Generation cost $12.51 (3.5.4) and $11.44 (fix). No verdicts were judged: the change touches paths only.
+
 ## [3.5.4] — 2026-10-14
 
 ### Fixed
