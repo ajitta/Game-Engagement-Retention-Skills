@@ -32,8 +32,8 @@ each other. If you add a fact, find its owner here first.
 |---|---|
 | The tier procedure itself — how T1/T2a/T2b/T3/T4 decide a response | `advisor/ethics-tiers.md` |
 | Per-mechanic compliant specs, and every mechanic-family row | `advisor/domain-ethics/<domain>.md` — six files (`games`, `learning`, `companion-journaling`, `mental-health`, `narrative`, `fortune`); the compliant-spec index in `ethics-tiers.md` names which file holds each family's row, and the shared preamble of those files carries no tier code (`check-ethics-rows.sh` would count it as a row) |
-| Laws, store rules, rating bodies, in-force dates | `advisor/jurisdictions.md` |
-| Korean market product convention (not Korean law) | `advisor/korea-market.md` |
+| Laws, store rules, rating bodies, in-force dates | `advisor/jurisdictions.md`; Korean statutes in `advisor/jurisdictions-korea.md`. Both carry the same Rule zero block, which `check-shared-blocks.sh` diffs |
+| Korean market product convention (not Korean law) | `advisor/korea-market.md`; Korean 사주/운세 products in `advisor/korea-fortune.md` |
 | Guild, UGC, meta-progression, in-game economy systems | `advisor/systems-catalog.md` |
 | How the three skills hand work to each other | `advisor/integration-patterns.md` |
 | The routing block, card grammar and language rule | `scripts/contracts.md` — not a reference module and never read at runtime; the canonical copy the shared-block check diffs against |
@@ -153,7 +153,7 @@ family have scored 17/18 and 14/18, so a 3-run delta of that size is noise.
 ## Writing a fact
 
 Every number carries `[source | population | year | definition]` or it is not written.
-Every legal claim is reproduced from `jurisdictions.md` with the instrument's own name and
+Every legal claim is reproduced from `jurisdictions.md` or `jurisdictions-korea.md` with the instrument's own name and
 its in-force date, or it is not stated. A house recommendation is labelled "recommended" or
 "baseline" in the output language — presenting one as a statute is the most expensive error available here, because
 the reader takes it to their legal team.

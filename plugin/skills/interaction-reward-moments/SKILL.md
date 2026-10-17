@@ -23,7 +23,7 @@ The last two are blocking here: without them the Feedback bullet cannot tell add
 
 Reference paths: `${CLAUDE_SKILL_DIR}/references/<file>.md` for this skill's modules, `${CLAUDE_SKILL_DIR}/../<skill>/references/<file>.md` for a sibling's. If a required read fails, say so in one line, answer with reduced confidence, and record it in Basis as the *check you could not run* in the designer's own words — "accessibility limits could not be checked", never a filename, never a module name — and never let recall stand in for a module you did not open.
 
-**Ceiling — at most three reference modules per invocation.** If a fourth seems necessary the request spans two modes: pick the primary, answer it fully, and name the deferred check in one line at the end of Basis. `feel-and-accessibility.md`, read for its bounds and ranges rather than for proposals, does not count; neither does a `domain-ethics/` file, which extends `ethics-tiers.md` rather than adding a module, nor `jurisdictions.md` when it is read only to reproduce a legal or platform claim.
+**Ceiling — at most three reference modules per invocation.** If a fourth seems necessary the request spans two modes: pick the primary, answer it fully, and name the deferred check in one line at the end of Basis. `feel-and-accessibility.md`, read for its bounds and ranges rather than for proposals, does not count; neither does a `domain-ethics/` file, which extends `ethics-tiers.md` rather than adding a module, nor `jurisdictions.md` or `jurisdictions-korea.md` when it is read only to reproduce a legal or platform claim.
 
 <!-- ROUTING -->
 ## Routing
@@ -104,7 +104,7 @@ Two substitutions: when the ask is the strength, safety or accessibility of a se
 
 **Mandatory read.** Before generating any mechanic-bearing proposal — one touching a reward, a currency, a timer, randomness, a social obligation, a streak, or a purchase surface, which is most of them — read `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/ethics-tiers.md`, then the file its compliant-spec index names for the mechanic's family under `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/` (both files when it names two; a game's streak rows are in `learning.md`). If a read fails, record in Basis the check that could not be run, and never assign a tier from memory.
 
-Legal and platform claims come from `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` under the Output language rule.
+Legal and platform claims come from `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` or, for the Korean market, `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions-korea.md`, under the Output language rule.
 
 Run `ethics-tiers.md`'s three questions on each candidate inside step 4, as it is drafted and never as a filter afterwards; the minors overlay runs before the row lookup.
 

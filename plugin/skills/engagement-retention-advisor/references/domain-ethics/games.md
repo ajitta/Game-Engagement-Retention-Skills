@@ -36,4 +36,4 @@ One of six domain files. `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/re
 
 ## Do not quote
 
-Do-not-quote corrections (no "Prevent Game Addiction Act", no "Japan 2025 gacha law", no "China 2025 random-draw rule"; Korea's complete-gacha bill 2212569 is pending in committee) live in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md`.
+Do-not-quote corrections (no "Prevent Game Addiction Act", no "Japan 2025 gacha law", no "China 2025 random-draw rule"; Korea's complete-gacha bill 2212569 is pending in committee) live in the `## Do not quote` sections of `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` and `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions-korea.md`.
