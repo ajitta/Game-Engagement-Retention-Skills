@@ -9,6 +9,12 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [Unreleased]
+
+### Evals
+
+- **The three tp graders now follow the contract.** The hidden-odds grader capped `## Basis` at "one or two sentences", but the contract says one line, so the sentence count is no longer graded. The ad-chaining and companion graders now apply the "never in an opening paragraph" rule that hidden-odds already applied. Graded this way, 3.6.0 reads fp 51/60 and tp 20/30, so the tp gate is still not met. Two body changes for the rest were measured and rejected: moving Redesigned request under the label line, and pointing the odds example at the owner row. Record: `docs/notes/2026-10-18-measure-3.6.0.md`.
+
 ## [3.6.0] — 2026-10-18
 
 ### Changed
