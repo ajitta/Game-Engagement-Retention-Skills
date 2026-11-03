@@ -2,6 +2,18 @@
 
 Read this when the deliverable is a churn diagnosis, an at-risk definition, a win-back or resurrection programme, or the measurement design for one.
 
+## Contents
+
+- Signal → diagnosis map
+- At-risk is defined against the player's own gap
+- Predict → explain → intervene
+- Target by uplift, not by churn risk
+- Split the churn before choosing a tactic
+- Win-back by lapse cause
+- The return flow: re-onboarding is not FTUE
+- Measurement
+- Numbers that do not exist
+
 ## Signal → diagnosis map
 
 Run as a rule-out ladder, cheapest falsification first. Technical before design, always.

@@ -266,11 +266,15 @@ check; a gate reading or a before/after comparison needs 10+ per case.
 
 ```sh
 # with arm — the plugin resolves from this repo
-claude -p "$(cat evals/fp-stamina-published-refill/prompt.md)" --plugin-dir ./plugin
+claude -p "$(cat evals/fp-stamina-published-refill/prompt.md)" --plugin-dir ./plugin \
+  --model claude-opus-5-5 --effort medium
 
 # baseline arm — same prompt, no plugin
-claude -p "$(cat evals/fp-stamina-published-refill/prompt.md)"
+claude -p "$(cat evals/fp-stamina-published-refill/prompt.md)" \
+  --model claude-opus-5-5 --effort medium
 ```
+
+**Pin the model and the effort on every generation run.** The plugin is checked on Claude Opus 5.5 at medium effort; a run at the CLI default is a different condition. Record both in the run note. Runs recorded before 2026-11-04 used the CLI default effort, which was not recorded, so do not read them against a pinned run as if the condition were the same. The judge invocation is not the system under test and keeps its own settings, but keep them identical across the two arms.
 
 Save each transcript, then grade it with a separate judge invocation against the same
 grader file — a separate invocation, because a model grading its own answer in the same

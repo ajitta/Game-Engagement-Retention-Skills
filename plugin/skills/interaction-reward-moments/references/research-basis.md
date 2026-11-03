@@ -2,6 +2,21 @@
 
 Read this when a moment proposal needs its mechanism named, a number defended to a stakeholder, or a claim checked before it enters a design doc.
 
+## Contents
+
+- Vocabulary that does not survive
+- RPE — one contested lens, not the mechanism
+- Anticipation — the pre-outcome window is the designed unit
+- Contingency and dose — the conditions on juice
+- Curiosity, not enjoyment, predicts continued play
+- SDT — name the need and the facet, never the checklist
+- Difficulty and DDA — churn-risk relief with a monetization cost
+- Uncertainty — what replicates, what does not
+- Measurement — PXI is the default instrument
+- Wellbeing — need frustration and exit quality, not playtime
+- Numbers that do not exist
+- Contested — carry, do not resolve
+
 ## Vocabulary that does not survive
 
 | Drop | Use instead |

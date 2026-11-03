@@ -1,9 +1,9 @@
 name: checks
 
-# The four invariant scripts are the load-bearing checks: they catch the
+# The five invariant scripts are the load-bearing checks: they catch the
 # divergence between a SKILL.md and contracts.md that a skill loading alone at
-# invocation would turn into a silently missing rule. They need only bash and
-# coreutils, so they run here on every push.
+# invocation would turn into a silently missing rule. They need only bash,
+# coreutils and python3 (preinstalled on the runner), so they run here on every push.
 #
 # The three `claude plugin validate --strict` targets are NOT run here — they need
 # the Claude Code CLI. They are release checks, run locally; README says so.
@@ -36,3 +36,5 @@ jobs:
         run: bash scripts/check-ethics-rows.sh
       - name: Doc claims about counts, versions and gates match the tree
         run: bash scripts/check-claims.sh
+      - name: Frontmatter and body stay inside the hosts' limits
+        run: bash scripts/check-frontmatter.sh

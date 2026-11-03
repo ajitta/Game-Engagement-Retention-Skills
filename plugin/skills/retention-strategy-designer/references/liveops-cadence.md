@@ -6,6 +6,19 @@ Read when the deliverable is a named cadence mechanic (battle pass, quest stack,
 
 Every spec below is tagged with its canonical **ethics family slug**, and each Reviewer-flags block ends with the slug a failed flag lands on. The slug is an entry in the compliant-spec index of `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/ethics-tiers.md`, which names the file under `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/` holding that row; the slug is internal keying and never reaches the answer — when a bound, a price or a residual risk must be stated, say it in the reader's own words. Read the row before signing off — this file owns the cadence bounds, not the tier.
 
+## Contents
+
+- Sizing before specifying
+- Battle pass · `T2b pass-expiry`
+- Quests: daily → weekly → monthly · `T2b pass-expiry`
+- Login reward · `T2b login-chain`
+- Energy / stamina · `T3 metered-access`
+- Streak · `T3 streak-repair` + `T3 guilt-streak`
+- Notification · `T1/T2a ad-chaining` bound applies to any offer payload
+- Win-back campaign · `T2b fomo-window` on the return offer
+- Korean calendar block
+- Numbers that do not exist
+
 ## Sizing before specifying
 
 **Cadence is a content-supply decision constrained by team capacity, never the fix for a decaying D7.** Three reference cadences, with what each buys:

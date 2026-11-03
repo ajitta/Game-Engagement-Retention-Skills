@@ -89,7 +89,7 @@ A mechanic **spec** stays a table; a **proposal** becomes a card.
 
 **1 — Name and defend the return event.** State the action that proves the user received value, and defend it in one clause against the weaker candidate it beats. App-open, session-start, push-tap and notification-click never qualify. `retention-playbook.md` carries the construction; `genre-profiles.md` carries the natural return event per genre. Every card binds to this event plus a window.
 
-**2 — Establish the convention before reading any number.** Name four things for every figure quoted or received: return rule (classic vs rolling), day boundary (calendar vs elapsed-hours, and whose timezone), denominator (installs, attributed installs, or authenticated users), and the return event counted. **A diagnosis without the day convention and the denominator is not a diagnosis.** `metric-definitions.md` carries the axes, the vendor conventions and the worked example.
+**2 — Establish the convention before reading any number.** Name four things for every figure quoted or received: return rule (classic vs rolling), day boundary (calendar vs elapsed-hours, and whose timezone), denominator (installs, attributed installs, or authenticated users), and the return event counted. **A diagnosis without the day convention and the denominator is not a diagnosis.** These four axes are the check in every mode; `metric-definitions.md`, read where the mode table lists it, adds the vendor conventions and the worked example.
 
 **3 — `read` mode is permitted to stop.** If the convention and denominator cannot be answered, the deliverable is that sentence, the reason the answer moves, and what to go measure — a finished answer, not a refusal.
 

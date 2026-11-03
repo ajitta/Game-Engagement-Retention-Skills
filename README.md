@@ -204,7 +204,7 @@ Game-Engagement-Retention-Skills/
 │       └── engagement-retention-advisor/    # SKILL.md + 7 modules + domain-ethics/ (6 per-domain files)
 ├── evals/                   # 39 cases, ten families, one prompt + graders each
 ├── scripts/                 # check-shared-blocks · check-no-facts-in-skills
-│                            #   · check-ethics-rows · check-claims
+│                            #   · check-ethics-rows · check-claims · check-frontmatter
 │                            #   · contracts.md (canonical shared blocks, never read at runtime)
 ├── docs/                    # ~648 KB of research and design record, plus the 2026-07
 │                            #   hardening notes — tracked, not installed (since 3.3.0 the
