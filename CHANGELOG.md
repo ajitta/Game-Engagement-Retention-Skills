@@ -9,6 +9,12 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
+## [Unreleased]
+
+### Tooling
+
+- **`scripts/release.sh` now creates the GitHub Release.** It pushed the branch and the tag but left the Releases page alone, so 3.6.1 was tagged while GitHub still showed 3.6.0 as Latest; that release was created by hand. The script now checks `gh` and its login before pushing anything, takes the notes from the version's CHANGELOG entry, creates the release with the version as title and marks it Latest. An existing release for the tag is left as is.
+
 ## [3.6.1] — 2026-11-04
 
 Checked against Anthropic's skill authoring best practices; the audit and the reverted attempt are in `docs/notes/2026-11-04-skill-authoring-guide-audit.md`.

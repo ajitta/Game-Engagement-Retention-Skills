@@ -107,7 +107,9 @@ scripts/release.sh "one-line release message"     # --dry-run to rehearse it
 
 It refuses on a dirty tree, on a version already tagged, and when `plugin.json` and the
 newest CHANGELOG entry disagree; runs the five invariant scripts and the three validators;
-records the always-on cost; then **pushes the branch and only then the tag.**
+records the always-on cost; then **pushes the branch and only then the tag**, and last
+creates the GitHub Release from the version's CHANGELOG entry (it needs `gh`, logged in;
+the script checks that before pushing anything).
 
 That order is the reason the script exists. `claude plugin tag . --push` pushes the tag
 and not the branch, so the tagged commit reaches the remote on no branch. A git-based

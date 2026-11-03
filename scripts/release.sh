@@ -14,7 +14,13 @@
 # branch is never wrong; a branch that lags a tag is.
 #
 # Usage:  scripts/release.sh "one-line release message"
-#         scripts/release.sh --dry-run "…"     everything except the two pushes
+#         scripts/release.sh --dry-run "…"     everything except the pushes and the GitHub Release
+#
+# The last step creates the GitHub Release (title = version, notes = the
+# CHANGELOG entry's body). A pushed tag alone does not change the "Latest"
+# release on GitHub; 3.6.1 shipped that way and the Releases page still showed
+# 3.6.0. gh is checked before anything is pushed, so a missing gh cannot leave
+# a tag without its release.
 set -uo pipefail
 cd "$(dirname "$0")/.."
 
@@ -45,6 +51,14 @@ newest=$(grep -oE '^## \[[0-9]+\.[0-9]+\.[0-9]+\]' CHANGELOG.md | head -1 | tr -
 [ "$newest" = "$version" ] || \
   die "plugin.json says $version but the newest CHANGELOG entry is $newest. If work has landed since the last tag, it belongs under '## [Unreleased]' until you bump"
 
+step "GitHub CLI is available and the CHANGELOG entry has a body"
+command -v gh >/dev/null 2>&1 || die "gh is not on PATH; it creates the GitHub Release after the tag"
+gh auth status >/dev/null 2>&1 || die "gh is not logged in (gh auth login)"
+notes=$(mktemp)
+trap 'rm -f "$notes"' EXIT
+awk -v h="## [$version]" 'index($0, h) == 1 {on=1; next} on && /^## \[/ {exit} on' CHANGELOG.md > "$notes"
+[ -n "$(tr -d '[:space:]' < "$notes")" ] || die "the CHANGELOG entry for $version has no body to use as release notes"
+
 step "Invariant scripts"
 for s in scripts/check-*.sh; do
   printf '  %-34s' "$(basename "$s")"
@@ -73,6 +87,7 @@ if [ "$dry" = "1" ]; then
   step "--dry-run: stopping before the branch push and the tag"
   echo "  would run: git push origin $branch"
   echo "  would run: claude plugin tag ./plugin -m \"$msg %s\" --push"
+  echo "  would run: gh release create $tag --title $version --latest --verify-tag (notes: CHANGELOG $version, $(wc -l < "$notes" | tr -d ' ') lines)"
   exit 0
 fi
 
@@ -88,4 +103,12 @@ git fetch --quiet origin
 git merge-base --is-ancestor "$(git rev-parse "$tag^{}")" "origin/$branch" || \
   die "$tag is not on origin/$branch — run: git push origin $branch"
 
-step "Done — $tag is published and on origin/$branch"
+step "Creating the GitHub Release"
+if gh release view "$tag" >/dev/null 2>&1; then
+  echo "  $tag already has a release; left as is"
+else
+  gh release create "$tag" --title "$version" --notes-file "$notes" --latest --verify-tag || \
+    die "release creation failed; the branch and tag are pushed, so run: gh release create $tag --title $version --latest --verify-tag --notes-file <CHANGELOG $version body>"
+fi
+
+step "Done — $tag is published, on origin/$branch, and is the Latest release"
