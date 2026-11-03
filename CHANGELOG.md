@@ -9,7 +9,27 @@ The version here is the `version` field of `.claude-plugin/plugin.json`. An inst
 
 ---
 
-## [Unreleased]
+## [3.6.1] — 2026-11-04
+
+Checked against Anthropic's skill authoring best practices; the audit and the reverted attempt are in `docs/notes/2026-11-04-skill-authoring-guide-audit.md`.
+
+### Changed
+
+- **`retention-strategy-designer` `strategy` mode no longer has to read a fourth module.** Step 2 named `metric-definitions.md` as the carrier of the day convention, and `retention-playbook.md` said to read it "before quoting or comparing any number", but `strategy` reads three other modules under a three-module ceiling. Step 2 now says the four axes it lists are the check in every mode and `metric-definitions.md` is read where the mode table lists it; the playbook line says what that file carries.
+- **The eight reference files over 100 lines open with a contents list** (`ethics-tiers`, `korea-fortune`, `liveops-cadence`, `retention-playbook`, `benchmarks`, `churn-and-winback`, `feel-and-accessibility`, `research-basis`), so a partial read still shows what the file covers.
+
+### Added
+
+- **`scripts/check-frontmatter.sh`, a fifth invariant.** It checks the name pattern and reserved words, the 1,024-character `description` cap with no angle brackets, the 1,536-character `description` + `when_to_use` cap, a body under 500 lines, and that the frontmatter parses. It runs a negative self-test first. CI and `release.sh` run it.
+- **Eval runs pin `--model claude-opus-5-5 --effort medium`** (`evals/README.md`). Earlier run notes used the CLI default effort, which was not recorded.
+
+### Tried and reverted — body reorder for compaction
+
+After compaction Claude Code re-attaches only the first 5,000 tokens of an invoked skill, and the bodies run about 8.5k–9.3k tokens, so the CARD and LANGUAGE blocks fall outside that window. A branch build put CARD and LANGUAGE right after intake and moved routing to the end, and also removed in-body restatements. In smoke runs (claude-opus-5-5, medium effort, `--setting-sources project`) the variant answered `shape-rsd-strategy-cards` and `mode-irm-first-win-tutorial-beat` with only an intake question message, reading no reference file, in 3 of 6 runs; `main` did so in 0 of 6. With the intake paragraphs restored it still did so in 1 of 6. The owner had set the rule in advance: if it still happens, revert the bodies. The compaction gap stays open; on 3.6.0 the bodies are ~8.9k / 9.5k / 9.2k tokens (`plugin details`).
+
+The smoke runs used 3.5.4 as the base: the local clone had not fetched 3.5.5 and 3.6.0 when the work started. The reorder never reached a release, so nothing shipped on that base; the two changes kept here were re-applied on 3.6.0.
+
+Smoke cost: about $23 of generation plus judge runs (one run per case for most of the suite, then the two cases above), stopped early by the owner on cost. One run per case is not a measurement; the two retained changes did not go through a matched A/B.
 
 ### Evals
 

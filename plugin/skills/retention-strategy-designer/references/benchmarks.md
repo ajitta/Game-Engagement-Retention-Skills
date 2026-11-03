@@ -4,6 +4,18 @@ Read this whenever a retention number is about to be quoted, targeted or compare
 
 **last-verified: 2026-09.** Every row here is a vendor or first-party figure tied to the edition that published it, and editions are reissued annually — a row is not wrong when it ages, it is *about a different year*. If today is more than ~12 months past that date, say which edition the number came from before quoting it, and never let a stale row stand in for a current target.
 
+## Contents
+
+- Standing rules
+- Mobile games — the default distribution
+- Genre medians — 2024 data, D28, the last genre cut
+- UA-attributed installs
+- Top of market
+- East Asia, and the Korea proxy
+- Non-game apps
+- Do not quote
+- Numbers that do not exist
+
 ## Standing rules
 
 - **Five fields or it is not a benchmark**: source · data year and edition · population with its floor · percentile · day convention. Missing one, it is context, never a target — and when a user quotes a number, first ask which of the five they can supply rather than accepting it.

@@ -2,6 +2,17 @@
 
 Read in place of `korea-market.md` when the product is a Korean 사주, 운세 or 타로 product and the ask turns on local convention, or a fortune mechanic is named. Korean-language input alone is not a trigger. Every dated legal duty lives in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions-korea.md`; this file carries none.
 
+## Contents
+
+- 사주 / 운세 products
+  - The product's own vocabulary
+  - Four clocks, not one
+  - The readings that are not the daily one
+  - The ritual, beat by beat
+  - The category's content problem: Barnum text
+  - Five domain constraints — pre-ship checklist
+- Numbers that do not exist
+
 ## 사주 / 운세 products
 
 Category MAU [Mobile Index | Feb 2025 | top three >80% of category]: 점신 950,000 (46.5%), 포스텔러 570,000 (28.0%), 운세비결 160,000 (7.6%), 헬로우봇 90,000 (4.6%).

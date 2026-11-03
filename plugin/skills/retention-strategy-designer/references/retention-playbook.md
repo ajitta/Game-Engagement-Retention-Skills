@@ -2,6 +2,16 @@
 
 Read this when the deliverable is a lifecycle diagnosis or retention proposals: the value model, the return event, the stage an intervention targets, the leak window a symptom belongs to. Benchmark levels are in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/benchmarks.md`, metric conventions in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/metric-definitions.md`, test design in `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/experiments.md` — this file carries none of them.
 
+## Contents
+
+- Core value model
+- Return-event design
+- Lifecycle segmentation
+- Leak diagnosis by window
+- D8–D30: the three systems that decide it
+- Habit-formation frames, and where each fails
+- Numbers that do not exist
+
 ## Core value model
 
 ```
@@ -35,7 +45,7 @@ The single most important modelling decision, and the one most often skipped. A 
 
 Prefer a **critical-event** definition wherever opening the app is not evidence of value — journaling, learning, companion, fortune, tools. The critical-event definition and the Amplitude onboarding-action figure behind it: `${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/metric-definitions.md`. This **breaks comparability with vendor benchmarks on purpose**: say so, and stop quoting benchmarks at that product.
 
-A return event means nothing without the other three axes — return rule, day boundary, denominator (`${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/metric-definitions.md`, read before quoting or comparing any number). Platform branch: PC/console report DAU/MAU and playtime, not day-N (`${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/genre-profiles.md`).
+A return event means nothing without the other three axes — return rule, day boundary, denominator (`${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/metric-definitions.md` carries the vendor conventions). Platform branch: PC/console report DAU/MAU and playtime, not day-N (`${CLAUDE_SKILL_DIR}/../retention-strategy-designer/references/genre-profiles.md`).
 
 ## Lifecycle segmentation
 

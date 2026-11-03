@@ -2,6 +2,19 @@
 
 Read whenever a proposal prescribes a sensory effect — hit stop, screen shake, flash, particles, haptics, camera, audio — or when the ask is how strong an effect should be, how many milliseconds it lasts, what happens on its fiftieth firing, or what gets cut on a low-spec device.
 
+## Contents
+
+- Juice is a curve, not a volume knob
+- The three make-or-break impact features
+- The impact sequence — craft defaults to open at
+- Repeat-fatigue ladder — the same effect on its fiftieth firing
+- Latency is a precondition for felt agency
+- Low-spec triage — the cut order, and what is never cut
+- Hard bounds — constraints, not suggestions
+- Which constants are server-tunable
+- Numbers that do not exist
+- Pre-ship checklist
+
 ## Juice is a curve, not a volume knob
 
 Three preconditions [Kao, Ballou, Gerling, Breitsohl & Deterding, CHI 2024 | pre-registered, n=1,699 Prolific, ~340/condition | purpose-built action RPG, amplification × success-dependence × variability]:

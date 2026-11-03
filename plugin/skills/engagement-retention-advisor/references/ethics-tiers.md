@@ -2,6 +2,19 @@
 
 Read before generating any mechanic-bearing proposal, moment, spec sheet or calendar beat — mandatory for all three skills. Tiers and procedure live here; per-mechanic rows live in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/domain-ethics/<domain>.md`, one file per domain, and the compliant-spec index below names the file for each family; every dated legal claim lives in `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions.md` and, for Korea, `${CLAUDE_SKILL_DIR}/../engagement-retention-advisor/references/jurisdictions-korea.md`.
 
+## Contents
+
+- The four tiers
+- Decision procedure — three questions, run during generation
+- Minors overlay — the switch, applied before the row lookup
+- Refusal template
+- Five universal checks — run on every proposal *or* moment
+- Four false-positive guards
+- Every T3 row carries a numeric or observable compliant spec
+- Compliant-spec index
+- Contested — carry both sides, never resolve silently
+- Numbers that do not exist
+
 ## The four tiers
 
 | Tier | Meaning | Response |
